@@ -1,0 +1,14 @@
+name: Deposit DIP
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.13' 
+      - run: |
+        pip install requirements.txt
+        python main.py
