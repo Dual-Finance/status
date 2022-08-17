@@ -112,6 +112,7 @@ def deposit(values, is_windows):
             (By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")))
         num_tokens = driver.find_element(
             By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")
+        time.sleep(.1)
         num_tokens.click()
         num_tokens.send_keys('.000001')
 
@@ -139,7 +140,7 @@ def deposit(values, is_windows):
         WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
         for window_handle in driver.window_handles:
             if window_handle != original_window:
-                print('Switching')
+                print('Switching to approval window')
                 driver.switch_to.window(window_handle)
                 break
 
@@ -163,6 +164,7 @@ def deposit(values, is_windows):
 
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
+    options.add_argument("--headless=chrome")
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
