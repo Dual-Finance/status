@@ -1,6 +1,7 @@
 """Webdriver tests for DUAL DIP deposit"""
 import time
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -177,10 +178,12 @@ def deposit(values, is_windows):
     driver.get(values[0])
     driver.maximize_window()
 
-    # Actions - Initialize wallet
-    main_window = init_wallet()
-
-    select_wallet()
-    select_dip()
-
-    # TODO: Verify the results of the deposit and send an alert if it fails
+    try:
+        # Actions - Initialize wallet
+        main_window = init_wallet()
+        select_wallet()
+        select_dip()
+    except TimeoutException as error:
+        # TODO: Send an error
+        driver.save_screenshot('screenshot.png')
+        print(error)

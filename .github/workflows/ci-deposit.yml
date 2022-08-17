@@ -13,3 +13,10 @@ jobs:
           pip install -r requirements.txt
           python main.py
         shell: bash
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: screenshot.png
+          retention-days: 1
