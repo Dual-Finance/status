@@ -16,6 +16,7 @@ def deposit(values, is_windows):
         ''' Init wallet'''
 
         # add wallet to chrome
+        time.sleep(1)
         driver.switch_to.window(driver.window_handles[1])
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
@@ -187,3 +188,4 @@ def deposit(values, is_windows):
         # TODO: Send an error
         driver.save_screenshot('screenshot.png')
         print(error)
+        print(driver.window_handles)
