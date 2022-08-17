@@ -9,14 +9,15 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9.13' 
-      - run: |
-          pip install -r requirements.txt
-          python main.py
-        shell: bash
+      - name: 'Run Test'
+        - run: |
+            pip install -r requirements.txt
+            python main.py
+          shell: bash
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: failure-screenshot
           path: screenshot.png
           retention-days: 1

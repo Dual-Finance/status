@@ -194,4 +194,3 @@ def deposit(values, is_windows):
         # TODO: Send an error
         driver.save_screenshot('screenshot.png')
         print(error)
-        print(driver.window_handles)
