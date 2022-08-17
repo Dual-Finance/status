@@ -10,6 +10,6 @@ jobs:
         with:
           python-version: '3.9.13' 
       - run: |
-          pip install requirements.txt
+          pip install -r requirements.txt
           python main.py
         shell: bash
