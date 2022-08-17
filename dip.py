@@ -182,3 +182,5 @@ def deposit(values, is_windows):
 
     select_wallet()
     select_dip()
+
+    # TODO: Verify the results of the deposit and send an alert if it fails
