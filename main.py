@@ -10,5 +10,6 @@ def get_config():
 
 if __name__ == '__main__':
     config = get_config()
+    # TODO: Make it configurable for token and for dev vs mainnet
     is_windows = os.name == 'nt'
     dip.deposit(config, is_windows)
