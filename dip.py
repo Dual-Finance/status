@@ -18,8 +18,14 @@ def deposit(values, is_windows):
         # add wallet to chrome
         time.sleep(1)
         driver.switch_to.window(driver.window_handles[1])
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
+        try:
+            WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+                (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
+        except TimeoutException:
+            driver.switch_to.window(driver.window_handles[0])
+            WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+                (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
+
         driver.find_element(
             By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
