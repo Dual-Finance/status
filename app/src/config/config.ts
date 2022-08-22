@@ -1,19 +1,19 @@
 import { PublicKey } from '@solana/web3.js';
 
-export const API_URL = 'https://dual-rpc.com/devnet';
-export const DUAL_API = 'https://dev.api.dual.finance';
+export const API_URL = 'https://dual-rpc.com/mainnet';
+export const DUAL_API = 'https://api.dual.finance';
 
 export const dualMarketProgramID = new PublicKey('DiPbvUUJkDhV9jFtQsDFnMEMRJyjW5iS6NMwoySiW8ki');
 export const stakingOptionsProgramId = new PublicKey('DuALd6fooWzVDkaTsQzDAxPGYCnLrnWamdNNTNxicdX8');
 
-export const usdcMintPk = new PublicKey('HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM');
-export const wbtcMintPk = new PublicKey('JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv');
-export const wethMintPk = new PublicKey('Hccuen6RkUgEvyL9oSXW8ai9QiQaAiL8ESaqjp9oymBf');
+export const usdcMintPk = new PublicKey('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+export const wbtcMintPk = new PublicKey('9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E');
+export const wethMintPk = new PublicKey('7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs');
 export const wsolMintPk = new PublicKey('So11111111111111111111111111111111111111112');
 export const mmWalletPk = new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ');
-export const pythBtcPk = new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
-export const pythEthPk = new PublicKey('EdVCmQ9FSPcVe5YySXDPCRmc8aDQLKJ9xvYBMZPie1Vw');
-export const pythSolPk = new PublicKey('J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix');
+export const pythBtcPk = new PublicKey('GVXRSBjFk6e6J3NbVPXohDJetcTjaeeuykUpbQF8UoMU');
+export const pythEthPk = new PublicKey('JBu1AL4obBcCMqKBBxhpWCNUt136ijcuMZLFvTP7iWdB');
+export const pythSolPk = new PublicKey('H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG');
 
 export const ASSETS = {
   BTC: wbtcMintPk,

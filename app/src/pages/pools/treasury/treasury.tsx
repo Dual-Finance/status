@@ -19,7 +19,6 @@ import {
   getMultipleTokenAccounts,
   GetProvider,
   getTokenIconClass,
-  prettyFormatPrice,
 } from '../../../utils/utils';
 import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
@@ -186,7 +185,7 @@ export const Treasury = (props: { network: string }) => {
       render: (_, data) => {
         return (
           <div className={styles.premiumCell}>
-            {prettyFormatPrice(data.amount)}
+            {data.amount}
             <div className={c(styles.tokenIcon, getTokenIconClass(PK_TO_ASSET[data.splMint.toBase58()]))} />
           </div>
         );

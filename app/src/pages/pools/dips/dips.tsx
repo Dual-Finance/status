@@ -208,12 +208,6 @@ export const Dips = (props: { network: string }) => {
               const earnedRatio = price / currentPrice;
               const apy = earnedRatio / fractionOfYear / 1_000_000;
 
-              // Do not show any DIP that is less than 12 hours or 1% apy
-              if (durationMs <= 43_200_000 || strike < currentPrice || apy < 0.01) {
-                // eslint-disable-next-line no-continue
-                continue;
-              }
-
               // Get the option mint
               const optionMintPk = await optionTokenMintPk(dipState.strike, expiration, splMint);
               // Get the associated token addresses
