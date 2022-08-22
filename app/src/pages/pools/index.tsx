@@ -7,15 +7,15 @@ import { SectionHeaderLeft } from './SectionHeaderLeft/SectionHeaderLeft';
 import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
 import { Treasury } from './treasury/treasury';
+import { Tests } from './tests/tests';
 
 export const Pools = (props: { network: string }) => {
   const { network } = props;
   const tabs = [
     { label: 'DIPs', value: 'DIPs', disabled: false },
     { label: 'Treasury', value: 'Treasury', disabled: false },
-    { label: 'Services', value: 'Services', disabled: false },
     { label: 'Tests', value: 'Tests', disabled: false },
-    { label: 'Transactions', value: 'Transactions', disabled: false },
+    { label: 'Services', value: 'Services', disabled: true },
   ];
   // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
   const [selectedProduct, setSelectedProduct] = useState<string>(tabs[0].label);
@@ -31,6 +31,7 @@ export const Pools = (props: { network: string }) => {
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
+            {selectedProduct === 'Tests' && <Tests />}
           </>
         </SectionSidebarWrapper>
       </CurvedBackgroundWrapper>
