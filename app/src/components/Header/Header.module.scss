@@ -1,0 +1,267 @@
+@import '../../styles/_mixins.scss';
+@import '../../styles/_variables.scss';
+@import '../../styles/base.scss';
+
+.header {
+  background-color: $header-panel-text-color;
+  z-index: 10;
+
+  .container {
+    @extend %container;
+    position: relative;
+    padding: 16px 12px;
+    width: 100%;
+
+    @include tablet {
+      padding: 16px;
+      max-width: calc(736px + 32px);
+    }
+
+    @include laptop {
+      padding: 16px 24px;
+      max-width: calc(944px + 48px);
+    }
+
+    @include desktop {
+      max-width: calc(1232px + 48px);
+    }
+
+    .items {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      background-color: $black;
+      z-index: 3;
+
+      .dualFiLogo {
+        max-width: 190px;
+      }
+
+      .rightCol {
+        display: flex;
+      }
+
+      .menu {
+        display: none;
+        margin-right: 40px;
+        @include tablet {
+          font-size: $font-size-m;
+          color: $text-color-primary;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: row;
+        }
+
+        a {
+          color: $text-color-primary;
+          font-weight: 500;
+          padding-right: 24px;
+          text-decoration: none;
+          transition: all 0.1s;
+          &.activeLink {
+            color: $button-bg-primary;
+          }
+
+          @media (hover: hover) and (pointer: fine) {
+            &:hover,
+            &.active {
+              color: $button-bg-primary;
+            }
+          }
+        }
+        a:last-child {
+          padding-right: 0;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .mobileMenuToggle {
+        @include tablet {
+          display: none;
+        }
+
+        display: flex;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 16px;
+        background: #1e1d25;
+        z-index: 5;
+
+        span,
+        span::after,
+        span::before {
+          position: absolute;
+          height: 1.5px;
+          width: 14px;
+          background: $text-color-primary;
+          z-index: 102;
+          color: $button-primary-text-color;
+        }
+
+        span {
+          bottom: auto;
+          transition: all 0.3s;
+          transform: translate(0, -50%);
+
+          &::after,
+          &::before {
+            content: '';
+            left: 0;
+            transition: all 0.3s;
+          }
+
+          &::before {
+            transform: translate(90%, -6px);
+            width: 8px;
+          }
+
+          &::after {
+            transform: translateY(6px);
+            width: 8px;
+          }
+        }
+
+        &.active {
+          span {
+            background: transparent;
+
+            &::before {
+              transform: rotate(45deg);
+              width: 100%;
+            }
+
+            &::after {
+              transform: rotate(-45deg);
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mobileMenuWrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  .mobileMenu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    font-size: $font-size-xxxl;
+    font-weight: 700;
+    margin-top: -800px;
+    transition: margin-top ease-in-out 0.3s;
+    background: linear-gradient(0deg, #05040d, #05040d), #ffffff;
+    z-index: 2;
+    height: 0;
+
+    a {
+      text-decoration: none;
+      text-align: center;
+    }
+
+    &.active {
+      margin-top: 0;
+
+      @include mobile {
+        height: 100vh;
+        justify-content: center;
+      }
+    }
+
+    .mobileItems {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        font-weight: 700;
+        margin-top: 28px;
+        color: $text-color-primary;
+        text-decoration: none;
+
+        &.activeLink {
+          color: $button-bg-primary;
+        }
+      }
+    }
+    .mobileMenuButton {
+      width: 100%;
+      font-size: $font-size-l;
+      max-width: 195px;
+      height: 56px;
+      margin-top: 70px;
+    }
+  }
+
+  .menuShadowWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    .menuShadow {
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100rem;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      &:after {
+        content: '';
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+      }
+    }
+  }
+
+  :global(.ant-btn).dualfiWalletConnectButton {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Onest', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    background: rgba($button-bg-primary, 0.2);
+    padding: 0 16px 0 12px;
+    border: 1px solid $button-bg-primary;
+    border-radius: 8px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $button-bg-primary;
+      border: 1px solid $button-bg-primary;
+    }
+
+    @include tablet {
+      display: flex;
+    }
+  }
+}

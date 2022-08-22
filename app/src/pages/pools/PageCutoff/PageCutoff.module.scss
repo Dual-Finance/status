@@ -1,0 +1,35 @@
+@import '../../../styles/_variables.scss';
+@import '../../../styles/_mixins.scss';
+
+.pageCutoffComponent {
+  margin-bottom: 45px;
+  justify-content: center;
+  text-align: center;
+
+  .header {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      color: $white;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 18px;
+      opacity: 0.4;
+      margin-right: 8px;
+    }
+
+    .animation {
+    }
+  }
+  .content {
+    color: $white;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    justify-content: center;
+    text-align: center;
+  }
+}

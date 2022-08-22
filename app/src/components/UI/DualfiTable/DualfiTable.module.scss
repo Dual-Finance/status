@@ -1,0 +1,241 @@
+@import "../../../styles/_variables.scss";
+@import "../../../styles/_mixins.scss";
+@import "../../../styles/_icons.scss";
+
+:global(.ant-table-wrapper).dualfiTable {
+  :global {
+    .ant-table,
+    .ant-table-content,
+    .ant-table-container {
+      border: none;
+      background: $table-bg !important;
+      border-radius: 8px;
+    }
+
+    // Table head
+    .ant-table table {
+      border-collapse: separate !important;
+      border-spacing: 0 8px !important;
+    }
+
+    .ant-table-thead {
+      border: none !important;
+    }
+
+    .ant-table-thead .ant-table-cell {
+      padding: 24px 12px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: $table-thead-color;
+      background: $table-bg !important;
+      border-bottom: 1px solid $table-border-color;
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      @include laptop {
+        font-size: 16px;
+      }
+
+      &:first-child {
+        padding-left: 16px;
+
+        @include laptop {
+          padding-left: 40px;
+        }
+      }
+
+      &:last-child {
+        padding-right: 16px;
+
+        @include laptop {
+          padding-right: 40px;
+        }
+      }
+    }
+
+    .ant-table-thead .ant-table-cell::before {
+      display: none;
+    }
+
+    .ant-table-thead .ant-table-cell:not(:first-child) {
+    }
+
+    // Table body
+    .ant-table-tbody {
+      & > tr > td {
+        padding: 14px 12px 12px;
+        border: none !important;
+      }
+
+      & .ant-table-row {
+        position: relative;
+      }
+
+      & .ant-table-row td {
+        background: $table-bg!important;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: $table-text-color;
+        transition: none;
+        vertical-align: middle;
+
+        @include laptop {
+          font-size: 16px;
+        }
+
+        @include desktop {
+          font-size: 20px;
+        }
+      }
+
+      & .ant-table-row td:first-child {
+        padding-left: 16px;
+
+        @include laptop {
+          padding-left: 40px;
+        }
+      }
+
+      & .ant-table-row td:last-child {
+        padding-right: 16px;
+        text-align: right;
+
+        @include laptop {
+          padding-right: 40px;
+        }
+      }
+
+      .ant-table-expanded-row .ant-table-cell {
+        padding: 0;
+      }
+    }
+
+    // Table fix
+
+    .ant-table-ping-right .ant-table-cell-fix-right-first:after, .ant-table-ping-right .ant-table-cell-fix-right-last:after {
+      box-shadow: none!important;
+      background: linear-gradient(270deg, #05040D 70.76%, rgba(5, 4, 13, 0) 100%);
+    }
+
+    .ant-table-cell-fix-right-first::after, .ant-table-cell-fix-right-last::after {
+      left: 100%;
+      width: calc(100% + 40px);
+      z-index: -1;
+    }
+
+    // sort
+    .ant-table-column-sorters {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .ant-table-column-sorter-inner .anticon-caret-down,
+    .ant-table-column-sorter-inner .anticon-caret-up {
+      font-size: 8px;
+      color: $table-thead-color;
+    }
+
+    // pagination and footer
+    .ant-pagination {
+      justify-content: center;
+
+      @include tablet {
+        justify-content: flex-end;
+      }
+    }
+
+    .ant-pagination-item-link {
+      border: unset !important;
+    }
+
+    .ant-pagination-prev,
+    .ant-pagination-next,
+    .ant-pagination-item-link,
+    .ant-pagination-jump-next,
+    .ant-pagination-jump-prev,
+    .ant-pagination-item {
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+      line-height: 28px;
+      font-weight: 500;
+      font-size: 12px;
+      color: $black !important;
+      border: 1px solid transparentize($black, 0.7);
+      background-color: transparent!important;
+      border-radius: 4px;
+      transition: all 0.2s;
+
+      .ant-pagination-item-ellipsis {
+        color: $black;
+      }
+
+      &:hover {
+        background-color: transparentize($pagination-bg-hover, 0.9)!important;
+
+        a {
+          color: $black !important;
+        }
+      }
+    }
+
+    .ant-table-pagination.ant-pagination {
+      margin: 16px 0 0;
+    }
+
+    .ant-pagination-item.ant-pagination-item-active {
+      border-color: $pagination-bg-hover!important;
+      background: $pagination-bg-hover!important;
+
+      a {
+        color: $table-text-color !important;
+      }
+    }
+
+    .ant-pagination-item-ellipsis {
+      transition: all 0.2s;
+    }
+
+    .ant-pagination-item-link {
+      .anticon {
+        width: 100%;
+        height: 30px;
+        background-repeat: no-repeat;
+
+         svg {
+           display: none;
+         }
+
+        &.anticon-left {
+          background-image: url(../../../assets/pagination-table/ep_arrow-left.svg);
+          background-position: 7px 7px;
+        }
+
+        &.anticon-right {
+          background-image: url(../../../assets/pagination-table/ep_arrow-right.svg);
+          background-position: 7px 7px;
+        }
+
+        &.anticon-double-right {
+          background-image: url(../../../assets/pagination-table/d-arrow-right.svg);
+          background-position: 7px 7px;
+        }
+
+        &.anticon-double-left {
+          background-image: url(../../../assets/pagination-table/d-arrow-left.svg);
+          background-position: 7px 7px;
+        }
+      }
+    }
+
+    .ant-pagination-options-size-changer {
+      display: none !important;
+    }
+  }
+}

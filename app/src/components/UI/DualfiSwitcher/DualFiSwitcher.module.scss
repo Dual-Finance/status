@@ -1,0 +1,86 @@
+@import "../../../styles/_mixins.scss";
+@import "../../../styles/_variables.scss";
+@import "../../../styles/base.scss";
+
+$segmented-item-bg-hover: #3A9F7B66;
+
+
+:global(.ant-segmented).dualfiSwitcherComponent {
+  display: flex;
+  background-color: $bg-primary;
+  color: $text-color-primary;
+  padding: 4px;
+  height: 40px;
+  border-radius: 64px;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  align-items: center;
+
+  &:not(.ant-segmented-disabled):hover {
+    background-color: $bg-primary;
+  }
+
+  :global(.ant-segmented-thumb-motion-appear) {
+    height: 32px;
+    border-radius: 64px;
+    background: $segmented-item-bg-hover;
+  }
+
+  :global(.ant-segmented-item) {
+    display: flex;
+    margin-right: 4px;
+    align-items: center;
+    border-radius: 64px;
+    height: 32px;
+    border: 1px solid transparent;
+
+    &:hover {
+      color: $text-color-primary;
+      background-color: $segmented-item-bg-hover;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  :global(.ant-segmented-item-selected) {
+    display: flex;
+    align-items: center;
+    color: $text-color-primary;
+    height: 30px;
+    border-radius: 64px;
+    border-color: $button-bg-primary;
+    background: $button-bg-primary-active;
+    &:hover {
+      color: $text-color-primary;
+      background-color: $button-bg-primary-active;
+    }
+  }
+
+  :global(.ant-segmented-group) {
+    padding: 0;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.icons {
+
+    :global(.ant-segmented-item-label) {
+      top: -1px;
+      padding: 0 12px 0 0;
+
+      div {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+        :global(.ant-avatar) {
+          padding: 4px;
+        }
+      }
+    }
+  }
+
+}

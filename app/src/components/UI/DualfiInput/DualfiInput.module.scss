@@ -1,0 +1,65 @@
+@import '../../../styles/_variables.scss';
+@import "../../../styles/_mixins.scss";
+
+.dualfiInputComponent {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px 10px 16px;
+  border-radius: 12px;
+
+  .dualfiInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .tokenIcon {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .input {
+      flex: 1 1 100%;
+
+      :global {
+        .ant-input {
+          height: 28px;
+          padding: 0;
+          background: transparent;
+          color: rgba($white, 0.5);
+          border: none;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 28px;
+
+          &:focus,
+          .ant-input-focused {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+
+    .maxButton {
+      flex: 0 0 36px;
+      height: 18px;
+      background: rgba($white, 0.1);
+      padding: 0.5px 6px 1.5px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: rgba($white, 0.7);
+      right: 20px;
+      top: 0;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+
+      }
+    }
+
+  }
+
+}

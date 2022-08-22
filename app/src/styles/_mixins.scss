@@ -1,0 +1,67 @@
+$desktop: 1280px;
+$laptop: 992px;
+$tablet: 768px;
+
+// breakpoints
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+// utils
+@mixin logoBg($logoBg) {
+  background-image: $logoBg;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+// visibility
+@mixin b-hide-laptop {
+  display: block;
+  @include laptop {
+    display: none;
+  }
+}
+
+@mixin i-hide-laptop {
+  display: inline;
+  @include laptop {
+    display: none;
+  }
+}
+
+@mixin f-hide-laptop {
+  display: flex;
+  @include laptop {
+    display: none;
+  }
+}
+
+// cards
+@mixin sectionLight {
+  background-color: $card-bg-light;
+  color: $card-light-text-color;
+  .description {
+    color: $card-light-text-color-secondary;
+  }
+}

@@ -1,0 +1,62 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+@import "../../styles/_icons.scss";
+
+.curvedWrapper {
+  width: 100%;
+  min-height: 100%;
+  padding: 16px 12px 12px;
+  border-radius: 16px;
+  background-color: $section-bg-light;
+
+  @include tablet {
+    padding: 24px 16px;
+  }
+
+  @include laptop {
+    padding: 24px;
+  }
+
+  @include desktop {
+    padding: 24px 64px;
+  }
+
+  &.curved {
+    background-repeat: no-repeat;
+    background-position: center top -1px;
+    background-image: $curved-background-dark-mobile;
+    position: relative;
+
+    @include tablet {
+      background-image: $curved-background-dark-tablet;
+    }
+
+    @include laptop {
+      background-image: $curved-background-dark-laptop;
+    }
+
+    @include desktop {
+      background-image: $curved-background-dark-desktop;
+    }
+  }
+}
+
+.curvedComponentPosition {
+  width: auto;
+  position: absolute;
+  bottom: calc(100% - 45px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include tablet {
+    bottom: calc(100% - 62px);
+  }
+
+  @include laptop {
+    bottom: calc(100% - 56px);
+  }
+
+  @include desktop {
+    bottom: calc(100% - 78px);
+  }
+}

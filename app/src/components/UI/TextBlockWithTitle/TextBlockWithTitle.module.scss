@@ -1,0 +1,19 @@
+@import "../../../styles/_variables.scss";
+//@import "../../../styles/_mixins.scss";
+//@import "../../../styles/_icons.scss";
+
+.textBlockWithTitleComponent {
+  .title {
+    color: $text-color-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+  .text {
+    color: $text-color-secondary;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

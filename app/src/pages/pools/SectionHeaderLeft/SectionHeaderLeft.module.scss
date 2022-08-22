@@ -1,0 +1,35 @@
+@import "../../../styles/_mixins.scss";
+@import "../../../styles/_variables.scss";
+
+$switcher-title-text-color: #0B2330;
+
+.headerLeftSideBarComponent {
+  display: flex;
+  flex-direction: row;
+
+  .title {
+    display: none;
+    @include desktop {
+      color: $switcher-title-text-color;
+      display: flex;
+      font-size: $font-size-m;
+      font-weight: 800;
+      white-space: nowrap;
+      align-items: center;
+      margin-right: 12px;
+    }
+  }
+
+  .switcher {
+    display: none;
+    @include laptop {
+      display: flex;
+    }
+  }
+
+  .dropdown {
+    @include laptop {
+      display: none;
+    }
+  }
+}

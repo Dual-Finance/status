@@ -1,0 +1,23 @@
+@import "../../../styles/_mixins.scss";
+@import "../../../styles/_variables.scss";
+@import "../../../styles/base.scss";
+
+:global(.ant-typography).pageTitle {
+  background: $bg-primary;
+  border-radius: 64px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: $text-color-primary;
+  padding: 11px 16px;
+  width: 100%;
+  display: inline-flex;
+  margin-bottom: 0;
+  justify-content: center;
+
+  @include tablet {
+    width: auto;
+    justify-content: flex-start;
+    font-size: 14px;
+  }
+}

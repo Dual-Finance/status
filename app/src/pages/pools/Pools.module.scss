@@ -1,0 +1,27 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+@import "../../styles/_icons.scss";
+
+
+.poolsComponent {
+  .premiumCell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .tokenIcon {
+      padding-bottom: 2px;
+      display: block;
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      @include tablet {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+      }
+    }
+  }
+}

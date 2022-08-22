@@ -1,0 +1,43 @@
+@import '../../../styles/_variables.scss';
+@import '../../../styles/_mixins.scss';
+@import '../../../styles/_icons.scss';
+
+.infoCardComponent {
+  width: 100%;
+  background: $info-card-bg;
+  border: 1px solid $info-card-border-color;
+  border-radius: 12px;
+  padding: 10px 16px;
+
+  .title {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $info-card-title-color;
+    margin-bottom: 8px;
+  }
+
+  .value {
+    display: flex;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: $text-color-primary;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      & > button {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .tokenIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-size: contain;
+  }
+}

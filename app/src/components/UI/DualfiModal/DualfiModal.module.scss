@@ -1,0 +1,85 @@
+@import "../../../styles/_variables.scss";
+@import "../../../styles/_mixins.scss";
+
+:global(.ant-modal).modal {
+  max-width: calc(100vw - 24px);
+  width: 100%!important;
+
+  :global(.ant-modal-body) {
+    padding: 0;
+    padding-top: 40px;
+  }
+
+  :global(.ant-modal-content) {
+    background-color: transparent;
+    box-shadow: none;
+
+    @include tablet {
+      max-width: 456px;
+      margin: 0 auto;
+    }
+
+    @include laptop {
+      max-width: 928px;
+    }
+  }
+
+
+  :global(.ant-modal-close-x) {
+    text-align: right;
+
+    svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+
+:global(.ant-modal-mask) {
+  background: transparentize($bg-primary, 0.3)!important;
+  backdrop-filter: blur(8px);
+}
+
+.modalWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include laptop {
+    flex-wrap: initial;
+  }
+}
+
+.modalColumn {
+  width: 100%;
+  margin-bottom: 16px;
+
+  @include laptop {
+    margin-right: 8px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+}
+
+.modalMiddleColumn {
+  width: 60%;
+  margin-bottom: 16px;
+
+  @include laptop {
+    margin-right: 8px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+}

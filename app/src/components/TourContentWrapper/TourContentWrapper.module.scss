@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/icons';
+
+.wrapper {
+  background: $card-bg-light;
+  padding: 24px;
+  border-radius: 16px;
+
+  .actions {
+    margin-top: 10px;
+
+    .steps {
+      color: $bg-primary;
+      margin-right: 20px;
+    }
+
+    .button {
+      padding: 9px 15px;
+      background: $bg-primary;
+      border-radius: 9px;
+      font-weight: bold;
+      outline: none !important;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        background: lighten($bg-primary, 20);
+      }
+    }
+  }
+}
+
+:global(.reactour__popover) {
+  padding: 0 !important;
+  background: transparent !important;
+  font-family: 'Onest', sans-serif !important;
+  z-index: 100 !important;
+}
+
+:global(.reactour__mask) {
+  z-index: 100 !important;
+}

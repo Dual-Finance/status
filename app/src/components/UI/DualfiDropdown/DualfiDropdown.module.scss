@@ -1,0 +1,112 @@
+@import '../../../styles/_variables.scss';
+@import "../../../styles/_mixins.scss";
+
+:global(.ant-select-dropdown).dropdown {
+  background-color: $bg-primary;
+  border: 1px solid $select-border-color;
+  border-top: none;
+  box-shadow: initial;
+  border-radius: 0 0 20px 20px;
+  padding: 0;
+  animation-timing-function: initial!important;
+  animation-duration: initial!important;
+
+  :global(.ant-select-item) {
+    color: $text-color-primary;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0 12px 12px;
+    transition: initial!important;
+  }
+
+  :global(.ant-select-item-option-selected) {
+    display: none!important;
+  }
+
+  :global(.ant-select-item-option-active:not(.ant-select-item-option-disabled)) {
+    background-color: transparent !important;
+  }
+
+  :global(.ant-select-item-option-content) {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+:global(.ant-select).select {
+  * {
+    animation-duration: 0s !important;
+    animation-timing-function: initial!important;
+    transition: 0s !important;
+    animation: none !important;
+    animation-name: initial!important;
+  }
+
+  :global(.ant-select:not(.ant-select-customize-input) .ant-select-selector),
+  :global(.ant-select-selector) {
+    background-color: $bg-primary!important;
+    border: 1px solid $select-border-color!important;
+    border-bottom: none;
+    box-shadow: initial!important;
+    border-radius: 64px!important;
+    height: 40px!important;
+    position: relative;
+    padding: 0 12px!important;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -1px;
+      width: calc(100% + 2px);
+      border-left: 1px solid $select-border-color;
+      border-right: 1px solid $select-border-color;
+      height: 20px;
+      background-color: $bg-primary;
+      display: none;
+    }
+  }
+
+  :global(.ant-select-arrow) {
+    right: 8px;
+  }
+
+  :global(.ant-select-selection-item) {
+    color: $text-color-primary;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  :global(.ant-select-selection-item) {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+:global(.ant-select.ant-select-open).select {
+  :global(.ant-select-selector) {
+    border-radius: 20px 20px 0 0!important;
+
+    &:before {
+      display: block;
+    }
+  }
+
+  :global(.ant-select-selection-item) {
+    color: $select-text-color;
+  }
+
+  :global(.ant-select-arrow) {
+    transform: rotate(180deg);
+
+    svg {
+      path {
+        fill: $select-text-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@import '../../../styles/_variables.scss';
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: $button-primary-text-color;
+  font-weight: bold;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &.primary {
+    background-color: $button-bg-primary;
+
+    &:hover {
+      background-color: $button-bg-primary-hover;
+    }
+
+    &:active {
+      background-color: $button-bg-primary-active;
+    }
+    &:disabled,
+    &.disabled {
+      background-color: $button-bg-primary;
+      opacity: 0.8;
+    }
+  }
+
+  &.secondary {
+    color: $button-secondary-text-color;
+    background-color: $button-bg-secondary;
+    &:hover {
+      background-color: $button-bg-secondary-hover;
+    }
+    &:active {
+      background-color: $button-bg-secondary-active;
+    }
+    &:disabled {
+      background-color: $button-bg-secondary;
+      opacity: 0.8;
+    }
+  }
+
+  &.regular {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &.large {
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

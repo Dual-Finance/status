@@ -1,0 +1,99 @@
+@import '../../../styles/_variables.scss';
+@import "../../../styles/_mixins.scss";
+
+:global(.ant-btn).dualfiButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  color: $button-primary-text-color;
+  font-weight: bold;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  &.fluid {
+    width: 100%;
+  }
+
+  &.primaryButton {
+    color: $button-primary-text-color;
+    background-color: $button-bg-primary;
+
+    &:hover {
+      background-color: $button-bg-primary-hover;
+    }
+    &:active {
+      background-color: $button-bg-primary-active;
+    }
+    &:disabled,
+    &.disabled {
+      background-color: $button-bg-primary;
+      opacity: 0.5;
+      color: $button-primary-text-color;
+    }
+  }
+
+  &.secondaryButton {
+    color: $button-secondary-text-color;
+    background-color: $button-bg-secondary;
+
+    &:hover {
+      background-color: $button-bg-secondary-hover;
+    }
+    &:active {
+      background-color: $button-bg-secondary-active;
+    }
+    &.disabled,
+    &:disabled {
+      background-color: $button-bg-secondary;
+      opacity: 0.5;
+    }
+  }
+
+  &.regular {
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &.large {
+    height: 40px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 28px;
+    min-width: 100px;
+
+    @include laptop {
+      height: 48px;
+      padding: 10px 16px;
+      font-size: 18px;
+      min-width: 120px;
+    }
+  }
+
+  .dualfiButtonInner {
+    display: flex;
+    align-items: center;
+  }
+
+  .iconStyle {
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  :global {
+    .ant-btn-loading-icon {
+      display: none;
+    }
+  }
+}
+

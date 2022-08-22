@@ -1,0 +1,32 @@
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_reset.scss';
+@import './_animations.scss';
+@import './_fonts.scss';
+@import './_icons.scss';
+@import '~antd/dist/antd.css';
+@import '~@solana/wallet-adapter-ant-design/styles.css';
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.btc-icon {
+  background-image: $token-btc;
+}
+.eth-icon {
+  background-image: $token-eth;
+}
+.sol-icon {
+  background-image: $token-sol;
+}
+.usdc-icon {
+  background-image: $token-usdc;
+}
+.dual-icon {
+  background-image: $token-dual;
+}

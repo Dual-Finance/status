@@ -1,0 +1,54 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+
+.SideBarWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  @include tablet {
+    margin-bottom: 24px;
+    min-height: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 32px;
+  }
+}
+
+.leftSide {
+  width: 50%;
+  margin-right: 8px;
+
+  &.fluidMobile {
+    width: 100%;
+    margin-right: 0;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  @include tablet {
+    margin-right: 0;
+    padding-right: 120px;
+  }
+
+  @include laptop {
+    padding-right: 140px;
+  }
+}
+
+.rightSide {
+  width: 50%;
+  margin-left: 8px;
+
+  @include tablet {
+    margin-left: 0;
+    padding-left: 120px;
+  }
+
+  @include laptop {
+    padding-left: 140px;
+  }
+}

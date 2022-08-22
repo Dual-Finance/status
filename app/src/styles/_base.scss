@@ -1,0 +1,99 @@
+@import "./mixins";
+
+%sectionPadding {
+  padding: 104px 104px 88px 104px;
+
+  @include desktop {
+    padding: 80px 24px 72px 24px;
+  }
+
+  @include laptop {
+    padding: 72px 40px 56px 40px;
+  }
+
+  @include tablet {
+    padding: 90px 16px 48px 16px;
+  }
+}
+
+%sectionBorderRadius {
+  border-radius: 48px;
+
+  @include desktop {
+    border-radius: 32px;
+  }
+
+  @include tablet {
+    border-radius: 24px;
+  }
+}
+
+%sectionHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  width: calc(50% - 8px);
+
+  @include laptop {
+    margin-bottom: 32px;
+  }
+
+  @include tablet {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
+
+%container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include desktop {
+    max-width: 992px;
+  }
+
+  @include laptop {
+    max-width: 768px;
+  }
+
+  @include tablet {
+    max-width: 100%;
+  }
+}
+
+%grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  .row {
+    display: flex;
+    width: 100%;
+
+    &:first-child {
+      margin-bottom: 16px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .cell {
+      display: flex;
+      flex: calc(50% - 8px) 1 0;
+      flex-shrink: 0;
+      flex-grow: 1;
+      &:first-child {
+        margin-right: 16px;
+
+        @include tablet {
+          margin-right: 0;
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+  }
+}
