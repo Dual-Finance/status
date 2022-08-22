@@ -31,6 +31,7 @@ export const PK_TO_ASSET = {
   [wbtcMintPk.toBase58()]: 'BTC',
   [wethMintPk.toBase58()]: 'ETH',
   [wsolMintPk.toBase58()]: 'SOL',
+  [usdcMintPk.toBase58()]: 'USDC',
   LSO: 'LSO',
 };
 

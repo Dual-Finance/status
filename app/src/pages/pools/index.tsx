@@ -6,6 +6,7 @@ import { SectionSidebarWrapper } from '../../components/SectionSidebarWrapper/Se
 import { SectionHeaderLeft } from './SectionHeaderLeft/SectionHeaderLeft';
 import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
+import { Treasury } from './treasury/treasury';
 
 export const Pools = (props: { network: string }) => {
   const { network } = props;
@@ -29,7 +30,7 @@ export const Pools = (props: { network: string }) => {
         <SectionSidebarWrapper leftSide={<SectionHeaderLeft options={tabs} onChange={handleProductChange} />}>
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
-            {selectedProduct === 'Treasury' && <Dips network={network} />}
+            {selectedProduct === 'Treasury' && <Treasury network={network} />}
           </>
         </SectionSidebarWrapper>
       </CurvedBackgroundWrapper>
