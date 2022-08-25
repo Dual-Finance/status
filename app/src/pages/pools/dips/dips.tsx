@@ -209,7 +209,7 @@ export const Dips = (props: { network: string }) => {
               );
               const [vaultSplTokenAccount] = await findProgramAddressWithMintAndStrikeAndExpiration(
                 VAULT_SPL_ACCOUNT_SEED,
-                strike,
+                dipState.strike,
                 expiration,
                 splMint,
                 usdcMintPk,
