@@ -14,11 +14,13 @@ import {
   pythEthPk,
   pythSolPk,
   usdcMintPk,
+  VAULT_SPL_ACCOUNT_SEED,
   VOL_MAP,
   wbtcMintPk,
   wethMintPk,
 } from '../../../config/config';
 import {
+  findProgramAddressWithMintAndStrikeAndExpiration,
   getAssociatedTokenAddress,
   getMultipleAccounts,
   getMultipleTokenAccounts,
@@ -194,20 +196,6 @@ export const Dips = (props: { network: string }) => {
               m.setTime(expiration * 1_000);
               const dateString = `${m.getUTCFullYear()}-${m.getUTCMonth() + 1}-${m.getUTCDate()}`;
 
-              const durationMs = expiration * 1_000 - Date.now();
-              if (durationMs < 0) {
-                // eslint-disable-next-line no-continue
-                continue;
-              }
-              const fractionOfYear = durationMs / 31_536_000_000;
-
-              const currentPrice = PRICE_MAP[splMint.toBase58()];
-              const vol = VOL_MAP[splMint.toBase58()];
-
-              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
-              const earnedRatio = price / currentPrice;
-              const apy = earnedRatio / fractionOfYear / 1_000_000;
-
               // Get the option mint
               const optionMintPk = await optionTokenMintPk(dipState.strike, expiration, splMint);
               // Get the associated token addresses
@@ -219,12 +207,35 @@ export const Dips = (props: { network: string }) => {
                 optionMintPk,
                 new PublicKey('5HSNjCjRtMedAHwUVXz7cvUufzSxKAcmC7xTniXCRsqo')
               );
+              const [vaultSplTokenAccount] = await findProgramAddressWithMintAndStrikeAndExpiration(
+                VAULT_SPL_ACCOUNT_SEED,
+                strike,
+                expiration,
+                splMint,
+                usdcMintPk,
+                dualMarketProgramID
+              );
 
               const tokenAccounts = await getMultipleTokenAccounts(
                 connection,
-                [riskManagerPk.toBase58(), mmPk.toBase58()],
+                [riskManagerPk.toBase58(), mmPk.toBase58(), vaultSplTokenAccount.toBase58()],
                 'confirmed'
               );
+
+              const durationMs = expiration * 1_000 - Date.now();
+              if (
+                durationMs < 0 &&
+                !(tokenAccounts.array[2] !== undefined && tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount)
+              ) {
+                // eslint-disable-next-line no-continue
+                continue;
+              }
+              const fractionOfYear = durationMs / 31_536_000_000;
+              const currentPrice = PRICE_MAP[splMint.toBase58()];
+              const vol = VOL_MAP[splMint.toBase58()];
+              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
+              const earnedRatio = price / currentPrice;
+              const apy = earnedRatio / fractionOfYear / 1_000_000;
 
               allPriceAccounts.push(
                 // @ts-ignore
