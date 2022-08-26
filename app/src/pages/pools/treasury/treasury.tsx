@@ -43,14 +43,17 @@ export const Treasury = (props: { network: string }) => {
     splMint: PublicKey;
     // Number of tokens. Full tokens
     amount: number;
+    // Address of the account
+    address: PublicKey;
   }
 
-  function createAccountParams(key: React.Key, name: string, splMint: PublicKey, amount: number) {
+  function createAccountParams(key: React.Key, name: string, splMint: PublicKey, amount: number, address: PublicKey) {
     return {
       key,
       name,
       splMint,
       amount,
+      address,
     };
   }
 
@@ -119,7 +122,8 @@ export const Treasury = (props: { network: string }) => {
           usdcMintPk,
           tokenAccounts.array[0] !== undefined
             ? (tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount as number)
-            : 0
+            : 0,
+          premiumUsdc
         )
       );
       allAccounts.push(
@@ -129,7 +133,8 @@ export const Treasury = (props: { network: string }) => {
           wsolMintPk,
           tokenAccounts.array[1] !== undefined
             ? (tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount as number)
-            : 0
+            : 0,
+          testingSol
         )
       );
       allAccounts.push(
@@ -139,7 +144,8 @@ export const Treasury = (props: { network: string }) => {
           wbtcMintPk,
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
-            : 0
+            : 0,
+          testingBtc
         )
       );
       allAccounts.push(
@@ -149,7 +155,8 @@ export const Treasury = (props: { network: string }) => {
           wethMintPk,
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
-            : 0
+            : 0,
+          testingEth
         )
       );
       allAccounts.push(
@@ -159,7 +166,8 @@ export const Treasury = (props: { network: string }) => {
           usdcMintPk,
           tokenAccounts.array[4] !== undefined
             ? (tokenAccounts.array[4].data.parsed.info.tokenAmount.uiAmount as number)
-            : 0
+            : 0,
+          testingUsdc
         )
       );
       setPriceAccounts(allAccounts);
@@ -176,6 +184,13 @@ export const Treasury = (props: { network: string }) => {
       dataIndex: 'name',
       render: (_, data) => {
         return data.name;
+      },
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      render: (_, data) => {
+        return data.address.toBase58();
       },
     },
     {
