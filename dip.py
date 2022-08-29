@@ -110,13 +110,13 @@ def deposit(values, is_windows):
         driver.switch_to.window(main_window)
 
     def select_dip():
-        WebDriverWait(driver, 60*60*24).until(EC.presence_of_element_located(
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         stake = driver.find_element(
             By.XPATH, "//button[div[contains(text(), 'Stake')]]")
         stake.click()
 
-        WebDriverWait(driver, 60*60*24).until(EC.presence_of_element_located(
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")))
         num_tokens = driver.find_element(
             By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")
@@ -124,13 +124,13 @@ def deposit(values, is_windows):
         num_tokens.click()
         num_tokens.send_keys('.000001')
 
-        WebDriverWait(driver, 60*60*24).until(EC.presence_of_element_located(
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//span[@class=\"ant-checkbox\"]")))
         disclaimer = driver.find_element(
             By.XPATH, "//span[@class=\"ant-checkbox\"]")
         disclaimer.click()
 
-        WebDriverWait(driver, 60*60*24).until(EC.presence_of_element_located((
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located((
             By.XPATH,
             "//div[@class=\"StakingModalStake_stakingForm__WI-Nd\"]/" \
             "button[div[@class=\"DualfiButton_dualfiButtonInner__42gm-\" " \
