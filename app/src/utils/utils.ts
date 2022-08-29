@@ -12,7 +12,7 @@ import {
 import { AnchorProvider, Wallet, web3, utils } from '@project-serum/anchor';
 import { ASSOCIATED_TOKEN_PROGRAM_ID, Token, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { TokenInstructions } from '@project-serum/serum';
-import { dualMarketProgramID, OPTION_MINT_ADDRESS_SEED, usdcMintPk, VAULT_MINT_ADDRESS_SEED } from '../config/config';
+import { dualMarketProgramID, OPTION_MINT_ADDRESS_SEED, Config, VAULT_MINT_ADDRESS_SEED } from '../config/config';
 
 export const prettyFormatNumberWithDecimals = (number: number, decimals: number): string => {
   const rounded: number = Math.floor(number * 10 ** decimals) / 10 ** decimals;
@@ -267,7 +267,7 @@ export async function vaultTokenMintPk(strikePrice: number, expirationInt: numbe
     strikePrice,
     expirationInt,
     splMint,
-    usdcMintPk,
+    Config.usdcMintPk(),
     dualMarketProgramID
   );
   return vaultTokenMint;
@@ -279,7 +279,7 @@ export async function optionTokenMintPk(strikePrice: number, expirationInt: numb
     strikePrice,
     expirationInt,
     splMint,
-    usdcMintPk,
+    Config.usdcMintPk(),
     dualMarketProgramID
   );
   return optionMint;

@@ -8,9 +8,9 @@ import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
 import { Treasury } from './treasury/treasury';
 import { Tests } from './tests/tests';
+import { Config } from '../../config/config';
 
-export const Pools = (props: { network: string }) => {
-  const { network } = props;
+export const Pools = () => {
   const tabs = [
     { label: 'DIPs', value: 'DIPs', disabled: false },
     { label: 'Treasury', value: 'Treasury', disabled: false },
@@ -24,10 +24,28 @@ export const Pools = (props: { network: string }) => {
     setSelectedProduct(product);
   };
 
+  const [network, setNetwork] = useState(Config.apiUrl());
+  const networkTabs = [
+    { label: 'Mainnet', value: 'mainnet', disabled: false },
+    { label: 'Devnet', value: 'devnet', disabled: false },
+  ];
+  const handleNetworkChange = (newNetwork: string) => {
+    if (newNetwork === 'devnet') {
+      Config.isDev = true;
+      setNetwork('https://dual-rpc.com/devnet');
+    } else {
+      Config.isDev = false;
+      setNetwork('https://dual-rpc.com/mainnet');
+    }
+  };
+
   return (
     <div className={styles.poolsComponent}>
       <CurvedBackgroundWrapper curved={<PageCutoff price={0} token="DUAL" />}>
-        <SectionSidebarWrapper leftSide={<SectionHeaderLeft options={tabs} onChange={handleProductChange} />}>
+        <SectionSidebarWrapper
+          leftSide={<SectionHeaderLeft options={tabs} onChange={handleProductChange} />}
+          rightSide={<SectionHeaderLeft options={networkTabs} onChange={handleNetworkChange} />}
+        >
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
