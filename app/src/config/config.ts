@@ -5,9 +5,9 @@ export class Config {
 
   static apiUrl(): string {
     if (Config.isDev) {
-      return 'https://dual-rpc.com/devnet';
+      return 'https://solana--devnet.datahub.figment.io/apikey/d7e92604645ec5e26d41eb1bdf699151';
     }
-    return 'https://dual-rpc.com/mainnet';
+    return 'https://solana--mainnet.datahub.figment.io/apikey/d7e92604645ec5e26d41eb1bdf699151';
   }
 
   static wbtcMintPk(): PublicKey {
