@@ -4,15 +4,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
-import {
-  dualMarketProgramID,
-  PK_TO_ASSET,
-  PREMIUM_USDC_SEED,
-  usdcMintPk,
-  wbtcMintPk,
-  wethMintPk,
-  wsolMintPk,
-} from '../../../config/config';
+import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../../config/config';
 import {
   findProgramAddressWithMint,
   getAssociatedTokenAddress,
@@ -64,7 +56,7 @@ export const Treasury = (props: { network: string }) => {
         // @ts-ignore
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         // eslint-disable-next-line
-          const [_provider, _connection] = GetProvider(wallet, network);
+        const [_provider, _connection] = GetProvider(wallet, network);
         setConnection(_connection);
         return;
       }
@@ -79,27 +71,38 @@ export const Treasury = (props: { network: string }) => {
       ) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         // eslint-disable-next-line
-          const [_provider, _connection] = GetProvider(wallet, network);
+        const [_provider, _connection] = GetProvider(wallet, network);
         setProvider(_provider);
         return;
       }
+      if (provider.connection.rpcEndpoint !== network) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line
+        const [_provider, _connection] = GetProvider(wallet, network);
+        setProvider(_provider);
+        setConnection(_connection);
+      }
       const allAccounts = [];
 
-      const [premiumUsdc] = await findProgramAddressWithMint(PREMIUM_USDC_SEED, usdcMintPk, dualMarketProgramID);
+      const [premiumUsdc] = await findProgramAddressWithMint(
+        PREMIUM_USDC_SEED,
+        Config.usdcMintPk(),
+        dualMarketProgramID
+      );
       const testingSol = await getAssociatedTokenAddress(
-        wsolMintPk,
+        Config.wsolMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingBtc = await getAssociatedTokenAddress(
-        wbtcMintPk,
+        Config.wbtcMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingEth = await getAssociatedTokenAddress(
-        wethMintPk,
+        Config.wethMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingUsdc = await getAssociatedTokenAddress(
-        usdcMintPk,
+        Config.usdcMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
 
@@ -119,7 +122,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'PREMIUM',
           'PREMIUM',
-          usdcMintPk,
+          Config.usdcMintPk(),
           tokenAccounts.array[0] !== undefined
             ? (tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -130,7 +133,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_SOL',
           'TESTING',
-          wsolMintPk,
+          Config.wsolMintPk(),
           tokenAccounts.array[1] !== undefined
             ? (tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -141,7 +144,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_BTC',
           'TESTING',
-          wbtcMintPk,
+          Config.wbtcMintPk(),
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -152,7 +155,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_ETH',
           'TESTING',
-          wethMintPk,
+          Config.wethMintPk(),
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -163,7 +166,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_USDC',
           'TESTING',
-          usdcMintPk,
+          Config.usdcMintPk(),
           tokenAccounts.array[4] !== undefined
             ? (tokenAccounts.array[4].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -201,7 +204,7 @@ export const Treasury = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.amount}
-            <div className={c(styles.tokenIcon, getTokenIconClass(PK_TO_ASSET[data.splMint.toBase58()]))} />
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
       },

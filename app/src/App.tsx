@@ -11,11 +11,11 @@ import {
 import { WalletModalProvider } from '@solana/wallet-adapter-ant-design';
 import { Layout } from './components/Layout/Layout';
 import { Pools } from './pages/pools';
-import { API_URL } from './config/config';
+import { Config } from './config/config';
 
 function App() {
   // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-  const [network, setNetwork] = useState(API_URL);
+  const [network, setNetwork] = useState(Config.apiUrl());
   // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
   const [autoConnect, _setAutoConnect] = useLocalStorage('autoConnect', true);
 
@@ -40,7 +40,7 @@ function App() {
           <Router>
             <Layout>
               <Routes>
-                <Route path="/" element={<Pools network={network} />} />
+                <Route path="/" element={<Pools />} />
               </Routes>
             </Layout>
           </Router>

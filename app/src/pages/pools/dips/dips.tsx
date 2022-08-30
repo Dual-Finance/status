@@ -7,18 +7,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { parsePriceData } from '@pythnetwork/client';
 // @ts-ignore
 import * as bs from 'black-scholes';
-import {
-  dualMarketProgramID,
-  PK_TO_ASSET,
-  pythBtcPk,
-  pythEthPk,
-  pythSolPk,
-  usdcMintPk,
-  VAULT_SPL_ACCOUNT_SEED,
-  VOL_MAP,
-  wbtcMintPk,
-  wethMintPk,
-} from '../../../config/config';
+import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED } from '../../../config/config';
 import {
   findProgramAddressWithMintAndStrikeAndExpiration,
   getAssociatedTokenAddress,
@@ -111,7 +100,7 @@ export const Dips = (props: { network: string }) => {
       try {
         const priceInfos = await getMultipleAccounts(
           localConnection,
-          [pythBtcPk.toBase58(), pythEthPk.toBase58(), pythSolPk.toBase58()],
+          [Config.pythBtcPk().toBase58(), Config.pythEthPk().toBase58(), Config.pythSolPk().toBase58()],
           'confirmed'
         );
 
@@ -167,8 +156,8 @@ export const Dips = (props: { network: string }) => {
       const freshSolPrice = freshPrices.SOL;
 
       const PRICE_MAP = {
-        [wbtcMintPk.toBase58()]: freshBtcPrice,
-        [wethMintPk.toBase58()]: freshEthPrice,
+        [Config.wbtcMintPk().toBase58()]: freshBtcPrice,
+        [Config.wethMintPk().toBase58()]: freshEthPrice,
         So11111111111111111111111111111111111111112: freshSolPrice,
       };
 
@@ -212,7 +201,7 @@ export const Dips = (props: { network: string }) => {
                 dipState.strike,
                 expiration,
                 splMint,
-                usdcMintPk,
+                Config.usdcMintPk(),
                 dualMarketProgramID
               );
 
@@ -232,7 +221,7 @@ export const Dips = (props: { network: string }) => {
               }
               const fractionOfYear = durationMs / 31_536_000_000;
               const currentPrice = PRICE_MAP[splMint.toBase58()];
-              const vol = VOL_MAP[splMint.toBase58()];
+              const vol = Config.volMap(splMint.toBase58());
               const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
               const earnedRatio = price / currentPrice;
               const apy = earnedRatio / fractionOfYear / 1_000_000;
@@ -248,7 +237,7 @@ export const Dips = (props: { network: string }) => {
                   // @ts-ignore
                   programAccount.pubkey,
                   splMint,
-                  usdcMintPk,
+                  Config.usdcMintPk(),
                   apy,
                   price,
                   currentPrice,
@@ -311,7 +300,7 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.riskManager}
-            <div className={c(styles.tokenIcon, getTokenIconClass(PK_TO_ASSET[data.splMint.toBase58()]))} />
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
       },
@@ -324,7 +313,7 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.marketMaker}
-            <div className={c(styles.tokenIcon, getTokenIconClass(PK_TO_ASSET[data.splMint.toBase58()]))} />
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
       },
@@ -337,7 +326,7 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.marketMaker + data.riskManager}
-            <div className={c(styles.tokenIcon, getTokenIconClass(PK_TO_ASSET[data.splMint.toBase58()]))} />
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
       },
