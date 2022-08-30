@@ -60,6 +60,8 @@ export const Dips = (props: { network: string }) => {
     riskManager: number;
     // Number of options held by the market makers
     marketMaker: number;
+    // Number of tokens deposited
+    totalDeposits: number;
   }
 
   function createDipParams(
@@ -75,7 +77,8 @@ export const Dips = (props: { network: string }) => {
     premium: number,
     assetPrice: number,
     riskManager: number,
-    marketMaker: number
+    marketMaker: number,
+    totalDeposits: number
   ) {
     return {
       key,
@@ -91,6 +94,7 @@ export const Dips = (props: { network: string }) => {
       assetPrice,
       riskManager,
       marketMaker,
+      totalDeposits,
     };
   }
 
@@ -226,6 +230,29 @@ export const Dips = (props: { network: string }) => {
               const earnedRatio = price / currentPrice;
               const apy = earnedRatio / fractionOfYear / 1_000_000;
 
+              // @ts-ignore
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+              const rmAmount: number =
+                tokenAccounts.array[0] !== undefined && durationMs > 0
+                  ? tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount
+                  : 0;
+              // @ts-ignore
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+              const mmAmount: number =
+                tokenAccounts.array[1] !== undefined && durationMs > 0
+                  ? tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount
+                  : 0;
+
+              // @ts-ignore
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+              const totalDeposits: number =
+                tokenAccounts.array[2] !== undefined ? tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount : 0;
+
+              if (totalDeposits === 0 && durationMs < 0) {
+                // eslint-disable-next-line no-continue
+                continue;
+              }
+
               allPriceAccounts.push(
                 // @ts-ignore
                 createDipParams(
@@ -241,16 +268,9 @@ export const Dips = (props: { network: string }) => {
                   apy,
                   price,
                   currentPrice,
-                  // @ts-ignore
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                  tokenAccounts.array[0] !== undefined
-                    ? tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount
-                    : 0,
-                  // @ts-ignore
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                  tokenAccounts.array[1] !== undefined
-                    ? tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount
-                    : 0
+                  rmAmount,
+                  mmAmount,
+                  totalDeposits
                 )
               );
             } catch (error) {
@@ -321,11 +341,11 @@ export const Dips = (props: { network: string }) => {
     {
       title: 'Total Deposits',
       dataIndex: 'deposits',
-      sorter: (a, b) => a.riskManager + a.marketMaker - b.riskManager - b.marketMaker,
+      sorter: (a, b) => a.totalDeposits - b.totalDeposits,
       render: (_, data) => {
         return (
           <div className={styles.premiumCell}>
-            {data.marketMaker + data.riskManager}
+            {data.totalDeposits}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
