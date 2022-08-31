@@ -1,4 +1,5 @@
 """Webdriver tests for DUAL DIP deposit"""
+import logging
 import time
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
@@ -9,7 +10,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def deposit(values, is_windows):
+def deposit(values):
     ''' Deposit into a DIP '''
 
     def init_wallet():
@@ -109,7 +110,13 @@ def deposit(values, is_windows):
         popup_connect.click()
         driver.switch_to.window(main_window)
 
-    def select_dip():
+    def select_dip(token=None):
+        if token:
+            WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+                (By.XPATH, f"//div[contains(text(), '{token}')]")))
+            stake = driver.find_element(
+                By.XPATH, f"//div[contains(text(), '{token}')]")
+            stake.click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         stake = driver.find_element(
@@ -148,7 +155,7 @@ def deposit(values, is_windows):
         WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
         for window_handle in driver.window_handles:
             if window_handle != original_window:
-                print('Switching to approval window')
+                logging.info('Switching to approval window')
                 driver.switch_to.window(window_handle)
                 break
 
@@ -162,12 +169,7 @@ def deposit(values, is_windows):
         # Sleep to see the result
         time.sleep(100)
 
-    print("Bot started")
-    if is_windows:
-        print("OS : Windows")
-    else:
-        print("OS : Mac")
-
+    logging.info("Bot started")
     options = Options()
 
     options.add_extension("Phantom.crx")
@@ -179,18 +181,22 @@ def deposit(values, is_windows):
 
     driver = webdriver.Chrome(
         executable_path=ChromeDriverManager().install(), options=options)
-    print("Assertion - successfully found chrome driver")
+    logging.info("Successfully found chrome driver")
 
-    # Go to the web page
     driver.get(values[0])
     driver.maximize_window()
 
     try:
-        # Actions - Initialize wallet
+        logging.info('Initializing wallet')
         main_window = init_wallet()
+        logging.info('Selecting wallet')
         select_wallet()
-        select_dip()
+
+        logging.info('Selecting DIP')
+        token = values[3] if len(values) >= 4 else None
+        select_dip(token)
     except TimeoutException as error:
-        # TODO: Send an error
+        logging.info('Error. Saving screenshot')
         driver.save_screenshot('screenshot.png')
         print(error)
+        raise error
