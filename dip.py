@@ -199,4 +199,4 @@ def deposit(values):
         logging.info('Error. Saving screenshot')
         driver.save_screenshot('screenshot.png')
         print(error)
-        raise error
+        # raise error
