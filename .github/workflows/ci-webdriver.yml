@@ -1,4 +1,4 @@
-name: DIP Deposit
+name: DIP Webdriver
 on:
   schedule:
   - cron: "0 12 * * *"
@@ -22,9 +22,16 @@ jobs:
           SEED: ${{ secrets.SEED }}
         shell: bash
 
-      - name: 'Upload Artifact'
+      - name: 'Upload Screenshot'
         uses: actions/upload-artifact@v3
         with:
           name: failure-screenshot
           path: screenshot.png
+          retention-days: 1
+
+      - name: 'Upload Webpage'
+        uses: actions/upload-artifact@v3
+        with:
+          name: failure-webpage
+          path: failure.html
           retention-days: 1
