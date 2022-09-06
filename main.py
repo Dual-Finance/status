@@ -26,6 +26,6 @@ if __name__ == '__main__':
         datefmt='%m/%d/%Y %I:%M:%S',
         level=logging.INFO)
     config = get_config()
-    logging.info("Got config %s", str(config))
+    logging.info("Got config")
 
     dip.deposit(config)

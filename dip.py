@@ -2,7 +2,7 @@
 import logging
 import time
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -27,6 +27,7 @@ def deposit(values):
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
                 (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
 
+        time.sleep(1)
         driver.find_element(
             By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -110,45 +111,47 @@ def deposit(values):
         popup_connect.click()
         driver.switch_to.window(main_window)
 
-    def select_dip(token=None):
+    def select_dip(token="BTC"):
         if token:
+            logging.info("Selecting DIP for %s", token)
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
                 (By.XPATH, f"//div[contains(text(), '{token}')]")))
             stake = driver.find_element(
                 By.XPATH, f"//div[contains(text(), '{token}')]")
             stake.click()
+        logging.info("Clicking Stake")
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         stake = driver.find_element(
             By.XPATH, "//button[div[contains(text(), 'Stake')]]")
         stake.click()
 
+        logging.info("Waiting for modal load")
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")))
+            (By.XPATH, "//div/input")))
         num_tokens = driver.find_element(
-            By.XPATH, "//div[@class=\"DualfiInput_input__zgM-S\"]/input")
-        time.sleep(.1)
+            By.XPATH, "//div/input")
+        logging.info("Waiting")
+        time.sleep(1)
+        logging.info("Clicking on num tokens")
         num_tokens.click()
+        logging.info("Typing num tokens")
         num_tokens.send_keys('.000001')
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//span[@class=\"ant-checkbox\"]")))
         disclaimer = driver.find_element(
             By.XPATH, "//span[@class=\"ant-checkbox\"]")
+        logging.info("Clicking checkbox")
         disclaimer.click()
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
-            By.XPATH,
-            "//div[@class=\"StakingModalStake_stakingForm__WI-Nd\"]/" \
-            "button[div[@class=\"DualfiButton_dualfiButtonInner__42gm-\" " \
-            "and contains(text(), 'Stake')]]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
         )))
         stake = driver.find_element(
-            By.XPATH,
-            "//div[@class=\"StakingModalStake_stakingForm__WI-Nd\"]/" \
-            "button[div[@class=\"DualfiButton_dualfiButtonInner__42gm-\" " \
-            "and contains(text(), 'Stake')]]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
         )
+        logging.info("Clicking stake")
         stake.click()
 
         original_window = driver.current_window_handle
@@ -163,13 +166,13 @@ def deposit(values):
             (By.XPATH, "//button[contains(text(),'Approve')]")))
         approve = driver.find_element(
             By.XPATH, "//button[contains(text(),'Approve')]")
+        logging.info("Clicking approve")
         approve.click()
         driver.switch_to.window(main_window)
 
         # Sleep to see the result
         time.sleep(100)
 
-    logging.info("Bot started")
     options = Options()
 
     options.add_extension("Phantom.crx")
@@ -197,6 +200,13 @@ def deposit(values):
         select_dip(token)
     except TimeoutException as error:
         logging.info('Error. Saving screenshot')
+        # TODO: also save the html
+        driver.save_screenshot('screenshot.png')
+        print(error)
+        # raise error
+    except ElementClickInterceptedException as error:
+        logging.info('Error. Saving screenshot')
+        # TODO: also save the html
         driver.save_screenshot('screenshot.png')
         print(error)
         # raise error
