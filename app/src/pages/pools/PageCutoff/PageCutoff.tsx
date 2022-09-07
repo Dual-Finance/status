@@ -21,7 +21,7 @@ export const PageCutoff = ({ price, token }: { price: number; token: string }) =
           <Lottie options={lottieOptions} width={60} height={22} />
         </div>
       </div>
-      <div className={styles.content}>{prettyFormatPrice(price)}</div>
+      <div className={styles.content}>{price > 0 ? prettyFormatPrice(price) : 'Awaiting Launch'}</div>
     </div>
   );
 };
