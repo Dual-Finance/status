@@ -94,11 +94,11 @@ export const Treasury = (props: { network: string }) => {
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingBtc = await getAssociatedTokenAddress(
-        Config.wbtcMintPk(),
+        Config.sobtcMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingEth = await getAssociatedTokenAddress(
-        Config.wethMintPk(),
+        Config.soethMintPk(),
         new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
       );
       const testingUsdc = await getAssociatedTokenAddress(
@@ -144,7 +144,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_BTC',
           'TESTING',
-          Config.wbtcMintPk(),
+          Config.sobtcMintPk(),
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
@@ -155,7 +155,7 @@ export const Treasury = (props: { network: string }) => {
         createAccountParams(
           'TESTING_ETH',
           'TESTING',
-          Config.wethMintPk(),
+          Config.soethMintPk(),
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
