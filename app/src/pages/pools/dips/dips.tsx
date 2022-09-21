@@ -228,7 +228,8 @@ export const Dips = (props: { network: string }) => {
               const vol = Config.volMap(splMint.toBase58());
               const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
               const earnedRatio = price / currentPrice;
-              const apy = earnedRatio / fractionOfYear / 1_000_000;
+              const apr = earnedRatio / fractionOfYear / 1_000_000;
+              const apy = (1 + apr * fractionOfYear) ** (1 / fractionOfYear) - 1;
 
               // @ts-ignore
               // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
