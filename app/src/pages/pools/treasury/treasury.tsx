@@ -177,7 +177,7 @@ export const Treasury = (props: { network: string }) => {
       );
 
       const config = new MangoConfig(configFile);
-      const groupConfig = config.getGroupWithName('mainnet.1') as GroupConfig;
+      const groupConfig = config.getGroupWithName(Config.isDev ? 'devnet.2' : 'mainnet.1') as GroupConfig;
       const mangoClient = new MangoClient(connection, groupConfig.mangoProgramId);
       const mangoGroup = await mangoClient.getMangoGroup(groupConfig.publicKey);
       const [mangoCache]: [MangoCache] = await Promise.all([mangoGroup.loadCache(connection)]);
