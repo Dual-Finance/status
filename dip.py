@@ -136,7 +136,7 @@ def deposit(values):
         logging.info("Clicking on num tokens")
         num_tokens.click()
         logging.info("Typing num tokens")
-        num_tokens.send_keys('.000001')
+        num_tokens.send_keys('.000005')
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//span[@class=\"ant-checkbox\"]")))
