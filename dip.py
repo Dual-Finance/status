@@ -217,6 +217,7 @@ def withdraw(values):
         logging.info("Clicking Withdraw")
         withdraw_button.click()
 
+        time.sleep(1)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Withdraw')]]")))
         withdraw_modal_button = driver.find_element(
@@ -241,12 +242,12 @@ def withdraw(values):
         driver.switch_to.window(main_window)
 
         # Sleep to see the result
-        time.sleep(60)
+        time.sleep(20)
 
     options = Options()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
-    options.add_argument("--headless=chrome")
+    #options.add_argument("--headless=chrome")
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
@@ -264,6 +265,7 @@ def withdraw(values):
         logging.info('Selecting wallet')
         select_wallet(driver, main_window)
 
+        driver.get(values[0] + '/balance')
         logging.info('Doing withdraw')
         do_withdraw()
     except (TimeoutException, ElementClickInterceptedException) as error:

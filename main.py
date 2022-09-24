@@ -28,7 +28,7 @@ if __name__ == '__main__':
     config = get_config()
     logging.info("Got config")
 
-    dip.deposit(config)
+    #dip.deposit(config)
 
     # Also try to do a withdraw
     dip.withdraw(config)
