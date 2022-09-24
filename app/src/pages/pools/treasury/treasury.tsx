@@ -4,7 +4,9 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
+import { Config as MangoConfig, GroupConfig, MangoCache, MangoClient } from '@blockworks-foundation/mango-client';
 import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../../config/config';
+import configFile from './ids.json';
 import {
   findProgramAddressWithMint,
   getAssociatedTokenAddress,
@@ -173,6 +175,18 @@ export const Treasury = (props: { network: string }) => {
           testingUsdc
         )
       );
+
+      const config = new MangoConfig(configFile);
+      const groupConfig = config.getGroupWithName(Config.isDev ? 'devnet.2' : 'mainnet.1') as GroupConfig;
+      const mangoClient = new MangoClient(connection, groupConfig.mangoProgramId);
+      const mangoGroup = await mangoClient.getMangoGroup(groupConfig.publicKey);
+      const [mangoCache]: [MangoCache] = await Promise.all([mangoGroup.loadCache(connection)]);
+      const mangoAccountPk = new PublicKey('9AuFG7jBEpNM83DkxV6yadhqGnyna6GL9AaYH1CSnQfX');
+      const mangoAccount = await mangoClient.getMangoAccount(mangoAccountPk, mangoGroup.dexProgramId);
+      const mangoHealth = mangoAccount.getHealth(mangoGroup, mangoCache, 'Maint').toNumber();
+      const readableMangoHealth = Math.floor(mangoHealth) / 1_000_000;
+      // TODO: Get a mango logo so it is not confused with actual USDC
+      allAccounts.push(createAccountParams('MANGO', 'MANGO', Config.usdcMintPk(), readableMangoHealth, mangoAccountPk));
       setPriceAccounts(allAccounts);
     }
 
@@ -219,7 +233,7 @@ export const Treasury = (props: { network: string }) => {
     <DualfiTable
       className={styles.balanceTable}
       columns={columns}
-      pagination={{ pageSize: 5 }}
+      pagination={{ pageSize: 10 }}
       dataSource={getTableRows()}
       scroll={{ x: true }}
     />
