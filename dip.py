@@ -136,7 +136,10 @@ def deposit(values):
         logging.info("Clicking on num tokens")
         num_tokens.click()
         logging.info("Typing num tokens")
-        num_tokens.send_keys('.000005')
+        if token == 'BTC':
+            num_tokens.send_keys('.000005')
+        else:
+            num_tokens.send_keys('.05')
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//span[@class=\"ant-checkbox\"]")))
@@ -247,7 +250,7 @@ def withdraw(values):
     options = Options()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
-    #options.add_argument("--headless=chrome")
+    options.add_argument("--headless=chrome")
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
