@@ -72,13 +72,34 @@ export function GetProvider(wallet: any, network: string): [AnchorProvider, Conn
 }
 
 export const getMultipleTokenAccounts = async (connection: Connection, keys: string[], commitment: string) => {
-  const result = await getMultipleAccountsCore(connection, keys, commitment, 'jsonParsed');
+  if (keys.length > 100) {
+    const batches: string[][] = chunks(keys, 100);
+    const batchesPromises: Promise<{ keys: string[]; array: any }>[] = batches.map((batch: string[]) => {
+      const result: Promise<{ keys: string[]; array: any }> = getMultipleAccountsCore(
+        connection,
+        batch,
+        commitment,
+        'jsonParsed'
+      );
+      return result;
+    });
+    const results: { keys: string[]; array: any }[] = await Promise.all<{ keys: string[]; array: any }>(
+      batchesPromises
+    );
+    let allKeys: string[] = [];
+    let allArrays: any[] = [];
+    results.forEach((result: { keys: string[]; array: any }) => {
+      allKeys = allKeys.concat(result.keys);
+      allArrays = allArrays.concat(result.array);
+    });
+    return { keys: allKeys, array: allArrays };
+  }
 
+  const result = await getMultipleAccountsCore(connection, keys, commitment, 'jsonParsed');
   const array = result.array.map((acc: { [x: string]: any; data: any }) => {
     if (!acc) {
       return undefined;
     }
-
     const { data, ...rest } = acc;
     const obj = {
       ...rest,
@@ -89,22 +110,25 @@ export const getMultipleTokenAccounts = async (connection: Connection, keys: str
   return { keys, array };
 };
 
-export const getMultipleAccounts = async (connection: Connection, keys: string[], commitment: string | undefined) => {
-  // TODO: Chunk if there are more than 100
-  const result = await getMultipleAccountsCore(connection, keys, commitment, 'base64');
+export function chunks<T>(array: T[], size: number): T[][] {
+  return Array.apply(0, new Array(Math.ceil(array.length / size))).map((_, index) =>
+    array.slice(index * size, (index + 1) * size)
+  );
+}
 
-  const array = result.array
-    .map((acc: { [x: string]: any; data: any }) => {
+export const getMultipleAccounts = async (connection: Connection, keys: string[], commitment: string | undefined) => {
+  const publicKeys: PublicKey[] = [];
+  keys.forEach((key) => {
+    publicKeys.push(new PublicKey(key));
+  });
+  const result = await utils.rpc.getMultipleAccounts(connection, publicKeys, commitment as Commitment);
+
+  const array = result
+    .map((acc: { account: any; publicKey: PublicKey } | undefined | null) => {
       if (!acc) {
         return undefined;
       }
-
-      const { data, ...rest } = acc;
-      const obj = {
-        ...rest,
-        data: Buffer.from(data[0] as string, 'base64'),
-      };
-      return obj;
+      return acc.account;
     })
     .filter((_: any) => _);
   return { keys, array };
@@ -115,7 +139,7 @@ const getMultipleAccountsCore = async (
   keys: string[],
   commitment: string | undefined,
   encoding: string | undefined
-) => {
+): Promise<{ keys: string[]; array: any }> => {
   if (encoding !== 'jsonParsed' && encoding !== 'base64') {
     throw new Error();
   }

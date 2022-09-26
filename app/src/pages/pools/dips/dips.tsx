@@ -58,8 +58,6 @@ export const Dips = (props: { network: string }) => {
     assetPrice: number;
     // Number of options held by the risk manager
     riskManager: number;
-    // Number of options held by the market makers
-    marketMaker: number;
     // Number of tokens deposited
     totalDeposits: number;
   }
@@ -77,7 +75,6 @@ export const Dips = (props: { network: string }) => {
     premium: number,
     assetPrice: number,
     riskManager: number,
-    marketMaker: number,
     totalDeposits: number
   ) {
     return {
@@ -93,7 +90,6 @@ export const Dips = (props: { network: string }) => {
       premium,
       assetPrice,
       riskManager,
-      marketMaker,
       totalDeposits,
     };
   }
@@ -172,6 +168,9 @@ export const Dips = (props: { network: string }) => {
         // @ts-ignore
         async (data) => {
           const allPriceAccounts = [];
+
+          const accountsToFetch = [];
+
           // eslint-disable-next-line no-restricted-syntax
           for (const programAccount of data) {
             try {
@@ -180,14 +179,7 @@ export const Dips = (props: { network: string }) => {
                 continue;
               }
               const dipState = parseDipState(programAccount.account.data);
-
-              const strike: number = dipState.strike / 1_000_000;
-              const { expiration } = dipState;
-              const { splMint } = dipState;
-
-              const m = new Date();
-              m.setTime(expiration * 1_000);
-              const dateString = `${m.getUTCFullYear()}-${m.getUTCMonth() + 1}-${m.getUTCDate()}`;
+              const { expiration, splMint } = dipState;
 
               // Get the option mint
               const optionMintPk = await optionTokenMintPk(dipState.strike, expiration, splMint);
@@ -195,10 +187,6 @@ export const Dips = (props: { network: string }) => {
               const riskManagerPk = await getAssociatedTokenAddress(
                 optionMintPk,
                 new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ')
-              );
-              const mmPk = await getAssociatedTokenAddress(
-                optionMintPk,
-                new PublicKey('5HSNjCjRtMedAHwUVXz7cvUufzSxKAcmC7xTniXCRsqo')
               );
               const [vaultSplTokenAccount] = await findProgramAddressWithMintAndStrikeAndExpiration(
                 VAULT_SPL_ACCOUNT_SEED,
@@ -209,16 +197,38 @@ export const Dips = (props: { network: string }) => {
                 dualMarketProgramID
               );
 
-              const tokenAccounts = await getMultipleTokenAccounts(
-                connection,
-                [riskManagerPk.toBase58(), mmPk.toBase58(), vaultSplTokenAccount.toBase58()],
-                'confirmed'
-              );
+              accountsToFetch.push(riskManagerPk.toBase58());
+              accountsToFetch.push(vaultSplTokenAccount.toBase58());
+            } catch (error) {
+              console.log(error);
+            }
+          }
+
+          const fetchedTokenAccounts = (await getMultipleTokenAccounts(connection, accountsToFetch, 'confirmed')).array;
+
+          // eslint-disable-next-line no-restricted-syntax
+          for (const programAccount of data) {
+            try {
+              if (programAccount.account.data.length !== 260) {
+                // eslint-disable-next-line no-continue
+                continue;
+              }
+              const dipState = parseDipState(programAccount.account.data);
+
+              const strike: number = dipState.strike / 1_000_000;
+              const { expiration, splMint } = dipState;
+
+              const m = new Date();
+              m.setTime(expiration * 1_000);
+              const dateString = `${m.getUTCFullYear()}-${m.getUTCMonth() + 1}-${m.getUTCDate()}`;
+
+              const riskManagerTokenAccount = fetchedTokenAccounts.shift();
+              const vaultSplTokenAccount = fetchedTokenAccounts.shift();
 
               const durationMs = expiration * 1_000 - Date.now();
               if (
                 durationMs < 0 &&
-                !(tokenAccounts.array[2] !== undefined && tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount)
+                !(vaultSplTokenAccount !== undefined && vaultSplTokenAccount.data.parsed.info.tokenAmount.uiAmount)
               ) {
                 // eslint-disable-next-line no-continue
                 continue;
@@ -234,20 +244,14 @@ export const Dips = (props: { network: string }) => {
               // @ts-ignore
               // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
               const rmAmount: number =
-                tokenAccounts.array[0] !== undefined && durationMs > 0
-                  ? tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount
-                  : 0;
-              // @ts-ignore
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-              const mmAmount: number =
-                tokenAccounts.array[1] !== undefined && durationMs > 0
-                  ? tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount
+                riskManagerTokenAccount !== null && durationMs > 0
+                  ? riskManagerTokenAccount.data.parsed.info.tokenAmount.uiAmount
                   : 0;
 
               // @ts-ignore
               // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
               const totalDeposits: number =
-                tokenAccounts.array[2] !== undefined ? tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount : 0;
+                vaultSplTokenAccount !== null ? vaultSplTokenAccount.data.parsed.info.tokenAmount.uiAmount : 0;
 
               if (totalDeposits === 0 && durationMs < 0) {
                 // eslint-disable-next-line no-continue
@@ -269,9 +273,8 @@ export const Dips = (props: { network: string }) => {
                   apy,
                   price,
                   currentPrice,
-                  rmAmount,
-                  mmAmount,
-                  totalDeposits
+                  Math.floor(rmAmount * 1_000_000) / 1_000_000,
+                  Math.floor(totalDeposits * 1_000_000) / 1_000_000
                 )
               );
             } catch (error) {
@@ -321,19 +324,6 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.riskManager}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
-          </div>
-        );
-      },
-    },
-    {
-      title: 'Market Makers',
-      dataIndex: 'marketMaker',
-      sorter: (a, b) => a.marketMaker - b.marketMaker,
-      render: (_, data) => {
-        return (
-          <div className={styles.premiumCell}>
-            {data.marketMaker}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
