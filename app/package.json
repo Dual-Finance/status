@@ -16,13 +16,13 @@
     "@project-serum/serum": "^0.13.65",
     "@pythnetwork/client": "^2.7.0",
     "@reactour/tour": "^2.13.0",
+    "@solana/buffer-layout": "^4.0.0",
+    "@solana/spl-token": "^0.1.8",
     "@solana/wallet-adapter-ant-design": "^0.11.5",
     "@solana/wallet-adapter-base": "^0.9.5",
     "@solana/wallet-adapter-react": "^0.15.19",
     "@solana/wallet-adapter-react-ui": "^0.9.7",
     "@solana/wallet-adapter-wallets": "^0.19.0",
-    "@solana/buffer-layout": "^4.0.0",
-    "@solana/spl-token": "^0.1.8",
     "@solana/web3.js": "^1.47.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -46,7 +46,10 @@
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prettier": "^4.0.0",
     "greeks": "^1.0.0",
+    "https-browserify": "^1.0.0",
     "notistack": "^2.0.5",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -56,14 +59,16 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sass": "^1.51.0",
+    "stream": "^0.0.2",
     "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "typescript": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "eslint": "eslint --ext .js,jsx,ts,tsx,md src",
     "eslint:fix": "eslint --fix --ext .js,jsx,ts,tsx,md src"
@@ -97,6 +102,7 @@
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.5.0"
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "react-app-rewired": "^2.2.1"
   }
 }
