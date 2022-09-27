@@ -205,7 +205,7 @@ export const Dips = (props: { network: string }) => {
           }
 
           const fetchedTokenAccounts = (await getMultipleTokenAccounts(connection, accountsToFetch, 'confirmed')).array;
-
+          let totalValue = 0;
           // eslint-disable-next-line no-restricted-syntax
           for (const programAccount of data) {
             try {
@@ -217,6 +217,8 @@ export const Dips = (props: { network: string }) => {
 
               const strike: number = dipState.strike / 1_000_000;
               const { expiration, splMint } = dipState;
+              const optionType = dipState.splMint === Config.usdcMintPk() ? 'put' : 'call';
+              const upOrDown = optionType === 'call' ? 'Upside' : 'Downside';
 
               const m = new Date();
               m.setTime(expiration * 1_000);
@@ -236,7 +238,8 @@ export const Dips = (props: { network: string }) => {
               const fractionOfYear = durationMs / 31_536_000_000;
               const currentPrice = PRICE_MAP[splMint.toBase58()];
               const vol = Config.volMap(splMint.toBase58());
-              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
+              const price =
+                bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, optionType) * 1_000_000 || 0;
               const earnedRatio = price / currentPrice;
               const apr = earnedRatio / fractionOfYear / 1_000_000;
               const apy = (1 + apr * fractionOfYear) ** (1 / fractionOfYear) - 1;
@@ -248,6 +251,7 @@ export const Dips = (props: { network: string }) => {
                   ? riskManagerTokenAccount.data.parsed.info.tokenAmount.uiAmount
                   : 0;
 
+              totalValue += (price * rmAmount) / 1_000_000;
               // @ts-ignore
               // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
               const totalDeposits: number =
@@ -265,14 +269,14 @@ export const Dips = (props: { network: string }) => {
                   dateString,
                   expiration,
                   strike,
-                  'UPSIDE',
+                  upOrDown,
                   // @ts-ignore
                   programAccount.pubkey,
                   splMint,
                   Config.usdcMintPk(),
                   apy,
-                  price,
-                  currentPrice,
+                  (price * rmAmount) / 1_000_000,
+                  totalValue,
                   Math.floor(rmAmount * 1_000_000) / 1_000_000,
                   Math.floor(totalDeposits * 1_000_000) / 1_000_000
                 )
@@ -310,10 +314,20 @@ export const Dips = (props: { network: string }) => {
     },
     {
       title: 'Type',
-      dataIndex: 'type',
+      dataIndex: 'upOrDown',
       sorter: (a, b) => a.upOrDown.length - b.upOrDown.length,
-      render: () => {
-        return <>UPSIDE</>;
+    },
+    {
+      title: 'Total Deposits',
+      dataIndex: 'deposits',
+      sorter: (a, b) => a.totalDeposits - b.totalDeposits,
+      render: (_, data) => {
+        return (
+          <div className={styles.premiumCell}>
+            {data.totalDeposits}
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
+          </div>
+        );
       },
     },
     {
@@ -330,16 +344,19 @@ export const Dips = (props: { network: string }) => {
       },
     },
     {
-      title: 'Total Deposits',
-      dataIndex: 'deposits',
-      sorter: (a, b) => a.totalDeposits - b.totalDeposits,
-      render: (_, data) => {
-        return (
-          <div className={styles.premiumCell}>
-            {data.totalDeposits}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
-          </div>
-        );
+      title: 'Value',
+      dataIndex: 'premium',
+      sorter: (a, b) => a.premium - b.premium,
+      render: (premium: number) => {
+        return <>{prettyFormatPrice(premium).padStart(7, ' ')}</>;
+      },
+    },
+    {
+      title: 'Running Total',
+      dataIndex: 'assetPrice',
+      sorter: (a, b) => a.assetPrice - b.assetPrice,
+      render: (assetPrice: number) => {
+        return <>{prettyFormatPrice(assetPrice).padStart(7, ' ')}</>;
       },
     },
   ];
