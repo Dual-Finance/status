@@ -5,7 +5,13 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
 import { Config as MangoConfig, GroupConfig, MangoCache, MangoClient } from '@blockworks-foundation/mango-client';
-import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../../config/config';
+import {
+  dualMarketProgramID,
+  PREMIUM_USDC_SEED,
+  Config,
+  MANGO_HEALTH_MIN,
+  LIQ_SPREAD_THRESHOLD,
+} from '../../../config/config';
 import configFile from './ids.json';
 import {
   findProgramAddressWithMint,
@@ -35,18 +41,28 @@ export const Treasury = (props: { network: string }) => {
     name: string;
     // Expiration in seconds since epoch
     splMint: PublicKey;
-    // Number of tokens. Full tokens
+    // Amount of USDC equivalent equity value
     amount: number;
+    // Number of tokens. Full tokens
+    health: number;
     // Address of the account
     address: PublicKey;
   }
 
-  function createAccountParams(key: React.Key, name: string, splMint: PublicKey, amount: number, address: PublicKey) {
+  function createAccountParams(
+    key: React.Key,
+    name: string,
+    splMint: PublicKey,
+    amount: number,
+    health: number,
+    address: PublicKey
+  ) {
     return {
       key,
       name,
       splMint,
       amount,
+      health,
       address,
     };
   }
@@ -128,6 +144,7 @@ export const Treasury = (props: { network: string }) => {
           tokenAccounts.array[0] !== undefined
             ? (tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
+          0,
           premiumUsdc
         )
       );
@@ -139,6 +156,7 @@ export const Treasury = (props: { network: string }) => {
           tokenAccounts.array[1] !== undefined
             ? (tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
+          0,
           testingSol
         )
       );
@@ -150,6 +168,7 @@ export const Treasury = (props: { network: string }) => {
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
+          0,
           testingBtc
         )
       );
@@ -161,6 +180,7 @@ export const Treasury = (props: { network: string }) => {
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
+          0,
           testingEth
         )
       );
@@ -172,6 +192,7 @@ export const Treasury = (props: { network: string }) => {
           tokenAccounts.array[4] !== undefined
             ? (tokenAccounts.array[4].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
+          0,
           testingUsdc
         )
       );
@@ -183,10 +204,26 @@ export const Treasury = (props: { network: string }) => {
       const [mangoCache]: [MangoCache] = await Promise.all([mangoGroup.loadCache(connection)]);
       const mangoAccountPk = new PublicKey('9AuFG7jBEpNM83DkxV6yadhqGnyna6GL9AaYH1CSnQfX');
       const mangoAccount = await mangoClient.getMangoAccount(mangoAccountPk, mangoGroup.dexProgramId);
-      const mangoHealth = mangoAccount.getHealth(mangoGroup, mangoCache, 'Maint').toNumber();
-      const readableMangoHealth = Math.floor(mangoHealth) / 1_000_000;
+      const liquidationPrice = mangoAccount.getLiquidationPrice(mangoGroup, mangoCache, 3)?.toNumber() || 0;
+      const currentPrice = mangoGroup.getPriceUi(3, mangoCache);
+      // eslint-disable-next-line no-unused-vars
+      // Don't let this number go inside [0.65,1.35]
+      const liquidationSpread: number = liquidationPrice / currentPrice;
+      const mangoEquity = Math.round(mangoAccount.getEquityUi(mangoGroup, mangoCache) * 1_000_000);
+      // Don't let this number go below 30
+      const mangoHealth = mangoAccount.getHealthRatio(mangoGroup, mangoCache, 'Maint').toNumber();
+      const readableMangoHealth = Math.floor(mangoHealth);
+      const setHealthAlarm = mangoHealth < MANGO_HEALTH_MIN ? 'Top up Mango' : 'Mango Okay';
+      const setLiquidationAlarm =
+        liquidationSpread < 1 + LIQ_SPREAD_THRESHOLD && liquidationSpread > 1 - LIQ_SPREAD_THRESHOLD
+          ? 'Top up Mango'
+          : 'Mango Okay';
+      const mangoStatus =
+        setHealthAlarm === 'Top up Mango' || setLiquidationAlarm === 'Top up Mango' ? 'Top up Mango' : 'Mango Okay';
       // TODO: Get a mango logo so it is not confused with actual USDC
-      allAccounts.push(createAccountParams('MANGO', 'MANGO', Config.usdcMintPk(), readableMangoHealth, mangoAccountPk));
+      allAccounts.push(
+        createAccountParams('MANGO', mangoStatus, Config.usdcMintPk(), mangoEquity, readableMangoHealth, mangoAccountPk)
+      );
       setPriceAccounts(allAccounts);
     }
 
@@ -218,6 +255,19 @@ export const Treasury = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.amount}
+            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
+          </div>
+        );
+      },
+    },
+    {
+      title: 'Health',
+      dataIndex: 'amount',
+      sorter: (a, b) => a.health - b.health,
+      render: (_, data) => {
+        return (
+          <div className={styles.premiumCell}>
+            {data.health}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );

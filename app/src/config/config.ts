@@ -100,3 +100,6 @@ export const VAULT_MINT_ADDRESS_SEED = 'vault-mint';
 export const VAULT_USDC_SEED = 'usdc-vault-account';
 export const PREMIUM_USDC_SEED = 'usdc-premium-account';
 export const DIP_STATE_SEED = 'dip-state';
+
+export const LIQ_SPREAD_THRESHOLD = 35; // Threshold in % for a single price move to avoid liquidation
+export const MANGO_HEALTH_MIN = 30; // Min Mango Health to avoid liquidation
