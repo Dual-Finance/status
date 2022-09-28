@@ -215,7 +215,7 @@ export const Treasury = (props: { network: string }) => {
       const readableMangoHealth = Math.floor(mangoHealth);
       const setHealthAlarm = mangoHealth < MANGO_HEALTH_MIN ? 'Top up Mango' : 'Mango Okay';
       const setLiquidationAlarm =
-        liquidationSpread < 1 + LIQ_SPREAD_THRESHOLD && liquidationSpread > 1 - LIQ_SPREAD_THRESHOLD
+        liquidationSpread < 1 + LIQ_SPREAD_THRESHOLD / 100 && liquidationSpread > 1 - LIQ_SPREAD_THRESHOLD / 100
           ? 'Top up Mango'
           : 'Mango Okay';
       const mangoStatus =
