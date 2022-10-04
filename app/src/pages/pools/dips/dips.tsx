@@ -7,7 +7,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { parsePriceData } from '@pythnetwork/client';
 // @ts-ignore
 import * as bs from 'black-scholes';
-import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED } from '../../../config/config';
+import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED, rfRate } from '../../../config/config';
 import {
   findProgramAddressWithMintAndStrikeAndExpiration,
   getAssociatedTokenAddress,
@@ -236,7 +236,7 @@ export const Dips = (props: { network: string }) => {
               const fractionOfYear = durationMs / 31_536_000_000;
               const currentPrice = PRICE_MAP[splMint.toBase58()];
               const vol = Config.volMap(splMint.toBase58());
-              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, 0.01, 'call') * 1_000_000;
+              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, rfRate, 'call') * 1_000_000;
               const earnedRatio = price / currentPrice;
               const apr = earnedRatio / fractionOfYear / 1_000_000;
               const apy = (1 + apr * fractionOfYear) ** (1 / fractionOfYear) - 1;

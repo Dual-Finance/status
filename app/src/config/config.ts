@@ -100,3 +100,4 @@ export const VAULT_MINT_ADDRESS_SEED = 'vault-mint';
 export const VAULT_USDC_SEED = 'usdc-vault-account';
 export const PREMIUM_USDC_SEED = 'usdc-premium-account';
 export const DIP_STATE_SEED = 'dip-state';
+export const rfRate = 0.03; // Risk Free Rate of Return ~ T-Bill Rate
