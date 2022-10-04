@@ -4,7 +4,14 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
-import { Config as MangoConfig, GroupConfig, MangoCache, MangoClient } from '@blockworks-foundation/mango-client';
+import {
+  Config as MangoConfig,
+  GroupConfig,
+  MangoCache,
+  MangoClient,
+  // RootBank,
+  // RootBankLayout,
+} from '@blockworks-foundation/mango-client';
 import {
   dualMarketProgramID,
   PREMIUM_USDC_SEED,
@@ -204,12 +211,26 @@ export const Treasury = (props: { network: string }) => {
       const [mangoCache]: [MangoCache] = await Promise.all([mangoGroup.loadCache(connection)]);
       const mangoAccountPk = new PublicKey('9AuFG7jBEpNM83DkxV6yadhqGnyna6GL9AaYH1CSnQfX');
       const mangoAccount = await mangoClient.getMangoAccount(mangoAccountPk, mangoGroup.dexProgramId);
+      // const decoded = RootBankLayout.decode();
+      // const rootBank = new RootBank(mangoAccountPk, decoded);
       const liquidationPrice = mangoAccount.getLiquidationPrice(mangoGroup, mangoCache, 3)?.toNumber() || 0;
       const currentPrice = mangoGroup.getPriceUi(3, mangoCache);
       // eslint-disable-next-line no-unused-vars
       // Don't let this number go inside [0.65,1.35]
       const liquidationSpread: number = liquidationPrice / currentPrice;
-      const mangoEquity = Math.round(mangoAccount.getEquityUi(mangoGroup, mangoCache) * 1_000_000);
+      const mangoTotalEquity = Math.round(mangoAccount.getEquityUi(mangoGroup, mangoCache) * 1_000_000);
+      // const mangoPerpPnl = mangoAccount.calcTotalPerpUnsettledPnl(mangoGroup, mangoCache).toNumber() / 1_000_000;
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/restrict-template-expressions
+      // const response = await (
+      //   await fetch(`https://mango-transaction-log.herokuapp.com/stats/withdraws/${mangoAccountPk.toString()}`)
+      // ).json();
+      // console.log('Debug', mangoAccount.deposits[0].toNumber(), response);
+      // const totalDeposits = mangoAccount.deposits.reduce((a, b) => a + b.toNumber(), 0);
+      // const marketIndex = 3;
+      // const totalDeposits = mangoAccount
+      //   .getUiDeposit(mangoCache.rootBankCache[marketIndex], mangoGroup, marketIndex)
+      //   .toNumber();
+      const mangoEquity = mangoTotalEquity;
       // Don't let this number go below 30
       const mangoHealth = mangoAccount.getHealthRatio(mangoGroup, mangoCache, 'Maint').toNumber();
       const readableMangoHealth = Math.floor(mangoHealth);

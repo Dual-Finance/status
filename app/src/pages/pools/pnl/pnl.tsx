@@ -18,6 +18,7 @@ import {
 import { ColumnsType } from 'antd/lib/table';
 import { prettyFormatPrice } from '../../../utils/utils';
 import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
+import { Treasury } from '../treasury/treasury';
 import styles from '../Pools.module.scss';
 
 export const PnL = (props: { network: string }) => {
@@ -26,10 +27,9 @@ export const PnL = (props: { network: string }) => {
   // Two Methods to Calc PnL
   // Equity_Total_PnL = Trade_Total_PnL
 
-  // Equity_Total PnL = BVE_PnL + RM_PnL + Exercise_PnL + Treasury_PnL
-  // BVE_Pnl = DIP_Value - Premium_Paid
+  // Equity_Total PnL = BVE_PnL + RM_PnL + Treasury_PnL
+  // BVE_Pnl = DIP_Value - Premium_Paid + Exercise_Spot_Value - Exercise_Paid
   // RM_PnL = Mango_Equity - (Mango_Deposits - Mango_Withdrawals)
-  // Exercise_PnL = Exercise_Spot_Value - Exercise_Paid
   // Treasury_PnL = Address_Value - (Address_Deposits - Address Withdrawals)
 
   // Trade_Total_PnL = BVE_Trades + RM_Trades + Exercise_Trades + Swap_Trades + Perp_Funding_Rates + Mango Interest
