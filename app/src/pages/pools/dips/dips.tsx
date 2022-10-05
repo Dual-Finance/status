@@ -352,7 +352,7 @@ export const Dips = (props: { network: string }) => {
     <DualfiTable
       className={styles.balanceTable}
       columns={columns}
-      pagination={{ pageSize: 5 }}
+      pagination={{ pageSize: 10 }}
       dataSource={getTableRows()}
       scroll={{ x: true }}
     />
