@@ -13,7 +13,9 @@ def init_wallet(driver, phrase, password):
     ''' Init wallet'''
 
     # add wallet to chrome
+    logging.info("Initializing wallet")
     time.sleep(1)
+    logging.info("Switching to window")
     driver.switch_to.window(driver.window_handles[1])
     try:
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -24,35 +26,45 @@ def init_wallet(driver, phrase, password):
             (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
 
     time.sleep(1)
+    logging.info("Clicking on secret recovery phrase")
     driver.find_element(
         By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]").click()
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
         (By.XPATH, "//textarea[@placeholder='Secret phrase']")))
+    logging.info("Typing secret recovery phrase")
     driver.find_element(
         By.XPATH, "//textarea[@placeholder='Secret phrase']").send_keys(phrase)
+    logging.info("Clicking submit")
     driver.find_element(
         By.XPATH, "//button[@class='sc-bdfBQB bzlPNH']").click()
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
         (By.XPATH, "//input[@placeholder='Password']")))
+    logging.info("Typing password")
     driver.find_element(
         By.XPATH, "//input[@placeholder='Password']").send_keys(password)
+    logging.info("Confirming password")
     driver.find_element(
         By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(password)
+    logging.info("Clicking checkbox")
     driver.find_element(
         By.XPATH, "//input[@type='checkbox']").click()
+    logging.info("Clicking submit")
     driver.find_element(
         By.XPATH, "//button[@type='submit']").click()
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
         (By.XPATH, "//button[contains(text(),'Continue')]")))
     continue_ = driver.find_element(
         By.XPATH, "//button[contains(text(),'Continue')]")
+    logging.info("Clicking continue")
     driver.execute_script("arguments[0].click();", continue_)
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
         (By.XPATH, "//button[contains(text(),'Finish')]")))
+    logging.info("Clicking finish")
     finish = driver.find_element(
         By.XPATH, "//button[contains(text(),'Finish')]")
     driver.execute_script("arguments[0].click();", finish)
     main_window = driver.window_handles[0]
+    logging.info("Switching back to main window")
     driver.switch_to.window(main_window)
 
     return main_window
@@ -63,12 +75,14 @@ def select_wallet(driver, main_window):
 
     # Sleep for the modal transitions so the elements are clickable
     time.sleep(2)
+    logging.info("Selecting wallet")
 
     # Accept the disclaimer
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
         (By.XPATH, "//button[contains(text(), 'Accept')]")))
     accept_disclaimer = driver.find_element(
         By.XPATH, "//button[contains(text(), 'Accept')]")
+    logging.info("Clicking disclaimer")
     accept_disclaimer.click()
 
     time.sleep(2)
@@ -78,6 +92,7 @@ def select_wallet(driver, main_window):
         (By.XPATH, "//button[contains(text(), 'Skip')]")))
     skip = driver.find_element(
         By.XPATH, "//button[contains(text(), 'Skip')]")
+    logging.info("Clicking skip tutorial")
     skip.click()
 
     # Select Wallet
@@ -85,6 +100,7 @@ def select_wallet(driver, main_window):
         (By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")))
     select_wallet_button = driver.find_element(
         By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")
+    logging.info("Selecting wallet")
     select_wallet_button.click()
 
     # Choose Phantom
@@ -92,12 +108,14 @@ def select_wallet(driver, main_window):
         (By.XPATH, "//button[span[contains(text(), 'Phantom')]]")))
     phantom = driver.find_element(
         By.XPATH, "//button[span[contains(text(), 'Phantom')]]")
+    logging.info("Clicking phantom")
     phantom.click()
 
     original_window = driver.current_window_handle
     WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
     for window_handle in driver.window_handles:
         if window_handle != original_window:
+            logging.info("Switching to window")
             driver.switch_to.window(window_handle)
             break
 
@@ -105,7 +123,11 @@ def select_wallet(driver, main_window):
         (By.XPATH, "//button[contains(text(),'Connect')]")))
     popup_connect = driver.find_element(
         By.XPATH, "//button[contains(text(),'Connect')]")
+    logging.info("Clicking connect")
     popup_connect.click()
+
+    time.sleep(1)
+    logging.info("Switching back to main window")
     driver.switch_to.window(main_window)
 
 
