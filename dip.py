@@ -9,6 +9,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
+SOL_TRADE_SIZE = .05
+
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
 
@@ -85,7 +87,7 @@ def select_wallet(driver, main_window):
     logging.info("Clicking disclaimer")
     accept_disclaimer.click()
 
-    time.sleep(2)
+    time.sleep(5)
 
     # Skip the tutorial
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -94,6 +96,8 @@ def select_wallet(driver, main_window):
         By.XPATH, "//button[contains(text(), 'Skip')]")
     logging.info("Clicking skip tutorial")
     skip.click()
+
+    time.sleep(2)
 
     # Select Wallet
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -161,7 +165,7 @@ def deposit(values):
         if token == 'BTC':
             num_tokens.send_keys('.000005')
         else:
-            num_tokens.send_keys('.05')
+            num_tokens.send_keys(str(SOL_TRADE_SIZE))
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//span[@class=\"ant-checkbox\"]")))
@@ -195,8 +199,11 @@ def deposit(values):
         approve.click()
         driver.switch_to.window(main_window)
 
-        # Sleep to see the result
-        time.sleep(60)
+        # Wait for the success toast
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+            (By.XPATH, "//span[contains(text(),'Success')]")))
+        logging.info("Got the success toast")
+
 
     options = Options()
     options.add_extension("Phantom.crx")
@@ -264,10 +271,13 @@ def withdraw(values):
             By.XPATH, "//button[contains(text(),'Approve')]")
         logging.info("Clicking approve")
         approve.click()
+
         driver.switch_to.window(main_window)
 
-        # Sleep to see the result
-        time.sleep(20)
+        # Wait for the success toast
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+            (By.XPATH, "//span[contains(text(),'Success')]")))
+        logging.info("Got the success toast")
 
     options = Options()
     options.add_extension("Phantom.crx")
