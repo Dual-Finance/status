@@ -116,14 +116,15 @@ def my_executions(symbol):
     nonce = "123456"
     # Last 5 minutes
     start_time = int(time.time() * 1_000) - 300_000
+    limit = 100
 
-    request = f"nonce={nonce}&start_time={start_time}&symbol={symbol}"
+    request = f"nonce={nonce}&limit={limit}&start_time={start_time}&symbol={symbol}"
 
     signature = hmac.new(
         bytes(API_SECRET, 'utf-8'),
         msg=bytes(request, 'utf-8'),
         digestmod=hashlib.sha256).hexdigest().upper()
-    url = url + f"?nonce={nonce}&signature={signature}&symbol={symbol}&start_time={start_time}&x-mbx-apikey={API_KEY}"
+    url = url + f"?nonce={nonce}&signature={signature}&limit={limit}&symbol={symbol}&start_time={start_time}&x-mbx-apikey={API_KEY}"
 
     response = requests.get(url, headers=headers)
     assert response.ok
