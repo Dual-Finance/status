@@ -205,6 +205,8 @@ def run_test():
     current_positions = my_positions()
 
     assert current_positions["USDC"] == previous_positions["USDC"] - dip.SOL_TRADE_SIZE * PRICE
+    if execution_symbol not in previous_positions.keys():
+        previous_positions[execution_symbol] = 0.0
     assert current_positions[execution_symbol] == previous_positions[execution_symbol] + dip.SOL_TRADE_SIZE
 
 
