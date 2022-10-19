@@ -68,7 +68,7 @@ export const Tests = () => {
       createRowParams(
         'Website',
         'Webdriver',
-        'https://github.com/Dual-Finance/dual-status/actions/workflows/ci-deposit.yml/badge.svg'
+        'https://github.com/Dual-Finance/status/actions/workflows/ci-webdriver.yml/badge.svg'
       ),
     ];
   };
