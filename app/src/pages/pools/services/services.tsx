@@ -4,8 +4,6 @@ export const Services = () => {
   // @ts-ignore
   useEffect(() => {}, []);
 
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   return (
     <>
       {/* @ts-ignore */}
