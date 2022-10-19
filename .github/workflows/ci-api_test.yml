@@ -1,0 +1,22 @@
+name: DIP Webdriver
+on:
+  schedule:
+  - cron: "0 12 * * *"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.13' 
+      - name: 'Run Test'
+        run: |
+          pip install -r requirements.txt
+          python api_test.py --url="https://dev.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SEED: ${{ secrets.SEED }}
+        shell: bash
