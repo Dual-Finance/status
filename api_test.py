@@ -165,6 +165,8 @@ def run_test():
         order = create_order(symbol['symbol'])
 
     my_active_orders = my_orders()
+    logging.info("There are %d active orders and expected %d", len(my_active_orders), len(symbols))
+
     assert len(my_active_orders) == len(symbols)
 
     previous_positions = my_positions()
@@ -204,6 +206,7 @@ def run_test():
 
     current_positions = my_positions()
 
+    logging.info("Previous USDC position %d, trade: %f, price: %d", previous_positions["USDC"], dip.SOL_TRADE_SIZE, PRICE)
     assert current_positions["USDC"] == previous_positions["USDC"] - dip.SOL_TRADE_SIZE * PRICE
     if execution_symbol not in previous_positions.keys():
         previous_positions[execution_symbol] = 0.0
