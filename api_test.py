@@ -207,7 +207,7 @@ def run_test():
     current_positions = my_positions()
 
     logging.info("Previous USDC position %f, trade: %f, price: %d", previous_positions["USDC"], dip.SOL_TRADE_SIZE, PRICE)
-    assert current_positions["USDC"] == previous_positions["USDC"] - dip.SOL_TRADE_SIZE * PRICE
+    assert abs(current_positions["USDC"] - (previous_positions["USDC"] - dip.SOL_TRADE_SIZE * PRICE)) < .0001
     if execution_symbol not in previous_positions.keys():
         previous_positions[execution_symbol] = 0.0
     assert abs(current_positions[execution_symbol] - (previous_positions[execution_symbol] + dip.SOL_TRADE_SIZE)) < .0001
