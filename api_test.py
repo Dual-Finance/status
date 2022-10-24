@@ -18,7 +18,7 @@ headers = {
     'X-MBX-APIKEY': API_KEY,
 }
 BASE_URL = "https://dev.api.dual.finance"
-PRICE = 10
+PRICE = .2
 
 def get_symbols():
     '''Gets all symbols in the symbols table'''
@@ -27,7 +27,11 @@ def get_symbols():
     response = requests.get(url, headers=headers)
     assert response.ok
     logging.info("Symbols: %s", str(response.json()))
-    return json.loads(response.text)
+    result = json.loads(response.text)
+
+    # TODO: Remove this hack once all DIPs have a pricing object made
+    result = [x for x in result if x['symbol'] != "SOL,USDC,2022-10-28,35000000,UPSIDE,E,P"]
+    return result
 
 
 def create_order(symbol):
@@ -199,8 +203,11 @@ def run_test():
             execution_symbol = execution[0]['symbol']
             num_executions += 1
             logging.info("Execution symbol was %s", symbol['symbol'])
+            break
 
-    assert num_executions == 1
+    # More than 1 can happen if multiple trades are happening in the shared
+    # environment
+    assert num_executions >= 1
 
     assert execution_symbol is not None
 
