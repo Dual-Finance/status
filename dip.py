@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 SOL_TRADE_SIZE = .05
+HEADLESS = True
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
@@ -113,6 +114,7 @@ def select_wallet(driver, main_window):
     phantom = driver.find_element(
         By.XPATH, "//button[span[contains(text(), 'Phantom')]]")
     logging.info("Clicking phantom")
+    time.sleep(2)
     phantom.click()
 
     original_window = driver.current_window_handle
@@ -208,7 +210,8 @@ def deposit(values):
     options = Options()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
-    options.add_argument("--headless=chrome")
+    if HEADLESS:
+        options.add_argument("--headless=chrome")
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
@@ -229,6 +232,7 @@ def deposit(values):
         logging.info('Selecting DIP')
         token = values[3] if len(values) >= 4 else None
         select_dip(token)
+        driver.close()
     except (TimeoutException, ElementClickInterceptedException) as error:
         logging.info('Error. Saving screenshot')
 
@@ -282,7 +286,8 @@ def withdraw(values):
     options = Options()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
-    options.add_argument("--headless=chrome")
+    if HEADLESS:
+        options.add_argument("--headless=chrome")
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
@@ -303,6 +308,8 @@ def withdraw(values):
         driver.get(values[0] + '/balance')
         logging.info('Doing withdraw')
         do_withdraw()
+
+        driver.close()
     except (TimeoutException, ElementClickInterceptedException) as error:
         logging.info('Error. Saving screenshot')
         driver.save_screenshot('screenshot.png')
