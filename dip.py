@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-SOL_TRADE_SIZE = .05
+SOL_TRADE_SIZE = .5
 HEADLESS = True
 
 def init_wallet(driver, phrase, password):
@@ -150,6 +150,8 @@ def deposit(values):
         logging.info("Clicking Stake")
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
+        # Wait for the wallet to connect
+        time.sleep(5)
         stake = driver.find_element(
             By.XPATH, "//button[div[contains(text(), 'Stake')]]")
         stake.click()
@@ -174,6 +176,7 @@ def deposit(values):
         disclaimer = driver.find_element(
             By.XPATH, "//span[@class=\"ant-checkbox\"]")
         logging.info("Clicking checkbox")
+        time.sleep(1)
         disclaimer.click()
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
@@ -183,8 +186,11 @@ def deposit(values):
             By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
         )
         logging.info("Clicking stake")
+        time.sleep(1)
         stake.click()
+        logging.info("Done clicking stake")
 
+        time.sleep(1)
         original_window = driver.current_window_handle
         WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
         for window_handle in driver.window_handles:
@@ -193,13 +199,16 @@ def deposit(values):
                 driver.switch_to.window(window_handle)
                 break
 
+        time.sleep(1)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Approve')]")))
         approve = driver.find_element(
             By.XPATH, "//button[contains(text(),'Approve')]")
         logging.info("Clicking approve")
         approve.click()
+        time.sleep(1)
         driver.switch_to.window(main_window)
+        time.sleep(1)
 
         # Wait for the success toast
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
