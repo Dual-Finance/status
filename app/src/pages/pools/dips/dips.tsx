@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import c from 'classnames';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
 import { parsePriceData } from '@pythnetwork/client';
 // @ts-ignore
@@ -23,12 +22,8 @@ import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 
 export const Dips = (props: { network: string }) => {
-  const { publicKey: walletPublicKey } = useWallet();
   const wallet = useWallet();
   const { network } = props;
-
-  const [connection, setConnection] = useState<Connection | null>(null);
-  const [provider, setProvider] = useState<AnchorProvider | null>(null);
 
   // eslint-disable-next-line no-unused-vars
   const [priceAccounts, setPriceAccounts] = useState<DipParams[]>([]);
@@ -123,29 +118,7 @@ export const Dips = (props: { network: string }) => {
     };
 
     async function fetchData() {
-      if (!connection) {
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        // eslint-disable-next-line
-          const [_provider, _connection] = GetProvider(wallet, network);
-        setConnection(_connection);
-        return;
-      }
-      if (
-        !provider ||
-        // @ts-ignore
-        (walletPublicKey !== null &&
-          ((provider.wallet && !provider.wallet.publicKey) ||
-            (provider.wallet &&
-              provider.wallet.publicKey &&
-              provider.wallet.publicKey.toBase58() !== walletPublicKey.toBase58())))
-      ) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        // eslint-disable-next-line
-          const [_provider, _connection] = GetProvider(wallet, network);
-        setProvider(_provider);
-        return;
-      }
+      const [, connection] = GetProvider(wallet, network);
 
       const freshPrices = await refreshPrices(connection);
       if (freshPrices === undefined) {
@@ -292,7 +265,7 @@ export const Dips = (props: { network: string }) => {
     fetchData()
       .then()
       .catch((err) => console.error(err));
-  }, [walletPublicKey, connection, network, provider, wallet]);
+  }, [network, wallet]);
 
   const columns: ColumnsType<DipParams> = [
     {

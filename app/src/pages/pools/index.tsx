@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import styles from './Pools.module.scss';
 import { CurvedBackgroundWrapper } from '../../components/CurvedBackgroundWrapper/CurvedBackgroundWrapper';
@@ -33,10 +33,10 @@ export const Pools = () => {
   const handleNetworkChange = (newNetwork: string) => {
     if (newNetwork === 'devnet') {
       Config.isDev = true;
-      setNetwork('https://dual-rpc.com/devnet');
+      setNetwork(Config.apiUrl());
     } else {
       Config.isDev = false;
-      setNetwork('https://dual-rpc.com/mainnet');
+      setNetwork(Config.apiUrl());
     }
   };
 
