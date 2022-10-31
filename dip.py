@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-SOL_TRADE_SIZE = .5
+SOL_TRADE_SIZE = .1
 HEADLESS = True
 
 def init_wallet(driver, phrase, password):
@@ -152,8 +152,8 @@ def deposit(values):
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         # Wait for the wallet to connect
         time.sleep(5)
-        stake = driver.find_element(
-            By.XPATH, "//button[div[contains(text(), 'Stake')]]")
+        stake = driver.find_elements(
+            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
         stake.click()
 
         logging.info("Waiting for modal load")
@@ -241,6 +241,7 @@ def deposit(values):
         logging.info('Selecting DIP')
         token = values[3] if len(values) >= 4 else None
         select_dip(token)
+        time.sleep(100)
         driver.close()
     except (TimeoutException, ElementClickInterceptedException) as error:
         logging.info('Error. Saving screenshot')
