@@ -29,8 +29,6 @@ def get_symbols():
     logging.info("Symbols: %s", str(response.json()))
     result = json.loads(response.text)
 
-    # TODO: Remove this hack once all DIPs have a pricing object made
-    result = [x for x in result if x['symbol'] != "SOL,USDC,2022-10-28,35000000,UPSIDE,E,P"]
     return result
 
 
