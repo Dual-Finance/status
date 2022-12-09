@@ -153,7 +153,7 @@ def deposit(values):
         # Wait for the wallet to connect
         time.sleep(20)
         stake = driver.find_elements(
-            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
+            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[0]
         stake.click()
 
         logging.info("Waiting for modal load")
