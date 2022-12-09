@@ -151,7 +151,7 @@ def deposit(values):
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         # Wait for the wallet to connect
-        time.sleep(5)
+        time.sleep(20)
         stake = driver.find_elements(
             By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
         stake.click()
