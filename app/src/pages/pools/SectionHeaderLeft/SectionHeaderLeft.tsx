@@ -26,6 +26,7 @@ export const SectionHeaderLeft = ({
         <DualfiDropdown style={{ width: '179px' }} defaultValue="Dual Investment Pools" onChange={onChange}>
           <Option value="Dual Investment Pools">DIPs</Option>
           <Option value="Treasury">Treasury</Option>
+          <Option value="Liquidity">Liquidity</Option>
           <Option value="Services">Services</Option>
           <Option value="Tests">Tests</Option>
           <Option value="Transactions">Transactions</Option>
