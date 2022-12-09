@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 SOL_TRADE_SIZE = .1
-HEADLESS = False
+HEADLESS = True
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
@@ -153,7 +153,7 @@ def deposit(values):
         # Wait for the wallet to connect
         time.sleep(20)
         stake = driver.find_elements(
-            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[0]
+            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
         stake.click()
 
         logging.info("Waiting for modal load")
