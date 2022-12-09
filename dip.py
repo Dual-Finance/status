@@ -2,7 +2,7 @@
 import logging
 import time
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, ElementNotInteractableException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -206,12 +206,15 @@ def deposit(values):
             By.XPATH, "//button[contains(text(),'Approve')]")
         logging.info("Clicking approve")
         approve.click()
+        logging.info("Done clicking approve")
         time.sleep(1)
         driver.switch_to.window(main_window)
+        logging.info("Switched back to main window")
         time.sleep(1)
 
+        logging.info("Waiting for success toast")
         # Wait for the success toast
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//span[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
@@ -243,7 +246,7 @@ def deposit(values):
         select_dip(token)
         time.sleep(100)
         driver.close()
-    except (TimeoutException, ElementClickInterceptedException) as error:
+    except (TimeoutException, ElementClickInterceptedException, ElementNotInteractableException) as error:
         logging.info('Error. Saving screenshot')
 
         driver.save_screenshot('screenshot.png')
@@ -320,7 +323,7 @@ def withdraw(values):
         do_withdraw()
 
         driver.close()
-    except (TimeoutException, ElementClickInterceptedException) as error:
+    except (TimeoutException, ElementClickInterceptedException, ElementNotInteractableException) as error:
         logging.info('Error. Saving screenshot')
         driver.save_screenshot('screenshot.png')
 
