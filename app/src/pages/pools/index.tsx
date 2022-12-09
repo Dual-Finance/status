@@ -7,6 +7,7 @@ import { SectionHeaderLeft } from './SectionHeaderLeft/SectionHeaderLeft';
 import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
 import { Treasury } from './treasury/treasury';
+import { Liquidity } from './liquidity/liquidity';
 import { Tests } from './tests/tests';
 import { Services } from './services/services';
 import { Config } from '../../config/config';
@@ -15,6 +16,7 @@ export const Pools = () => {
   const tabs = [
     { label: 'DIPs', value: 'DIPs', disabled: false },
     { label: 'Treasury', value: 'Treasury', disabled: false },
+    { label: 'Liquidity', value: 'Liquidity', disabled: false },
     { label: 'Tests', value: 'Tests', disabled: false },
     { label: 'Services', value: 'Services', disabled: false },
   ];
@@ -50,6 +52,7 @@ export const Pools = () => {
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
+            {selectedProduct === 'Liquidity' && <Liquidity />}
             {selectedProduct === 'Tests' && <Tests />}
             {selectedProduct === 'Services' && <Services />}
           </>

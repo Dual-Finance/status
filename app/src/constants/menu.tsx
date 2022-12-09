@@ -15,4 +15,8 @@ export const menu = [
     title: <div data-tut="docs_menu">Docs</div>,
     path: '/docs',
   },
+  {
+    title: <div data-tut="dao_menu">Docs</div>,
+    path: '/dao',
+  },
 ];
