@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 SOL_TRADE_SIZE = .1
-HEADLESS = True
+HEADLESS = False
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
@@ -206,12 +206,15 @@ def deposit(values):
             By.XPATH, "//button[contains(text(),'Approve')]")
         logging.info("Clicking approve")
         approve.click()
+        logging.info("Done clicking approve")
         time.sleep(1)
         driver.switch_to.window(main_window)
+        logging.info("Switched back to main window")
         time.sleep(1)
 
+        logging.info("Waiting for success toast")
         # Wait for the success toast
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//span[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
