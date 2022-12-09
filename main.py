@@ -31,4 +31,4 @@ if __name__ == '__main__':
     dip.deposit(config)
 
     # Also try to do a withdraw
-    dip.withdraw(config)
+    # dip.withdraw(config)
