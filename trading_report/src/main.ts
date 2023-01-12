@@ -55,7 +55,9 @@ async function main() {
   const url = 'https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=361WP3Vtw2H4r3yjrbobZr4qJAGQdsnY5kdMsDdvc61n&address-type=open-orders&limit=10000'
   const response = await fetch(url);
   const trades = await response.json() as TradeResponse[];
-  console.log(trades);
+  const recentTrades = trades.filter((trade) => Date.parse(trade.block_datetime) / 1_000 > cutoffTime);
+  console.log(recentTrades);
+  console.log(recentTrades.length);
 }
 
 main();
