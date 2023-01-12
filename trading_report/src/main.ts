@@ -1,5 +1,8 @@
 import { Commitment, Connection, PublicKey } from '@solana/web3.js';
 import { parseTransaction } from './parseTransaction';
+import fetch from 'node-fetch';
+import { TradeResponse } from './types';
+import { STEP_SIZE } from './constants';
 
 async function main() {
   console.log('Analysis running', new Date().toUTCString());
@@ -34,30 +37,25 @@ async function main() {
   console.log('There are', signatures.length, 'signatures to process');
 
   // Sleep on each iter to stay safely below the 25/sec RPC throttling limit.
-  for (let i = 0; i < signatures.length / 10; ++i) {
-    const transactions = await connection.getTransactions(signatures.slice(10 * i, 10 * (i + 1)));
+  for (let i = 0; i < signatures.length / STEP_SIZE; ++i) {
+    const transactions = await connection.getTransactions(signatures.slice(STEP_SIZE * i, STEP_SIZE * (i + 1)));
     for (const transaction of transactions) {
       parseTransaction(transaction);
     }
-    console.log('Parsed', i * 10, 'transactions');
+    console.log('Parsed', i * STEP_SIZE, 'transactions');
     await new Promise(r => setTimeout(r, 1_000));
   }
 
   // CreateOrder: programIdIndex = 13
-  //const transactions = await connection.getTransactions(["5imVwvUMeibFkUtvCMjdD6KDbkgQdxKE3r892zB45zH8KEYe1Vcoetns3zmndS1mBWAoJ2o6sJdnxapcBtEyVWKZ"]);
+  // const transactions = await connection.getTransactions(["5imVwvUMeibFkUtvCMjdD6KDbkgQdxKE3r892zB45zH8KEYe1Vcoetns3zmndS1mBWAoJ2o6sJdnxapcBtEyVWKZ"]);
 
   // CancelOrder: programIdIndex = 7
-  const transactions = await connection.getTransactions(["JJXphDics5pvUAYCNrsgojtMuaEDVqNXAtQXUiXdpJuQ9kW6xm1k6hMixMJDLE4KpRo8xkx7yHZsMPgM1xUapd8"]);
-  parseTransaction(transactions[0]);
+  // const transactions = await connection.getTransactions(["JJXphDics5pvUAYCNrsgojtMuaEDVqNXAtQXUiXdpJuQ9kW6xm1k6hMixMJDLE4KpRo8xkx7yHZsMPgM1xUapd8"]);
 
-  // SettleFunds: programIdIndex = 8
-  //const transactions = await connection.getTransactions(["wCF9nh8w16pYnvZKe3acTHDJDUPSNdYoZiphMivAnZRa2ZNBpNqJHYezTKKBcpELWkhek5N4QxVVQqR8XAYKTED"]);
-
-  // ConsumeEvents: programIdIndex = 6
-  //const transactions = await connection.getTransactions(["3hL2mSRSy7dQtkkAegrqp8Dg7BqDMjWK2nuGVHKyS7MZJ7Lypb8XXeRxx5kaMKPgFAxp5pR5ZXroqy9XGHAzqm3p"]);
-
-  //console.log(transactions[0].meta);
-  //console.log(transactions[0].meta.innerInstructions[0].instructions);
+  const url = 'https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=361WP3Vtw2H4r3yjrbobZr4qJAGQdsnY5kdMsDdvc61n&address-type=open-orders&limit=10000'
+  const response = await fetch(url);
+  const trades = await response.json() as TradeResponse[];
+  console.log(trades);
 }
 
 main();
