@@ -60,10 +60,8 @@ async function main() {
   const totalSellsAmount = sells.map((trade) => trade.size).reduce(function(a, b) { return a + b; }, 0);
   const totalBuysAmount = buys.map((trade) => trade.size).reduce(function(a, b) { return a + b; }, 0);
 
-  console.log(`Sold ${totalSellsAmount} for ${totalSellsValue} avg ${totalSellsValue / (totalSellsAmount + .0000000001)}`);
-  console.log(`Bought ${totalBuysAmount} for ${totalBuysValue} avg ${totalBuysValue / (totalBuysAmount + .0000000001)}`);
-
-  console.log('Analysis done', new Date().toUTCString());
+  console.log(`Bought ${totalBuysAmount} for ${totalBuysValue / (totalBuysAmount + .0000000001)}, net notional: ${totalBuysValue} `);
+  console.log(`Sold ${totalSellsAmount} for ${totalSellsValue / (totalSellsAmount + .0000000001)}, net notional: ${totalSellsValue}`);
 
   const transactions: string[] = ["side,price,qty,time"];
   for (const sell of sells) {
@@ -77,6 +75,8 @@ async function main() {
       throw err;
     }
   });
+
+  console.log('Analysis done', new Date().toUTCString());
 }
 
 main();
