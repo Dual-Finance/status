@@ -1,9 +1,12 @@
-import { Commitment, Connection } from '@solana/web3.js';
+import { writeFile } from 'node:fs';
+import { Buffer } from 'node:buffer';
+import { Commitment, ConfirmedSignatureInfo, Connection } from '@solana/web3.js';
 import { Market } from '@project-serum/serum';
 import { parseTransaction } from './parseTransaction';
 import fetch from 'node-fetch';
 import { TradeResponse } from './types';
 import { OPENBOOK_BONK_MARKET_ID, OPENBOOK_FORK_ID, OPENBOOK_MNGO_MARKET_ID, STEP_SIZE, TRADING_ACCOUNT } from './constants';
+import { getSignatures } from './getSignatures';
 
 async function main() {
   console.log('Analysis running', new Date().toUTCString());
@@ -21,37 +24,28 @@ async function main() {
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
   const openOrdersAccount = openOrders[0].address;
 
-  let allSigObjs = [];
-  let sigObjs = await connection.getSignaturesForAddress(openOrdersAccount);
-
-  const currentTime = (new Date().getTime() / 1_000);
-  const cutoffTime = currentTime - 24 * 60 * 60;
-  while (true) {
-    await new Promise(r => setTimeout(r, 1_000));
-    allSigObjs = allSigObjs.concat(sigObjs);
-    if (sigObjs[sigObjs.length - 1].blockTime < cutoffTime) {
-      break;
-    }
-    console.log('Fetching more signatures');
-    sigObjs = await connection.getSignaturesForAddress(
-      openOrdersAccount,
-      {before: sigObjs[sigObjs.length - 1].signature}
-    );
-  }
-
-  // Trim to all signatures in the last 24 hours.
-  const signatures = allSigObjs.filter((sigObj) => sigObj.blockTime > cutoffTime).map((sigObj) => sigObj.signature).reverse();
+  const signatures = await getSignatures(connection, openOrdersAccount);
   console.log('There are', signatures.length, 'signatures to process');
 
+  let allLogs: string[] = ['instruction,price,side,qty,time'];
   // Sleep on each iter to stay safely below the 25/sec RPC throttling limit.
   for (let i = 0; i < signatures.length / STEP_SIZE; ++i) {
     const transactions = await connection.getTransactions(signatures.slice(STEP_SIZE * i, STEP_SIZE * (i + 1)));
     for (const transaction of transactions) {
-      parseTransaction(transaction);
+      allLogs = allLogs.concat(parseTransaction(transaction));
     }
     console.log('Parsed', i * STEP_SIZE, 'transactions');
     await new Promise(r => setTimeout(r, 1_000));
   }
+
+  writeFile('offers.csv', allLogs.join("\n"), (err) => {
+    if (err) {
+      throw err;
+    }
+  });
+
+  const currentTime = (new Date().getTime() / 1_000);
+  const cutoffTime = currentTime - 24 * 60 * 60;
 
   const url = `https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=${openOrdersAccount.toBase58()}&address-type=open-orders&limit=10000`
   const response = await fetch(url);
@@ -71,6 +65,19 @@ async function main() {
   console.log(`Bought ${totalBuysAmount} for ${totalBuysValue} avg ${totalBuysValue / (totalBuysAmount + .0000000001)}`);
 
   console.log('Analysis done', new Date().toUTCString());
+
+  const transactions: string[] = ["side,price,qty,time"];
+  for (const sell of sells) {
+    transactions.push(`${sell.side},${sell.price},${sell.size},${sell.block_datetime}`);
+  }
+  for (const buy of buys) {
+    transactions.push(`${buy.side},${buy.price},${buy.size},${buy.block_datetime}`);
+  }
+  writeFile('transactions.csv', transactions.join("\n"), (err) => {
+    if (err) {
+      throw err;
+    }
+  });
 }
 
 main();
