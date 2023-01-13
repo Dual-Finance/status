@@ -28,6 +28,14 @@ export class Config {
     return new PublicKey('So11111111111111111111111111111111111111112');
   }
 
+  static mngoMintPk(): PublicKey {
+    return new PublicKey('MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac');
+  }
+
+  static bonkMintPk(): PublicKey {
+    return new PublicKey('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263');
+  }
+
   static usdcMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM');
@@ -67,6 +75,8 @@ export class Config {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs': 'ETH',
       So11111111111111111111111111111111111111112: 'SOL',
+      MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac: 'MNGO',
+      DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: 'BONK',
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
     };
@@ -76,9 +86,11 @@ export class Config {
 
   static volMap(pk: string): number {
     const VOL_MAP = {
-      [Config.sobtcMintPk().toBase58()]: 0.5,
-      [Config.soethMintPk().toBase58()]: 0.6,
-      [Config.wsolMintPk().toBase58()]: 0.7,
+      [Config.sobtcMintPk().toBase58()]: 0.3,
+      [Config.soethMintPk().toBase58()]: 0.4,
+      [Config.wsolMintPk().toBase58()]: 0.5,
+      [Config.mngoMintPk().toBase58()]: 0.6,
+      [Config.bonkMintPk().toBase58()]: 1,
     };
     return VOL_MAP[pk];
   }
