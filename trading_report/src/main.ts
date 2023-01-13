@@ -1,11 +1,10 @@
 import { writeFile } from 'node:fs';
-import { Buffer } from 'node:buffer';
-import { Commitment, ConfirmedSignatureInfo, Connection } from '@solana/web3.js';
+import { Commitment, Connection } from '@solana/web3.js';
 import { Market } from '@project-serum/serum';
 import { parseTransaction } from './parseTransaction';
 import fetch from 'node-fetch';
 import { TradeResponse } from './types';
-import { OPENBOOK_BONK_MARKET_ID, OPENBOOK_FORK_ID, OPENBOOK_MNGO_MARKET_ID, STEP_SIZE, TRADING_ACCOUNT } from './constants';
+import { OPENBOOK_BONK_MARKET_ID, OPENBOOK_FORK_ID, OPENBOOK_MNGO_MARKET_ID, OPENBOOK_SOL_MARKET_ID, STEP_SIZE, TRADING_ACCOUNT } from './constants';
 import { getSignatures } from './getSignatures';
 
 async function main() {
