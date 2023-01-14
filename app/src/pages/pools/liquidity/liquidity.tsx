@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ColumnsType } from 'antd/lib/table';
 import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
+import Chart from './chart';
 
 export const Liquidity = () => {
   interface RowParams {
@@ -20,11 +21,6 @@ export const Liquidity = () => {
       url,
     };
   }
-
-  // @ts-ignore
-  useEffect(() => {
-    // https://github.com/Dual-Finance/dual-labs-dip/actions/workflows/ci-anchor_test.yml/badge.svg
-  }, []);
 
   const columns: ColumnsType<RowParams> = [
     {
@@ -54,12 +50,15 @@ export const Liquidity = () => {
   };
 
   return (
-    <DualfiTable
-      className={styles.balanceTable}
-      columns={columns}
-      pagination={{ pageSize: 5 }}
-      dataSource={getTableRows()}
-      scroll={{ x: true }}
-    />
+    <>
+      <DualfiTable
+        className={styles.balanceTable}
+        columns={columns}
+        pagination={{ pageSize: 5 }}
+        dataSource={getTableRows()}
+        scroll={{ x: true }}
+      />
+      <Chart />
+    </>
   );
 };
