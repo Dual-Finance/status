@@ -1,0 +1,22 @@
+name: Push commit
+on:
+  schedule:
+  - cron: "0 12 * * *"
+  workflow_dispatch:
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create report file
+        run: |
+          cd trading_report
+          yarn install
+          yarn run main
+          mv transactions.csv ../app/public/;  mv offers.csv ../app/public/
+      - name: Commit report
+        run: |
+          git config --global user.name 'DocDuala'
+          git config --global user.email 'britt@dual.finance'
+          git commit -am "Update trading results"
+          git push
