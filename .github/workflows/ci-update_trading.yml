@@ -1,4 +1,4 @@
-name: Push commit
+name: Update trading results
 on:
   schedule:
   - cron: "0 12 * * *"
