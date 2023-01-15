@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColumnsType } from 'antd/lib/table';
-import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
+import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
 

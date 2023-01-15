@@ -3,8 +3,8 @@ import { Tooltip } from 'antd';
 import { InfoCircleFilled } from '@ant-design/icons';
 import c from 'classnames';
 import styles from './InfoCard.module.scss';
-import { getTokenIconClass } from '../../../utils/utils';
-import { Button } from '../../../components/UI/Button/Button';
+import { getTokenIconClass } from '../../utils/utils';
+import { Button } from '../../components/UI/Button/Button';
 
 interface InfoCardProps {
   title: string;
