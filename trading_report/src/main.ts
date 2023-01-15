@@ -8,8 +8,8 @@ import { OPENBOOK_FORK_ID, STEP_SIZE, SYMBOL_TO_OPENBOOK_MARKET_ID, TRADING_ACCO
 import { getSignatures } from './getSignatures';
 
 async function main() {
-  const SYMBOL = 'BONK';
-  console.log('Analysis running', new Date().toUTCString());
+  const SYMBOL = process.env.SYMBOL;
+  console.log('Analysis running', new Date().toUTCString(), SYMBOL);
 
   const connection = new Connection(
     'https://floral-skilled-borough.solana-mainnet.discover.quiknode.pro/38cf24edefbebeb60eb7516eff40f076ac0823af/',
