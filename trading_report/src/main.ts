@@ -8,7 +8,7 @@ import { OPENBOOK_FORK_ID, STEP_SIZE, SYMBOL_TO_OPENBOOK_MARKET_ID, TRADING_ACCO
 import { getSignatures } from './getSignatures';
 
 async function main() {
-  const SYMBOL = process.env.SYMBOL;
+  const SYMBOL = process.env.SYMBOL ? process.env.SYMBOL : 'BONK';
   console.log('Analysis running', new Date().toUTCString(), SYMBOL);
 
   const connection = new Connection(
