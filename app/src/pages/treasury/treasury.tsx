@@ -5,7 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
 import { Config as MangoConfig, GroupConfig, MangoCache, MangoClient } from '@blockworks-foundation/mango-client';
-import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../../config/config';
+import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../config/config';
 import configFile from './ids.json';
 import {
   findProgramAddressWithMint,
@@ -13,8 +13,8 @@ import {
   getMultipleTokenAccounts,
   GetProvider,
   getTokenIconClass,
-} from '../../../utils/utils';
-import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
+} from '../../utils/utils';
+import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 
 export const Treasury = (props: { network: string }) => {

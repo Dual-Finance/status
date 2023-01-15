@@ -1,8 +1,8 @@
 import React from 'react';
 import Lottie, { Options } from 'react-lottie';
 import styles from './PageCutoff.module.scss';
-import pulseAnimationData from '../../../assets/price-pulse-animation-lottie.json';
-import { prettyFormatPrice } from '../../../utils/utils';
+import pulseAnimationData from '../../assets/price-pulse-animation-lottie.json';
+import { prettyFormatPrice } from '../../utils/utils';
 
 export const PageCutoff = ({ price, token }: { price: number; token: string }) => {
   const lottieOptions: Options = {

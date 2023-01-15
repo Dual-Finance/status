@@ -1,8 +1,8 @@
 import { Option } from 'antd/es/mentions';
 import React from 'react';
 import styles from './SectionHeaderLeft.module.scss';
-import { DualfiSwitcher } from '../../../components/UI/DualfiSwitcher';
-import { DualfiDropdown } from '../../../components/UI/DualfiDropdown/DualfiDropdown';
+import { DualfiSwitcher } from '../../components/UI/DualfiSwitcher';
+import { DualfiDropdown } from '../../components/UI/DualfiDropdown/DualfiDropdown';
 
 export const SectionHeaderLeft = ({
   onChange,

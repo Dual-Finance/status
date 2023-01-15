@@ -6,7 +6,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { parsePriceData } from '@pythnetwork/client';
 // @ts-ignore
 import * as bs from 'black-scholes';
-import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED, rfRate } from '../../../config/config';
+import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED, rfRate } from '../../config/config';
 import {
   findProgramAddressWithMintAndStrikeAndExpiration,
   getAssociatedTokenAddress,
@@ -17,8 +17,8 @@ import {
   optionTokenMintPk,
   parseDipState,
   prettyFormatPrice,
-} from '../../../utils/utils';
-import { DualfiTable } from '../../../components/UI/DualfiTable/DualfiTable';
+} from '../../utils/utils';
+import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 
 export const Dips = (props: { network: string }) => {
@@ -226,7 +226,13 @@ export const Dips = (props: { network: string }) => {
               const totalDeposits: number =
                 vaultSplTokenAccount !== null ? vaultSplTokenAccount.data.parsed.info.tokenAmount.uiAmount : 0;
 
-              if (totalDeposits === 0 && durationMs < 0) {
+              if (totalDeposits < 0.001 && durationMs < 0) {
+                // eslint-disable-next-line no-continue
+                continue;
+              }
+
+              // Do not display anything older than 30 days.
+              if (durationMs < -1_000 * 60 * 60 * 24 * 30) {
                 // eslint-disable-next-line no-continue
                 continue;
               }

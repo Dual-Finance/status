@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import styles from './Pools.module.scss';
-import { CurvedBackgroundWrapper } from '../../components/CurvedBackgroundWrapper/CurvedBackgroundWrapper';
-import { SectionSidebarWrapper } from '../../components/SectionSidebarWrapper/SectionSidebarWrapper';
+import { CurvedBackgroundWrapper } from '../components/CurvedBackgroundWrapper/CurvedBackgroundWrapper';
+import { SectionSidebarWrapper } from '../components/SectionSidebarWrapper/SectionSidebarWrapper';
 import { SectionHeaderLeft } from './SectionHeaderLeft/SectionHeaderLeft';
 import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
@@ -10,7 +10,7 @@ import { Treasury } from './treasury/treasury';
 import { Liquidity } from './liquidity/liquidity';
 import { Tests } from './tests/tests';
 import { Services } from './services/services';
-import { Config } from '../../config/config';
+import { Config } from '../config/config';
 
 export const Pools = () => {
   const tabs = [
