@@ -8,7 +8,7 @@ import { OPENBOOK_FORK_ID, STEP_SIZE, SYMBOL_TO_OPENBOOK_MARKET_ID, TRADING_ACCO
 import { getSignatures } from './getSignatures';
 
 async function main() {
-  const SYMBOL = 'SOL';
+  const SYMBOL = 'BONK';
   console.log('Analysis running', new Date().toUTCString());
 
   const connection = new Connection(
