@@ -8,3 +8,9 @@ export const OPENBOOK_BONK_MARKET_ID = new PublicKey('8PhnCfgqpgFM7ZJvttGdBVMXHu
 export const OPENBOOK_MNGO_MARKET_ID = new PublicKey('3NnxQvDcZXputNMxaxsGvqiKpqgPfSYXpNigZNFcknmD');
 export const OPENBOOK_SOL_MARKET_ID = new PublicKey('8BnEgHoWFysVcuFFX7QztDmzuH8r5ZFvyP3sYwn1XTh6');
 export const TRADING_ACCOUNT = new PublicKey('CkcJx7Uwgxck5zm3DqUp2N1ikkkoPn2wA8zf7oS4tFSZ');
+
+export const SYMBOL_TO_OPENBOOK_MARKET_ID = {
+    'MNGO': OPENBOOK_MNGO_MARKET_ID,
+    'SOL': OPENBOOK_SOL_MARKET_ID,
+    'BONK': OPENBOOK_BONK_MARKET_ID,
+}
