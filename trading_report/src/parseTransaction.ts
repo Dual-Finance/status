@@ -43,6 +43,7 @@ export function parseTransaction(transactionResponse: TransactionResponse): stri
             const _clientOrderId = buf.readBigUInt64LE(41);
             const _limit = buf.readUInt16LE(49);
 
+            // TODO: Normalize quantity to lotSize
             console.log(`NewOrder: price:${limitPrice}  side:${side}  amount:${maxCoinQty}  blockTime:${transactionResponse.blockTime}`);
             logs.push(`newOrder,${limitPrice},${side},${maxCoinQty},${transactionResponse.blockTime}`);
         }
