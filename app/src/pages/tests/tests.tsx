@@ -66,9 +66,25 @@ export const Tests = () => {
         'https://github.com/Dual-Finance/staking-options/actions/workflows/ci-soteria.yml/badge.svg'
       ),
       createRowParams(
+        'GSO',
+        'GSO Program',
+        'https://github.com/Dual-Finance/gso/actions/workflows/ci-anchor.yml/badge.svg'
+      ),
+      createRowParams('GSO', 'GSO Lint', 'https://github.com/Dual-Finance/gso/actions/workflows/ci-lint.yml/badge.svg'),
+      createRowParams(
+        'GSO',
+        'GSO Soteria',
+        'https://github.com/Dual-Finance/gso/actions/workflows/ci-soteria.yml/badge.svg'
+      ),
+      createRowParams(
         'Website',
         'Webdriver',
         'https://github.com/Dual-Finance/status/actions/workflows/ci-webdriver.yml/badge.svg'
+      ),
+      createRowParams(
+        'API',
+        'API Test',
+        'https://github.com/Dual-Finance/status/actions/workflows/ci-api_test.yml/badge.svg'
       ),
     ];
   };
@@ -77,7 +93,7 @@ export const Tests = () => {
     <DualfiTable
       className={styles.balanceTable}
       columns={columns}
-      pagination={{ pageSize: 5 }}
+      pagination={{ pageSize: 15 }}
       dataSource={getTableRows()}
       scroll={{ x: true }}
     />
