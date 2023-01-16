@@ -135,8 +135,8 @@ export const Treasury = (props: { network: string }) => {
       );
       allAccounts.push(
         createAccountParams(
-          'Router',
-          'Router',
+          'OptionValut',
+          'Option Vault',
           Config.usdcMintPk(),
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
@@ -147,7 +147,7 @@ export const Treasury = (props: { network: string }) => {
       allAccounts.push(
         createAccountParams(
           'RiskManager_USDC',
-          'RiskManager_USDC',
+          'Risk Manager USDC',
           Config.usdcMintPk(),
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
@@ -158,7 +158,7 @@ export const Treasury = (props: { network: string }) => {
       allAccounts.push(
         createAccountParams(
           'RiskManager_MNGO',
-          'RiskManager_MNGO',
+          'Risk Manager MNGO',
           Config.mngoMintPk(),
           tokenAccounts.array[4] !== undefined
             ? (tokenAccounts.array[4].data.parsed.info.tokenAmount.uiAmount as number)
@@ -169,7 +169,7 @@ export const Treasury = (props: { network: string }) => {
       allAccounts.push(
         createAccountParams(
           'RiskManager_WSOL',
-          'RiskManager_WSOL',
+          'Risk Manager WSOL',
           Config.wsolMintPk(),
           tokenAccounts.array[5] !== undefined
             ? (tokenAccounts.array[5].data.parsed.info.tokenAmount.uiAmount as number)
@@ -180,7 +180,7 @@ export const Treasury = (props: { network: string }) => {
       allAccounts.push(
         createAccountParams(
           'RiskManager_Bonk',
-          'RiskManager_Bonk',
+          'Risk Manager Bonk',
           Config.bonkMintPk(),
           tokenAccounts.array[6] !== undefined
             ? (tokenAccounts.array[6].data.parsed.info.tokenAmount.uiAmount as number)
@@ -223,7 +223,7 @@ export const Treasury = (props: { network: string }) => {
       render: (_, data) => {
         return (
           <div className={styles.premiumCell}>
-            {data.amount}
+            {data.amount.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
