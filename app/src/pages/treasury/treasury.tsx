@@ -9,7 +9,6 @@ import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../config/con
 import configFile from './ids.json';
 import {
   findProgramAddressWithMint,
-  getAssociatedTokenAddress,
   getMultipleTokenAccounts,
   GetProvider,
   getTokenIconClass,
@@ -91,31 +90,23 @@ export const Treasury = (props: { network: string }) => {
         Config.usdcMintPk(),
         dualMarketProgramID
       );
-      const testingSol = await getAssociatedTokenAddress(
-        Config.wsolMintPk(),
-        new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
-      );
-      const testingBtc = await getAssociatedTokenAddress(
-        Config.sobtcMintPk(),
-        new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
-      );
-      const testingEth = await getAssociatedTokenAddress(
-        Config.soethMintPk(),
-        new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
-      );
-      const testingUsdc = await getAssociatedTokenAddress(
-        Config.usdcMintPk(),
-        new PublicKey('8mWfNJi2iwZmfw1Vy4bLDPiGB58EyWYemHS6x5n6q1Y7')
-      );
+      const daoUsdc = new PublicKey('7bg4qdKinKMSaii2FY68GwoLCFtnaAP8RjxvhseAgmoF');
+      const routerUsdc = new PublicKey('BxDV9eHWFvR1PiYGQbbf9njnmK9CAHMNkt2Nd4TV28up');
+      const riskManagerUsdc = new PublicKey('2gyJ4SZyQtUEXCLRa459nbWaFzuN8uvyoUsVb7xmpkh1');
+      const riskManagerMngo = new PublicKey('4zzgXnhfwdtASw9JugEyrPSKzvaN8i2WSDm1bnGiHFcK');
+      const riskManagerWsol = new PublicKey('9EaYbxzU1YJwJojKsKp3U38PBy5aqcN2KS9Xc8hAxZB7');
+      const riskManagerBonk = new PublicKey('D8yD6us5X7YNeweppFdBR4idGsyPooetuW2fA6Suabqg');
 
       const tokenAccounts = await getMultipleTokenAccounts(
         connection,
         [
           premiumUsdc.toBase58(),
-          testingSol.toBase58(),
-          testingBtc.toBase58(),
-          testingEth.toBase58(),
-          testingUsdc.toBase58(),
+          daoUsdc.toBase58(),
+          routerUsdc.toBase58(),
+          riskManagerUsdc.toBase58(),
+          riskManagerMngo.toBase58(),
+          riskManagerWsol.toBase58(),
+          riskManagerBonk.toBase58(),
         ],
         'confirmed'
       );
@@ -133,46 +124,68 @@ export const Treasury = (props: { network: string }) => {
       );
       allAccounts.push(
         createAccountParams(
-          'TESTING_SOL',
-          'TESTING',
-          Config.wsolMintPk(),
+          'DAO_USDC',
+          'DAO',
+          Config.usdcMintPk(),
           tokenAccounts.array[1] !== undefined
             ? (tokenAccounts.array[1].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
-          testingSol
+          daoUsdc
         )
       );
       allAccounts.push(
         createAccountParams(
-          'TESTING_BTC',
-          'TESTING',
-          Config.sobtcMintPk(),
+          'OptionValut',
+          'Option Vault',
+          Config.usdcMintPk(),
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
-          testingBtc
+          routerUsdc
         )
       );
       allAccounts.push(
         createAccountParams(
-          'TESTING_ETH',
-          'TESTING',
-          Config.soethMintPk(),
+          'RiskManager_USDC',
+          'Risk Manager USDC',
+          Config.usdcMintPk(),
           tokenAccounts.array[3] !== undefined
             ? (tokenAccounts.array[3].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
-          testingEth
+          riskManagerUsdc
         )
       );
       allAccounts.push(
         createAccountParams(
-          'TESTING_USDC',
-          'TESTING',
-          Config.usdcMintPk(),
+          'RiskManager_MNGO',
+          'Risk Manager MNGO',
+          Config.mngoMintPk(),
           tokenAccounts.array[4] !== undefined
             ? (tokenAccounts.array[4].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
-          testingUsdc
+          riskManagerMngo
+        )
+      );
+      allAccounts.push(
+        createAccountParams(
+          'RiskManager_WSOL',
+          'Risk Manager WSOL',
+          Config.wsolMintPk(),
+          tokenAccounts.array[5] !== undefined
+            ? (tokenAccounts.array[5].data.parsed.info.tokenAmount.uiAmount as number)
+            : 0,
+          riskManagerWsol
+        )
+      );
+      allAccounts.push(
+        createAccountParams(
+          'RiskManager_Bonk',
+          'Risk Manager Bonk',
+          Config.bonkMintPk(),
+          tokenAccounts.array[6] !== undefined
+            ? (tokenAccounts.array[6].data.parsed.info.tokenAmount.uiAmount as number)
+            : 0,
+          riskManagerBonk
         )
       );
 
@@ -184,9 +197,9 @@ export const Treasury = (props: { network: string }) => {
       const mangoAccountPk = new PublicKey('9AuFG7jBEpNM83DkxV6yadhqGnyna6GL9AaYH1CSnQfX');
       const mangoAccount = await mangoClient.getMangoAccount(mangoAccountPk, mangoGroup.dexProgramId);
       const mangoHealth = mangoAccount.getHealth(mangoGroup, mangoCache, 'Maint').toNumber();
+      // eslint-disable-next-line
       const readableMangoHealth = Math.floor(mangoHealth) / 1_000_000;
-      // TODO: Get a mango logo so it is not confused with actual USDC
-      allAccounts.push(createAccountParams('MANGO', 'MANGO', Config.usdcMintPk(), readableMangoHealth, mangoAccountPk));
+      // allAccounts.push(createAccountParams('MANGO', 'MANGO', Config.usdcMintPk(), readableMangoHealth, mangoAccountPk));
       setPriceAccounts(allAccounts);
     }
 
@@ -200,14 +213,7 @@ export const Treasury = (props: { network: string }) => {
       title: 'Name',
       dataIndex: 'name',
       render: (_, data) => {
-        return data.name;
-      },
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      render: (_, data) => {
-        return data.address.toBase58();
+        return <a href={`https://explorer.solana.com/address/${data.address.toBase58()}`}>{data.name}</a>;
       },
     },
     {
@@ -217,7 +223,7 @@ export const Treasury = (props: { network: string }) => {
       render: (_, data) => {
         return (
           <div className={styles.premiumCell}>
-            {data.amount}
+            {data.amount.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
           </div>
         );
