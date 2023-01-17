@@ -1,69 +1,119 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.8",
   "name": "staking_options",
   "instructions": [
     {
-      "name": "sosConfigureStakingOptionsStateV1",
+      "name": "addTokens",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "state",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "State holding all the data for the intended stake."
+          ]
+        },
+        {
+          "name": "baseVault",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Where the base tokens are going to be held. Controlled by this program."
+          ]
+        },
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Where the additional tokens are coming from."
+          ]
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "numTokensToAdd",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "config",
       "accounts": [
         {
           "name": "authority",
           "isMut": true,
-          "isSigner": true
+          "isSigner": true,
+          "docs": [
+            "Does not have to match the authority for the SO State, but it can."
+          ]
         },
         {
-          "name": "stakingOptionsState",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "projectTokenMint",
+          "name": "soAuthority",
           "isMut": false,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "The authority that will be required for issuing and withdrawing."
+          ]
         },
         {
-          "name": "projectTokenAccount",
+          "name": "state",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "State holding all the data for the stake that the staker wants to do."
+          ]
         },
         {
-          "name": "projectTokenVault",
+          "name": "baseVault",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the base tokens are going to be held."
+          ]
         },
         {
-          "name": "stakedTokenVault",
+          "name": "baseAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the tokens are coming from."
+          ]
         },
         {
-          "name": "xprojectMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "optionMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "vaultOptionAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "treasuryOptionAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "usdcMint",
+          "name": "quoteAccount",
           "isMut": false,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Saved for later. Not used. TokenAccount instead of AccountInfo in order",
+            "to get the anchor type checking."
+          ]
         },
         {
-          "name": "usdcVaultAccount",
-          "isMut": true,
-          "isSigner": false
+          "name": "baseMint",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Mint of base tokens."
+          ]
+        },
+        {
+          "name": "quoteMint",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Mint of quote tokens. Needed for storing the number of decimals."
+          ]
         },
         {
           "name": "tokenProgram",
@@ -83,19 +133,7 @@
       ],
       "args": [
         {
-          "name": "periodNum",
-          "type": "u64"
-        },
-        {
           "name": "optionExpiration",
-          "type": "u64"
-        },
-        {
-          "name": "numTokensInPeriod",
-          "type": "u64"
-        },
-        {
-          "name": "lockupRatioTokensPerMillion",
           "type": "u64"
         },
         {
@@ -103,91 +141,93 @@
           "type": "u64"
         },
         {
-          "name": "strikePrice",
+          "name": "numTokens",
           "type": "u64"
         },
         {
-          "name": "projectName",
+          "name": "lotSize",
+          "type": "u64"
+        },
+        {
+          "name": "soName",
           "type": "string"
         }
       ]
     },
     {
-      "name": "sosCloseStakingOptionsStateV1",
+      "name": "exercise",
       "accounts": [
         {
           "name": "authority",
-          "isMut": true,
+          "isMut": false,
           "isSigner": true
         },
         {
-          "name": "stakingOptionsState",
+          "name": "state",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "State holding all the data for the stake that the staker wants to do."
+          ]
         },
         {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "sosStakeV1",
-      "accounts": [
-        {
-          "name": "authority",
+          "name": "userSoAccount",
           "isMut": true,
-          "isSigner": true
+          "isSigner": false,
+          "docs": [
+            "Where the SO are coming from."
+          ]
         },
         {
-          "name": "stakerProjectTokenAccount",
+          "name": "optionMint",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Mint is needed to burn the options."
+          ]
         },
         {
-          "name": "stakedTokenVault",
+          "name": "userQuoteAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the payment is coming from."
+          ]
         },
         {
-          "name": "vaultOptionAccount",
+          "name": "projectQuoteAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the payment is going"
+          ]
         },
         {
-          "name": "stakerOptionTokenAccount",
+          "name": "feeQuoteAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the fee is going"
+          ]
         },
         {
-          "name": "xprojectMint",
+          "name": "baseVault",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "The base token location for this SO."
+          ]
         },
         {
-          "name": "stakerXprojectTokenAccount",
+          "name": "userBaseAccount",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakingOptionsState",
-          "isMut": false,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the base tokens are going."
+          ]
         },
         {
           "name": "tokenProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
           "isMut": false,
           "isSigner": false
         }
@@ -196,11 +236,15 @@
         {
           "name": "amount",
           "type": "u64"
+        },
+        {
+          "name": "strike",
+          "type": "u64"
         }
       ]
     },
     {
-      "name": "sosInitStakeV1",
+      "name": "initStrike",
       "accounts": [
         {
           "name": "authority",
@@ -208,33 +252,13 @@
           "isSigner": true
         },
         {
-          "name": "stakingOptionsState",
-          "isMut": false,
+          "name": "state",
+          "isMut": true,
           "isSigner": false
         },
         {
           "name": "optionMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "stakerOptionTokenAccount",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "xprojectMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "stakerXprojectTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "associatedTokenProgram",
-          "isMut": false,
           "isSigner": false
         },
         {
@@ -253,61 +277,15 @@
           "isSigner": false
         }
       ],
-      "args": []
-    },
-    {
-      "name": "sosUnstakeV1",
-      "accounts": [
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "stakingOptionsState",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "xprojectMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakerXprojectTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakerProjectTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakedTokenVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
       "args": [
         {
-          "name": "amount",
+          "name": "strike",
           "type": "u64"
         }
       ]
     },
     {
-      "name": "sosExerciseV1",
+      "name": "initStrikeWithPayer",
       "accounts": [
         {
           "name": "authority",
@@ -315,8 +293,13 @@
           "isSigner": true
         },
         {
-          "name": "stakingOptionsState",
-          "isMut": false,
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "state",
+          "isMut": true,
           "isSigner": false
         },
         {
@@ -325,37 +308,56 @@
           "isSigner": false
         },
         {
-          "name": "stakerOptionTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakerProjectTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "projectTokenVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "stakerUsdcTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "usdcVaultAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false
         },
         {
           "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "strike",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "issue",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "state",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "optionMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userSoAccount",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Where the options will be sent."
+          ]
+        },
+        {
+          "name": "tokenProgram",
           "isMut": false,
           "isSigner": false
         }
@@ -364,34 +366,49 @@
         {
           "name": "amount",
           "type": "u64"
+        },
+        {
+          "name": "strike",
+          "type": "u64"
         }
       ]
     },
     {
-      "name": "sosWithdrawProjectTokensV1",
+      "name": "nameToken",
       "accounts": [
         {
           "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "payer",
           "isMut": true,
           "isSigner": true
         },
         {
-          "name": "stakingOptionsState",
+          "name": "state",
           "isMut": false,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "State holding all the data for the stake that the staker wants to do."
+          ]
         },
         {
-          "name": "projectTokenVault",
+          "name": "optionMint",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Mint of base tokens."
+          ]
+        },
+        {
+          "name": "optionMintMetadataAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "projectTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenProgram",
+          "name": "tokenMetadataProgram",
           "isMut": false,
           "isSigner": false
         },
@@ -399,12 +416,22 @@
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "strike",
+          "type": "u64"
+        }
+      ]
     },
     {
-      "name": "sosWithdrawUsdcV1",
+      "name": "withdraw",
       "accounts": [
         {
           "name": "authority",
@@ -412,19 +439,28 @@
           "isSigner": true
         },
         {
-          "name": "stakingOptionsState",
-          "isMut": false,
-          "isSigner": false
+          "name": "state",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "State holding all the data for the stake that the staker wants to do."
+          ]
         },
         {
-          "name": "projectUsdcTokenAccount",
+          "name": "baseVault",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "The base token location"
+          ]
         },
         {
-          "name": "usdcVaultAccount",
+          "name": "baseAccount",
           "isMut": true,
-          "isSigner": false
+          "isSigner": false,
+          "docs": [
+            "Where the tokens are getting returned to"
+          ]
         },
         {
           "name": "tokenProgram",
@@ -442,12 +478,20 @@
   ],
   "accounts": [
     {
-      "name": "StakingOptionsStateV1",
+      "name": "State",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "periodNum",
+            "name": "soName",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "optionsAvailable",
             "type": "u64"
           },
           {
@@ -455,40 +499,46 @@
             "type": "u64"
           },
           {
-            "name": "numTokensInPeriod",
-            "type": "u64"
-          },
-          {
-            "name": "lockupRatioTokensPerMillion",
-            "type": "u64"
-          },
-          {
-            "name": "strikePrice",
-            "type": "u64"
-          },
-          {
             "name": "subscriptionPeriodEnd",
             "type": "u64"
           },
           {
-            "name": "projectTokenDecimals",
+            "name": "baseDecimals",
             "type": "u8"
           },
           {
-            "name": "projectTokenMint",
+            "name": "quoteDecimals",
+            "type": "u8"
+          },
+          {
+            "name": "baseMint",
             "type": "publicKey"
           },
           {
-            "name": "isActive",
-            "type": "bool"
-          },
-          {
-            "name": "projectName",
-            "type": "string"
-          },
-          {
-            "name": "authority",
+            "name": "quoteMint",
             "type": "publicKey"
+          },
+          {
+            "name": "quoteAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "lotSize",
+            "type": "u64"
+          },
+          {
+            "name": "stateBump",
+            "type": "u8"
+          },
+          {
+            "name": "vaultBump",
+            "type": "u8"
+          },
+          {
+            "name": "strikes",
+            "type": {
+              "vec": "u64"
+            }
           }
         ]
       }
@@ -497,66 +547,46 @@
   "errors": [
     {
       "code": 6000,
-      "name": "TokensStillLocked",
-      "msg": "Tokens are still locked until contract expiration"
+      "name": "WrongMint",
+      "msg": "The mint in the SO state did not match the token type being received"
     },
     {
       "code": 6001,
-      "name": "DepositExpirationInPast",
-      "msg": "The expiration for the attempted deposit has already happened"
+      "name": "Expired",
+      "msg": "Expired"
     },
     {
       "code": 6002,
-      "name": "ExerciseAfterExpiration",
-      "msg": "The expiration for the attempted exercise has already happened"
+      "name": "NotYetExpired",
+      "msg": "NotYetExpired"
     },
     {
       "code": 6003,
-      "name": "BackwardsLsoState",
-      "msg": "Attempted to rewind LSO State"
+      "name": "InvalidState",
+      "msg": "State did not match"
     },
     {
       "code": 6004,
-      "name": "NotEnoughTokensForLSO",
-      "msg": "Attempted to issue LSO without enough tokens to back it"
+      "name": "InvalidVault",
+      "msg": "Vault did not match"
     },
     {
       "code": 6005,
-      "name": "NotYetExpired",
-      "msg": "Attempted to perform an action for a vault not yet expired"
+      "name": "InvalidMint",
+      "msg": "Mint did not match"
     },
     {
       "code": 6006,
-      "name": "NotEnoughTokensForStaking",
-      "msg": "Attempted to stake without enough tokens to back it"
+      "name": "IncorrectFeeAccount",
+      "msg": "Account receiving fees does not match"
     },
     {
       "code": 6007,
-      "name": "NotAuthorized",
-      "msg": "Not authorized for withdraw"
-    },
-    {
-      "code": 6008,
-      "name": "ConfigureExpirationInPast",
-      "msg": "The expiration for the attempted SOS has already happened"
-    },
-    {
-      "code": 6009,
-      "name": "SOSInvalidInput",
-      "msg": "Input did not match the SOS state"
-    },
-    {
-      "code": 6010,
-      "name": "MissingAuthority",
-      "msg": "Missing authority"
-    },
-    {
-      "code": 6011,
-      "name": "LSOInvalidInput",
-      "msg": "Invalid account"
+      "name": "NotEnoughTokens",
+      "msg": "Not enough tokens to issue the SO"
     }
   ],
   "metadata": {
-    "address": "DuALd6fooWzVDkaTsQzDAxPGYCnLrnWamdNNTNxicdX8"
+    "address": "4yx1NJ4Vqf2zT1oVLk4SySBhhDJXmXFt88ncm4gPxtL7"
   }
 }
