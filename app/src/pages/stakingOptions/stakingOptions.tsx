@@ -29,7 +29,7 @@ export const StakingOptions = (props: { network: string }) => {
     authority: PublicKey;
     expiration: string;
     expirationInt: number;
-    strike: number;
+    strike: string;
     baseMint: PublicKey;
     quoteMint: PublicKey;
     remaining: number;
@@ -42,7 +42,7 @@ export const StakingOptions = (props: { network: string }) => {
     authority: PublicKey,
     expiration: string,
     expirationInt: number,
-    strike: number,
+    strike: string,
     baseMint: PublicKey,
     quoteMint: PublicKey,
     remaining: number,
@@ -128,9 +128,15 @@ export const StakingOptions = (props: { network: string }) => {
         const strikeQuoteAtomsPerLot = Number(strikes[0]);
         const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
         const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
-        const roundedStrike =
-          Math.round(strikeTokensPerToken * 10 ** Number(quoteDecimals)) / 10 ** Number(quoteDecimals);
-
+        let roundedStrike = '';
+        if (strikeTokensPerToken < 1) {
+          roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
+        } else {
+          roundedStrike = strikeTokensPerToken.toPrecision(4);
+        }
+        if (soName.toLowerCase().includes('Test-Sub-1	')) {
+          console.log(soName, strikeQuoteAtomsPerLot, strikeQuoteAtomsPerAtom, strikeTokensPerToken, roundedStrike);
+        }
         const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
         const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
@@ -182,7 +188,6 @@ export const StakingOptions = (props: { network: string }) => {
     {
       title: 'Strike',
       dataIndex: 'strike',
-      sorter: (a, b) => a.strike - b.strike,
       render: (strike) => {
         return strike;
       },
