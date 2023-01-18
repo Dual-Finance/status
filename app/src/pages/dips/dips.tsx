@@ -4,12 +4,12 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { ColumnsType } from 'antd/lib/table';
 import { parsePriceData } from '@pythnetwork/client';
+import { getAssociatedTokenAddress } from '@solana/spl-token';
 // @ts-ignore
 import * as bs from 'black-scholes';
 import { dualMarketProgramID, Config, VAULT_SPL_ACCOUNT_SEED, rfRate } from '../../config/config';
 import {
   findProgramAddressWithMintAndStrikeAndExpiration,
-  getAssociatedTokenAddress,
   getMultipleAccounts,
   getMultipleTokenAccounts,
   GetProvider,

@@ -10,7 +10,7 @@ import {
   TransactionInstruction,
 } from '@solana/web3.js';
 import { AnchorProvider, Wallet, web3, utils } from '@project-serum/anchor';
-import { ASSOCIATED_TOKEN_PROGRAM_ID, Token, TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import { ASSOCIATED_TOKEN_PROGRAM_ID, getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { TokenInstructions } from '@project-serum/serum';
 import { dualMarketProgramID, OPTION_MINT_ADDRESS_SEED, Config, VAULT_MINT_ADDRESS_SEED } from '../config/config';
 
@@ -33,6 +33,9 @@ export const formatDate = (date: number | Date): string => {
 };
 
 export const getTokenIconClass = (token: string): string => {
+  if (token === undefined) {
+    return '';
+  }
   return `${token.toLowerCase()}-icon`;
 };
 
@@ -178,10 +181,6 @@ export function toBytes(x: number): Uint8Array {
 }
 /* eslint-enable no-bitwise */
 /* eslint-enable no-plusplus */
-
-export async function getAssociatedTokenAddress(mintPk: PublicKey, owner: PublicKey) {
-  return Token.getAssociatedTokenAddress(ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, mintPk, owner);
-}
 
 export async function createTokenAccountInstrs(
   provider: AnchorProvider,
