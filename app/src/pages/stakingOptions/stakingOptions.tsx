@@ -110,7 +110,6 @@ export const StakingOptions = (props: { network: string }) => {
           lotSize,
         } = state;
         // @ts-ignore
-        console.log('STATE', state);
         const soMint = await stakingOptionsHelper.soMint(strikes[0], soName, new PublicKey(baseMint));
         let outstanding = 0;
         try {
