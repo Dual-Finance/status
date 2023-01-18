@@ -13,7 +13,8 @@ import {
 import { useEffect, useState } from 'react';
 import { readBids, readOffers, readTransactions } from './helpers';
 
-export default function Chart() {
+export default function Chart(props: { token: string }) {
+  const { token } = props;
   const [bids, setBids] = useState<LineMarkSeriesPoint[]>([]);
   const [offers, setOffers] = useState<LineMarkSeriesPoint[]>([]);
   const [buys, setBuys] = useState<LineMarkSeriesPoint[]>([]);
@@ -21,9 +22,9 @@ export default function Chart() {
 
   useEffect(() => {
     async function fetchData() {
-      const newOffers = await readOffers();
-      const newBids = await readBids();
-      const [newBuys, newSells] = await readTransactions();
+      const newOffers = await readOffers(token);
+      const newBids = await readBids(token);
+      const [newBuys, newSells] = await readTransactions(token);
       setOffers(newOffers);
       setBids(newBids);
       setBuys(newBuys);
@@ -35,7 +36,7 @@ export default function Chart() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token]);
 
   return (
     <div className="App">

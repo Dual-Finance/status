@@ -1,5 +1,6 @@
 import React from 'react';
 import { ColumnsType } from 'antd/lib/table';
+import { Typography } from '@mui/material';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
@@ -58,7 +59,18 @@ export const Liquidity = () => {
         dataSource={getTableRows()}
         scroll={{ x: true }}
       />
-      <Chart />
+      <Typography variant="h2" align="center">
+        BONK
+      </Typography>
+      <Chart token="BONK" />
+      <Typography variant="h2" align="center">
+        MNGO
+      </Typography>
+      <Chart token="MNGO" />
+      <Typography variant="h2" align="center">
+        SOL
+      </Typography>
+      <Chart token="SOL" />
     </>
   );
 };

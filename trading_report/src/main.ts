@@ -24,7 +24,7 @@ async function main() {
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
   const openOrdersAccount = openOrders[0].address;
 
-  const signatures = await getSignatures(connection, openOrdersAccount);
+  const signatures = [];
   console.log('There are', signatures.length, 'signatures to process');
 
   let allLogs: string[] = ['instruction,price,side,qty,time'];
@@ -92,7 +92,7 @@ async function main() {
     transactions.push(`buy,${buy.price},${buy.size},${buy.block_datetime}`);
   }
   for (const sell of jupSells) {
-    transactions.push(`sell,${sell.inAmountInDecimal / sell.outAmountInDecimal},${sell.inAmountInDecimal},${sell.timestamp}`);
+    transactions.push(`sell,${sell.outAmountInDecimal / sell.inAmountInDecimal},${sell.inAmountInDecimal},${sell.timestamp}`);
   }
   for (const buy of jupBuys) {
     transactions.push(`buy,${buy.inAmountInDecimal / buy.outAmountInDecimal},${buy.outAmountInDecimal},${buy.timestamp}`);
@@ -102,6 +102,8 @@ async function main() {
       throw err;
     }
   });
+
+  // TODO: Write out a report of trading
 
   console.log('Analysis done', new Date().toUTCString());
 }
