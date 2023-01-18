@@ -124,18 +124,14 @@ export const StakingOptions = (props: { network: string }) => {
         if (soName === 'SO') {
           continue;
         }
-
         const strikeQuoteAtomsPerLot = Number(strikes[0]);
         const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
         const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
         let roundedStrike = '';
-        if (strikeTokensPerToken < 1) {
+        if (Number(strikeTokensPerToken.toString().split('-')[1]) > 0) {
           roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
         } else {
-          roundedStrike = strikeTokensPerToken.toPrecision(4);
-        }
-        if (soName.toLowerCase().includes('Test-Sub-1	')) {
-          console.log(soName, strikeQuoteAtomsPerLot, strikeQuoteAtomsPerAtom, strikeTokensPerToken, roundedStrike);
+          roundedStrike = strikeTokensPerToken.toPrecision(3);
         }
         const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
         const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
