@@ -29,7 +29,7 @@ export const StakingOptions = (props: { network: string }) => {
     authority: PublicKey;
     expiration: string;
     expirationInt: number;
-    strike: number;
+    strike: string;
     baseMint: PublicKey;
     quoteMint: PublicKey;
     remaining: number;
@@ -42,7 +42,7 @@ export const StakingOptions = (props: { network: string }) => {
     authority: PublicKey,
     expiration: string,
     expirationInt: number,
-    strike: number,
+    strike: string,
     baseMint: PublicKey,
     quoteMint: PublicKey,
     remaining: number,
@@ -124,13 +124,15 @@ export const StakingOptions = (props: { network: string }) => {
         if (soName === 'SO') {
           continue;
         }
-
         const strikeQuoteAtomsPerLot = Number(strikes[0]);
         const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
         const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
-        const roundedStrike =
-          Math.round(strikeTokensPerToken * 10 ** Number(quoteDecimals)) / 10 ** Number(quoteDecimals);
-
+        let roundedStrike = '';
+        if (Number(strikeTokensPerToken.toString().split('-')[1]) > 0) {
+          roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
+        } else {
+          roundedStrike = strikeTokensPerToken.toPrecision(3);
+        }
         const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
         const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
@@ -170,6 +172,7 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Authority',
       dataIndex: 'authority',
       render: (authority) => {
+        // TODO Make copyable
         return `${authority.toBase58().substring(0, 4)}...`;
       },
     },
@@ -181,17 +184,28 @@ export const StakingOptions = (props: { network: string }) => {
     {
       title: 'Strike',
       dataIndex: 'strike',
-      sorter: (a, b) => a.strike - b.strike,
       render: (strike) => {
         return strike;
       },
     },
     {
-      title: 'Token',
+      title: 'Base',
       dataIndex: 'baseMint',
       render: (baseMint) => {
-        // TODO: If this is a known token, just use the logo
+        if (Config.pkToAsset(baseMint.toBase58()) !== undefined) {
+          return Config.pkToAsset(baseMint.toBase58());
+        }
         return `${baseMint.toBase58().substring(0, 4)}...`;
+      },
+    },
+    {
+      title: 'Quote',
+      dataIndex: 'quoteMint',
+      render: (quoteMint) => {
+        if (Config.pkToAsset(quoteMint.toBase58()) !== undefined) {
+          return Config.pkToAsset(quoteMint.toBase58());
+        }
+        return `${quoteMint.toBase58().substring(0, 4)}...`;
       },
     },
     {
@@ -201,7 +215,7 @@ export const StakingOptions = (props: { network: string }) => {
       render: (remaining, data) => {
         return (
           <>
-            {remaining}
+            {remaining.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
           </>
         );
@@ -214,7 +228,7 @@ export const StakingOptions = (props: { network: string }) => {
       render: (outstanding, data) => {
         return (
           <>
-            {outstanding}
+            {outstanding.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
           </>
         );
