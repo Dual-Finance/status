@@ -110,6 +110,7 @@ export const StakingOptions = (props: { network: string }) => {
           lotSize,
         } = state;
         // @ts-ignore
+        console.log('STATE', state);
         const soMint = await stakingOptionsHelper.soMint(strikes[0], soName, new PublicKey(baseMint));
         let outstanding = 0;
         try {
@@ -170,6 +171,7 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Authority',
       dataIndex: 'authority',
       render: (authority) => {
+        // TODO Make copyable
         return `${authority.toBase58().substring(0, 4)}...`;
       },
     },
@@ -187,11 +189,23 @@ export const StakingOptions = (props: { network: string }) => {
       },
     },
     {
-      title: 'Token',
+      title: 'Base',
       dataIndex: 'baseMint',
       render: (baseMint) => {
-        // TODO: If this is a known token, just use the logo
+        if (Config.pkToAsset(baseMint.toBase58()) !== undefined) {
+          return Config.pkToAsset(baseMint.toBase58());
+        }
         return `${baseMint.toBase58().substring(0, 4)}...`;
+      },
+    },
+    {
+      title: 'Quote',
+      dataIndex: 'quoteMint',
+      render: (quoteMint) => {
+        if (Config.pkToAsset(quoteMint.toBase58()) !== undefined) {
+          return Config.pkToAsset(quoteMint.toBase58());
+        }
+        return `${quoteMint.toBase58().substring(0, 4)}...`;
       },
     },
     {
@@ -201,7 +215,7 @@ export const StakingOptions = (props: { network: string }) => {
       render: (remaining, data) => {
         return (
           <>
-            {remaining}
+            {remaining.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
           </>
         );
@@ -214,7 +228,7 @@ export const StakingOptions = (props: { network: string }) => {
       render: (outstanding, data) => {
         return (
           <>
-            {outstanding}
+            {outstanding.toLocaleString()}
             <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
           </>
         );
