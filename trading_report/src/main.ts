@@ -22,6 +22,7 @@ async function main() {
     OPENBOOK_FORK_ID,
   );
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
+  // TODO: Parse multiple openOrders accounts if there are multiple
   const openOrdersAccount = openOrders[0].address;
 
   const signatures = await getSignatures(connection, openOrdersAccount);
