@@ -24,7 +24,7 @@ async function main() {
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
   const openOrdersAccount = openOrders[0].address;
 
-  const signatures = [];
+  const signatures = await getSignatures(connection, openOrdersAccount);
   console.log('There are', signatures.length, 'signatures to process');
 
   let allLogs: string[] = ['instruction,price,side,qty,time'];
