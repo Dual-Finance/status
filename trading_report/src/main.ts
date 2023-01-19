@@ -22,6 +22,7 @@ async function main() {
     OPENBOOK_FORK_ID,
   );
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
+  // TODO: Parse multiple openOrders accounts if there are multiple
   const openOrdersAccount = openOrders[0].address;
 
   const signatures = await getSignatures(connection, openOrdersAccount);
@@ -92,7 +93,7 @@ async function main() {
     transactions.push(`buy,${buy.price},${buy.size},${buy.block_datetime}`);
   }
   for (const sell of jupSells) {
-    transactions.push(`sell,${sell.inAmountInDecimal / sell.outAmountInDecimal},${sell.inAmountInDecimal},${sell.timestamp}`);
+    transactions.push(`sell,${sell.outAmountInDecimal / sell.inAmountInDecimal},${sell.inAmountInDecimal},${sell.timestamp}`);
   }
   for (const buy of jupBuys) {
     transactions.push(`buy,${buy.inAmountInDecimal / buy.outAmountInDecimal},${buy.outAmountInDecimal},${buy.timestamp}`);
@@ -102,6 +103,8 @@ async function main() {
       throw err;
     }
   });
+
+  // TODO: Write out a report of trading
 
   console.log('Analysis done', new Date().toUTCString());
 }

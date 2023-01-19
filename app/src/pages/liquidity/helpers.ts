@@ -1,10 +1,10 @@
 import { LineSeriesPoint } from 'react-vis';
 import * as Papa from 'papaparse';
 
-export async function readBids(): Promise<LineSeriesPoint[]> {
+export async function readBids(token: string): Promise<LineSeriesPoint[]> {
   const allData: LineSeriesPoint[] = [];
   let currentBid = 0;
-  const response = await fetch('./offers.csv');
+  const response = await fetch(`./${token.toLowerCase()}_offers.csv`);
   const responseText = await response.text();
   const data = Papa.parse(responseText);
   // eslint-disable-next-line no-restricted-syntax
@@ -35,10 +35,10 @@ export async function readBids(): Promise<LineSeriesPoint[]> {
   return allData;
 }
 
-export async function readOffers(): Promise<LineSeriesPoint[]> {
+export async function readOffers(token: string): Promise<LineSeriesPoint[]> {
   const allData: LineSeriesPoint[] = [];
   let currentBid = 0;
-  const response = await fetch('./offers.csv');
+  const response = await fetch(`./${token.toLowerCase()}_offers.csv`);
   const responseText = await response.text();
   const data = Papa.parse(responseText);
   // eslint-disable-next-line no-restricted-syntax
@@ -69,10 +69,10 @@ export async function readOffers(): Promise<LineSeriesPoint[]> {
   return allData;
 }
 
-export async function readTransactions(): Promise<LineSeriesPoint[][]> {
+export async function readTransactions(token: string): Promise<LineSeriesPoint[][]> {
   const allBuys: LineSeriesPoint[] = [];
   const allSells: LineSeriesPoint[] = [];
-  const response = await fetch('./transactions.csv');
+  const response = await fetch(`./${token.toLowerCase()}_transactions.csv`);
   const responseText = await response.text();
   const data = Papa.parse(responseText);
   // eslint-disable-next-line no-restricted-syntax

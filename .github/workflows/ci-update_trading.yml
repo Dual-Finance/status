@@ -12,8 +12,12 @@ jobs:
         run: |
           cd trading_report
           yarn install
-          yarn run main
-          mv transactions.csv ../app/public/;  mv offers.csv ../app/public/
+          SYMBOL=BONK yarn run main
+          mv transactions.csv ../app/public/bonk_transactions.csv;  mv offers.csv ../app/public/bonk_offers.csv
+          SYMBOL=MNGO yarn run main
+          mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
+          SYMBOL=SOL yarn run main
+          mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
       - name: Commit report
         run: |
           git config --global user.name 'DocDuala'
