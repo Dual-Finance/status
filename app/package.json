@@ -6,6 +6,7 @@
     "@ant-design/icons": "^4.7.0",
     "@blockworks-foundation/mango-client": "^3.6.19",
     "@craco/craco": "^6.4.3",
+    "@dual-finance/gso": "^0.0.11",
     "@dual-finance/staking-options": "^0.0.17",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",

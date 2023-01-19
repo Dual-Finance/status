@@ -12,11 +12,13 @@ import { Tests } from './tests/tests';
 import { Services } from './services/services';
 import { Config } from '../config/config';
 import { StakingOptions } from './stakingOptions/stakingOptions';
+import { Gso } from './gso/gso';
 
 export const Pools = () => {
   const tabs = [
     { label: 'DIPs', value: 'DIPs', disabled: false },
     { label: 'SO', value: 'SO', disabled: false },
+    { label: 'GSO', value: 'GSO', disabled: false },
     { label: 'Treasury', value: 'Treasury', disabled: false },
     { label: 'Liquidity', value: 'Liquidity', disabled: false },
     { label: 'Tests', value: 'Tests', disabled: false },
@@ -54,6 +56,7 @@ export const Pools = () => {
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'SO' && <StakingOptions network={network} />}
+            {selectedProduct === 'GSO' && <Gso network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
             {selectedProduct === 'Liquidity' && <Liquidity />}
             {selectedProduct === 'Tests' && <Tests />}
