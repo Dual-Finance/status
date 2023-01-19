@@ -1,0 +1,469 @@
+{
+  "version": "0.0.3",
+  "name": "gso",
+  "instructions": [
+    {
+      "name": "config",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "gsoState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soAuthority",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "SO Config",
+            "========="
+          ]
+        },
+        {
+          "name": "soState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soBaseVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soBaseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soQuoteAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soBaseMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soQuoteMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soOptionMint",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "SO Init Strike",
+            "========="
+          ]
+        },
+        {
+          "name": "stakingOptionsProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "xBaseMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "baseVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "periodNum",
+          "type": "u64"
+        },
+        {
+          "name": "lockupRatioTokensPerMillion",
+          "type": "u64"
+        },
+        {
+          "name": "lockupPeriodEnd",
+          "type": "u64"
+        },
+        {
+          "name": "optionExpiration",
+          "type": "u64"
+        },
+        {
+          "name": "subscriptionPeriodEnd",
+          "type": "u64"
+        },
+        {
+          "name": "lotSize",
+          "type": "u64"
+        },
+        {
+          "name": "numTokens",
+          "type": "u64"
+        },
+        {
+          "name": "projectName",
+          "type": "string"
+        },
+        {
+          "name": "strikePrice",
+          "type": "u64"
+        },
+        {
+          "name": "soAuthorityBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "stake",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "gsoState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soOptionMint",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The so_option_mint is verified inside the SO CPI."
+          ]
+        },
+        {
+          "name": "soUserOptionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soState",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Seeds are verified in the CPI. Verified that this is the correct",
+            "so_state here."
+          ]
+        },
+        {
+          "name": "stakingOptionsProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "xBaseMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBaseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userXBaseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "baseVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "unstake",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "gsoState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "xBaseMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBaseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userXBaseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "baseVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "gsoState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userBaseAccount",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Where the tokens are going."
+          ]
+        },
+        {
+          "name": "soBaseVault",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Where the tokens are coming from."
+          ]
+        },
+        {
+          "name": "soState",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Seeds are verified in the CPI. Verified that this is the correct",
+            "so_state here."
+          ]
+        },
+        {
+          "name": "stakingOptionsProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "nameTokens",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "soState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "gsoState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "xBaseMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "xBaseMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "soAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "soOptionMint",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Checked in the CPI"
+          ]
+        },
+        {
+          "name": "optionMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingOptionsProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GSOState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "periodNum",
+            "type": "u64"
+          },
+          {
+            "name": "subscriptionPeriodEnd",
+            "type": "u64"
+          },
+          {
+            "name": "lockupRatioTokensPerMillion",
+            "type": "u64"
+          },
+          {
+            "name": "gsoStateBump",
+            "type": "u8"
+          },
+          {
+            "name": "soAuthorityBump",
+            "type": "u8"
+          },
+          {
+            "name": "xBaseMintBump",
+            "type": "u8"
+          },
+          {
+            "name": "baseVaultBump",
+            "type": "u8"
+          },
+          {
+            "name": "strike",
+            "type": "u64"
+          },
+          {
+            "name": "projectName",
+            "type": "string"
+          },
+          {
+            "name": "stakingOptionsState",
+            "type": "publicKey"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "baseMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "lockupPeriodEnd",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotYetExpired",
+      "msg": "Attempted to perform an action for a vault not yet expired"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidLockupEnd",
+      "msg": "Lockup end cannot be before subscription period end"
+    }
+  ]
+}

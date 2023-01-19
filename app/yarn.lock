@@ -1281,6 +1281,17 @@
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz"
   integrity sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
 
+"@dual-finance/gso@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@dual-finance/gso/-/gso-0.0.11.tgz#7b40d7fece3863bd045ba1004e413b51f8608ee1"
+  integrity sha512-+yQCA+qaEiKDfCX5K1qMuzrZjswqeHi7LVP0ePN2YZUaVltkrFO2lbRvLMmD9HgNXR5YFVvinSHDcox8iXCDJQ==
+  dependencies:
+    "@dual-finance/staking-options" "^0.0.17"
+    "@project-serum/anchor" "^0.25.0"
+    "@project-serum/associated-token" "^0.1.1"
+    "@solana/spl-token" "^0.3.6"
+    "@solana/web3.js" "^1.66.2"
+
 "@dual-finance/staking-options@^0.0.17":
   version "0.0.17"
   resolved "https://registry.yarnpkg.com/@dual-finance/staking-options/-/staking-options-0.0.17.tgz#e56f7eb8be7d1364ac7fac6e0d0e8b79cab833cf"
@@ -2263,6 +2274,11 @@
     snake-case "^3.0.4"
     superstruct "^0.15.4"
     toml "^3.0.0"
+
+"@project-serum/associated-token@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@project-serum/associated-token/-/associated-token-0.1.1.tgz#9acf745e84dad21e2ea26e06694704b9d698e532"
+  integrity sha512-Zc1wdqragbDiyBVagzIbIsMe37P7fgkArWZPIj+jJjDIoznlmYMK6ASU5mtdDZrPJ7sNABF/lzZ3+jvCCcU+oA==
 
 "@project-serum/borsh@^0.2.2", "@project-serum/borsh@^0.2.4", "@project-serum/borsh@^0.2.5":
   version "0.2.5"
