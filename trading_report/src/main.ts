@@ -22,10 +22,11 @@ async function main() {
     OPENBOOK_FORK_ID,
   );
   const openOrders = await market.findOpenOrdersAccountsForOwner(connection, TRADING_ACCOUNT);
-  // TODO: Parse multiple openOrders accounts if there are multiple
-  const openOrdersAccount = openOrders[0].address;
 
-  const signatures = await getSignatures(connection, openOrdersAccount);
+  const signatures = [];
+  for (const openOrdersAccount of openOrders) {
+    signatures.push(await getSignatures(connection, openOrdersAccount.address));
+  }
   console.log('There are', signatures.length, 'signatures to process');
 
   let allLogs: string[] = ['instruction,price,side,qty,time'];
@@ -48,7 +49,8 @@ async function main() {
   const currentTime = (new Date().getTime() / 1_000);
   const cutoffTime = currentTime - 24 * 60 * 60;
 
-  const opbUrl = `https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=${openOrdersAccount.toBase58()}&address-type=open-orders&limit=10000`
+  // Assumes that all trades happen on the first open orders account.
+  const opbUrl = `https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=${openOrders[0].address}&address-type=open-orders&limit=10000`
   const response = await fetch(opbUrl);
   const opbTrades = await response.json() as TradeResponse[];
   const opbRecentTrades = opbTrades.filter((trade) => Date.parse(trade.block_datetime) / 1_000 > cutoffTime);
