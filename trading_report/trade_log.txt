@@ -1,0 +1,8 @@
+SOL Trading at 2023-01-20T16:56:28.323Z
+Openbook trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+Jupiter trades
+  Bought 0.003759297 for 21.04011374449576, net notional: 0.07909603858335305
+  Sold 0 for 0, net notional: 0

@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs';
+import { appendFile, writeFile } from 'node:fs';
 import { Commitment, Connection } from '@solana/web3.js';
 import { Market } from '@project-serum/serum';
 import { parseTransaction } from './parseTransaction';
@@ -106,7 +106,19 @@ async function main() {
     }
   });
 
-  // TODO: Write out a report of trading
+  appendFile('trade_log.txt', `${SYMBOL} Trading at ${(new Date()).toISOString()}`, () => {});
+  appendFile('trade_log.txt', `
+Openbook trades
+  Bought ${opbTotalBuysAmount} for ${opbTotalBuysValue / (opbTotalBuysAmount + .0000000001)}, net notional: ${opbTotalBuysValue}
+  Sold ${opbTotalSellsAmount} for ${opbTotalSellsValue / (opbTotalSellsAmount + .0000000001)}, net notional: ${opbTotalSellsValue}
+`, () => {}
+);
+  appendFile('trade_log.txt', `
+Jupiter trades
+  Bought ${jupTotalBuysAmount} for ${jupTotalBuysValue / (jupTotalBuysAmount + .0000000001)}, net notional: ${jupTotalBuysValue}
+  Sold ${jupTotalSellsAmount} for ${jupTotalSellsValue / (jupTotalSellsAmount + .0000000001)}, net notional: ${jupTotalSellsValue}
+`, () => {}
+);
 
   console.log('Analysis done', new Date().toUTCString());
 }
