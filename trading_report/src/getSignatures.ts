@@ -13,7 +13,10 @@ export async function getSignatures(connection: Connection, openOrdersAccount: P
       if (sigObjs[sigObjs.length - 1].blockTime < cutoffTime) {
         break;
       }
-      console.log('Fetching more signatures');
+      if (allSigObjs.length > 10_000) {
+        break;
+      }
+      console.log(`Fetching more signatures, already have ${allSigObjs.length}`);
       sigObjs = await connection.getSignaturesForAddress(
         openOrdersAccount,
         {before: sigObjs[sigObjs.length - 1].signature}
