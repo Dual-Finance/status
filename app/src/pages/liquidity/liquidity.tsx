@@ -67,6 +67,24 @@ export const Liquidity = () => {
     ];
   };
 
+  const summaryStats = parseSummaryNumbers(summary);
+  const summaryColumns: ColumnsType<MarketData> = [
+    {
+      title: 'Amount',
+      dataIndex: 'amount',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+    },
+    {
+      title: 'Notional',
+      dataIndex: 'notional',
+    },
+  ];
+  const getSummaryRows = (symbol: string, market: string) => {
+    return summary ? Object.values(summaryStats[symbol].stats[market]) : [];
+  };
   return (
     <>
       <DualfiTable
@@ -91,9 +109,85 @@ export const Liquidity = () => {
       <Typography variant="h2" align="center">
         Summary
       </Typography>
+      <Typography variant="h4">BONK</Typography>
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('BONK', 'openbook')} scroll={{ x: true }} />
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('BONK', 'jupiter')} scroll={{ x: true }} />
+      <Typography variant="h4">MNGO</Typography>
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('MNGO', 'openbook')} scroll={{ x: true }} />
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('MNGO', 'jupiter')} scroll={{ x: true }} />
+      <Typography variant="h4">SOL</Typography>
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('SOL', 'openbook')} scroll={{ x: true }} />
+      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('SOL', 'jupiter')} scroll={{ x: true }} />
       <Typography variant="body1">
         <pre style={{ color: 'black' }}>{summary}</pre>
       </Typography>
     </>
   );
+};
+
+type MarketData = {
+  amount: string;
+  price: string;
+  notional: string;
+  bidOrAsk: string;
+};
+
+type SummaryStats = {
+  [symbol: string]: {
+    date: string;
+    time: string;
+    symbol: string;
+    stats: {
+      [market: string]: {
+        buy: MarketData;
+        sell: MarketData;
+      };
+    };
+  };
+};
+
+const dateRegex = /(\d{1,4})-(\d{1,2})-(\d{1,2})/;
+const timeRegex = /(\d{1,4}):(\d{1,2}):(\d{1,2})/;
+const symbolRegex = /(?:^|(?:[.!?]\s))(\w+)/;
+const numberRegex = /[+-]?([0-9]*[.])?[0-9]+/g;
+const parseSummaryNumbers = (summary: string) => {
+  const summaries = summary.split('\n\n');
+  const result: SummaryStats = {};
+
+  summaries.forEach((summaryStr, i) => {
+    const dateMatch = summaryStr.match(dateRegex);
+    const date = dateMatch ? dateMatch[0] : '';
+
+    const timeMatch = summaryStr.match(timeRegex);
+    const time = timeMatch ? timeMatch[0] : '';
+
+    const symbolMatch = summaryStr.match(symbolRegex);
+    const symbol = symbolMatch ? symbolMatch[0] : i.toString();
+
+    const numbersMatch = summaryStr.split('\n').splice(1).join('').match(numberRegex);
+    let stats = {};
+    if (numbersMatch) {
+      const openbookNumbers = numbersMatch.slice(0, 6);
+      const [obBuyAmount, obBuyPrice, obBuyNotional] = openbookNumbers;
+      const [obSellAmount, obSellPrice, obSellNotional] = openbookNumbers.slice(3);
+
+      const jupiterNumbers = numbersMatch.slice(6);
+      const [jpBuyAmount, jpBuyPrice, jpBuyNotional] = jupiterNumbers;
+      const [jpSellAmount, jpSellPrice, jpSellNotional] = jupiterNumbers.slice(3);
+
+      const marketData = {
+        openbook: {
+          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'bid' },
+          sell: { amount: obSellAmount, price: obSellPrice, notional: obSellNotional, bidOrAsk: 'ask' },
+        },
+        jupiter: {
+          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'bid' },
+          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'ask' },
+        },
+      };
+      stats = marketData;
+    }
+    result[symbol] = { date, time, symbol, stats };
+  });
+  return result;
 };
