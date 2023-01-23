@@ -11,9 +11,11 @@ import {
   LineSeriesPoint,
 } from 'react-vis';
 import { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
 import { readBids, readOffers, readTransactions } from './helpers';
+import { Legend } from './legend';
 
-export default function Chart(props: { token: string }) {
+export default function Chart(props: { token: string; title?: string }) {
   const { token } = props;
   const [bids, setBids] = useState<LineMarkSeriesPoint[]>([]);
   const [offers, setOffers] = useState<LineMarkSeriesPoint[]>([]);
@@ -40,6 +42,12 @@ export default function Chart(props: { token: string }) {
 
   return (
     <div className="App">
+      {props.title && (
+        <Typography variant="h4" align="center">
+          {props.title}
+        </Typography>
+      )}
+      <Legend />
       <XYPlot height={400} width={1200}>
         <LineSeries data={bids as LineSeriesPoint[]} getNull={(d) => d.y !== null} color="blue" />
         <LineSeries data={offers as LineSeriesPoint[]} getNull={(d) => d.y !== null} color="blue" />
