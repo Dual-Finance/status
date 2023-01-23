@@ -70,6 +70,10 @@ export const Liquidity = () => {
   const summaryStats = parseSummaryNumbers(summary);
   const summaryColumns: ColumnsType<MarketData> = [
     {
+      title: 'Type',
+      dataIndex: 'bidOrAsk',
+    },
+    {
       title: 'Amount',
       dataIndex: 'amount',
     },
@@ -177,12 +181,17 @@ const parseSummaryNumbers = (summary: string) => {
 
       const marketData = {
         openbook: {
-          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'bid' },
-          sell: { amount: obSellAmount, price: obSellPrice, notional: obSellNotional, bidOrAsk: 'ask' },
+          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'BID' },
+          sell: {
+            amount: obSellAmount,
+            price: obSellPrice,
+            notional: obSellNotional,
+            bidOrAsk: 'ASK',
+          },
         },
         jupiter: {
-          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'bid' },
-          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'ask' },
+          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'BID' },
+          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'ASK' },
         },
       };
       stats = marketData;
