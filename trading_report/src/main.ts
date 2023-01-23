@@ -119,6 +119,7 @@ Jupiter trades
   Sold ${jupTotalSellsAmount} for ${jupTotalSellsValue / (jupTotalSellsAmount + .0000000001)}, net notional: ${jupTotalSellsValue}
 `, () => {}
 );
+  appendFile('trade_log.txt', `\n`, () => {});
 
   console.log('Analysis done', new Date().toUTCString());
 }

@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ColumnsType } from 'antd/lib/table';
 import { Typography } from '@mui/material';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
+import { readRecentSummary } from './helpers';
 
 export const Liquidity = () => {
+  const [summary, setSummary] = useState<string>('');
+
+  useEffect(() => {
+    async function fetchData() {
+      const newSummary = await readRecentSummary();
+      console.log(newSummary);
+      setSummary(newSummary);
+    }
+
+    fetchData()
+      .then()
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   interface RowParams {
     // Just needed for react
     key: React.Key;
@@ -71,6 +88,12 @@ export const Liquidity = () => {
         SOL
       </Typography>
       <Chart token="SOL" />
+      <Typography variant="h2" align="center">
+        Summary
+      </Typography>
+      <Typography variant="body1">
+        <pre style={{ color: 'black' }}>{summary}</pre>
+      </Typography>
     </>
   );
 };
