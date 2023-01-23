@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ColumnsType } from 'antd/lib/table';
+import { Typography } from '@mui/material';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
