@@ -91,3 +91,9 @@ export async function readTransactions(token: string): Promise<LineSeriesPoint[]
 
   return [allBuys, allSells];
 }
+
+export async function readRecentSummary(): Promise<string> {
+  const response = await fetch(`./summary.txt`);
+  const responseText = await response.text();
+  return responseText;
+}
