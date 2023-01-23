@@ -93,6 +93,11 @@ export const Gso = (props: { network: string }) => {
           console.log(err);
         }
 
+        // Filter expired and empty GSO. In the future, these will be cleaned up on chain.
+        if (numLocked === 0 && subscriptionPeriodEnd < Date.now() / 1_000) {
+          continue;
+        }
+
         const gsoParams = createGsoParams(
           soName,
           soName,
