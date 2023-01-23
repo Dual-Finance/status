@@ -18,7 +18,7 @@ jobs:
           mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
           SYMBOL=SOL yarn run main
           mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
-          rm app/public/summary.txt
+          rm ../app/public/summary.txt
           tail -n 24 trade_log.txt > ../app/public/summary.txt
       - name: Commit report
         run: |
