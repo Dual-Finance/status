@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ColumnsType } from 'antd/lib/table';
 import { Typography } from '@mui/material';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Box } from '@mui/system';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
@@ -87,7 +89,7 @@ export const Liquidity = () => {
     },
   ];
   const getSummaryRows = (symbol: string, market: string) => {
-    return summary ? Object.values(summaryStats[symbol].stats[market]) : [];
+    return Object.values(summaryStats[symbol].stats[market]);
   };
   return (
     <>
@@ -104,15 +106,30 @@ export const Liquidity = () => {
       <Typography variant="h2" align="center">
         Summary
       </Typography>
-      <Typography variant="h4">BONK</Typography>
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('BONK', 'openbook')} scroll={{ x: true }} />
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('BONK', 'jupiter')} scroll={{ x: true }} />
-      <Typography variant="h4">MNGO</Typography>
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('MNGO', 'openbook')} scroll={{ x: true }} />
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('MNGO', 'jupiter')} scroll={{ x: true }} />
-      <Typography variant="h4">SOL</Typography>
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('SOL', 'openbook')} scroll={{ x: true }} />
-      <DualfiTable columns={summaryColumns} dataSource={getSummaryRows('SOL', 'jupiter')} scroll={{ x: true }} />
+      {summary &&
+        summaryStats &&
+        Object.entries(summaryStats).map(([symbol, symbolStats]) => {
+          const { date, time } = symbolStats;
+          return (
+            <Box marginY={2}>
+              <Typography variant="h5">{symbol}</Typography>
+              <Typography variant="subtitle2">
+                {date} - {time}
+              </Typography>
+              {['Openbook', 'Jupiter'].map((market) => (
+                <>
+                  <Typography variant="subtitle1">{market}</Typography>
+                  <DualfiTable
+                    columns={summaryColumns}
+                    dataSource={getSummaryRows(symbol, market.toLowerCase())}
+                    pagination={false}
+                    scroll={{ x: true }}
+                  />
+                </>
+              ))}
+            </Box>
+          );
+        })}
       <Typography variant="body1">
         <pre style={{ color: 'black' }}>{summary}</pre>
       </Typography>
@@ -172,17 +189,17 @@ const parseSummaryNumbers = (summary: string) => {
 
       const marketData = {
         openbook: {
-          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'BID' },
+          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'Buys' },
           sell: {
             amount: obSellAmount,
             price: obSellPrice,
             notional: obSellNotional,
-            bidOrAsk: 'ASK',
+            bidOrAsk: 'Sells',
           },
         },
         jupiter: {
-          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'BID' },
-          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'ASK' },
+          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'Buys' },
+          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'Sells' },
         },
       };
       stats = marketData;
