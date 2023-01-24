@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { ColumnsType } from 'antd/lib/table';
 import { Typography } from '@mui/material';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Box } from '@mui/system';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
@@ -89,7 +88,7 @@ export const Liquidity = () => {
     },
   ];
   const getSummaryRows = (symbol: string, market: string) => {
-    return Object.values(summaryStats[symbol].stats[market]);
+    return summaryStats[symbol] ? Object.values(summaryStats[symbol].stats[market]) : [];
   };
   return (
     <>
@@ -111,13 +110,13 @@ export const Liquidity = () => {
         Object.entries(summaryStats).map(([symbol, symbolStats]) => {
           const { date, time } = symbolStats;
           return (
-            <Box marginY={2}>
+            <Box marginY={2} key={`summary-${symbol}`}>
               <Typography variant="h5">{symbol}</Typography>
               <Typography variant="subtitle2">
                 {date} - {time}
               </Typography>
               {['Openbook', 'Jupiter'].map((market) => (
-                <>
+                <Fragment key={`summary-${symbol}-${market}`}>
                   <Typography variant="subtitle1">{market}</Typography>
                   <DualfiTable
                     columns={summaryColumns}
@@ -125,14 +124,11 @@ export const Liquidity = () => {
                     pagination={false}
                     scroll={{ x: true }}
                   />
-                </>
+                </Fragment>
               ))}
             </Box>
           );
         })}
-      <Typography variant="body1">
-        <pre style={{ color: 'black' }}>{summary}</pre>
-      </Typography>
     </>
   );
 };
@@ -163,48 +159,56 @@ const timeRegex = /(\d{1,4}):(\d{1,2}):(\d{1,2})/;
 const symbolRegex = /(?:^|(?:[.!?]\s))(\w+)/;
 const numberRegex = /[+-]?([0-9]*[.])?[0-9]+/g;
 const parseSummaryNumbers = (summary: string) => {
-  const summaries = summary.split('\n\n');
+  const summaries = summary.split('\n\n').filter((s) => s !== '');
   const result: SummaryStats = {};
 
-  summaries.forEach((summaryStr, i) => {
-    const dateMatch = summaryStr.match(dateRegex);
-    const date = dateMatch ? dateMatch[0] : '';
+  summaries
+    .reduce<string[]>((acc, str, i) => {
+      if (i % 2 === 0) {
+        return [...acc, str];
+      }
+      acc[acc.length - 1] = acc[acc.length - 1].concat(str);
+      return acc;
+    }, [])
+    .forEach((summaryStr, i) => {
+      const dateMatch = summaryStr.match(dateRegex);
+      const date = dateMatch ? dateMatch[0] : '';
 
-    const timeMatch = summaryStr.match(timeRegex);
-    const time = timeMatch ? timeMatch[0] : '';
+      const timeMatch = summaryStr.match(timeRegex);
+      const time = timeMatch ? timeMatch[0] : '';
 
-    const symbolMatch = summaryStr.match(symbolRegex);
-    const symbol = symbolMatch ? symbolMatch[0] : i.toString();
+      const symbolMatch = summaryStr.match(symbolRegex);
+      const symbol = symbolMatch ? symbolMatch[0] : i.toString();
 
-    const numbersMatch = summaryStr.split('\n').splice(1).join('').match(numberRegex);
-    let stats = {};
-    if (numbersMatch) {
-      const openbookNumbers = numbersMatch.slice(0, 6);
-      const [obBuyAmount, obBuyPrice, obBuyNotional] = openbookNumbers;
-      const [obSellAmount, obSellPrice, obSellNotional] = openbookNumbers.slice(3);
+      const numbersMatch = summaryStr.split('\n').splice(1).join('').match(numberRegex);
+      let stats = {};
+      if (numbersMatch) {
+        const openbookNumbers = numbersMatch.slice(0, 6);
+        const [obBuyAmount, obBuyPrice, obBuyNotional] = openbookNumbers;
+        const [obSellAmount, obSellPrice, obSellNotional] = openbookNumbers.slice(3);
 
-      const jupiterNumbers = numbersMatch.slice(6);
-      const [jpBuyAmount, jpBuyPrice, jpBuyNotional] = jupiterNumbers;
-      const [jpSellAmount, jpSellPrice, jpSellNotional] = jupiterNumbers.slice(3);
+        const jupiterNumbers = numbersMatch.slice(6);
+        const [jpBuyAmount, jpBuyPrice, jpBuyNotional] = jupiterNumbers;
+        const [jpSellAmount, jpSellPrice, jpSellNotional] = jupiterNumbers.slice(3);
 
-      const marketData = {
-        openbook: {
-          buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'Buys' },
-          sell: {
-            amount: obSellAmount,
-            price: obSellPrice,
-            notional: obSellNotional,
-            bidOrAsk: 'Sells',
+        const marketData = {
+          openbook: {
+            buy: { amount: obBuyAmount, price: obBuyPrice, notional: obBuyNotional, bidOrAsk: 'Buys' },
+            sell: {
+              amount: obSellAmount,
+              price: obSellPrice,
+              notional: obSellNotional,
+              bidOrAsk: 'Sells',
+            },
           },
-        },
-        jupiter: {
-          buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'Buys' },
-          sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'Sells' },
-        },
-      };
-      stats = marketData;
-    }
-    result[symbol] = { date, time, symbol, stats };
-  });
+          jupiter: {
+            buy: { amount: jpBuyAmount, price: jpBuyPrice, notional: jpBuyNotional, bidOrAsk: 'Buys' },
+            sell: { amount: jpSellAmount, price: jpSellPrice, notional: jpSellNotional, bidOrAsk: 'Sells' },
+          },
+        };
+        stats = marketData;
+      }
+      result[symbol] = { date, time, symbol, stats };
+    });
   return result;
 };
