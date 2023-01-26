@@ -12,14 +12,16 @@ jobs:
         run: |
           cd trading_report
           yarn install
-          SYMBOL=BONK yarn run main
+          SYMBOL=BONK RPC_URL=$RPC_URL yarn run main
           mv transactions.csv ../app/public/bonk_transactions.csv;  mv offers.csv ../app/public/bonk_offers.csv
-          SYMBOL=MNGO yarn run main
+          SYMBOL=MNGO RPC_URL=$RPC_URL yarn run main
           mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
-          SYMBOL=SOL yarn run main
+          SYMBOL=SOL RPC_URL=$RPC_URL yarn run main
           mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
           rm ../app/public/summary.txt
           tail -n 27 trade_log.txt > ../app/public/summary.txt
+        env:
+          RPC_URL: ${{ secrets.RPC_URL }}
       - name: Commit report
         run: |
           git config --global user.name 'DocDuala'
