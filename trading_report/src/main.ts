@@ -12,7 +12,7 @@ async function main() {
   console.log('Analysis running', new Date().toUTCString(), SYMBOL);
 
   const connection = new Connection(
-    'https://floral-skilled-borough.solana-mainnet.discover.quiknode.pro/38cf24edefbebeb60eb7516eff40f076ac0823af/',
+    process.env.RPC_URL,
     'confirmed' as Commitment,
   );
   const market = await Market.load(
