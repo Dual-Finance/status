@@ -12,7 +12,6 @@ export const Liquidity = () => {
   useEffect(() => {
     async function fetchData() {
       const newSummary = await readRecentSummary();
-      console.log(newSummary);
       setSummary(newSummary);
     }
 
