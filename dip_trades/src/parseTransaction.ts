@@ -8,8 +8,8 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
     // Assumes SOL
     let amount = 0;
     for (const balanceChange of balancesChanges) {
-        if (balanceChange.mint === WSOL_MINT.toBase58()) {
-            amount = balanceChange.amount;
+        if (balanceChange.mint === WSOL_MINT.toBase58() && balanceChange.amount) {
+            amount = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
             break;
         }
     }
@@ -17,7 +17,7 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
     let payment = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.mint === USDC_MINT.toBase58()) {
-            payment = balanceChange.amount;
+            payment = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
             break;
         }
     }
@@ -30,7 +30,7 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
         }
     }
 
-    return {mint: mint, amount: amount, price: payment / amount, time: transactionResponse.blockTime};
+    return {mint: mint, amount: amount, price: Math.floor((1_000_000 * payment) / amount) / 1_000_000, time: transactionResponse.blockTime};
 }
 
 export function parseMmSale(transactionResponse: TransactionResponse): Payment {
@@ -40,7 +40,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
     let amount = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.owner === OPTION_VAULT.toBase58() && balanceChange.mint !== USDC_MINT.toBase58()) {
-            amount = balanceChange.amount;
+            amount = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
             break;
         }
     }
@@ -48,7 +48,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
     let payment = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.mint === USDC_MINT.toBase58()) {
-            payment = balanceChange.amount;
+            payment = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
             break;
         }
     }
@@ -61,7 +61,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
         }
     }
 
-    return {mint: mint, amount: amount, price: payment / amount, time: transactionResponse.blockTime};
+    return {mint: mint, amount: amount, price: Math.floor((payment / amount) * 1_000_000) / 1_000_000, time: transactionResponse.blockTime};
 }
 
 function getBalanceChanges(preBalances: TokenBalance[], postBalances: TokenBalance[]) {

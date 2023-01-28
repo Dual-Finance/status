@@ -8,11 +8,14 @@ import { readRecentSummary } from './helpers';
 
 export const Liquidity = () => {
   const [summary, setSummary] = useState<string>('');
+  const [dipSummary, setDupSummary] = useState<string>('');
 
   useEffect(() => {
     async function fetchData() {
       const newSummary = await readRecentSummary();
+      const newDipSummary = await readDipSummary();
       setSummary(newSummary);
+      setDipSummary(newdipSummary);
     }
 
     fetchData()
@@ -83,6 +86,9 @@ export const Liquidity = () => {
       </Typography>
       <Typography variant="body1">
         <pre style={{ color: 'black' }}>{summary}</pre>
+      </Typography>
+      <Typography variant="body1">
+        <pre style={{ color: 'black' }}>{dipSummary}</pre>
       </Typography>
     </>
   );
