@@ -121,3 +121,9 @@ export async function readRecentSummary(): Promise<string> {
   const responseText = await response.text();
   return responseText;
 }
+
+export async function readDipSummary(): Promise<string> {
+  const response = await fetch(`./dip_log.txt`);
+  const responseText = await response.text();
+  return responseText;
+}

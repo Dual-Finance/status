@@ -4,15 +4,18 @@ import { Typography } from '@mui/material';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import Chart from './chart';
-import { readRecentSummary } from './helpers';
+import { readDipSummary, readRecentSummary } from './helpers';
 
 export const Liquidity = () => {
   const [summary, setSummary] = useState<string>('');
+  const [dipSummary, setDipSummary] = useState<string>('');
 
   useEffect(() => {
     async function fetchData() {
       const newSummary = await readRecentSummary();
+      const newDipSummary = await readDipSummary();
       setSummary(newSummary);
+      setDipSummary(newDipSummary);
     }
 
     fetchData()
@@ -83,6 +86,12 @@ export const Liquidity = () => {
       </Typography>
       <Typography variant="body1">
         <pre style={{ color: 'black' }}>{summary}</pre>
+      </Typography>
+      <Typography variant="h2" align="center">
+        DIP
+      </Typography>
+      <Typography variant="body1">
+        <pre style={{ color: 'black' }}>{dipSummary}</pre>
       </Typography>
     </>
   );

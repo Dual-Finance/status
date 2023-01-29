@@ -20,6 +20,10 @@ jobs:
           mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
           rm ../app/public/summary.txt
           tail -n 27 trade_log.txt > ../app/public/summary.txt
+          cd ../dip_trades
+          yarn install
+          RPC_URL=$RPC_URL yarn run main
+          mv dip_log.txt ../app/public/summary
         env:
           RPC_URL: ${{ secrets.RPC_URL }}
       - name: Commit report
