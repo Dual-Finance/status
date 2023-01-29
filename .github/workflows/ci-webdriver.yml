@@ -22,7 +22,6 @@ jobs:
         env:
           PASSWORD: ${{ secrets.PASSWORD }}
           SEED: ${{ secrets.SEED }}
-        shell: bash
 
       - name: 'Upload Screenshot'
         uses: actions/upload-artifact@v3
