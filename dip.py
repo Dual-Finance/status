@@ -8,6 +8,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
+
 
 SOL_TRADE_SIZE = .1
 HEADLESS = False
@@ -180,6 +182,10 @@ def deposit(values):
         time.sleep(1)
         disclaimer.click()
 
+        logging.info("Scrolling down")
+        body = driver.find_element_by_css_selector('body')
+        time.sleep(1)
+        body.send_keys(Keys.PAGE_DOWN)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
             By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
         )))
