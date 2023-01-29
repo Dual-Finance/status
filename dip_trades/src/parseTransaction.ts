@@ -9,7 +9,7 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
     let amount = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.mint === WSOL_MINT.toBase58() && balanceChange.amount) {
-            amount = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
+            amount = Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
             break;
         }
     }
@@ -17,7 +17,7 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
     let payment = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.mint === USDC_MINT.toBase58()) {
-            payment = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
+            payment = Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
             break;
         }
     }
@@ -40,7 +40,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
     let amount = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.owner === OPTION_VAULT.toBase58() && balanceChange.mint !== USDC_MINT.toBase58()) {
-            amount = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
+            amount = Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
             break;
         }
     }
@@ -48,7 +48,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
     let payment = 0;
     for (const balanceChange of balancesChanges) {
         if (balanceChange.mint === USDC_MINT.toBase58()) {
-            payment = Math.floor(balanceChange.amount * 1_000_000) / 1_000_000;
+            payment = Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
             break;
         }
     }
