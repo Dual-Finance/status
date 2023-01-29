@@ -9,11 +9,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: GabrielBB/xvfb-action@v1
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9.13' 
       - name: 'Run Test'
+        uses: GabrielBB/xvfb-action@v1
         run: |
           pip install -r requirements.txt
           python main.py --url="https://dev.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
