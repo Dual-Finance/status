@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 SOL_TRADE_SIZE = .1
-HEADLESS = True
+HEADLESS = False
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
@@ -222,6 +222,7 @@ def deposit(values):
     options = Options()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
+
     if HEADLESS:
         options.add_argument("--headless=chrome")
 

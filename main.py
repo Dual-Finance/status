@@ -3,6 +3,7 @@ import argparse
 import logging
 import json
 import dip
+from pyvirtualdisplay import Display
 
 def get_config():
     ''' Get the config for the phantom wallet'''
@@ -26,6 +27,9 @@ if __name__ == '__main__':
         datefmt='%m/%d/%Y %I:%M:%S',
         level=logging.INFO)
     config = get_config()
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+
     logging.info("Got config")
 
     dip.deposit(config)
