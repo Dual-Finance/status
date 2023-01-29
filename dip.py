@@ -187,10 +187,10 @@ def deposit(values):
         time.sleep(1)
         body.send_keys(Keys.PAGE_DOWN)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake SOL')]"
         )))
         stake = driver.find_element(
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake SOL')]"
         )
         logging.info("Clicking stake")
         time.sleep(1)
