@@ -7,7 +7,7 @@ export class Config {
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
-    return 'https://floral-skilled-borough.solana-mainnet.discover.quiknode.pro/38cf24edefbebeb60eb7516eff40f076ac0823af/';
+    return 'https://solana-mainnet.g.alchemy.com/v2/UxG4nAwZ_FG0ueIajZM4BXJc8UC62QTI';
   }
 
   static sobtcMintPk(): PublicKey {
