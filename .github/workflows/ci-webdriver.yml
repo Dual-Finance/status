@@ -13,12 +13,11 @@ jobs:
         with:
           python-version: '3.9.13' 
       - name: 'Run Test'
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: |
-            pip install -r requirements.txt
-            python main.py --url="https://dev.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
-            python main.py --url="https://beta.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
+        run: |
+          sudo apt-get install -y xvfb
+          pip install -r requirements.txt
+          python main.py --url="https://dev.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
+          python main.py --url="https://beta.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
         env:
           PASSWORD: ${{ secrets.PASSWORD }}
           SEED: ${{ secrets.SEED }}
