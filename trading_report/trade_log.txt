@@ -291,34 +291,7 @@ Jupiter trades
   Bought 0.004565142 for 24.15127715915417, net notional: 0.1102540121280231
   Sold 0 for 0, net notional: 0
 
-BONK Trading at 2023-01-29T12:09:26.384Z
-Openbook trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-Jupiter trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-MNGO Trading at 2023-01-29T12:10:21.968Z
-Openbook trades
-  Bought 12480 for 0.01979699999999984, net notional: 247.06655999999998
-  Sold 361670 for 0.020287506013769444, net notional: 7337.3822999999975
-
-Jupiter trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-SOL Trading at 2023-01-29T13:00:38.618Z
-Openbook trades
-  Bought 0.024000000000000007 for 24.076708233013704, net notional: 0.5778409999999999
-  Sold 0 for 0, net notional: 0
-
-Jupiter trades
-  Bought 0.008017739999999999 for 18.0749701882276, net notional: 0.14492041328445696
-  Sold 0 for 0, net notional: 0
-
-BONK Trading at 2023-01-30T14:16:09.393Z
+BONK Trading at 2023-01-30T15:08:49.313Z
 Openbook trades
   Bought 622000 for 9.637572347266878e-7, net notional: 0.599457
   Sold 0 for 0, net notional: 0
@@ -327,18 +300,17 @@ Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
-MNGO Trading at 2023-01-30T14:16:32.488Z
-Openbook trades
-  Bought 230000 for 0.01979699999999999, net notional: 4553.3099999999995
-  Sold 268200 for 0.02050599999999999, net notional: 5499.709199999999
-
+MNGO Trading at 2023-01-30T15:09:13.085Z
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
-SOL Trading at 2023-01-30T14:45:08.065Z
 Openbook trades
-  Bought 0.8480000000000001 for 25.423231129077436, net notional: 21.55889999999999
+  Bought 230000 for 0.01979699999999999, net notional: 4553.3099999999995
+  Sold 268200 for 0.02050599999999999, net notional: 5499.709199999999
+SOL Trading at 2023-01-30T15:37:52.012Z
+Openbook trades
+  Bought 0.8500000000000001 for 25.42129176171513, net notional: 21.60809799999999
   Sold 0.8190000000000001 for 26.170350424155025, net notional: 21.433517000000002
 
 Jupiter trades
