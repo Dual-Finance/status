@@ -305,7 +305,6 @@ Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
-
 Openbook trades
   Bought 230000 for 0.01979699999999999, net notional: 4553.3099999999995
   Sold 268200 for 0.02050599999999999, net notional: 5499.709199999999
