@@ -24,7 +24,7 @@ jobs:
           yarn install
           touch dip_log.txt
           RPC_URL=$RPC_URL yarn run main
-          mv dip_log.txt ../app/public/summary.txt
+          mv dip_log.txt ../app/public/
         env:
           RPC_URL: ${{ secrets.RPC_URL }}
       - name: Commit report
