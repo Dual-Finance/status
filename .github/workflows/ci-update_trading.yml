@@ -22,6 +22,7 @@ jobs:
           tail -n 27 trade_log.txt > ../app/public/summary.txt
           cd ../dip_trades
           yarn install
+          touch dip_log.txt
           RPC_URL=$RPC_URL yarn run main
           mv dip_log.txt ../app/public/summary
         env:
