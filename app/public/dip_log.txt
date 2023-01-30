@@ -1,4 +1,4 @@
-Trading at 2023-01-30T17:23:40.684Z
+Trading at 2023-01-30T17:59:33.965Z
 Options bought
 [
   {
