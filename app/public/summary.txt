@@ -1,45 +1,27 @@
-Trading at 2023-01-30T16:41:21.861Z
-Options bought
-[
-  {
-    "mint": "4p456s8Fcqaq6pPLPWq9LefSwK5NGVQJYDr2jU7hHQoV",
-    "amount": 2,
-    "price": 0.253288,
-    "time": 1675037353
-  },
-  {
-    "mint": "4p456s8Fcqaq6pPLPWq9LefSwK5NGVQJYDr2jU7hHQoV",
-    "amount": 10,
-    "price": 0.313423,
-    "time": 1675056156
-  },
-  {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 3,
-    "price": 0.703434,
-    "time": 1675058043
-  }
-]
-Options sold
-[
-  {
-    "mint": "4p456s8Fcqaq6pPLPWq9LefSwK5NGVQJYDr2jU7hHQoV",
-    "amount": 2,
-    "price": 0.5935,
-    "time": 1675040517
-  },
-  {
-    "mint": "4p456s8Fcqaq6pPLPWq9LefSwK5NGVQJYDr2jU7hHQoV",
-    "amount": 10,
-    "price": 0.32992,
-    "time": 1675056161
-  },
-  {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 3,
-    "price": 1.23222,
-    "time": 1675058056
-  }
-]
+BONK Trading at 2023-01-30T16:55:27.264Z
+Openbook trades
+  Bought 622000 for 9.637572347266878e-7, net notional: 0.599457
+  Sold 0 for 0, net notional: 0
 
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+MNGO Trading at 2023-01-30T16:55:49.192Z
+Openbook trades
+  Bought 230000 for 0.01979699999999999, net notional: 4553.3099999999995
+  Sold 268200 for 0.02050599999999999, net notional: 5499.709199999999
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+SOL Trading at 2023-01-30T17:23:28.674Z
+Openbook trades
+  Bought 0.8560000000000001 for 25.41407359516189, net notional: 21.75444699999999
+  Sold 0.8190000000000001 for 26.170350424155025, net notional: 21.433517000000002
+
+Jupiter trades
+  Bought 0.00136207 for 24.153480855707816, net notional: 0.03289873408448203
+  Sold 0 for 0, net notional: 0
 
