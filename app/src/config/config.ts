@@ -7,7 +7,7 @@ export class Config {
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
-    return 'https://solana-mainnet.g.alchemy.com/v2/UxG4nAwZ_FG0ueIajZM4BXJc8UC62QTI';
+    return 'https://chaotic-alien-pallet.solana-mainnet.discover.quiknode.pro/3fa2083ef7ee443de64a78b91178e4f2e2c113c0/';
   }
 
   static sobtcMintPk(): PublicKey {
