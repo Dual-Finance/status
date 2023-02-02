@@ -1,6 +1,13 @@
-Trading at 2023-02-01T12:47:48.851Z
+Trading at 2023-02-02T13:03:59.662Z
 Options bought
-[]
+[
+  {
+    "mint": "BfbtJQEkpvjaTbv7oAophveFGD8LYGVG7FteVgFbPtHP",
+    "amount": 11,
+    "price": 0.346892,
+    "time": 1675305029
+  }
+]
 Options sold
 []
 
