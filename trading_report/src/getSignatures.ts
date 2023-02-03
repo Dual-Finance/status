@@ -1,4 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
+import { MAX_SIGNATURES } from "./constants";
 
 
 export async function getSignatures(connection: Connection, openOrdersAccount: PublicKey): Promise<string[] > {
@@ -13,7 +14,7 @@ export async function getSignatures(connection: Connection, openOrdersAccount: P
       if (sigObjs[sigObjs.length - 1].blockTime < cutoffTime) {
         break;
       }
-      if (allSigObjs.length > 10_000) {
+      if (allSigObjs.length > MAX_SIGNATURES) {
         break;
       }
       console.log(`Fetching more signatures, already have ${allSigObjs.length}`);

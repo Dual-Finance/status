@@ -1,6 +1,7 @@
 import { PublicKey } from "@solana/web3.js";
 
-export const STEP_SIZE = 8;
+export const STEP_SIZE = 25;
+export const MAX_SIGNATURES = 50_000;
 export const NEW_ORDER_INSTRUCTION_ID = 13;
 export const CANCEL_INSTRUCTION_ID = 7;
 export const OPENBOOK_FORK_ID = new PublicKey('srmqPvymJeFKQ4zGQed1GFppgkRHL9kaELCbyksJtPX');
