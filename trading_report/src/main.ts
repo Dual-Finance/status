@@ -36,7 +36,10 @@ async function main() {
     for (const transaction of transactions) {
       try {
         allLogs = allLogs.concat(parseTransaction(transaction));
-      } catch (err) {}
+      } catch (err) {
+        console.log('Failed. Backing off', err);
+        await new Promise(r => setTimeout(r, 100_000));
+      }
     }
     console.log('Parsed', i * STEP_SIZE, 'transactions');
     await new Promise(r => setTimeout(r, 1_000));
