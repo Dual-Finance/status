@@ -40,6 +40,9 @@ async function main() {
         console.log('Failed. Backing off', err, transaction);
         await new Promise(r => setTimeout(r, 10_000));
       }
+    } catch (err) {
+      console.log('Failed. Backing off', err);
+      await new Promise(r => setTimeout(r, 10_000));
     }
     console.log('Parsed', i * STEP_SIZE, 'transactions');
     await new Promise(r => setTimeout(r, 1_000));
