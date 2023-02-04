@@ -1,62 +1,68 @@
-Trading at 2023-02-03T12:49:29.242Z
+Trading at 2023-02-04T19:39:00.963Z
 Options bought
 [
   {
+    "mint": "3g4soFY3PkJMHnLgms3UY9dt5USdhGKNLRGjWWGncULm",
+    "amount": 0.1,
+    "price": 0.00062,
+    "time": 1675454061
+  },
+  {
+    "mint": "BfbtJQEkpvjaTbv7oAophveFGD8LYGVG7FteVgFbPtHP",
+    "amount": 0.1,
+    "price": 0.13818,
+    "time": 1675455319
+  },
+  {
     "mint": "ZUcf882KfcR4LBuhYrvbPeC86SPwuNxYnhqGG2r8k1C",
-    "amount": 8,
-    "price": 0.723661,
-    "time": 1675386400
+    "amount": 3,
+    "price": 1.116961,
+    "time": 1675470624
   },
   {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 20.504736,
-    "price": 0.429979,
-    "time": 1675393691
+    "mint": "ZUcf882KfcR4LBuhYrvbPeC86SPwuNxYnhqGG2r8k1C",
+    "amount": 2.997951,
+    "price": 1.050624,
+    "time": 1675475544
   },
   {
-    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "amount": 0,
-    "price": null,
-    "time": 1675396964
-  },
-  {
-    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "amount": 0,
-    "price": null,
-    "time": 1675397103
-  },
-  {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 0.1396,
-    "price": 0.47957,
-    "time": 1675398451
+    "mint": "5YRG3RMELeHEWzzLPpmYo8JAhQbQ4cjCy7FU1JTgDA9K",
+    "amount": 3,
+    "price": 0.451914,
+    "time": 1675506309
   }
 ]
 Options sold
 [
   {
-    "mint": "BfbtJQEkpvjaTbv7oAophveFGD8LYGVG7FteVgFbPtHP",
-    "amount": 11,
-    "price": 0.342719,
-    "time": 1675357325
+    "mint": "3g4soFY3PkJMHnLgms3UY9dt5USdhGKNLRGjWWGncULm",
+    "amount": 0.1,
+    "price": 0.032569,
+    "time": 1675454067
   },
   {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 20.504736,
-    "price": 0.452609,
-    "time": 1675393696
+    "mint": "BfbtJQEkpvjaTbv7oAophveFGD8LYGVG7FteVgFbPtHP",
+    "amount": 0.1,
+    "price": 0.14547,
+    "time": 1675455327
   },
   {
     "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "amount": 8,
-    "price": 1.05717,
-    "time": 1675397042
+    "amount": 3,
+    "price": 1.17575,
+    "time": 1675470632
   },
   {
-    "mint": "CzQyp6Yi8TduLf4LjxnkuSi7hzLwmnhkvwfUTkWWSYoe",
-    "amount": 0.139601,
-    "price": 0.504795,
-    "time": 1675398457
+    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amount": 2.997951,
+    "price": 1.10592,
+    "time": 1675475552
+  },
+  {
+    "mint": "5YRG3RMELeHEWzzLPpmYo8JAhQbQ4cjCy7FU1JTgDA9K",
+    "amount": 3,
+    "price": 0.4757,
+    "time": 1675506316
   }
 ]
 
