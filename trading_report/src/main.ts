@@ -34,7 +34,12 @@ async function main() {
   for (let i = 0; i < signatures.length / STEP_SIZE; ++i) {
     const transactions = await connection.getTransactions(signatures.slice(STEP_SIZE * i, STEP_SIZE * (i + 1)));
     for (const transaction of transactions) {
-      allLogs = allLogs.concat(parseTransaction(transaction));
+      try {
+        allLogs = allLogs.concat(parseTransaction(transaction));
+      } catch (err) {
+        console.log('Failed. Backing off', err);
+        await new Promise(r => setTimeout(r, 100_000));
+      }
     }
     console.log('Parsed', i * STEP_SIZE, 'transactions');
     await new Promise(r => setTimeout(r, 1_000));
