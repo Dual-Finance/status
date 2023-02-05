@@ -24,7 +24,7 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
 
     let mint = '';
     for (const balanceChange of balancesChanges) {
-        if (balanceChange.owner === OPTION_VAULT.toBase58()) {
+        if (balanceChange.owner === OPTION_VAULT.toBase58() && balanceChange.mint !== USDC_MINT.toBase58()) {
             mint = balanceChange.mint;
             break;
         }
