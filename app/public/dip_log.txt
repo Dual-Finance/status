@@ -1,20 +1,44 @@
-Trading at 2023-02-05T12:40:28.517Z
+Trading at 2023-02-06T13:21:55.753Z
 Options bought
 [
   {
-    "mint": "ZUcf882KfcR4LBuhYrvbPeC86SPwuNxYnhqGG2r8k1C",
-    "amount": 2,
-    "price": 0.911163,
-    "time": 1675556922
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 10,
+    "price": 0.505883,
+    "time": 1675652446
+  },
+  {
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 7,
+    "price": 0.521208,
+    "time": 1675656052
+  },
+  {
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 6,
+    "price": 0.289057,
+    "time": 1675656693
   }
 ]
 Options sold
 [
   {
-    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "amount": 2,
-    "price": 0.95912,
-    "time": 1675556927
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 10,
+    "price": 0.53251,
+    "time": 1675652451
+  },
+  {
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 7,
+    "price": 0.54864,
+    "time": 1675656062
+  },
+  {
+    "mint": "3A6pHP7Dt2R7AZ2f5jgznCiMnHv3SECaps5dzFSwwQWg",
+    "amount": 6,
+    "price": 0.58008,
+    "time": 1675656700
   }
 ]
 
