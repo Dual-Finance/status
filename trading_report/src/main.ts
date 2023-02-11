@@ -58,6 +58,7 @@ async function main() {
   const opbUrl = `https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=${openOrders[0].address}&address-type=open-orders&limit=10000`
   const response = await fetch(opbUrl);
   const opbTrades = await response.json() as TradeResponse[];
+  const lastPrice = opbTrades[opbTrades.length-1].price;
   const opbRecentTrades = opbTrades.filter((trade) => Date.parse(trade.block_datetime) / 1_000 > cutoffTime);
 
   const opbSells = opbRecentTrades.filter((trade) => trade.side === 'sell');
@@ -68,10 +69,20 @@ async function main() {
 
   const opbTotalSellsAmount = opbSells.map((trade) => trade.size).reduce(function(a, b) { return a + b; }, 0);
   const opbTotalBuysAmount = opbBuys.map((trade) => trade.size).reduce(function(a, b) { return a + b; }, 0);
+  const opbClosedAmount = Math.min(opbTotalBuysAmount, opbTotalSellsAmount);
+
+  const opbBuyAvgPrice = opbTotalBuysAmount == 0 ? 0 : opbTotalBuysValue / opbTotalBuysAmount;
+  const opbSellAvgPrice = opbTotalSellsAmount == 0 ? 0 : opbTotalSellsValue / opbTotalSellsAmount;
+  const opbAvgPriceDiff = (opbSellAvgPrice - opbBuyAvgPrice);
+  
+  const opbRPnL = opbClosedAmount * opbAvgPriceDiff;
+  const opbUPnL = (opbTotalBuysAmount > opbTotalSellsAmount) ? (opbTotalBuysAmount - opbClosedAmount) * (lastPrice - opbBuyAvgPrice)
+    : (opbTotalSellsAmount - opbClosedAmount) * (opbSellAvgPrice - lastPrice);
+  const opbNetPnL = opbRPnL + opbUPnL;
 
   console.log(`Openbook trades`);
-  console.log(`Bought ${opbTotalBuysAmount} for ${opbTotalBuysValue / (opbTotalBuysAmount + .0000000001)}, net notional: ${opbTotalBuysValue} `);
-  console.log(`Sold ${opbTotalSellsAmount} for ${opbTotalSellsValue / (opbTotalSellsAmount + .0000000001)}, net notional: ${opbTotalSellsValue}`);
+  console.log(`Bought ${opbTotalBuysAmount} for ${opbBuyAvgPrice}, net notional: ${opbTotalBuysValue}`);
+  console.log(`Sold ${opbTotalSellsAmount} for ${opbSellAvgPrice}, net notional: ${opbTotalSellsValue}`);
 
   const jupUrl = `https://stats.jup.ag/transactions?publicKey=${TRADING_ACCOUNT}`
   const jupResponse = await fetch(jupUrl);
@@ -87,10 +98,23 @@ async function main() {
 
   const jupTotalSellsAmount = jupSells.map((trade) => Number(trade.inAmountInDecimal)).reduce(function(a, b) { return a + b; }, 0);
   const jupTotalBuysAmount = jupBuys.map((trade) => Number(trade.outAmountInDecimal)).reduce(function(a, b) { return a + b; }, 0);
+  const jupClosedAmount = Math.min(jupTotalBuysAmount, jupTotalSellsAmount);
+
+  const jupBuyAvgPrice = jupTotalBuysAmount == 0 ? 0 : jupTotalBuysValue / jupTotalBuysAmount;
+  const jupSellAvgPrice = jupTotalSellsAmount == 0 ? 0 : jupTotalSellsValue / jupTotalSellsAmount;
+  const jupAvgPriceDiff = (jupSellAvgPrice - jupBuyAvgPrice);
+  
+  const jupRPnL = jupClosedAmount * jupAvgPriceDiff;
+  const jupUPnL = (jupTotalBuysAmount > jupTotalSellsAmount) ? (jupTotalBuysAmount - jupClosedAmount) * (lastPrice - jupBuyAvgPrice)
+    : (jupTotalSellsAmount - jupClosedAmount) * (jupSellAvgPrice - lastPrice);
+  const jupNetPnL = jupRPnL + jupUPnL;
 
   console.log(`Jupiter trades`);
-  console.log(`Bought ${jupTotalBuysAmount} for ${jupTotalBuysValue / (jupTotalBuysAmount + .0000000001)}, net notional: ${jupTotalBuysValue} `);
-  console.log(`Sold ${jupTotalSellsAmount} for ${jupTotalSellsValue / (jupTotalSellsAmount + .0000000001)}, net notional: ${jupTotalSellsValue}`);
+  console.log(`Bought ${jupTotalBuysAmount} for ${jupBuyAvgPrice}, net notional: ${jupTotalBuysValue}`);
+  console.log(`Sold ${jupTotalSellsAmount} for ${jupSellAvgPrice}, net notional: ${jupTotalSellsValue}`);
+
+  console.log(`PnL`);
+  console.log(`Total PnL ${opbNetPnL + jupNetPnL} Realized PnL ${opbRPnL + jupRPnL} Unrealized PnL ${opbUPnL + jupUPnL} Last Price ${lastPrice}`);
 
   const transactions: string[] = ["side,price,qty,time"];
   for (const sell of opbSells) {
@@ -114,14 +138,19 @@ async function main() {
   appendFile('trade_log.txt', `${SYMBOL} Trading at ${(new Date()).toISOString()}`, () => {});
   appendFile('trade_log.txt', `
 Openbook trades
-  Bought ${opbTotalBuysAmount} for ${opbTotalBuysValue / (opbTotalBuysAmount + .0000000001)}, net notional: ${opbTotalBuysValue}
-  Sold ${opbTotalSellsAmount} for ${opbTotalSellsValue / (opbTotalSellsAmount + .0000000001)}, net notional: ${opbTotalSellsValue}
+  Bought ${opbTotalBuysAmount} for ${opbBuyAvgPrice}, net notional: ${opbTotalBuysValue}
+  Sold ${opbTotalSellsAmount} for ${opbSellAvgPrice}, net notional: ${opbTotalSellsValue}
 `, () => {}
 );
   appendFile('trade_log.txt', `
 Jupiter trades
-  Bought ${jupTotalBuysAmount} for ${jupTotalBuysValue / (jupTotalBuysAmount + .0000000001)}, net notional: ${jupTotalBuysValue}
-  Sold ${jupTotalSellsAmount} for ${jupTotalSellsValue / (jupTotalSellsAmount + .0000000001)}, net notional: ${jupTotalSellsValue}
+  Bought ${jupTotalBuysAmount} for ${jupBuyAvgPrice}, net notional: ${jupTotalBuysValue}
+  Sold ${jupTotalSellsAmount} for ${jupSellAvgPrice}, net notional: ${jupTotalSellsValue}
+`, () => {}
+);
+appendFile('trade_log.txt', `
+PnL
+  Total PnL ${opbNetPnL + jupNetPnL} Realized PnL ${opbRPnL + jupRPnL} Unrealized PnL ${opbUPnL + jupUPnL} Last Price ${lastPrice}
 `, () => {}
 );
   appendFile('trade_log.txt', `\n`, () => {});
