@@ -16,12 +16,14 @@ async function main() {
   signatures = signatures.concat(await getSignatures(connection, PREMIUM_ACCOUNT));
 
   let payments: Payment[] = [];
+  let netPremiumPaid = 0;
   // Sleep on each iter to stay safely below the 25/sec RPC throttling limit.
   for (let i = 0; i < signatures.length / STEP_SIZE; ++i) {
     const transactions = await connection.getTransactions(signatures.slice(STEP_SIZE * i, STEP_SIZE * (i + 1)));
     for (const transaction of transactions) {
       const payment: Payment = parsePremium(transaction);
       payments.push(payment);
+      netPremiumPaid += payment.amount > 0 ? payment.amount * payment.price : 0;
     }
     await new Promise(r => setTimeout(r, 1_000));
   }
@@ -34,6 +36,7 @@ async function main() {
   signatures = await getSignatures(connection, MM_PREMIUM_ACCOUNT);
 
   payments = [];
+  let netPremiumEarned = 0;
   // Sleep on each iter to stay safely below the 25/sec RPC throttling limit.
   for (let i = 0; i < signatures.length / STEP_SIZE; ++i) {
     const transactions = await connection.getTransactions(signatures.slice(STEP_SIZE * i, STEP_SIZE * (i + 1)));
@@ -43,16 +46,19 @@ async function main() {
         continue;
       }
       payments.push(payment);
+      netPremiumEarned += payment.amount > 0 ? payment.amount * payment.price : 0;
     }
     await new Promise(r => setTimeout(r, 1_000));
   }
-
+  
   console.log('Options sold');
   console.log(payments);
   appendFile('dip_log.txt', `Options sold\n`, () => {});
   appendFile('dip_log.txt', `${JSON.stringify(payments, null, 2)}\n`, () => {});
-
   appendFile('dip_log.txt', `\n\n`, () => {});
+
+  console.log('Net Premium', netPremiumEarned - netPremiumPaid, 'Premium Earned', netPremiumEarned, 'Premium Paid', netPremiumPaid);
+  appendFile('dip_log.txt', `Net Premium ${netPremiumEarned - netPremiumPaid} Premium Earned ${netPremiumEarned} Premium Paid ${netPremiumPaid}\n`, () => {});  
 
   console.log('Analysis done', new Date().toUTCString());
 
