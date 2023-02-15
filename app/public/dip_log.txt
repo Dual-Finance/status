@@ -1,58 +1,46 @@
-Trading at 2023-02-14T13:26:23.931Z
+Trading at 2023-02-15T13:19:08.947Z
 Options bought
 [
   {
-    "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 1,
-    "price": 0.421695,
-    "time": 1676296158
-  },
-  {
-    "mint": "2oczATJibL7YpZrjRgDdsUpKNXHbdSzKEkEg2LhxPzVY",
-    "amount": 0.019999,
-    "price": 0.469673,
-    "time": 1676341452
-  },
-  {
     "mint": "uc1iuUkni9MPTFxv6TSQBpGuajsF2we9Wr4oqjKnqWv",
-    "amount": 0.046832,
-    "price": 0.044648,
-    "time": 1676341795
+    "amount": 1,
+    "price": 0.08056,
+    "time": 1676428153
   },
   {
     "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 1,
-    "price": 0.500791,
-    "time": 1676363608
+    "amount": 52,
+    "price": 0.736839,
+    "time": 1676432046
+  },
+  {
+    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
+    "amount": 13,
+    "price": 0.395873,
+    "time": 1676464310
   }
 ]
 Options sold
 [
   {
-    "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 1,
-    "price": 0.443891,
-    "time": 1676296165
-  },
-  {
-    "mint": "2oczATJibL7YpZrjRgDdsUpKNXHbdSzKEkEg2LhxPzVY",
-    "amount": 0.02,
-    "price": 0.494399,
-    "time": 1676341461
-  },
-  {
     "mint": "uc1iuUkni9MPTFxv6TSQBpGuajsF2we9Wr4oqjKnqWv",
-    "amount": 0.046833,
-    "price": 0.046975,
-    "time": 1676341800
+    "amount": 1,
+    "price": 0.078951,
+    "time": 1676431010
   },
   {
     "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 1,
-    "price": 0.52715,
-    "time": 1676363615
+    "amount": 52,
+    "price": 0.77562,
+    "time": 1676432052
+  },
+  {
+    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
+    "amount": 13,
+    "price": 0.41671,
+    "time": 1676464316
   }
 ]
 
 
-Net Premium 0.049159014712000015 Premium Earned 0.983128960175 Premium Paid 0.9339699454629999
+Net Premium 2.285884000000003 Premium Earned 45.828421000000006 Premium Paid 43.542537
