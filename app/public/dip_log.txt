@@ -1,23 +1,11 @@
-Trading at 2023-02-15T13:19:08.947Z
+Trading at 2023-02-16T13:15:45.241Z
 Options bought
 [
   {
     "mint": "uc1iuUkni9MPTFxv6TSQBpGuajsF2we9Wr4oqjKnqWv",
     "amount": 1,
-    "price": 0.08056,
-    "time": 1676428153
-  },
-  {
-    "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 52,
-    "price": 0.736839,
-    "time": 1676432046
-  },
-  {
-    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
-    "amount": 13,
-    "price": 0.395873,
-    "time": 1676464310
+    "price": 0.193894,
+    "time": 1676484121
   }
 ]
 Options sold
@@ -25,22 +13,10 @@ Options sold
   {
     "mint": "uc1iuUkni9MPTFxv6TSQBpGuajsF2we9Wr4oqjKnqWv",
     "amount": 1,
-    "price": 0.078951,
-    "time": 1676431010
-  },
-  {
-    "mint": "AYmr9EgFf8z7PJsdWJghNfZXNwdtikJeDcnhA7agQevb",
-    "amount": 52,
-    "price": 0.77562,
-    "time": 1676432052
-  },
-  {
-    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
-    "amount": 13,
-    "price": 0.41671,
-    "time": 1676464316
+    "price": 0.2041,
+    "time": 1676484127
   }
 ]
 
 
-Net Premium 2.285884000000003 Premium Earned 45.828421000000006 Premium Paid 43.542537
+Net Premium 0.010205999999999993 Premium Earned 0.2041 Premium Paid 0.193894
