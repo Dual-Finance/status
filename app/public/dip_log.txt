@@ -1,76 +1,34 @@
-Trading at 2023-02-18T13:06:18.198Z
+Trading at 2023-02-19T12:50:31.257Z
 Options bought
 [
   {
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1676641172
-  },
-  {
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1676641197
-  },
-  {
-    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
-    "amount": 125,
-    "price": 0.414417,
-    "time": 1676649698
-  },
-  {
     "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
-    "amount": 0.15,
-    "price": 0.151233,
-    "time": 1676667753
+    "amount": 1.400427,
+    "price": 0.105297,
+    "time": 1676727729
   },
   {
-    "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
+    "mint": "GKZcbkz7qZZY7LFqjUtd5RdWFcSKEDtPX86BeQE41F6o",
     "amount": 1,
-    "price": 0.139612,
-    "time": 1676699692
-  },
-  {
-    "mint": "DKWwxmYeMzzehL7o1NYWHYArCaas17kb4eUXECJ6cwAo",
-    "amount": 86,
-    "price": 0.50024,
-    "time": 1676720515
+    "price": 0.260727,
+    "time": 1676810476
   }
 ]
 Options sold
 [
   {
-    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
-    "amount": 100,
-    "price": 0.436229,
-    "time": 1676649706
-  },
-  {
-    "mint": "9ipFVvMiNH3Scqp1wAkvsjM4RHL8PmGabAa3Q9VTmRgb",
-    "amount": 25,
-    "price": 0.43623,
-    "time": 1676649710
-  },
-  {
     "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
-    "amount": 0.15,
-    "price": 0.159186,
-    "time": 1676667760
+    "amount": 1.400427,
+    "price": 0.11084,
+    "time": 1676727737
   },
   {
-    "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
+    "mint": "GKZcbkz7qZZY7LFqjUtd5RdWFcSKEDtPX86BeQE41F6o",
     "amount": 1,
-    "price": 0.146961,
-    "time": 1676699703
-  },
-  {
-    "mint": "DKWwxmYeMzzehL7o1NYWHYArCaas17kb4eUXECJ6cwAo",
-    "amount": 86,
-    "price": 0.52657,
-    "time": 1676720521
+    "price": 0.27445,
+    "time": 1676810486
   }
 ]
 
 
-Net Premium 4.9994469500000065 Premium Earned 99.9845089 Premium Paid 94.98506194999999
+Net Premium 0.02148556686100006 Premium Earned 0.42967332868 Premium Paid 0.40818776181899996
