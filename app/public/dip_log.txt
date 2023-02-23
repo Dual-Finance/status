@@ -1,8 +1,58 @@
-Trading at 2023-02-22T13:04:23.073Z
+Trading at 2023-02-23T16:45:01.403Z
 Options bought
-[]
+[
+  {
+    "mint": "GKZcbkz7qZZY7LFqjUtd5RdWFcSKEDtPX86BeQE41F6o",
+    "amount": 0.0044,
+    "price": 0.245454,
+    "time": 1677126806
+  },
+  {
+    "mint": "DKWwxmYeMzzehL7o1NYWHYArCaas17kb4eUXECJ6cwAo",
+    "amount": 0.0015,
+    "price": 0.532,
+    "time": 1677126829
+  },
+  {
+    "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
+    "amount": 0.030999,
+    "price": 0.036646,
+    "time": 1677126882
+  },
+  {
+    "mint": "CXgvEzftNB86bRVJvgjFMVn8n1g8JqbjmYaRuhKG7ixq",
+    "amount": 0.018,
+    "price": 0.062888,
+    "time": 1677126904
+  }
+]
 Options sold
-[]
+[
+  {
+    "mint": "GKZcbkz7qZZY7LFqjUtd5RdWFcSKEDtPX86BeQE41F6o",
+    "amount": 0.0044,
+    "price": 0.258181,
+    "time": 1677126812
+  },
+  {
+    "mint": "DKWwxmYeMzzehL7o1NYWHYArCaas17kb4eUXECJ6cwAo",
+    "amount": 0.0015,
+    "price": 0.814,
+    "time": 1677126837
+  },
+  {
+    "mint": "7WDtsJWNjVwucLHocWb27ze8gGydUjU5nxays1LtH5E9",
+    "amount": 0.031,
+    "price": 0.038548,
+    "time": 1677126945
+  },
+  {
+    "mint": "CXgvEzftNB86bRVJvgjFMVn8n1g8JqbjmYaRuhKG7ixq",
+    "amount": 0.018,
+    "price": 0.066166,
+    "time": 1677127033
+  }
+]
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+Net Premium 0.0005970014459999997 Premium Earned 0.0047429724 Premium Paid 0.004145970954
