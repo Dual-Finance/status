@@ -86,11 +86,11 @@ export class Config {
 
   static volMap(pk: string): number {
     const VOL_MAP = {
-      [Config.sobtcMintPk().toBase58()]: 0.3,
-      [Config.soethMintPk().toBase58()]: 0.4,
-      [Config.wsolMintPk().toBase58()]: 0.5,
-      [Config.mngoMintPk().toBase58()]: 0.6,
-      [Config.bonkMintPk().toBase58()]: 1,
+      [Config.sobtcMintPk().toBase58()]: 0.2,
+      [Config.soethMintPk().toBase58()]: 0.25,
+      [Config.wsolMintPk().toBase58()]: 0.3,
+      [Config.mngoMintPk().toBase58()]: 0.35,
+      [Config.bonkMintPk().toBase58()]: 0.35,
     };
     return VOL_MAP[pk];
   }
