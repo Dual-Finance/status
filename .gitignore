@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/dip_trades/node_modules
+/trading_report/node_modules
 /.pnp
 .pnp.js
 
