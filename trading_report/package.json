@@ -19,7 +19,8 @@
   },
   "scripts": {
     "main": "npx ts-node src/main.ts",
-    "airdrop": "npx ts-node src/airdrop.ts"
+    "airdrop": "npx ts-node src/airdrop.ts",
+    "verify": "npx ts-node src/verify.ts"
   },
   "compilerOptions": {
     "lib": [
