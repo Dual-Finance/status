@@ -1,76 +1,232 @@
-Trading at 2023-02-27T13:23:08.460Z
+Trading at 2023-02-28T13:09:23.650Z
 Options bought
 [
   {
-    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
-    "amount": 0.0021,
-    "price": 0.469047,
-    "time": 1677423296
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1677511142
   },
   {
     "mint": "72Dw5MeKZnqUdmSkakxN6GvUbW4JRxps8XFAuPLwkhY4",
-    "amount": 0.099999,
-    "price": 0.09543,
-    "time": 1677465073
+    "amount": 0.5,
+    "price": 0.000794,
+    "time": 1677530031
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2301,
+    "time": 1677551029
   },
   {
     "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
     "amount": 0.009999,
-    "price": 0.471747,
-    "time": 1677471378
+    "price": 0.083008,
+    "time": 1677551686
   },
   {
     "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
     "amount": 0.009999,
-    "price": 0.471647,
-    "time": 1677471512
+    "price": 0.223122,
+    "time": 1677551938
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.084808,
+    "time": 1677552059
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.009999,
+    "price": 0.245624,
+    "time": 1677552067
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.2387,
+    "time": 1677552311
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.009999,
+    "price": 0.238723,
+    "time": 1677552623
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.009999,
+    "price": 0.245424,
+    "time": 1677553156
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.2452,
+    "time": 1677553441
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2445,
+    "time": 1677553957
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.247724,
+    "time": 1677554235
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.275227,
+    "time": 1677555435
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2537,
+    "time": 1677555704
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.264026,
+    "time": 1677555873
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.249924,
+    "time": 1677556222
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2499,
+    "time": 1677556309
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.009999,
+    "price": 0.249924,
+    "time": 1677556378
   }
 ]
 Options sold
 [
   {
+    "mint": "72Dw5MeKZnqUdmSkakxN6GvUbW4JRxps8XFAuPLwkhY4",
+    "amount": 0.5,
+    "price": 0.040572,
+    "time": 1677530036
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.248899,
+    "time": 1677551164
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.235,
+    "time": 1677551717
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.235,
+    "time": 1677551966
+  },
+  {
     "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
-    "amount": 5,
-    "price": 0.48026,
-    "time": 1677464918
-  },
-  {
-    "mint": "72Dw5MeKZnqUdmSkakxN6GvUbW4JRxps8XFAuPLwkhY4",
-    "amount": 0.02,
-    "price": 0.1005,
-    "time": 1677464927
-  },
-  {
-    "mint": "DKWwxmYeMzzehL7o1NYWHYArCaas17kb4eUXECJ6cwAo",
-    "amount": 1.398377,
-    "price": 0.050129,
-    "time": 1677464931
-  },
-  {
-    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
-    "amount": 0.0021,
-    "price": 0.579523,
-    "time": 1677464936
-  },
-  {
-    "mint": "72Dw5MeKZnqUdmSkakxN6GvUbW4JRxps8XFAuPLwkhY4",
-    "amount": 0.1,
-    "price": 0.102539,
-    "time": 1677465148
+    "amount": 0.01,
+    "price": 0.2586,
+    "time": 1677552237
   },
   {
     "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
     "amount": 0.01,
-    "price": 0.4966,
-    "time": 1677471390
+    "price": 0.2282,
+    "time": 1677552247
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.2514,
+    "time": 1677552507
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.2513,
+    "time": 1677552635
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.258299,
+    "time": 1677553172
+  },
+  {
+    "mint": "DknUnFohn1dRh1QmPu9gi9otqNpzLREdEifXHkyMT877",
+    "amount": 0.01,
+    "price": 0.257999,
+    "time": 1677553447
   },
   {
     "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
     "amount": 0.01,
-    "price": 0.4966,
-    "time": 1677471535
+    "price": 0.2575,
+    "time": 1677553965
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.260799,
+    "time": 1677554258
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2898,
+    "time": 1677555443
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.266899,
+    "time": 1677555711
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.2779,
+    "time": 1677555898
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.263,
+    "time": 1677556230
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.263,
+    "time": 1677556316
+  },
+  {
+    "mint": "v1iByBDzMaNcLkd4Y895vfC9uvhT7eZH4GrkTsVM33s",
+    "amount": 0.01,
+    "price": 0.263,
+    "time": 1677556400
   }
 ]
 
 
-Net Premium 2.4748512390569997 Premium Earned 2.494812138933 Premium Paid 0.019960899876
+Net Premium 0.024861017534000003 Premium Earned 0.06395195 Premium Paid 0.03909093246599999
