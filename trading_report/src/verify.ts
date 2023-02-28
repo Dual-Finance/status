@@ -4,7 +4,6 @@ import { PublicKey } from '@solana/web3.js';
 
 async function verify() {
   console.log('Verify addresses are valid', new Date().toUTCString());
-
   const data = parseCSVFromFile("./address.csv");
   let verifiedAddress = [];
   for(const address of data){
@@ -13,7 +12,7 @@ async function verify() {
       if (PublicKey.isOnCurve(pubKey)) {
         verifiedAddress.push(address);
       }
-    } catch (err){
+    } catch (err) {
       console.log('NOT ON CURVE', address);
     }
   }
