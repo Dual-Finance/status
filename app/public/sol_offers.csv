@@ -1,1 +1,7 @@
 instruction,price,side,qty,time
+newOrder,21745,0,9,1677778565
+newOrder,21950,1,9,1677778565
+cancel,21745,,,1677778902
+cancel,21950,,,1677778902
+cancel,21745,,,1677778902
+cancel,21950,,,1677778902
