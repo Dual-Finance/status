@@ -79,6 +79,7 @@ export class Config {
       DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: 'BONK',
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
+      DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ: 'DUAL',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];
