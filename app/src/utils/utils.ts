@@ -29,7 +29,7 @@ export const prettyFormatPrice = (price: number): string => {
 
 export const formatDate = (date: number | Date): string => {
   const _date = new Date(date);
-  return _date.toLocaleDateString();
+  return _date.toDateString().split(' ').slice(1).join(' ');
 };
 
 export const getTokenIconClass = (token: string): string => {

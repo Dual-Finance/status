@@ -193,7 +193,7 @@ export const Dips = (props: { network: string }) => {
 
               const m = new Date();
               m.setTime(expiration * 1_000);
-              const dateString = `${m.getUTCFullYear()}-${m.getUTCMonth() + 1}-${m.getUTCDate()}`;
+              const dateString = m.toDateString().split(' ').slice(1).join(' ');
 
               const riskManagerTokenAccount = fetchedTokenAccounts.shift();
               const vaultSplTokenAccount = fetchedTokenAccounts.shift();
