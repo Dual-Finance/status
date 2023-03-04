@@ -15,18 +15,25 @@
   margin-bottom: 20px;
 }
 
+.bonk-icon {
+  background-image: $token-bonk;
+  border-radius: 50%;
+}
 .btc-icon {
   background-image: $token-btc;
 }
+.dual-icon {
+  background-image: $token-dual;
+}
 .eth-icon {
   background-image: $token-eth;
+}
+.mngo-icon {
+  background-image: $token-mngo;
 }
 .sol-icon {
   background-image: $token-sol;
 }
 .usdc-icon {
   background-image: $token-usdc;
-}
-.dual-icon {
-  background-image: $token-dual;
 }
