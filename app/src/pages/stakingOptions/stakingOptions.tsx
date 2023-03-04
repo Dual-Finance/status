@@ -163,10 +163,56 @@ export const StakingOptions = (props: { network: string }) => {
       .catch((err) => console.error(err));
   }, [network, wallet]);
 
+  const soFilters: Array<any> = [
+    {
+      text: 'CSA',
+      value: 'csa',
+    },
+    {
+      text: 'Partner',
+      value: 'partner',
+    },
+    {
+      text: 'Integration',
+      value: 'integration',
+    },
+    {
+      text: 'Bonus',
+      value: 'bonus',
+    },
+  ];
+
+  const tokenFilters: Array<any> = [
+    {
+      text: 'BONK',
+      value: 'BONK',
+    },
+    {
+      text: 'DUAL',
+      value: 'DUAL',
+    },
+    {
+      text: 'MNGO',
+      value: 'MNGO',
+    },
+    {
+      text: 'USDC',
+      value: 'USDC',
+    },
+  ];
+
   const columns: ColumnsType<SoParams> = [
     {
       title: 'Name',
       dataIndex: 'name',
+      render: (name) => {
+        return name;
+      },
+      sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+      defaultSortOrder: 'ascend',
+      filters: soFilters,
+      filterSearch: true,
+      onFilter: (value, record) => record.name.toLowerCase().indexOf(value.toString().toLocaleLowerCase()) >= 0,
     },
     {
       title: 'Authority',
@@ -197,6 +243,8 @@ export const StakingOptions = (props: { network: string }) => {
         }
         return `${baseMint.toBase58().substring(0, 4)}...`;
       },
+      filters: tokenFilters,
+      onFilter: (value, record) => Config.pkToAsset(record.baseMint.toBase58()).indexOf(value.toString()) === 0,
     },
     {
       title: 'Quote',
@@ -207,6 +255,8 @@ export const StakingOptions = (props: { network: string }) => {
         }
         return `${quoteMint.toBase58().substring(0, 4)}...`;
       },
+      filters: tokenFilters,
+      onFilter: (value, record) => Config.pkToAsset(record.quoteMint.toBase58()).indexOf(value.toString()) === 0,
     },
     {
       title: 'Remaining',
