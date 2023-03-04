@@ -21,6 +21,7 @@ export const StakingOptions = (props: { network: string }) => {
 
   // eslint-disable-next-line no-unused-vars
   const [accounts, setAccounts] = useState<SoParams[]>([]);
+  const explorerStub = 'https://solscan.io/';
 
   interface SoParams {
     // Just needed for react
@@ -206,6 +207,8 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Name',
       dataIndex: 'name',
       render: (name) => {
+        //  TODO: Complete link to mint here instead
+        // return <a href={`${explorerStub}account/${baseMint.baseMint.toBase58()}`}>{name}</a>;
         return name;
       },
       sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
@@ -219,7 +222,9 @@ export const StakingOptions = (props: { network: string }) => {
       dataIndex: 'authority',
       render: (authority) => {
         // TODO Make copyable
-        return `${authority.toBase58().substring(0, 4)}...`;
+        return (
+          <a href={`${explorerStub}account/${authority.toBase58()}`}>{`${authority.toBase58().substring(0, 4)}...`}</a>
+        );
       },
     },
     {
