@@ -121,17 +121,77 @@ export const Gso = (props: { network: string }) => {
       .catch((err) => console.error(err));
   }, [network, wallet]);
 
+  const gsoFilters: Array<any> = [
+    {
+      text: 'Bonus',
+      value: 'bonus',
+    },
+    {
+      text: 'CSA',
+      value: 'csa',
+    },
+    {
+      text: 'Integration',
+      value: 'integration',
+    },
+    {
+      text: 'Loyalty',
+      value: 'loyalty',
+    },
+    {
+      text: 'Partner',
+      value: 'partner',
+    },
+    {
+      text: 'Test',
+      value: 'test',
+    },
+  ];
+
+  const tokenFilters: Array<any> = [
+    {
+      text: 'BONK',
+      value: 'BONK',
+    },
+    {
+      text: 'DUAL',
+      value: 'DUAL',
+    },
+    {
+      text: 'MNGO',
+      value: 'MNGO',
+    },
+    {
+      text: 'USDC',
+      value: 'USDC',
+    },
+  ];
+
   const columns: ColumnsType<GsoParams> = [
     {
       title: 'Name',
       dataIndex: 'name',
+      render: (name) => {
+        // TODO: Link to an appropriate record here
+        // return <a href={Config.explorerUrl('RECORD-TBD')}>{name}</a>;
+        return name;
+      },
+      sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+      defaultSortOrder: 'ascend',
+      filters: gsoFilters,
+      filterSearch: true,
+      onFilter: (value, record) => record.name.toLowerCase().indexOf(value.toString().toLocaleLowerCase()) >= 0,
     },
     {
       title: 'Authority',
       dataIndex: 'authority',
       render: (authority) => {
         // TODO Make copyable
-        return `${authority.toBase58().substring(0, 4)}...`;
+        return (
+          <a href={Config.explorerUrl(authority.toBase58())} target="_blank" rel="noreferrer">
+            {`${authority.toBase58().substring(0, 4)}...`}
+          </a>
+        );
       },
     },
     {
@@ -153,6 +213,8 @@ export const Gso = (props: { network: string }) => {
         }
         return `${baseMint.toBase58().substring(0, 4)}...`;
       },
+      filters: tokenFilters,
+      onFilter: (value, record) => Config.pkToAsset(record.baseMint.toBase58()).indexOf(value.toString()) === 0,
     },
     {
       title: 'Locked',

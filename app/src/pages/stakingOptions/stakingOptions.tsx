@@ -21,7 +21,6 @@ export const StakingOptions = (props: { network: string }) => {
 
   // eslint-disable-next-line no-unused-vars
   const [accounts, setAccounts] = useState<SoParams[]>([]);
-  const explorerStub = 'https://solscan.io/';
 
   interface SoParams {
     // Just needed for react
@@ -31,6 +30,7 @@ export const StakingOptions = (props: { network: string }) => {
     expiration: string;
     expirationInt: number;
     strike: string;
+    soMint: PublicKey;
     baseMint: PublicKey;
     quoteMint: PublicKey;
     remaining: number;
@@ -44,6 +44,7 @@ export const StakingOptions = (props: { network: string }) => {
     expiration: string,
     expirationInt: number,
     strike: string,
+    soMint: PublicKey,
     baseMint: PublicKey,
     quoteMint: PublicKey,
     remaining: number,
@@ -56,6 +57,7 @@ export const StakingOptions = (props: { network: string }) => {
       expiration,
       expirationInt,
       strike,
+      soMint,
       baseMint,
       quoteMint,
       remaining,
@@ -149,6 +151,7 @@ export const StakingOptions = (props: { network: string }) => {
           new Date(Number(optionExpiration) * 1_000).toLocaleDateString(),
           Number(optionExpiration),
           roundedStrike,
+          soMint,
           new PublicKey(baseMint),
           new PublicKey(quoteMint),
           roundedAvailable,
@@ -166,20 +169,28 @@ export const StakingOptions = (props: { network: string }) => {
 
   const soFilters: Array<any> = [
     {
-      text: 'CSA',
-      value: 'csa',
+      text: 'Bonus',
+      value: 'bonus',
     },
     {
-      text: 'Partner',
-      value: 'partner',
+      text: 'CSA',
+      value: 'csa',
     },
     {
       text: 'Integration',
       value: 'integration',
     },
     {
-      text: 'Bonus',
-      value: 'bonus',
+      text: 'Loyalty',
+      value: 'loyalty',
+    },
+    {
+      text: 'Partner',
+      value: 'partner',
+    },
+    {
+      text: 'Test',
+      value: 'test',
     },
   ];
 
@@ -206,10 +217,8 @@ export const StakingOptions = (props: { network: string }) => {
     {
       title: 'Name',
       dataIndex: 'name',
-      render: (name) => {
-        //  TODO: Complete link to mint here instead
-        // return <a href={`${explorerStub}account/${baseMint.baseMint.toBase58()}`}>{name}</a>;
-        return name;
+      render: (name, record) => {
+        return <a href={Config.explorerUrl(record.soMint.toBase58())}>{name}</a>;
       },
       sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
       defaultSortOrder: 'ascend',
@@ -223,7 +232,9 @@ export const StakingOptions = (props: { network: string }) => {
       render: (authority) => {
         // TODO Make copyable
         return (
-          <a href={`${explorerStub}account/${authority.toBase58()}`}>{`${authority.toBase58().substring(0, 4)}...`}</a>
+          <a href={Config.explorerUrl(authority.toBase58())} target="_blank" rel="noreferrer">
+            {`${authority.toBase58().substring(0, 4)}...`}
+          </a>
         );
       },
     },
