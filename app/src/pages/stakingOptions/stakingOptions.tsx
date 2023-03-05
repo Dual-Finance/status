@@ -224,7 +224,11 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Name',
       dataIndex: 'name',
       render: (name, record) => {
-        return <a href={Config.explorerUrl(record.soMint.toBase58())}>{name}</a>;
+        return (
+          <a href={Config.explorerUrl(record.soMint.toBase58())} target="_blank" rel="noreferrer">
+            {name}
+          </a>
+        );
       },
       sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
       defaultSortOrder: 'ascend',

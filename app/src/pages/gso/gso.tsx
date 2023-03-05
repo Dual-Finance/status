@@ -179,7 +179,7 @@ export const Gso = (props: { network: string }) => {
       dataIndex: 'name',
       render: (name) => {
         // TODO: Link to an appropriate record here
-        // return <a href={Config.explorerUrl('RECORD-TBD')}>{name}</a>;
+        // return <a href={Config.explorerUrl('RECORD-TBD')} target="_blank" rel="noreferrer">{name}</a>;
         return name;
       },
       sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
