@@ -123,16 +123,8 @@ export const Gso = (props: { network: string }) => {
 
   const gsoFilters: Array<any> = [
     {
-      text: 'Bonus',
-      value: 'bonus',
-    },
-    {
       text: 'CSA',
       value: 'csa',
-    },
-    {
-      text: 'Integration',
-      value: 'integration',
     },
     {
       text: 'Loyalty',
@@ -145,6 +137,20 @@ export const Gso = (props: { network: string }) => {
     {
       text: 'Test',
       value: 'test',
+    },
+    {
+      text: 'MM',
+      value: 'mm',
+      children: [
+        {
+          text: 'Bonus',
+          value: 'bonus',
+        },
+        {
+          text: 'Integration',
+          value: 'integration',
+        },
+      ],
     },
   ];
 
@@ -179,6 +185,7 @@ export const Gso = (props: { network: string }) => {
       sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
       defaultSortOrder: 'ascend',
       filters: gsoFilters,
+      filterMode: 'tree',
       filterSearch: true,
       onFilter: (value, record) => record.name.toLowerCase().indexOf(value.toString().toLocaleLowerCase()) >= 0,
     },
