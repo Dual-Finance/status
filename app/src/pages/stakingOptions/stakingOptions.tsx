@@ -30,6 +30,7 @@ export const StakingOptions = (props: { network: string }) => {
     expiration: string;
     expirationInt: number;
     strike: string;
+    soMint: PublicKey;
     baseMint: PublicKey;
     quoteMint: PublicKey;
     remaining: number;
@@ -43,6 +44,7 @@ export const StakingOptions = (props: { network: string }) => {
     expiration: string,
     expirationInt: number,
     strike: string,
+    soMint: PublicKey,
     baseMint: PublicKey,
     quoteMint: PublicKey,
     remaining: number,
@@ -55,6 +57,7 @@ export const StakingOptions = (props: { network: string }) => {
       expiration,
       expirationInt,
       strike,
+      soMint,
       baseMint,
       quoteMint,
       remaining,
@@ -145,9 +148,10 @@ export const StakingOptions = (props: { network: string }) => {
           soName,
           soName,
           new PublicKey(authority),
-          new Date(Number(optionExpiration) * 1_000).toLocaleDateString(),
+          new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
           Number(optionExpiration),
           roundedStrike,
+          soMint,
           new PublicKey(baseMint),
           new PublicKey(quoteMint),
           roundedAvailable,
@@ -163,17 +167,86 @@ export const StakingOptions = (props: { network: string }) => {
       .catch((err) => console.error(err));
   }, [network, wallet]);
 
+  const soFilters: Array<any> = [
+    {
+      text: 'CSA',
+      value: 'csa',
+    },
+    {
+      text: 'Loyalty',
+      value: 'loyalty',
+    },
+    {
+      text: 'Partner',
+      value: 'partner',
+    },
+    {
+      text: 'Test',
+      value: 'test',
+    },
+    {
+      text: 'MM',
+      value: 'mm',
+      children: [
+        {
+          text: 'Bonus',
+          value: 'bonus',
+        },
+        {
+          text: 'Integration',
+          value: 'integration',
+        },
+      ],
+    },
+  ];
+
+  const tokenFilters: Array<any> = [
+    {
+      text: 'BONK',
+      value: 'BONK',
+    },
+    {
+      text: 'DUAL',
+      value: 'DUAL',
+    },
+    {
+      text: 'MNGO',
+      value: 'MNGO',
+    },
+    {
+      text: 'USDC',
+      value: 'USDC',
+    },
+  ];
+
   const columns: ColumnsType<SoParams> = [
     {
       title: 'Name',
       dataIndex: 'name',
+      render: (name, record) => {
+        return (
+          <a href={Config.explorerUrl(record.soMint.toBase58())} target="_blank" rel="noreferrer">
+            {name}
+          </a>
+        );
+      },
+      sorter: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+      defaultSortOrder: 'ascend',
+      filters: soFilters,
+      filterMode: 'tree',
+      filterSearch: true,
+      onFilter: (value, record) => record.name.toLowerCase().indexOf(value.toString().toLocaleLowerCase()) >= 0,
     },
     {
       title: 'Authority',
       dataIndex: 'authority',
       render: (authority) => {
         // TODO Make copyable
-        return `${authority.toBase58().substring(0, 4)}...`;
+        return (
+          <a href={Config.explorerUrl(authority.toBase58())} target="_blank" rel="noreferrer">
+            {`${authority.toBase58().substring(0, 4)}...`}
+          </a>
+        );
       },
     },
     {
@@ -197,6 +270,8 @@ export const StakingOptions = (props: { network: string }) => {
         }
         return `${baseMint.toBase58().substring(0, 4)}...`;
       },
+      filters: tokenFilters,
+      onFilter: (value, record) => Config.pkToAsset(record.baseMint.toBase58()).indexOf(value.toString()) === 0,
     },
     {
       title: 'Quote',
@@ -207,6 +282,8 @@ export const StakingOptions = (props: { network: string }) => {
         }
         return `${quoteMint.toBase58().substring(0, 4)}...`;
       },
+      filters: tokenFilters,
+      onFilter: (value, record) => Config.pkToAsset(record.quoteMint.toBase58()).indexOf(value.toString()) === 0,
     },
     {
       title: 'Remaining',

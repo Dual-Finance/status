@@ -10,6 +10,49 @@ export class Config {
     return 'https://chaotic-alien-pallet.solana-mainnet.discover.quiknode.pro/3fa2083ef7ee443de64a78b91178e4f2e2c113c0/';
   }
 
+  static explorerUrl(value: string, explorer = 'solscan', path?: string | null): string {
+    // Null or undefined path should resolve to default type of wallet/account/address path
+    if (path === null || path === undefined) {
+      switch (explorer) {
+        case 'solscan':
+          path = `account/`;
+          break;
+        case 'solexplorer':
+          path = `address/`;
+          break;
+        case 'solanafm':
+          path = `address/`;
+          break;
+        default:
+          path = ``;
+      }
+    }
+
+    if (Config.isDev) {
+      switch (explorer) {
+        case 'solexplorer':
+          return `https://explorer.solana.com/${path}${value}?cluster=devnet`;
+        case 'solscan':
+          return `https://solscan.io/${path}${value}?cluster=devnet`;
+        case 'solanafm':
+          return `https://solana.fm/${path}${value}?cluster=devnet-qn1`;
+        default:
+          return ``;
+      }
+    }
+
+    switch (explorer) {
+      case 'solexplorer':
+        return `https://explorer.solana.com/${path}${value}`;
+      case 'solscan':
+        return `https://solscan.io/${path}${value}`;
+      case 'solanafm':
+        return `https://solana.fm/${path}${value}?cluster=mainnet-solanafmbeta`;
+      default:
+        return ``;
+    }
+  }
+
   static sobtcMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv');
@@ -79,6 +122,7 @@ export class Config {
       DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: 'BONK',
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
+      DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ: 'DUAL',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];
