@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+__pycache__/
 /node_modules
 /dip_trades/node_modules
 /trading_report/node_modules
@@ -28,3 +29,15 @@ package-lock.json
 # IDE
 .idea/
 .viminfo
+
+# Keys for webdriver
+config.json
+
+# Temp files
+app/public/summary
+dip_trades/dip_log.txt
+dip_trades/yarn.lock
+failure.html
+screenshot.png
+trading_report/offers.csv
+trading_report/transactions.csv
