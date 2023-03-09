@@ -1,22 +1,8 @@
-Trading at 2023-03-08T12:45:45.293Z
+Trading at 2023-03-09T12:32:25.554Z
 Options bought
-[
-  {
-    "mint": "94MLuQzg2UeHXU9jeeC4jQEjAWr7PM5mPRmduxJNifHb",
-    "amount": 0.04,
-    "price": 0.063675,
-    "time": 1678252651
-  }
-]
+[]
 Options sold
-[
-  {
-    "mint": "94MLuQzg2UeHXU9jeeC4jQEjAWr7PM5mPRmduxJNifHb",
-    "amount": 0.04,
-    "price": 0.188825,
-    "time": 1678252656
-  }
-]
+[]
 
 
-Net Premium 0.005006 Premium Earned 0.007553 Premium Paid 0.002547
+Net Premium 0 Premium Earned 0 Premium Paid 0
