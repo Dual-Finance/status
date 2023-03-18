@@ -1,22 +1,22 @@
-Trading at 2023-03-17T12:18:27.963Z
+Trading at 2023-03-18T12:18:43.565Z
 Options bought
 [
   {
-    "mint": "ArFkgBh1SXgvSjNyHJaDBdcHLuyfKEWMxeuyqQ5Bcarj",
-    "amount": 0.033,
-    "price": 0.029151,
-    "time": 1678977171
+    "mint": "8vJx43j2Sy5nfHR77LLPPCLTLSyC3BTmoYZE5NhmigAW",
+    "amount": 2,
+    "price": 0.471551,
+    "time": 1679081771
   }
 ]
 Options sold
 [
   {
-    "mint": "ArFkgBh1SXgvSjNyHJaDBdcHLuyfKEWMxeuyqQ5Bcarj",
-    "amount": 0.033,
-    "price": 0.030636,
-    "time": 1678977180
+    "mint": "8vJx43j2Sy5nfHR77LLPPCLTLSyC3BTmoYZE5NhmigAW",
+    "amount": 2,
+    "price": 0.49637,
+    "time": 1679081779
   }
 ]
 
 
-Net Premium 0.00004900499999999997 Premium Earned 0.001010988 Premium Paid 0.000961983
+Net Premium 0.04963799999999996 Premium Earned 0.99274 Premium Paid 0.943102
