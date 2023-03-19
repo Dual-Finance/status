@@ -426,3 +426,20 @@ export function parseGsoState(buf: Buffer) {
     lockupPeriodEnd,
   };
 }
+
+export async function getJupPriceAPI(baseMint: PublicKey): Promise<number> {
+  const url = `https://quote-api.jup.ag/v3/price?ids=${baseMint.toBase58()}`;
+  const { data } = await (await fetch(url)).json();
+  const { price } = data[baseMint.toBase58()];
+  return price;
+}
+
+export async function getCoingeckoDualPrice(): Promise<number> {
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=dual-finance&vs_currencies=usd`;
+  const data = await (await fetch(url)).json();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const values = Object.values(data)[0];
+  // @ts-ignore
+  const price = values.usd;
+  return price;
+}
