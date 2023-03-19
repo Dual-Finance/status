@@ -13,8 +13,11 @@ import { Services } from './services/services';
 import { Config } from '../config/config';
 import { StakingOptions } from './stakingOptions/stakingOptions';
 import { Gso } from './gso/gso';
+import usePrice from '../hooks/usePrice';
 
 export const Pools = () => {
+  const { price } = usePrice();
+  const dualPrice = price === undefined ? 0 : price;
   const tabs = [
     { label: 'DIPs', value: 'DIPs', disabled: false },
     { label: 'SO', value: 'SO', disabled: false },
@@ -48,7 +51,7 @@ export const Pools = () => {
 
   return (
     <div className={styles.poolsComponent}>
-      <CurvedBackgroundWrapper curved={<PageCutoff price={0} token="DUAL" />}>
+      <CurvedBackgroundWrapper curved={<PageCutoff price={dualPrice} token="DUAL" />}>
         <SectionSidebarWrapper
           leftSide={<SectionHeaderLeft options={tabs} onChange={handleProductChange} />}
           rightSide={<SectionHeaderLeft options={networkTabs} onChange={handleNetworkChange} />}

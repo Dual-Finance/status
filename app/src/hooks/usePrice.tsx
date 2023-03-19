@@ -1,29 +1,35 @@
-import { parsePriceData } from '@pythnetwork/client';
-import { useWallet } from '@solana/wallet-adapter-react';
-import { useState } from 'react';
-import { getMultipleAccounts, GetProvider } from '../utils/utils';
+import { useEffect, useState } from 'react';
+import { getCoingeckoDualPrice } from '../utils/utils';
 
-export default function usePrice(network: string) {
-  const wallet = useWallet();
-  const [prices, setPrices] = useState<number[]>([]);
-  const [, localConnection] = GetProvider(wallet, network);
+export default function usePrice2() {
+  const [price, setPrice] = useState<number>();
 
-  const fetchPrices = async (publicKeys: string[]) => {
-    try {
-      const priceInfos = await getMultipleAccounts(localConnection, publicKeys, 'confirmed');
-
-      const freshPrices: number[] = priceInfos.array.map((item: any) => parsePriceData(item.data as Buffer).price || 0);
-
-      setPrices(freshPrices);
-    } catch (error) {
-      // Do nothing. This will retry
-      console.log(error);
-      setPrices([]);
+  useEffect(() => {
+    async function fetchData() {
+      const geckoPrice = await getCoingeckoDualPrice();
+      return geckoPrice;
     }
-  };
+    fetchData()
+      .then((data) => {
+        if (data) {
+          setPrice(data);
+        }
+      })
+      .catch(console.error);
+    const interval = setInterval(() => {
+      fetchData()
+        .then((data) => {
+          if (data) {
+            setPrice(data);
+          }
+        })
+        .catch(console.error);
+    }, 30 * 1_000);
+    return () => clearInterval(interval);
+  }, []);
 
   return {
-    fetchPrices,
-    prices,
+    setPrice,
+    price,
   };
 }
