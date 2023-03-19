@@ -1,22 +1,8 @@
-Trading at 2023-03-18T12:18:43.565Z
+Trading at 2023-03-19T12:15:24.851Z
 Options bought
-[
-  {
-    "mint": "8vJx43j2Sy5nfHR77LLPPCLTLSyC3BTmoYZE5NhmigAW",
-    "amount": 2,
-    "price": 0.471551,
-    "time": 1679081771
-  }
-]
+[]
 Options sold
-[
-  {
-    "mint": "8vJx43j2Sy5nfHR77LLPPCLTLSyC3BTmoYZE5NhmigAW",
-    "amount": 2,
-    "price": 0.49637,
-    "time": 1679081779
-  }
-]
+[]
 
 
-Net Premium 0.04963799999999996 Premium Earned 0.99274 Premium Paid 0.943102
+Net Premium 0 Premium Earned 0 Premium Paid 0
