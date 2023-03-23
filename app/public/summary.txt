@@ -1,4 +1,4 @@
-DUAL Trading at 2023-03-22T12:07:42.008Z
+DUAL Trading at 2023-03-23T12:07:51.566Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -10,7 +10,7 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.032234
 
-BONK Trading at 2023-03-22T12:09:31.869Z
+BONK Trading at 2023-03-23T12:08:42.534Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -22,27 +22,27 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 6.64e-7
 
-MNGO Trading at 2023-03-22T12:11:07.693Z
+MNGO Trading at 2023-03-23T12:10:26.972Z
 Openbook trades
-  Bought 134280 for 0.019705678433124815, net notional: 2646.0785
-  Sold 81710 for 0.020145329090686573, net notional: 1646.07484
+  Bought 121590 for 0.019747744880335556, net notional: 2401.1283000000003
+  Sold 0 for 0, net notional: 0
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 44.562239999999704 Realized PnL 35.92385522937127 Unrealized PnL 8.638384770628434 Last Price 0.01987
+  Total PnL -7.021200000000301 Realized PnL 0 Unrealized PnL -7.021200000000301 Last Price 0.01969
 
-SOL Trading at 2023-03-22T12:58:02.175Z
+SOL Trading at 2023-03-23T12:54:00.749Z
 Openbook trades
-  Bought 0.06800000000000003 for 22.52085294117646, net notional: 1.5314180000000002
-  Sold 0.002 for 22.308, net notional: 0.044616
+  Bought 0.38800000000000007 for 21.447358247422674, net notional: 8.321575
+  Sold 0.021 for 21.833, net notional: 0.458493
 
 Jupiter trades
-  Bought 0.014513341999999999 for 22.4401780256402, net notional: 0.32568197822700096
+  Bought 0.010897436 for 21.657071471540476, net notional: 0.23600655030853815
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0.0033334238989997282 Realized PnL -0.0004257058823529221 Unrealized PnL 0.0037591297813526505 Last Price 22.553
+  Total PnL 0.12018068269146437 Realized PnL 0.008098476804123816 Unrealized PnL 0.11208220588734055 Last Price 21.75
 
