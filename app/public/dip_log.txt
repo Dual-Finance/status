@@ -1,15 +1,8 @@
-Trading at 2023-03-23T12:54:17.122Z
+Trading at 2023-03-24T13:00:56.622Z
 Options bought
-[
-  {
-    "mint": "2CvWiZkvD4oui52LY3U6BdrUzMM1cf4LaQ67pZJv9tm6",
-    "amount": 0.049999,
-    "price": 0.078301,
-    "time": 1679568495
-  }
-]
+[]
 Options sold
 []
 
 
-Net Premium -0.003914971699 Premium Earned 0 Premium Paid 0.003914971699
+Net Premium 0 Premium Earned 0 Premium Paid 0
