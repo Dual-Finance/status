@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable no-continue */
+/* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect } from 'react';
 import c from 'classnames';
 import { PublicKey } from '@solana/web3.js';
@@ -112,52 +113,55 @@ export const StakingOptions = (props: { network: string }) => {
           // @ts-ignore
           lotSize,
         } = state;
-        // @ts-ignore
-        const soMint = await stakingOptionsHelper.soMint(strikes[0], soName, new PublicKey(baseMint));
-        let outstanding = 0;
-        try {
-          const mint = await getMint(provider.connection, soMint);
-          const outstandingLots = Number(mint.supply);
-          outstanding = (outstandingLots * lotSize) / 10 ** Number(baseDecimals);
-        } catch (err) {
-          console.log(err);
-        }
 
-        // TODO: These are from testing and should be cleaned up.
-        if (soName === 'SO') {
-          continue;
-        }
-        const strikeQuoteAtomsPerLot = Number(strikes[0]);
-        const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
-        const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
-        let roundedStrike = '';
-        if (Number(strikeTokensPerToken.toString().split('-')[1]) > 0) {
-          roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
-        } else {
-          roundedStrike = strikeTokensPerToken.toPrecision(3);
-        }
-        const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
-        const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
+        for (const strike of strikes) {
+          // @ts-ignore
+          const soMint = await stakingOptionsHelper.soMint(strike, soName, new PublicKey(baseMint));
+          let outstanding = 0;
+          try {
+            const mint = await getMint(provider.connection, soMint);
+            const outstandingLots = Number(mint.supply);
+            outstanding = (outstandingLots * lotSize) / 10 ** Number(baseDecimals);
+          } catch (err) {
+            console.log(err);
+          }
 
-        // These should be cleaned up, but do not have anything in them, so dont display.
-        if (optionExpiration < Date.now() / 1_000 && roundedAvailable === 0) {
-          continue;
-        }
+          // TODO: These are from testing and should be cleaned up.
+          if (soName === 'SO') {
+            continue;
+          }
+          const strikeQuoteAtomsPerLot = Number(strike);
+          const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
+          const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
+          let roundedStrike = '';
+          if (Number(strikeTokensPerToken.toString().split('-')[1]) > 0) {
+            roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
+          } else {
+            roundedStrike = strikeTokensPerToken.toPrecision(3);
+          }
+          const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
+          const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
-        const soParams = createSoParams(
-          soName,
-          soName,
-          new PublicKey(authority),
-          new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
-          Number(optionExpiration),
-          roundedStrike,
-          soMint,
-          new PublicKey(baseMint),
-          new PublicKey(quoteMint),
-          roundedAvailable,
-          outstanding
-        );
-        allAccounts.push(soParams);
+          // These should be cleaned up, but do not have anything in them, so dont display.
+          if (optionExpiration < Date.now() / 1_000 && roundedAvailable === 0) {
+            continue;
+          }
+
+          const soParams = createSoParams(
+            soName,
+            soName,
+            new PublicKey(authority),
+            new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
+            Number(optionExpiration),
+            roundedStrike,
+            soMint,
+            new PublicKey(baseMint),
+            new PublicKey(quoteMint),
+            roundedAvailable,
+            outstanding
+          );
+          allAccounts.push(soParams);
+        }
       }
       setAccounts(allAccounts);
     }
