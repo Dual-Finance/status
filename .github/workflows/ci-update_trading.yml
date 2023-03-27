@@ -33,5 +33,6 @@ jobs:
         run: |
           git config --global user.name 'DocDuala'
           git config --global user.email 'britt@dual.finance'
+          git pull
           git commit -am "Update trading results"
           git push
