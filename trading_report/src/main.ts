@@ -55,7 +55,7 @@ async function main() {
   const cutoffTime = currentTime - 24 * 60 * 60;
 
   // Assumes that all trades happen on the first open orders account.
-  const opbUrl = `https://mango-transaction-log.herokuapp.com/v4/stats/openbook-trades?address=${openOrders[0].address}&address-type=open-orders&limit=10000`
+  const opbUrl = `https://api.mngo.cloud/data/v4/stats/openbook-trades?address=${openOrders[0].address}&address-type=open-orders&limit=10000`
   const response = await fetch(opbUrl);
   const opbTrades = await response.json() as TradeResponse[];
   const lastPrice = opbTrades[opbTrades.length-1].price;
