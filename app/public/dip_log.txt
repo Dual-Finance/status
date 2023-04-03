@@ -1,148 +1,76 @@
-Trading at 2023-04-02T13:24:45.941Z
+Trading at 2023-04-03T13:06:10.881Z
 Options bought
 [
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1637,
-    "time": 1680363788
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 198,
+    "price": 0.516771,
+    "time": 1680476461
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.163816,
-    "time": 1680364335
+    "amount": 0.75,
+    "price": 0.019626,
+    "time": 1680493300
   },
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.167716,
-    "time": 1680364734
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.163216,
-    "time": 1680365078
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1632,
-    "time": 1680365209
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.172017,
-    "time": 1680365652
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.178717,
-    "time": 1680365941
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.0458,
-    "time": 1680366006
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 0.573337,
+    "price": 0.330304,
+    "time": 1680496056
   },
   {
     "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 60,
-    "price": 0.174714,
-    "time": 1680366177
+    "amount": 0.199999,
+    "price": 0.046465,
+    "time": 1680499748
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.009999,
-    "price": 0.183218,
-    "time": 1680366674
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 101,
-    "price": 0.022686,
-    "time": 1680368902
+    "amount": 2.5,
+    "price": 0.033601,
+    "time": 1680525247
   }
 ]
 Options sold
 [
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1724,
-    "time": 1680363794
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.543969,
+    "time": 1680476465
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 98,
+    "price": 0.54397,
+    "time": 1680476469
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.172299,
-    "time": 1680364341
+    "amount": 0.75,
+    "price": 0.020661,
+    "time": 1680493306
   },
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1766,
-    "time": 1680364740
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.171799,
-    "time": 1680365085
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.171799,
-    "time": 1680365229
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.181099,
-    "time": 1680365670
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1882,
-    "time": 1680365958
-  },
-  {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1881,
-    "time": 1680366034
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 0.573337,
+    "price": 0.347689,
+    "time": 1680496063
   },
   {
     "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 60,
-    "price": 0.18391,
-    "time": 1680366182
+    "amount": 0.2,
+    "price": 0.048924,
+    "time": 1680499758
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.01,
-    "price": 0.1929,
-    "time": 1680366682
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 100,
-    "price": 0.02388,
-    "time": 1680368911
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 1,
-    "price": 0.023551,
-    "time": 1680368915
+    "amount": 2.5,
+    "price": 0.03537,
+    "time": 1680525251
   }
 ]
 
 
-Net Premium 0.6741639886999984 Premium Earned 13.462302959999999 Premium Paid 12.7881389713
+Net Premium 5.400960060210025 Premium Earned 108.019008518193 Premium Paid 102.61804845798298
