@@ -1,5 +1,1 @@
 instruction,price,side,qty,time
-newOrder,20530,0,2,1680600059
-newOrder,20704,1,2,1680600059
-cancel,20530,,,1680600105
-cancel,20704,,,1680600105
