@@ -79,6 +79,10 @@ export class Config {
     return new PublicKey('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263');
   }
 
+  static dualMintPk(): PublicKey {
+    return new PublicKey('DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ');
+  }
+
   static usdcMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM');
