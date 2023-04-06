@@ -1,190 +1,298 @@
-Trading at 2023-04-05T13:27:23.950Z
+Trading at 2023-04-06T12:28:33.692Z
 Options bought
 [
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 16,
-    "price": 0.047082,
-    "time": 1680616707
+    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
+    "amount": 0.010999,
+    "price": 0.08928,
+    "time": 1680703518
   },
   {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 1,
-    "price": 0.01424,
-    "time": 1680641857
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 10,
-    "price": 0.107635,
-    "time": 1680645622
+    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "amount": 0.5,
+    "price": 0.021722,
+    "time": 1680734627
   },
   {
     "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
-    "amount": 0.099999,
-    "price": 0.636576,
-    "time": 1680647775
+    "amount": 50,
+    "price": 0.485431,
+    "time": 1680751193
   },
   {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 1,
-    "price": 0.098771,
-    "time": 1680651762
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 150,
+    "price": 0.516572,
+    "time": 1680751342
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 150,
+    "price": 0.5162,
+    "time": 1680751428
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 150,
+    "price": 0.52268,
+    "time": 1680751529
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.522651,
+    "time": 1680751561
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 150,
+    "price": 0.538991,
+    "time": 1680752403
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 150,
+    "price": 0.542231,
+    "time": 1680752457
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 180,
+    "price": 0.538887,
+    "time": 1680752504
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 20,
+    "price": 0.538877,
+    "time": 1680752534
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 150,
+    "price": 0.510226,
+    "time": 1680754073
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 149.999999,
+    "price": 0.51452,
+    "time": 1680754102
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 150,
+    "price": 0.51452,
+    "time": 1680754131
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 150,
+    "price": 0.514491,
+    "time": 1680754153
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 150,
+    "price": 0.514491,
+    "time": 1680754201
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 150,
+    "price": 0.510025,
+    "time": 1680754221
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.91039,
-    "price": 0.046379,
-    "time": 1680652606
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 200,
-    "price": 0.141064,
-    "time": 1680676341
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 200,
-    "price": 0.137588,
-    "time": 1680683707
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 300,
-    "price": 0.137579,
-    "time": 1680683933
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 299.999999,
-    "price": 0.135926,
-    "time": 1680684217
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.135858,
-    "time": 1680684377
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.134025,
-    "time": 1680685307
+    "amount": 0.201616,
+    "price": 0.005212,
+    "time": 1680757435
   }
 ]
 Options sold
 [
   {
-    "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 16,
-    "price": 0.04956,
-    "time": 1680616713
+    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
+    "amount": 0.011,
+    "price": 0.09409,
+    "time": 1680703526
   },
   {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 1,
-    "price": 0.121091,
-    "time": 1680641863
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 10,
-    "price": 0.1133,
-    "time": 1680645628
+    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "amount": 0.5,
+    "price": 0.06859,
+    "time": 1680745305
   },
   {
     "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
-    "amount": 0.1,
-    "price": 0.670079,
-    "time": 1680647780
+    "amount": 50,
+    "price": 0.51098,
+    "time": 1680751199
   },
   {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 1,
-    "price": 0.10397,
-    "time": 1680651768
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.54376,
+    "time": 1680751348
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.53999,
+    "time": 1680751353
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.54337,
+    "time": 1680751432
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.54337,
+    "time": 1680751435
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.550189,
+    "time": 1680751533
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.550189,
+    "time": 1680751536
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.55016,
+    "time": 1680751565
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.56736,
+    "time": 1680752409
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.56736,
+    "time": 1680752412
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.56736,
+    "time": 1680752461
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 50,
+    "price": 0.57077,
+    "time": 1680752465
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 100,
+    "price": 0.56725,
+    "time": 1680752507
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 80,
+    "price": 0.56724,
+    "time": 1680752512
+  },
+  {
+    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
+    "amount": 20,
+    "price": 0.56724,
+    "time": 1680752537
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.53708,
+    "time": 1680754078
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.53708,
+    "time": 1680754083
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.53708,
+    "time": 1680754106
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.53708,
+    "time": 1680754110
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.5416,
+    "time": 1680754135
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.5416,
+    "time": 1680754139
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.54157,
+    "time": 1680754156
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.54157,
+    "time": 1680754159
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.54157,
+    "time": 1680754210
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.54157,
+    "time": 1680754213
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 100,
+    "price": 0.53687,
+    "time": 1680754225
+  },
+  {
+    "mint": "9qYyPLfxkvsLmMU4jPEaYhiY8kbfL5bc2hnzNKyw8Mdx",
+    "amount": 50,
+    "price": 0.53687,
+    "time": 1680754227
   },
   {
     "mint": "Bs4FySp3nRqimPmDqQbhEvmBtDDyxUvqnpXz7pzqaXem",
-    "amount": 0.91039,
-    "price": 0.048819,
-    "time": 1680652610
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14849,
-    "time": 1680676346
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14849,
-    "time": 1680676350
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.144829,
-    "time": 1680683712
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.144829,
-    "time": 1680683715
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14482,
-    "time": 1680683938
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14482,
-    "time": 1680683943
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14482,
-    "time": 1680683946
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.143079,
-    "time": 1680684221
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14301,
-    "time": 1680684224
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14301,
-    "time": 1680684227
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14301,
-    "time": 1680684380
-  },
-  {
-    "mint": "EHq6ZLJqHHifZNpKS1DvXQujaAfFgqevNyDcYpm7DhcM",
-    "amount": 100,
-    "price": 0.14108,
-    "time": 1680685312
+    "amount": 0.201616,
+    "price": 0.00549,
+    "time": 1680757441
   }
 ]
 
 
-Net Premium 8.87242042410196 Premium Earned 175.69117322940997 Premium Paid 166.818752805308
+Net Premium 52.2595435630476 Premium Earned 1067.6957868618397 Premium Paid 1015.4362432987921
