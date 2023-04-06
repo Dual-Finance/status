@@ -4,9 +4,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
-import { Config as MangoConfig, GroupConfig, MangoCache, MangoClient } from '@blockworks-foundation/mango-client';
 import { dualMarketProgramID, PREMIUM_USDC_SEED, Config } from '../../config/config';
-import configFile from './ids.json';
 import {
   findProgramAddressWithMint,
   getMultipleTokenAccounts,
@@ -96,6 +94,7 @@ export const Treasury = (props: { network: string }) => {
       const riskManagerMngo = new PublicKey('4zzgXnhfwdtASw9JugEyrPSKzvaN8i2WSDm1bnGiHFcK');
       const riskManagerWsol = new PublicKey('9EaYbxzU1YJwJojKsKp3U38PBy5aqcN2KS9Xc8hAxZB7');
       const riskManagerBonk = new PublicKey('D8yD6us5X7YNeweppFdBR4idGsyPooetuW2fA6Suabqg');
+      const daoDual = new PublicKey('BRSda3A6o3czoPhsAEHjA5dZVrYL4uJ3JWXxwFSY9pJM');
 
       const tokenAccounts = await getMultipleTokenAccounts(
         connection,
@@ -107,6 +106,7 @@ export const Treasury = (props: { network: string }) => {
           riskManagerMngo.toBase58(),
           riskManagerWsol.toBase58(),
           riskManagerBonk.toBase58(),
+          daoDual.toBase58(),
         ],
         'confirmed'
       );
@@ -114,7 +114,7 @@ export const Treasury = (props: { network: string }) => {
       allAccounts.push(
         createAccountParams(
           'PREMIUM',
-          'PREMIUM',
+          'Premium',
           Config.usdcMintPk(),
           tokenAccounts.array[0] !== undefined
             ? (tokenAccounts.array[0].data.parsed.info.tokenAmount.uiAmount as number)
@@ -188,18 +188,18 @@ export const Treasury = (props: { network: string }) => {
           riskManagerBonk
         )
       );
+      allAccounts.push(
+        createAccountParams(
+          'DAO_Dual',
+          'DAO',
+          Config.dualMintPk(),
+          tokenAccounts.array[7] !== undefined
+            ? (tokenAccounts.array[7].data.parsed.info.tokenAmount.uiAmount as number)
+            : 0,
+          daoDual
+        )
+      );
 
-      const config = new MangoConfig(configFile);
-      const groupConfig = config.getGroupWithName(Config.isDev ? 'devnet.2' : 'mainnet.1') as GroupConfig;
-      const mangoClient = new MangoClient(connection, groupConfig.mangoProgramId);
-      const mangoGroup = await mangoClient.getMangoGroup(groupConfig.publicKey);
-      const [mangoCache]: [MangoCache] = await Promise.all([mangoGroup.loadCache(connection)]);
-      const mangoAccountPk = new PublicKey('9AuFG7jBEpNM83DkxV6yadhqGnyna6GL9AaYH1CSnQfX');
-      const mangoAccount = await mangoClient.getMangoAccount(mangoAccountPk, mangoGroup.dexProgramId);
-      const mangoHealth = mangoAccount.getHealth(mangoGroup, mangoCache, 'Maint').toNumber();
-      // eslint-disable-next-line
-      const readableMangoHealth = Math.floor(mangoHealth) / 1_000_000;
-      // allAccounts.push(createAccountParams('MANGO', 'MANGO', Config.usdcMintPk(), readableMangoHealth, mangoAccountPk));
       setPriceAccounts(allAccounts);
     }
 
