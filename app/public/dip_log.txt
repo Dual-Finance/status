@@ -1,142 +1,15 @@
-Trading at 2023-04-07T12:30:53.442Z
+Trading at 2023-04-08T16:26:01.552Z
 Options bought
 [
   {
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1680787616
-  },
-  {
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1680787639
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.201982,
-    "time": 1680795354
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.512429,
-    "time": 1680795378
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.51566,
-    "time": 1680795457
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.518899,
-    "time": 1680795482
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.518898,
-    "time": 1680795556
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 150,
-    "price": 0.522148,
-    "time": 1680795572
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.522147,
-    "time": 1680795590
+    "time": 1680885307
   }
 ]
 Options sold
-[
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.539409,
-    "time": 1680795361
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.53941,
-    "time": 1680795365
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.5394,
-    "time": 1680795382
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.5394,
-    "time": 1680795386
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.5428,
-    "time": 1680795463
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.542799,
-    "time": 1680795468
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.542799,
-    "time": 1680795485
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.542799,
-    "time": 1680795490
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.54621,
-    "time": 1680795560
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.54621,
-    "time": 1680795566
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.54621,
-    "time": 1680795578
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 50,
-    "price": 0.54621,
-    "time": 1680795582
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 100,
-    "price": 0.54621,
-    "time": 1680795594
-  }
-]
+[]
 
 
-Net Premium 72.42809999999992 Premium Earned 543.1451999999999 Premium Paid 470.7171
+Net Premium 0 Premium Earned 0 Premium Paid 0
