@@ -1,13 +1,6 @@
-Trading at 2023-04-08T16:26:01.552Z
+Trading at 2023-04-09T12:09:22.905Z
 Options bought
-[
-  {
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1680885307
-  }
-]
+[]
 Options sold
 []
 
