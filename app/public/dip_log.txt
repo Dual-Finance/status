@@ -1,136 +1,34 @@
-Trading at 2023-04-12T12:14:21.178Z
+Trading at 2023-04-13T12:31:58.683Z
 Options bought
 [
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 150,
-    "price": 0.597607,
-    "time": 1681223091
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 150,
-    "price": 0.597596,
-    "time": 1681223107
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.597596,
-    "time": 1681223127
-  },
-  {
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1681236279
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 13,
-    "price": 0.000416,
-    "time": 1681251120
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 150,
-    "price": 0.134689,
-    "time": 1681267645
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 150,
-    "price": 0.1344,
-    "time": 1681267680
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.143942,
-    "time": 1681270316
-  },
-  {
     "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
-    "amount": 200,
-    "price": 0.274961,
-    "time": 1681276942
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 70,
-    "price": 0.000426,
-    "time": 1681298361
+    "amount": 100,
+    "price": 0.714207,
+    "time": 1681376358
   }
 ]
 Options sold
 [
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
     "amount": 100,
-    "price": 0.629059,
-    "time": 1681223098
+    "price": 0.91938,
+    "time": 1681307857
   },
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 50,
-    "price": 0.62906,
-    "time": 1681223103
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
     "amount": 100,
-    "price": 0.62905,
-    "time": 1681223114
+    "price": 0.91938,
+    "time": 1681307869
   },
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 50,
-    "price": 0.62905,
-    "time": 1681223118
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
     "amount": 100,
-    "price": 0.62905,
-    "time": 1681223136
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.40964,
-    "time": 1681269483
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.40672,
-    "time": 1681269535
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.4067,
-    "time": 1681269604
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 100,
-    "price": 0.43604,
-    "time": 1681270322
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 13,
-    "price": 0.00375,
-    "time": 1681276013
-  },
-  {
-    "mint": "J4iUrjsrQTwmr4961oYXN7dSihx9iivod5BJaDx5tVnj",
-    "amount": 70,
-    "price": 0.01745,
-    "time": 1681298367
+    "price": 1.001029,
+    "time": 1681376365
   }
 ]
 
 
-Net Premium 69.97662199999996 Premium Earned 418.80165000000005 Premium Paid 348.8250280000001
+Net Premium 212.5582 Premium Earned 283.9789 Premium Paid 71.42070000000001
