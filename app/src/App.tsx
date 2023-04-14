@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ConnectionProvider } from '@solana/wallet-adapter-react';
 import { Layout } from './components/Layout/Layout';
-import { Pools } from './pages';
+import { Home } from './pages';
 import { Config } from './config/config';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<Pools />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </Layout>
       </Router>

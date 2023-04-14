@@ -1,13 +1,14 @@
 import { Option } from 'antd/es/mentions';
-import React from 'react';
 import styles from './SectionHeaderLeft.module.scss';
 import { DualfiSwitcher } from '../../components/UI/DualfiSwitcher';
 import { DualfiDropdown } from '../../components/UI/DualfiDropdown/DualfiDropdown';
 
 export const SectionHeaderLeft = ({
+  value,
   onChange,
   options,
 }: {
+  value: string;
   onChange: (value: string) => void;
   options: { label: string; value: string; disabled: boolean }[];
 }) => {
@@ -17,19 +18,16 @@ export const SectionHeaderLeft = ({
         <DualfiSwitcher
           type="text"
           options={options}
-          onChange={(value) => {
-            onChange(String(value));
+          onChange={(v) => {
+            onChange(String(v));
           }}
         />
       </div>
       <div className={styles.dropdown}>
-        <DualfiDropdown style={{ width: '179px' }} defaultValue="Dual Investment Pools" onChange={onChange}>
-          <Option value="Dual Investment Pools">DIPs</Option>
-          <Option value="Treasury">Treasury</Option>
-          <Option value="Liquidity">Liquidity</Option>
-          <Option value="Services">Services</Option>
-          <Option value="Tests">Tests</Option>
-          <Option value="Transactions">Transactions</Option>
+        <DualfiDropdown style={{ width: '120px' }} value={value} onChange={onChange}>
+          {options.map((option) => (
+            <Option value={option.value}>{option.label}</Option>
+          ))}
         </DualfiDropdown>
       </div>
     </div>
