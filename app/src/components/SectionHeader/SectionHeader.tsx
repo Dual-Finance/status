@@ -1,9 +1,9 @@
-import { Option } from 'antd/es/mentions';
-import styles from './SectionHeaderLeft.module.scss';
-import { DualfiSwitcher } from '../../components/UI/DualfiSwitcher';
-import { DualfiDropdown } from '../../components/UI/DualfiDropdown/DualfiDropdown';
+import { Select } from 'antd';
+import styles from './SectionHeader.module.scss';
+import { DualfiSwitcher } from '../UI/DualfiSwitcher';
+import { DualfiDropdown } from '../UI/DualfiDropdown/DualfiDropdown';
 
-export const SectionHeaderLeft = ({
+export const SectionHeader = ({
   value,
   onChange,
   options,
@@ -16,17 +16,18 @@ export const SectionHeaderLeft = ({
     <div className={styles.headerLeftSideBarComponent}>
       <div className={styles.switcher}>
         <DualfiSwitcher
+          value={value}
           type="text"
           options={options}
-          onChange={(v) => {
-            onChange(String(v));
-          }}
+          onChange={(newValue) => onChange(newValue.toString())}
         />
       </div>
       <div className={styles.dropdown}>
         <DualfiDropdown style={{ width: '120px' }} value={value} onChange={onChange}>
-          {options.map((option) => (
-            <Option value={option.value}>{option.label}</Option>
+          {options.map((option, i) => (
+            <Select.Option key={`dropdown-${i}`} value={option.value}>
+              {option.label}
+            </Select.Option>
           ))}
         </DualfiDropdown>
       </div>
