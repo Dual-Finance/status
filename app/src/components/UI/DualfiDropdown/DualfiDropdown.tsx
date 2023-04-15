@@ -11,7 +11,7 @@ export const DualfiDropdown = (props: DualfiSelectProps) => {
       {...props}
       dropdownMatchSelectWidth
       className={c(styles.select, className)}
-      dropdownClassName={styles.dropdown}
+      popupClassName={styles.dropdown}
       defaultValue={defaultValue}
       onChange={onChange}
       suffixIcon={<DualfiDropdownArrow />}
