@@ -11,7 +11,6 @@ export const DisclaimerModal: FC<ModalProps> = (props) => {
     <DualfiModalOneColumn
       {...props}
       visible={isDisclaimerVisible}
-      onCancel={() => setIsDisclaimerVisible(false)}
       content={
         <InfoCard
           title="Warning"
