@@ -1,7 +1,7 @@
-@import "../../styles/_mixins.scss";
-@import "../../styles/_variables.scss";
+@import '../../styles/_mixins.scss';
+@import '../../styles/_variables.scss';
 
-$switcher-title-text-color: #0B2330;
+$switcher-title-text-color: #0b2330;
 
 .headerLeftSideBarComponent {
   display: flex;
@@ -26,10 +26,19 @@ $switcher-title-text-color: #0B2330;
       display: flex;
     }
   }
+}
 
-  .dropdown {
-    @include laptop {
-      display: none;
-    }
+.dropdownWrapper {
+  @include laptop {
+    display: none;
+  }
+}
+
+.dropdown {
+  margin-top: 16px;
+  width: 100px;
+  @include tablet {
+    margin-top: 0px;
+    width: 120px;
   }
 }
