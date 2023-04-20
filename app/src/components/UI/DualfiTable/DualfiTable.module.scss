@@ -166,9 +166,10 @@
       line-height: 28px;
       font-weight: 500;
       font-size: 12px;
-      color: $black !important;
-      border: 1px solid transparentize($black, 0.7);
-      background-color: transparent!important;
+      color: $text-color-primary !important;
+      background-color: $bg-primary !important;
+      border-color: $pagination-bg-hover !important;
+
       border-radius: 4px;
       transition: all 0.2s;
 
@@ -190,8 +191,8 @@
     }
 
     .ant-pagination-item.ant-pagination-item-active {
-      border-color: $pagination-bg-hover!important;
-      background: $pagination-bg-hover!important;
+      border-color: $pagination-bg-hover !important;
+      background: $pagination-bg-hover !important;
 
       a {
         color: $table-text-color !important;

@@ -5,15 +5,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 16px;
   margin-bottom: 16px;
 
   @include tablet {
-    margin-bottom: 24px;
     min-height: 40px;
-  }
-
-  @include desktop {
-    margin-bottom: 32px;
   }
 }
 
