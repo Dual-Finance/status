@@ -35,8 +35,10 @@ $switcher-title-text-color: #0b2330;
 }
 
 .dropdown {
+  margin-top: 16px;
   width: 100px;
   @include tablet {
+    margin-top: 0px;
     width: 120px;
   }
 }
