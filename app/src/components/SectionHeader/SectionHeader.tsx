@@ -22,8 +22,8 @@ export const SectionHeader = ({
           onChange={(newValue) => onChange(newValue.toString())}
         />
       </div>
-      <div className={styles.dropdown}>
-        <DualfiDropdown style={{ width: '120px' }} value={value} onChange={onChange}>
+      <div className={styles.dropdownWrapper}>
+        <DualfiDropdown className={styles.dropdown} value={value} onChange={onChange}>
           {options.map((option, i) => (
             <Select.Option key={`dropdown-${i}`} value={option.value}>
               {option.label}
