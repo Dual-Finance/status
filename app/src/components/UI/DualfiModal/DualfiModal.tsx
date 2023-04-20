@@ -1,9 +1,16 @@
 import React from 'react';
-import { Modal } from 'antd';
+import { Modal, ModalProps } from 'antd';
 import styles from './DualfiModal.module.scss';
 import { DualfiModalClose } from './DualfiModalClose';
-import { DualfiModalOneColumnProps, DualfiModalProps } from './types';
 
+export type DualfiModalProps = ModalProps & {
+  leftColumn?: React.ReactElement;
+  rightColumn?: React.ReactElement;
+};
+
+export type DualfiModalOneColumnProps = ModalProps & {
+  content?: React.ReactElement;
+};
 export const DualfiModal = (props: DualfiModalProps) => {
   const { visible, onCancel, leftColumn, rightColumn } = props;
 

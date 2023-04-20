@@ -3,17 +3,19 @@ import { ConnectionProvider } from '@solana/wallet-adapter-react';
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages';
 import { Config } from './config/config';
+import { DisclaimerModal } from './components/DisclaimerModal';
 
 function App() {
   return (
     <ConnectionProvider endpoint={Config.apiUrl()}>
-      <Router>
-        <Layout>
+      <Layout>
+        <DisclaimerModal />
+        <Router>
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-        </Layout>
-      </Router>
+        </Router>
+      </Layout>
     </ConnectionProvider>
   );
 }
