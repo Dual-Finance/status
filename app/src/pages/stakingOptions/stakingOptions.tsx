@@ -148,7 +148,7 @@ export const StakingOptions = (props: { network: string }) => {
           }
 
           const soParams = createSoParams(
-            soName,
+            `${soName}-${soMint.toString()}`,
             soName,
             new PublicKey(authority),
             new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
