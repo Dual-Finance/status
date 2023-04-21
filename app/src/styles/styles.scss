@@ -5,14 +5,16 @@
 @import './_fonts.scss';
 @import './_icons.scss';
 @import '~antd/dist/antd.css';
-@import '~@solana/wallet-adapter-ant-design/styles.css';
 
-.mb-8 {
-  margin-bottom: 8px;
+body {
+  background-color: $header-panel-bg;
 }
 
-.mb-20 {
-  margin-bottom: 20px;
+a {
+  color: $button-bg-primary;
+  &:hover {
+    color: $button-bg-primary-hover;
+  }
 }
 
 .bonk-icon {

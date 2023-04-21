@@ -19,26 +19,26 @@ $switcher-title-text-color: #0b2330;
       margin-right: 12px;
     }
   }
+}
 
-  .switcher {
-    display: none;
-    @include laptop {
-      display: flex;
-    }
+.switcher {
+  display: none;
+  @include laptop {
+    display: flex;
   }
 }
 
 .dropdownWrapper {
+  margin-top: 16px;
   @include laptop {
+    margin-top: 0px;
     display: none;
   }
 }
 
 .dropdown {
-  margin-top: 16px;
   width: 100px;
   @include tablet {
-    margin-top: 0px;
     width: 120px;
   }
 }

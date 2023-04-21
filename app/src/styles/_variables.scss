@@ -6,13 +6,13 @@ $black: #000000;
 $white: #ffffff;
 
 // main-colors
-$text-color-primary: #ffffff;
+$text-color-primary: #000000;
 $text-color-secondary: #B4B4D6;
 $text-color-tertiary: #8282A3;
 $header-panel-text-color: #05040D;
 
 // background-colors
-$bg-primary: #05040d;
+$bg-primary: #ffffff;
 $bg-additional: #0C091D;
 $header-panel-bg: #D6F4FE;
 $strike-button-bg: rgba(5, 4, 13, 0.04);
@@ -21,7 +21,7 @@ $strike-button-bg: rgba(5, 4, 13, 0.04);
 $section-bg-light: #D6F4FE;
 $section-bg-dark: $bg-primary;
 
-$card-bg-dark: #05040D;
+$card-bg-dark: #000000;
 $card-bg-light: #D6F4FE;
 $card-light-text-color: #0C091D;
 $card-light-text-color-secondary: #64747C;
@@ -46,8 +46,8 @@ $button-bg-secondary-active: darken($button-bg-secondary, 20);
 $button-secondary-text-color: #05040D;
 
 // Table
-$table-bg: #05040D;
-$table-text-color: #ffffff;
+$table-bg: $bg-primary;
+$table-text-color: $text-color-primary;
 $table-gradient-fix-column: linear-gradient(270deg, #05040D 62.76%, rgba(5, 4, 13, 0) 100%);
 $table-thead-color: darken($table-text-color, 30);
 $table-border-color: darken($table-text-color, 80);

@@ -41,7 +41,7 @@ export const Home = () => {
 
   return (
     <div className={styles.poolsComponent}>
-      <CurvedBackgroundWrapper curved={<PageCutoff price={dualPrice} token="DUAL" />}>
+      <CurvedBackgroundWrapper isCutOffHidden curved={<PageCutoff price={dualPrice} token="DUAL" />}>
         <SectionSidebarWrapper
           leftSide={<SectionHeader value={selectedProduct} options={tabs} onChange={setSelectedProduct} />}
           rightSide={<SectionHeader value={selectedNetwork} options={networkTabs} onChange={setSelectedNetwork} />}

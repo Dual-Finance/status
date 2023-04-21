@@ -46,7 +46,7 @@ $segmented-item-bg-hover: #3A9F7B66;
   :global(.ant-segmented-item-selected) {
     display: flex;
     align-items: center;
-    color: $text-color-primary;
+    color: $white;
     height: 30px;
     border-radius: 64px;
     border-color: $button-bg-primary;

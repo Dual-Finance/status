@@ -14,7 +14,7 @@ export function CurvedBackgroundWrapper(props: {
         [styles.curved]: !isCutOffHidden,
       })}
     >
-      {!isCutOffHidden && <div className={styles.curvedComponentPosition}>{curved}</div>}
+      {!isCutOffHidden ? <div className={styles.curvedComponentPosition}>{curved}</div> : <div>{curved}</div>}
       {children}
     </div>
   );
