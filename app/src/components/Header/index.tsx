@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Logo } from '../Logo';
 import styles from './Header.module.scss';
 
-export const Header: FC<any> = () => {
+export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
