@@ -35,7 +35,6 @@ $segmented-item-bg-hover: #3A9F7B66;
     border: 1px solid transparent;
 
     &:hover {
-      color: $text-color-primary;
       background-color: $segmented-item-bg-hover;
     }
     &:last-child {
@@ -52,7 +51,6 @@ $segmented-item-bg-hover: #3A9F7B66;
     border-color: $button-bg-primary;
     background: $button-bg-primary-active;
     &:hover {
-      color: $text-color-primary;
       background-color: $button-bg-primary-active;
     }
   }
