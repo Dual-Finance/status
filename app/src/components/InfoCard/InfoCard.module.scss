@@ -4,7 +4,7 @@
 
 .infoCardComponent {
   width: 100%;
-  background: $info-card-bg;
+  background: $bg-primary;
   border: 1px solid $info-card-border-color;
   border-radius: 12px;
   padding: 10px 16px;
@@ -13,7 +13,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    color: $info-card-title-color;
+    color: $text-color-primary;
     margin-bottom: 8px;
   }
 
