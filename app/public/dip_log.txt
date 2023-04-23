@@ -1,22 +1,8 @@
-Trading at 2023-04-22T12:32:27.951Z
+Trading at 2023-04-23T12:40:13.608Z
 Options bought
-[
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 0.85265,
-    "price": 0.076397,
-    "time": 1682085570
-  }
-]
+[]
 Options sold
-[
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 0.85265,
-    "price": 0.080419,
-    "time": 1682085576
-  }
-]
+[]
 
 
-Net Premium 0.0034293583000000044 Premium Earned 0.06856926035000001 Premium Paid 0.06513990205
+Net Premium 0 Premium Earned 0 Premium Paid 0
