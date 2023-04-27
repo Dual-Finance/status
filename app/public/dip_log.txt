@@ -1,52 +1,58 @@
-Trading at 2023-04-26T13:29:26.706Z
+Trading at 2023-04-27T13:29:49.122Z
 Options bought
 [
   {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 1,
-    "price": 0.054232,
-    "time": 1682455129
-  },
-  {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 1,
-    "price": 0.16149,
-    "time": 1682455247
+    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
+    "amount": 0.1,
+    "price": 0.00395,
+    "time": 1682518867
   },
   {
     "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 0.5,
-    "price": 0.000016,
-    "time": 1682484213
+    "amount": 2.641217,
+    "price": 0.000013,
+    "time": 1682537531
   },
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
     "amount": 1,
-    "price": 0,
-    "time": 1682501421
+    "price": 0.002447,
+    "time": 1682560053
+  },
+  {
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 1,
+    "price": 0.004527,
+    "time": 1682560159
   }
 ]
 Options sold
 [
   {
-    "mint": "4CSP6LtFBJtzPquhPBAMV5Xk7Aj23hL8ht82BwQJCW24",
-    "amount": 2,
-    "price": 0.16999,
-    "time": 1682455254
+    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
+    "amount": 0.1,
+    "price": 0.83237,
+    "time": 1682518873
   },
   {
     "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 0.5,
-    "price": 0.00299,
-    "time": 1682484541
+    "amount": 2.641217,
+    "price": 0.00286,
+    "time": 1682537536
   },
   {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
     "amount": 1,
-    "price": 0.008441,
-    "time": 1682501427
+    "price": 0.515449,
+    "time": 1682560061
+  },
+  {
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 1,
+    "price": 0.9532,
+    "time": 1682560166
   }
 ]
 
 
-Net Premium 0.134186 Premium Earned 0.349916 Premium Paid 0.21573
+Net Premium 1.552036544799 Premium Earned 1.55943988062 Premium Paid 0.007403335820999999
