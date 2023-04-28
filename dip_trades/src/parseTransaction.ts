@@ -1,10 +1,11 @@
 import { TokenBalance, TransactionResponse } from "@solana/web3.js";
 import { OPTION_VAULT, USDC_MINT, WSOL_MINT } from "./constants";
 
-export type Payment = {mint: string, amount: number, price: number, time: number};
+export type Payment = {signature: string, mint: string, amount: number, price: number, time: number};
 
 export function parsePremium(transactionResponse: TransactionResponse): Payment {
     const balancesChanges = getBalanceChanges(transactionResponse.meta.preTokenBalances, transactionResponse.meta.postTokenBalances);
+    const signature = transactionResponse.transaction.signatures[0];
     // Assumes SOL
     let amount = 0;
     for (const balanceChange of balancesChanges) {
@@ -30,12 +31,12 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
         }
     }
 
-    return {mint: mint, amount: amount, price: Math.floor((1_000_000 * payment) / amount) / 1_000_000, time: transactionResponse.blockTime};
+    return {signature: signature, mint: mint, amount: amount, price: Math.floor((1_000_000 * payment) / amount) / 1_000_000, time: transactionResponse.blockTime};
 }
 
 export function parseMmSale(transactionResponse: TransactionResponse): Payment {
     const balancesChanges = getBalanceChanges(transactionResponse.meta.preTokenBalances, transactionResponse.meta.postTokenBalances);
-
+    const signature = transactionResponse.transaction.signatures[0];
     // The option vault is involved with the options and it's USDC account
     let amount = 0;
     for (const balanceChange of balancesChanges) {
@@ -61,7 +62,7 @@ export function parseMmSale(transactionResponse: TransactionResponse): Payment {
         }
     }
 
-    return {mint: mint, amount: amount, price: Math.floor((payment / amount) * 1_000_000) / 1_000_000, time: transactionResponse.blockTime};
+    return {signature: signature, mint: mint, amount: amount, price: Math.floor((payment / amount) * 1_000_000) / 1_000_000, time: transactionResponse.blockTime};
 }
 
 function getBalanceChanges(preBalances: TokenBalance[], postBalances: TokenBalance[]) {
