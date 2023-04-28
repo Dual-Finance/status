@@ -16,9 +16,8 @@ export function parsePremium(transactionResponse: TransactionResponse): Payment 
 
     let payment = 0;
     for (const balanceChange of balancesChanges) {
-        if (balanceChange.mint === USDC_MINT.toBase58()) {
-            payment = Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
-            break;
+        if (balanceChange.mint === USDC_MINT.toBase58() && balanceChange.amount > 0) {
+            payment += Math.abs(Math.floor(balanceChange.amount * 1_000_000) / 1_000_000);
         }
     }
 
