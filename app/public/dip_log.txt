@@ -1,58 +1,70 @@
-Trading at 2023-04-27T13:29:49.122Z
+Trading at 2023-04-28T12:26:29.118Z
 Options bought
 [
   {
-    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
-    "amount": 0.1,
-    "price": 0.00395,
-    "time": 1682518867
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 2.641217,
-    "price": 0.000013,
-    "time": 1682537531
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.003388,
+    "time": 1682626749
   },
   {
     "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 1,
-    "price": 0.002447,
-    "time": 1682560053
+    "amount": 100,
+    "price": 0.003336,
+    "time": 1682626842
   },
   {
-    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
-    "amount": 1,
-    "price": 0.004527,
-    "time": 1682560159
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.003323,
+    "time": 1682626945
+  },
+  {
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.003298,
+    "time": 1682626978
+  },
+  {
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.003298,
+    "time": 1682627024
   }
 ]
 Options sold
 [
   {
-    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
-    "amount": 0.1,
-    "price": 0.83237,
-    "time": 1682518873
-  },
-  {
-    "mint": "Amuefm1UhDrv9FysD32pn3ybSVFawPKN6hqJi5i8Uf1D",
-    "amount": 2.641217,
-    "price": 0.00286,
-    "time": 1682537536
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.71344,
+    "time": 1682626755
   },
   {
     "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 1,
-    "price": 0.515449,
-    "time": 1682560061
+    "amount": 100,
+    "price": 0.70247,
+    "time": 1682626848
   },
   {
-    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
-    "amount": 1,
-    "price": 0.9532,
-    "time": 1682560166
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.69976,
+    "time": 1682626952
+  },
+  {
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.69435,
+    "time": 1682626982
+  },
+  {
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 100,
+    "price": 0.69435,
+    "time": 1682627028
   }
 ]
 
 
-Net Premium 1.552036544799 Premium Earned 1.55943988062 Premium Paid 0.007403335820999999
+Net Premium 348.7727 Premium Earned 350.437 Premium Paid 1.6643000000000001
