@@ -33,6 +33,7 @@ jobs:
             mv dip_log.txt ../app/public/
         env:
           RPC_URL: ${{ secrets.RPC_URL }}
+
       - name: Commit report
         run: |
           git config --global user.name 'DocDuala'
