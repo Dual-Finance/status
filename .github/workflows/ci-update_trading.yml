@@ -7,7 +7,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-			- name: Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v2
 
 			- name: Use the reusable workflow
@@ -16,7 +16,7 @@ jobs:
 			  with:
 				max_attempts: 3
 				retry_on: error
-				command: |
+				command:
           cd trading_report &&
           yarn install &&
           SYMBOL=DUAL RPC_URL=$RPC_URL yarn run main &&
