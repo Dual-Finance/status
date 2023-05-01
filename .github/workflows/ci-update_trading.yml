@@ -8,27 +8,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create report file
-        run: |
-          cd trading_report
-          yarn install
-          SYMBOL=DUAL RPC_URL=$RPC_URL yarn run main
-          mv transactions.csv ../app/public/dual_transactions.csv;  mv offers.csv ../app/public/dual_offers.csv
-          SYMBOL=BONK RPC_URL=$RPC_URL yarn run main
-          mv transactions.csv ../app/public/bonk_transactions.csv;  mv offers.csv ../app/public/bonk_offers.csv
-          SYMBOL=MNGO RPC_URL=$RPC_URL yarn run main
-          mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
-          SYMBOL=SOL RPC_URL=$RPC_URL yarn run main
-          mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
-          rm ../app/public/summary.txt
-          tail -n 48 trade_log.txt > ../app/public/summary.txt
-          cd ../dip_trades
-          yarn install
-          touch dip_log.txt
-          RPC_URL=$RPC_URL yarn run main
-          mv dip_log.txt ../app/public/
+
+      - uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 120
+          max_attempts: 3
+          command: |
+            cd trading_report
+            yarn install
+            SYMBOL=DUAL RPC_URL=$RPC_URL yarn run main
+            mv transactions.csv ../app/public/dual_transactions.csv;  mv offers.csv ../app/public/dual_offers.csv
+            SYMBOL=BONK RPC_URL=$RPC_URL yarn run main
+            mv transactions.csv ../app/public/bonk_transactions.csv;  mv offers.csv ../app/public/bonk_offers.csv
+            SYMBOL=MNGO RPC_URL=$RPC_URL yarn run main
+            mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
+            SYMBOL=SOL RPC_URL=$RPC_URL yarn run main
+            mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
+            rm ../app/public/summary.txt
+            tail -n 48 trade_log.txt > ../app/public/summary.txt
+            cd ../dip_trades
+            yarn install
+            touch dip_log.txt
+            RPC_URL=$RPC_URL yarn run main
+            mv dip_log.txt ../app/public/
         env:
           RPC_URL: ${{ secrets.RPC_URL }}
+
       - name: Commit report
         run: |
           git config --global user.name 'DocDuala'
