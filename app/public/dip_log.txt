@@ -1,38 +1,38 @@
-Trading at 2023-05-02T12:19:46.379Z
+Trading at 2023-05-03T12:17:14.147Z
 Options bought
 [
   {
-    "signature": "66gVrQNLfrXegnGCk2SnQU1xXDzPGffQnPjBiZTAasqxkRSzBPmKWgBXBvKPZteaZVH983YKL9y2cwBWQ6f2osQH",
+    "signature": "4yngdE6h1aXWwXt375v3iqwmZT6LirjjSKByvE33BJp3eufMGT3s32GgiAnTgrEjg22gr76FYCsKt7CfqT3NDqs7",
     "mint": "8cqwnoTNzNYsyjYuGJG4mG9azs6A6rQgzH7ENZ71EGxN",
-    "amount": 0.099999,
-    "price": 0.03117,
-    "time": 1682947890
+    "amount": 1,
+    "price": 0.027723,
+    "time": 1683042121
   },
   {
-    "signature": "3c6UnEkt2xLQ8K1DJqpMTzdhf6aHxNQ2MueW1oSFoTj29Kj4tEpFAG4BJhD9Dy9HvcAwExL2Jyaevk3sXj128oua",
+    "signature": "NNZzFHdigfR8c83TCHYBzAi1wAcZZ5T6j6TnzHJYefqoeqerK7NUz5Gtx7gqpUMGeuBL6BMNceTzjsioPbhu7NG",
     "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
-    "amount": 14,
-    "price": 0.113844,
-    "time": 1682955957
+    "amount": 1,
+    "price": 0.14492,
+    "time": 1683044109
   }
 ]
 Options sold
 [
   {
-    "signature": "2MhRz58Xn3o1FEqzYqa3i9kEH8Vacm5bPVCJmVsXhRK1YrY7tyuxL4LFzsTrkAxBqMmQn7AVMCBFsi6SxmG9ihMP",
+    "signature": "2y8UiLrVffABLy1CvAVm3ooiV4973f5DoeVVZwTbqqNTctM2cFXWzXWi1BzYpYY9jpA2TzXMLUXJHfYqkZiB6cCU",
     "mint": "8cqwnoTNzNYsyjYuGJG4mG9azs6A6rQgzH7ENZ71EGxN",
-    "amount": 0.1,
-    "price": 0.032659,
-    "time": 1682947896
+    "amount": 1,
+    "price": 0.029041,
+    "time": 1683042126
   },
   {
-    "signature": "jL5rKu1Tw9dpt1fqw3BFJhM3SH4RNhdP37LmbWjScdQTheP5qpYVfSA2Ct2d3HjKgWHEhNqRyPGb1Pehp2j3UNd",
+    "signature": "3yFRXEYpkrSC7BEKJmVE1HJ8DTRx3pEfbdh6VRic8oohxFXdWxrYN5skkL2tBooqA22vFc2F88c45AwcXZi1QLzw",
     "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
-    "amount": 14,
-    "price": 0.11924,
-    "time": 1682955963
+    "amount": 1,
+    "price": 0.14769,
+    "time": 1683044163
   }
 ]
 
 
-Net Premium 0.07569293117000009 Premium Earned 1.6726258999999999 Premium Paid 1.5969329688299998
+Net Premium 0.004088000000000008 Premium Earned 0.176731 Premium Paid 0.172643
