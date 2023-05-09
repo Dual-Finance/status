@@ -1,24 +1,66 @@
-Trading at 2023-05-08T12:38:44.791Z
+Trading at 2023-05-09T13:08:19.106Z
 Options bought
 [
   {
-    "signature": "2fw2S3uDU7UuHDUMpLWENfXcW1d1ETrQSsxWDVLvAiN5E93HjjCvFANzhMuzYpDoSMJq3VTo9zviR7wXWE2UkfT7",
-    "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
+    "signature": "dWCZefimrBNzeWyomgn4ujcyCTzyMR4HLnUYmrigAj48MrR4bP6m6ST5nszpRWWcpykqht3aoe6Ws3EGXD3fLHo",
+    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
+    "amount": 8,
+    "price": 0.022592,
+    "time": 1683571218
+  },
+  {
+    "signature": "3J2HaretvEejSbzgDnCaHuRKt7t4oeMKLavRF7s7VPTDm7w7oWpWjRT1tKUWuGRXBXjH5t6UCiW4fLRkSATphCUn",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.01,
+    "price": 0.0259,
+    "time": 1683597256
+  },
+  {
+    "signature": "5PreKsQ9wGEYp1d77fM5ovTNDtRWgGS8En4M19bkfUCq1ZQUK4nf8PAybrmfRNid5knkwgekwNHz4AH5abyLED1U",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
     "amount": 1,
-    "price": 0.024766,
-    "time": 1683544662
+    "price": 0.221549,
+    "time": 1683609508
+  },
+  {
+    "signature": "4FpiPxEDLA8uxPPFRy3uUAirostcSGosPMqZT88MgcxXkVen9WmF8xSYZQkp98rDZme5tQUJpEFzHzXRPAdxpYcr",
+    "mint": "3MCr188NCsUydME3aAcG2tcr4p6WmdawsARqun1Hrk4i",
+    "amount": 0.1,
+    "price": 0.66273,
+    "time": 1683636594
   }
 ]
 Options sold
 [
   {
-    "signature": "2oYq3c7YLCtdXbagAdk3UoezN2YSvn4N81kwoFe3ubq3F1n4V3s9W8F7kvXjzz1CqsJn9kGgwPezdskdkHZZ31Yu",
-    "mint": "6riaF3WHEcxB2VNFRVJhzudRWRrt9y7en2YFHwZS1gVu",
+    "signature": "2RHRzyFFwanURasZAmxmmU2a1DdN1nUnXcRLp9cd8zN4oPwvtDQPPsJ5GgYD6ULdDvHJe6S8S7VFG44rKxhdEuti",
+    "mint": "5c7oRvuLGjUrdCzbAVhJ6tM5DEASkdvjFvoWDfioZU62",
+    "amount": 8,
+    "price": 0.08248,
+    "time": 1683571224
+  },
+  {
+    "signature": "4iK8jLSmw8H4HBXwhazEQriCDcAT4YjpehJk724bWWNqTVQh5rQBVRbG6M8i4eDaKkckDokaMpcj3HeL8QTWNnPX",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.01,
+    "price": 0.2477,
+    "time": 1683597262
+  },
+  {
+    "signature": "dWDUA8mrek6p9N3xX8qEgXAopDZh7F1DsSK23ihZUXSNDGX7qaopDjfzt2nYwuUe7iqj9kTFrGVw6RhJcr16nJn",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
     "amount": 1,
-    "price": 0.025941,
-    "time": 1683544668
+    "price": 0.232051,
+    "time": 1683609514
+  },
+  {
+    "signature": "5hjc9jJoUjPfiJT8xC1UCpsCTJ2NQRKdEbVG12hxRjoeRCasUy41mTSbEsVYe3GbMjQx75dSabBDdXJKanWSqmqE",
+    "mint": "3MCr188NCsUydME3aAcG2tcr4p6WmdawsARqun1Hrk4i",
+    "amount": 0.1,
+    "price": 0.69415,
+    "time": 1683636606
   }
 ]
 
 
-Net Premium 0.001174999999999999 Premium Earned 0.025941 Premium Paid 0.024766
+Net Premium 0.4949659999999999 Premium Earned 0.963783 Premium Paid 0.46881700000000004
