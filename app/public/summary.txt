@@ -1,4 +1,4 @@
-DUAL Trading at 2023-05-13T12:06:28.995Z
+DUAL Trading at 2023-05-14T12:06:49.234Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -10,9 +10,9 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-05-13T12:08:25.642Z
+BONK Trading at 2023-05-14T12:08:47.832Z
 Openbook trades
-  Bought 224000 for 4.0274107142857145e-7, net notional: 0.090214
+  Bought 163000 for 4.1368098159509194e-7, net notional: 0.06742999999999999
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -20,11 +20,11 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0.0034179999999999983 Realized PnL 0 Unrealized PnL 0.0034179999999999983 Last Price 4.18e-7
+  Total PnL 0.003638000000000012 Realized PnL 0 Unrealized PnL 0.003638000000000012 Last Price 4.36e-7
 
-MNGO Trading at 2023-05-13T12:09:58.525Z
+MNGO Trading at 2023-05-14T12:10:31.431Z
 Openbook trades
-  Bought 0 for 0, net notional: 0
+  Bought 68070 for 0.01775125635375349, net notional: 1208.32802
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -32,17 +32,17 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.016478
+  Total PnL 19.178290000000082 Realized PnL 0 Unrealized PnL 19.178290000000082 Last Price 0.018033
 
-SOL Trading at 2023-05-13T12:57:15.041Z
+SOL Trading at 2023-05-14T12:27:14.405Z
+PnL
+  Total PnL 0.00023200000000032632 Realized PnL 0 Unrealized PnL 0.00023200000000032632 Last Price 20.95
+
+
 Openbook trades
-  Bought 0.037000000000000026 for 20.759945945945933, net notional: 0.7681180000000001
+  Bought 0.026000000000000016 for 20.94107692307691, net notional: 0.544468
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
-  Bought 0.001340502 for 20.127197682000002, net notional: 0.026980548747116365
+  Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
-
-PnL
-  Total PnL 0.013310935922884145 Realized PnL 0 Unrealized PnL 0.013310935922884145 Last Price 21.085
-
