@@ -1,4 +1,3 @@
-DUAL Trading at 2023-05-14T12:06:49.234Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -10,9 +9,9 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-05-14T12:08:47.832Z
+BONK Trading at 2023-05-15T12:09:31.290Z
 Openbook trades
-  Bought 163000 for 4.1368098159509194e-7, net notional: 0.06742999999999999
+  Bought 53000 for 4.2901886792452834e-7, net notional: 0.022738
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -20,11 +19,11 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0.003638000000000012 Realized PnL 0 Unrealized PnL 0.003638000000000012 Last Price 4.36e-7
+  Total PnL -0.00005400000000000099 Realized PnL 0 Unrealized PnL -0.00005400000000000099 Last Price 4.28e-7
 
-MNGO Trading at 2023-05-14T12:10:31.431Z
+MNGO Trading at 2023-05-15T12:11:08.723Z
 Openbook trades
-  Bought 68070 for 0.01775125635375349, net notional: 1208.32802
+  Bought 20470 for 0.01791819785051294, net notional: 366.78550999999993
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -32,17 +31,18 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 19.178290000000082 Realized PnL 0 Unrealized PnL 19.178290000000082 Last Price 0.018033
-
-SOL Trading at 2023-05-14T12:27:14.405Z
-PnL
-  Total PnL 0.00023200000000032632 Realized PnL 0 Unrealized PnL 0.00023200000000032632 Last Price 20.95
+  Total PnL -0.10639999999994827 Realized PnL 0 Unrealized PnL -0.10639999999994827 Last Price 0.017913
 
 
 Openbook trades
-  Bought 0.026000000000000016 for 20.94107692307691, net notional: 0.544468
+  Bought 0.02900000000000002 for 21.142655172413782, net notional: 0.613137
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
-  Bought 0 for 0, net notional: 0
+  Bought 0.001017566 for 21.173469389, net notional: 0.021545402552287173
   Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL 0.004541665417713191 Realized PnL 0 Unrealized PnL 0.004541665417713191 Last Price 21.295
+
+SOL Trading at 2023-05-15T12:45:36.432Z
