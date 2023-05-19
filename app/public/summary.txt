@@ -1,4 +1,4 @@
-DUAL Trading at 2023-05-18T12:07:18.224Z
+
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -6,13 +6,13 @@ Openbook trades
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
-
+DUAL Trading at 2023-05-19T12:07:03.032Z
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-05-18T12:09:22.017Z
+BONK Trading at 2023-05-19T12:09:01.544Z
 Openbook trades
-  Bought 15000 for 4.2e-7, net notional: 0.0063
+  Bought 32000 for 4.1771875000000003e-7, net notional: 0.013367
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -20,11 +20,11 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 4.2e-7
+  Total PnL -0.00015100000000000074 Realized PnL 0 Unrealized PnL -0.00015100000000000074 Last Price 4.13e-7
 
-MNGO Trading at 2023-05-18T12:11:01.555Z
+MNGO Trading at 2023-05-19T12:10:52.688Z
 Openbook trades
-  Bought 17230 for 0.01762405107370865, net notional: 303.6624
+  Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -32,17 +32,17 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -0.8623800000000251 Realized PnL 0 Unrealized PnL -0.8623800000000251 Last Price 0.017574
+  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.017574
 
-SOL Trading at 2023-05-18T12:18:08.976Z
+SOL Trading at 2023-05-19T12:20:51.323Z
 Openbook trades
-  Bought 0.03300000000000002 for 20.863727272727253, net notional: 0.6885029999999999
-  Sold 0.03 for 20.52, net notional: 0.6155999999999999
+  Bought 0.033000000000000015 for 20.4421212121212, net notional: 0.6745899999999999
+  Sold 0 for 0, net notional: 0
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -0.010532999999999371 Realized PnL -0.010311818181817606 Unrealized PnL -0.0002211818181817637 Last Price 20.79
+  Total PnL -0.000102999999999625 Realized PnL 0 Unrealized PnL -0.000102999999999625 Last Price 20.439
 
