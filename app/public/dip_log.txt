@@ -1,8 +1,87 @@
-Trading at 2023-05-23T12:18:07.789Z
+Trading at 2023-05-24T12:37:19.430Z
 Options bought
-[]
+[
+  {
+    "signature": "SPz9FrrWwAWzQ4uns9MEZnZZokCk5nnXgcyqnefLfZd11iB1cmoD1jTCLWpGkdKbqMbUnT8T2jx33PCNLVZnBpu",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 150,
+    "price": 0.516586,
+    "time": 1684896236
+  },
+  {
+    "signature": "4gmm64L6k9Hcq4CQWpcMCntEXEnZUHk2WwELzaUAJqyYM91AtyozGneabLKYwFC9DgT5nzXwEm6uXVUNTkUKupxP",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 150,
+    "price": 0.516462,
+    "time": 1684896263
+  },
+  {
+    "signature": "uSrFa1y7trW8YbFcx3AVtU1mKjdDQ92DxuRjY65MSztjzFsotqzh9ZJ8sn1Q3dU9gL3FTh9WtTNUvBb8z7pT78W",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 150,
+    "price": 0.516452,
+    "time": 1684896286
+  },
+  {
+    "signature": "5pbjiQfPhT3mA28jTB2LDzH9VprMbvrgXJD9v7tNCcrC6v9bGKtLcYpeL58rEL2fqS3dEoM5QVFE7dgcnNZdyYkj",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 50,
+    "price": 0.519154,
+    "time": 1684897390
+  }
+]
 Options sold
-[]
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+[
+  {
+    "signature": "5iZg7LXMpEfBNhshf7JLfJgsdYmQFUAVhmfciRxK15M84qgwksBu6UvnhV5yaNFvXJ2ssn2uGzDqNLB8enoUCeuY",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 100,
+    "price": 0.541069,
+    "time": 1684896244
+  },
+  {
+    "signature": "5jFfNux86zc6EsYrABNPjeBNUQhswb3zr4uc7TrKotuECjvGawfT6eusVXNsmnEeTGoBfRMcQirxJxMXvooPHQKJ",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 50,
+    "price": 0.541069,
+    "time": 1684896247
+  },
+  {
+    "signature": "KPVL54iab3GrwB3tLnTMtdgMmzGvvB6J3dCBKAUTweC3mFj3UarX3CCXbG8JF1ujYDZ5KWDSoxVLU5z4mNLAkyG",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 100,
+    "price": 0.54094,
+    "time": 1684896266
+  },
+  {
+    "signature": "2Gu6ddcz3EqKPASPGk3Q836nYmSvhrktks45X8MWWierhNNRd4Bqe61H2vu7imuA1bLA7wHLMBLBwq2umA5j9ayD",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 50,
+    "price": 0.54094,
+    "time": 1684896270
+  },
+  {
+    "signature": "4DrCqaknfW5pfgnGHS4UZNHNB4f9U2nvVV7iT3mcYhGcGPG8raaQ5tnqLbv2oSCbP5jQhuX4ND4BVLMrbQ2CFSZA",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 100,
+    "price": 0.54093,
+    "time": 1684896289
+  },
+  {
+    "signature": "5KtU6kRbXNn1uMh35N9ZzEyeAhSzZHq2SW696tRjYjgoRbNoqUZFkvNu7PQLqD97mF2QeyTiHsi7iQPYpAake6a4",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 50,
+    "price": 0.54093,
+    "time": 1684896292
+  },
+  {
+    "signature": "5d39Pqjm9sNMV7NfqEePWDzBLeLhDkctzzDCZ3MR4Sei7thiQQo61NaapAonoitdHrNhRdWUtbTTZKXLWwdbNqe2",
+    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
+    "amount": 50,
+    "price": 0.54376,
+    "time": 1684897395
+  }
+]
+Net Premium 12.24615 Premium Earned 270.62885 Premium Paid 258.3827
