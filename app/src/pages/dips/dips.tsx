@@ -14,7 +14,6 @@ import {
   getMultipleTokenAccounts,
   GetProvider,
   getTokenIconClass,
-  optionTokenMintPk,
   parseDipState,
   prettyFormatPrice,
 } from '../../utils/utils';
@@ -152,21 +151,19 @@ export const Dips = (props: { network: string }) => {
                 continue;
               }
               const dipState = parseDipState(programAccount.account.data);
-              const { expiration, splMint } = dipState;
+              const { expiration, splMint, optionMint, usdcMint, strike } = dipState;
 
-              // Get the option mint
-              const optionMintPk = await optionTokenMintPk(dipState.strike, expiration, splMint);
               // Get the associated token addresses
               const riskManagerPk = await getAssociatedTokenAddress(
-                optionMintPk,
+                optionMint,
                 new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ')
               );
               const [vaultSplTokenAccount] = await findProgramAddressWithMintAndStrikeAndExpiration(
                 VAULT_SPL_ACCOUNT_SEED,
-                dipState.strike,
+                strike,
                 expiration,
                 splMint,
-                Config.usdcMintPk(),
+                usdcMint,
                 dualMarketProgramID
               );
 
@@ -189,7 +186,7 @@ export const Dips = (props: { network: string }) => {
               const dipState = parseDipState(programAccount.account.data);
 
               const strike: number = dipState.strike / 1_000_000;
-              const { expiration, splMint } = dipState;
+              const { expiration, splMint, usdcMint } = dipState;
 
               const m = new Date();
               m.setTime(expiration * 1_000);
@@ -206,10 +203,12 @@ export const Dips = (props: { network: string }) => {
                 // eslint-disable-next-line no-continue
                 continue;
               }
+              const isUpside = splMint.toBase58() !== 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+              const callOrPut = isUpside ? 'call' : 'put';
               const fractionOfYear = durationMs / 31_536_000_000;
               const currentPrice = PRICE_MAP[splMint.toBase58()];
               const vol = Config.volMap(splMint.toBase58());
-              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, rfRate, 'call') * 1_000_000;
+              const price = bs.blackScholes(currentPrice, strike, fractionOfYear, vol, rfRate, callOrPut) * 1_000_000;
               const earnedRatio = price / currentPrice;
               const apr = earnedRatio / fractionOfYear / 1_000_000;
               const apy = (1 + apr * fractionOfYear) ** (1 / fractionOfYear) - 1;
@@ -236,24 +235,29 @@ export const Dips = (props: { network: string }) => {
                 // eslint-disable-next-line no-continue
                 continue;
               }
-
+              console.log(isUpside, rmAmount, totalDeposits);
+              const displayStrike = isUpside ? strike : (1 / strike) * 1000;
               allPriceAccounts.push(
                 // @ts-ignore
                 createDipParams(
                   `${expiration}${strike}${splMint.toBase58()}`,
                   dateString,
                   expiration,
-                  strike,
-                  'UPSIDE',
+                  displayStrike,
+                  isUpside ? 'UPSIDE' : 'DOWNSIDE',
                   // @ts-ignore
                   programAccount.pubkey,
                   splMint,
-                  Config.usdcMintPk(),
+                  usdcMint,
                   apy,
                   price,
                   currentPrice,
-                  Math.floor(rmAmount * 1_000_000) / 1_000_000,
-                  Math.floor(totalDeposits * 1_000_000) / 1_000_000
+                  isUpside
+                    ? Math.floor(rmAmount * 1_000_000) / 1_000_000
+                    : Math.floor((rmAmount / displayStrike) * 1_000_000) / 1_000_000,
+                  isUpside
+                    ? Math.floor(totalDeposits * 1_000_000) / 1_000_000
+                    : Math.floor((totalDeposits / displayStrike) * 1_000_000) / 1_000_000
                 )
               );
             } catch (error) {
@@ -291,9 +295,7 @@ export const Dips = (props: { network: string }) => {
       title: 'Type',
       dataIndex: 'type',
       sorter: (a, b) => a.upOrDown.length - b.upOrDown.length,
-      render: () => {
-        return <>UPSIDE</>;
-      },
+      render: (_, data) => data.upOrDown,
     },
     {
       title: 'Risk Manager',
@@ -303,7 +305,14 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.riskManager}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
+            <div
+              className={c(
+                styles.tokenIcon,
+                getTokenIconClass(
+                  Config.pkToAsset(data.upOrDown === 'UPSIDE' ? data.splMint.toBase58() : data.usdcMint.toBase58())
+                )
+              )}
+            />
           </div>
         );
       },
@@ -316,7 +325,14 @@ export const Dips = (props: { network: string }) => {
         return (
           <div className={styles.premiumCell}>
             {data.totalDeposits}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.splMint.toBase58())))} />
+            <div
+              className={c(
+                styles.tokenIcon,
+                getTokenIconClass(
+                  Config.pkToAsset(data.upOrDown === 'UPSIDE' ? data.splMint.toBase58() : data.usdcMint.toBase58())
+                )
+              )}
+            />
           </div>
         );
       },
