@@ -1,94 +1,38 @@
-Trading at 2023-05-28T12:17:56.869Z
+Trading at 2023-05-29T12:12:01.162Z
 Options bought
 [
   {
-    "signature": "5ii4wzho5igtTii6Ydkefx9aLuizf9sE3XWsy77oDRCSAGLJwLYRVcneAdvEVR8Mb61JEHMMS3Zm6jQyY1SqSXSW",
-    "mint": "DaN8wUP6mdVsAAnjaD2BrPwZYCTxibHFmwRcvB6yKpdK",
-    "amount": 100,
-    "price": 0.9522,
-    "time": 1685194217
+    "signature": "3fAsazE7dqChhiyGJKHYaJvksRJzSgmxiUwiPZzeiY1GUa6rKbTFP6w5AfdrWB8PB4n5NX3encgYamuKWBbSWigN",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.5,
+    "price": 0.098212,
+    "time": 1685328426
   },
   {
-    "signature": "3TCXEC8A9AFs4ZF4NMSR32cZrmz5JUyC1twn2834TsR9eTshAwsTXjmUMEiZG6xubdZvyua5p9vfexgR6TkzRSdg",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.70873,
-    "time": 1685237326
-  },
-  {
-    "signature": "8KRV3br7i6WS14heuSjVTwy3xf8rFD8h5T9fQfwyvz6TdcS4U5ZtAXeztcEJzZ8jkrxtDfi9eGJvZyzi2DzMYDC",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.687352,
-    "time": 1685238549
-  },
-  {
-    "signature": "KBQQc1ah8A4qfPc6nXweMHGENa4gVUc3G6KDdepHjWhSk1VNUF4z9Jd8D7aJYJDmKd9YCRBRYhvPJuJj5x3Q7AK",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.680382,
-    "time": 1685238585
-  },
-  {
-    "signature": "5uT95xXmpf12eQWm4homb8c7WXrEY8V4jTda1BTZC7PvyBea59vMU3bBnRa7JXarcfxoGmKvcnXLV7QWSDQ2z355",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.683849,
-    "time": 1685238629
-  },
-  {
-    "signature": "3yvkDUrPMbxG9F2C9XxbgpWhSr1ZNRjXCd8qBcNGDyNhJvk9Y8KnWZPyckBxB5Fh2h82fZHea7arUvmMWtv3VGgu",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.680373,
-    "time": 1685238646
+    "signature": "5B5PUZKSkD7gBKDrdgDhbzJE7meqUPXa7gGkzcF3URzYwWb3bLdn9XQ7pjxfc2wQw1y2HUwWodw5YAaZSFrUCrEf",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.21306,
+    "price": 0.005087,
+    "time": 1685329927
   }
 ]
 Options sold
 [
   {
-    "signature": "31CqucbMrPuwHkenqhghCJTvPpnG2JoSp1AYfvZLRhKQPR11BatruU5bWbqaajaeRqTrUVahasGXHN4HS6zTdnzp",
-    "mint": "DaN8wUP6mdVsAAnjaD2BrPwZYCTxibHFmwRcvB6yKpdK",
-    "amount": 100,
-    "price": 0.99733,
-    "time": 1685194225
+    "signature": "4ea8tWgFMshzEKq8xVvVykXqgziwjwcyTCngiLNt6wqGGQ628mewmzuQcbKFfVxihgtGEpRkaZ1iULu9sZuyb79G",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.5,
+    "price": 0.102872,
+    "time": 1685328435
   },
   {
-    "signature": "3ou4EVw7ywwMqMcg37wTb1cAvoTZRU7fVrhHv87QEgqvraeXCy8YQwggJ7Bj23ghRhadrs28UAGb2mvyZJ12iXcb",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.74232,
-    "time": 1685237331
-  },
-  {
-    "signature": "coKZ7yTDfpdiYH5eswisev6LaLXaWEGJmpbJvwP4Ht9Pq9zj7vLiFm4DRDu2sQsLRhsRbqo3akGxdrGN8udru5n",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.71993,
-    "time": 1685238556
-  },
-  {
-    "signature": "5x3B1NH52jxTXijNywH14cNxG681Q8jP92DXaAupPgGXv4vdLuysxXLdHneQcvaHCBAW4jqxWRkhGiW2oLPm4GAb",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.71263,
-    "time": 1685238591
-  },
-  {
-    "signature": "2kt2bQtsrHj1E4yx7zkWsAs2mpNVCgoT8SQPVkdVGfThUb1f35ykBrwgCp3vkCUJEtP6TNiDAviwejfeGqPaBgtV",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.71626,
-    "time": 1685238633
-  },
-  {
-    "signature": "3kbnB8k277PisxKenFGHobaC5bsiMpcSvxXXRHe1NxPLhTmnrekj8WEKe1HWSu1CfcR7VSrfx72cbRJgK9mXEfnF",
-    "mint": "B9GZceQkUUj2WNn4GbrR6E7DFdG9LwxbfYDWc7mp7Kaf",
-    "amount": 100,
-    "price": 0.71262,
-    "time": 1685238652
+    "signature": "Vwmu5X6Zp1tVDs1tzhqzAsKrAz4aEpqGA3SMuJuHHtP4pRoMEDYT6y8iCcU7DbykA6wrb3SsEyNhAwAbDzjVdLD",
+    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
+    "amount": 0.21306,
+    "price": 0.105885,
+    "time": 1685329933
   }
 ]
 
 
-Net Premium 20.82039999999995 Premium Earned 460.109 Premium Paid 439.28860000000003
+Net Premium 0.023806021880000007 Premium Earned 0.0739958581 Premium Paid 0.05018983622

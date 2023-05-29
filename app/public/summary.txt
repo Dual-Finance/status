@@ -1,30 +1,30 @@
-DUAL Trading at 2023-05-28T12:06:44.823Z
-Openbook trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-Jupiter trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
+DUAL Trading at 2023-05-29T12:07:27.076Z
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-05-28T12:10:43.005Z
+
 Openbook trades
-  Bought 134896000 for 5.197073745700391e-7, net notional: 70.106446
-  Sold 172506000 for 5.12646023906415e-7, net notional: 88.43451500000002
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+BONK Trading at 2023-05-29T12:09:37.707Z
+Openbook trades
+  Bought 34027000 for 5.181141446498369e-7, net notional: 17.62987
+  Sold 50084000 for 5.218264914942896e-7, net notional: 26.135158
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -0.40171099999997684 Realized PnL -0.952547959120243 Unrealized PnL 0.5508369591202662 Last Price 4.98e-7
+  Total PnL -0.03703600000000376 Realized PnL 0.1263200260761897 Unrealized PnL -0.16335602607619346 Last Price 5.32e-7
 
-MNGO Trading at 2023-05-28T12:12:24.559Z
+MNGO Trading at 2023-05-29T12:11:17.181Z
 Openbook trades
-  Bought 12650 for 0.01803340948616601, net notional: 228.12263000000002
+  Bought 4740 for 0.017580324894514766, net notional: 83.33073999999999
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -32,17 +32,17 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -0.574430000000026 Realized PnL 0 Unrealized PnL -0.574430000000026 Last Price 0.017988
+  Total PnL -1.2291999999999912 Realized PnL 0 Unrealized PnL -1.2291999999999912 Last Price 0.017321
 
-SOL Trading at 2023-05-28T12:17:39.679Z
-Openbook trades
-  Bought 0.025000000000000015 for 20.228279999999984, net notional: 0.5057069999999999
-  Sold 0 for 0, net notional: 0
+SOL Trading at 2023-05-29T12:11:42.763Z
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
-PnL
-  Total PnL 0.006918000000000384 Realized PnL 0 Unrealized PnL 0.006918000000000384 Last Price 20.505
+Openbook trades
+  Bought 0.024000000000000014 for 20.765249999999988, net notional: 0.498366
+  Sold 0 for 0, net notional: 0
 
+PnL
+  Total PnL -0.0006059999999997391 Realized PnL 0 Unrealized PnL -0.0006059999999997391 Last Price 20.74
