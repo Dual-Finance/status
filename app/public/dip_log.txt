@@ -1,38 +1,38 @@
-Trading at 2023-05-29T12:12:01.162Z
+Trading at 2023-05-30T12:16:44.032Z
 Options bought
 [
   {
-    "signature": "3fAsazE7dqChhiyGJKHYaJvksRJzSgmxiUwiPZzeiY1GUa6rKbTFP6w5AfdrWB8PB4n5NX3encgYamuKWBbSWigN",
-    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 0.5,
-    "price": 0.098212,
-    "time": 1685328426
+    "signature": "4edVoR4zi3ghucifd3Bgkc8qVjH9CYn4mzqnWS5a8ijohdHy1319Q7qzxnJkfvwQY2w93gbgpiqHSuPPSxCgrD4",
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 1,
+    "price": 0.24009,
+    "time": 1685375479
   },
   {
-    "signature": "5B5PUZKSkD7gBKDrdgDhbzJE7meqUPXa7gGkzcF3URzYwWb3bLdn9XQ7pjxfc2wQw1y2HUwWodw5YAaZSFrUCrEf",
-    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 0.21306,
-    "price": 0.005087,
-    "time": 1685329927
+    "signature": "2VtVY1t4CLJnwcPGWiosyoGKBJQReZXE4QohkV6Krz5kV8qj1Chm56Zewcz3VBdetmz8ZRbaaS8BRt8gr71QTGib",
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 14.4,
+    "price": 0.232433,
+    "time": 1685397805
   }
 ]
 Options sold
 [
   {
-    "signature": "4ea8tWgFMshzEKq8xVvVykXqgziwjwcyTCngiLNt6wqGGQ628mewmzuQcbKFfVxihgtGEpRkaZ1iULu9sZuyb79G",
-    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 0.5,
-    "price": 0.102872,
-    "time": 1685328435
+    "signature": "3gKqZQaJiq4QrGGqnP415taofz7Tka1nhFANYMB3adAqtA6yidacyo7QgViNN5N9jZk23ufLTQWUpRoUW1rNmstc",
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 1,
+    "price": 0.251471,
+    "time": 1685375485
   },
   {
-    "signature": "Vwmu5X6Zp1tVDs1tzhqzAsKrAz4aEpqGA3SMuJuHHtP4pRoMEDYT6y8iCcU7DbykA6wrb3SsEyNhAwAbDzjVdLD",
-    "mint": "3sS3ow7EPqegqkp3aNNa6DFG6RGzRV2dWzYoJ37g6F3D",
-    "amount": 0.21306,
-    "price": 0.105885,
-    "time": 1685329933
+    "signature": "52bopMV1gLNpb3rTtJtiBpk4HNRdr9GHsc27wkFH9NbpnpR4UBRXpzcrTdWnrTyW8mAYGvx7fDMbuhsZo3eoETpq",
+    "mint": "Y1vZwa9FUz76hJwm4W9RTvo2iykJW16v6W6P3UoTirN",
+    "amount": 14.4,
+    "price": 0.24345,
+    "time": 1685397811
   }
 ]
 
 
-Net Premium 0.023806021880000007 Premium Earned 0.0739958581 Premium Paid 0.05018983622
+Net Premium 0.1700257999999999 Premium Earned 3.757151 Premium Paid 3.5871252
