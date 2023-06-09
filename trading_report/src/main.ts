@@ -116,6 +116,12 @@ async function main() {
   console.log(`PnL`);
   console.log(`Total PnL ${opbNetPnL + jupNetPnL} Realized PnL ${opbRPnL + jupRPnL} Unrealized PnL ${opbUPnL + jupUPnL} Last Price ${lastPrice}`);
 
+  const yesterday = new Date(new Date().setDate(new Date().getDate()-1));
+  const fundingUrl = `https://api.mngo.cloud/data/v4/stats/funding-account-hourly?mango-account=${TRADING_ACCOUNT}&start-date=${yesterday.toISOString().substring(0, 10)}`;
+  const fundingResponse = await fetch(fundingUrl);
+  const fundingPayments = await fundingResponse.json();
+  console.log('Funding', fundingPayments);
+
   const transactions: string[] = ["side,price,qty,time"];
   for (const sell of opbSells) {
     transactions.push(`sell,${sell.price},${sell.size},${sell.block_datetime}`);
