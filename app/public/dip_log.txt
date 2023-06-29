@@ -1,45 +1,45 @@
-Trading at 2023-06-28T12:12:59.959Z
+Trading at 2023-06-29T12:12:30.850Z
 Options bought
 [
   {
-    "signature": "4nnHsWdpxd5qsK4iNnW6KDdB2bRjkLDhEc5s8C8MAK6ytkxXntSAsV7Zb5y5iruLWa6s6DCwERub7w5pZRpTGpvN",
+    "signature": "rYZKEdVgS2H8mwZJbh6G73NwVrVbQQQo29YHgSrAAkSJXARtELho7nUs7pzVj96RVTkVtCaGfv6RAX3PuGRV3GT",
     "mint": "CMfXpdXpJK5KtdAunN8cxcmF8vKx8LgS89hxtAddW6K7",
     "amount": 0,
     "price": null,
-    "time": 1687870856
+    "time": 1688008453
   },
   {
-    "signature": "3iBWwVeT8t1EJ8CaPtrP5d8tcvP2uZ542cxUNzBF6YB9FS26Z9JzTGYcQHGHvqGAVxQ5R1BQDwZs4FQvwNLB6fmk",
+    "signature": "3yD3A1JpanfMe8GNhEJb1imU6gyRaPzcXgdGWEUeKRuEs3EHjxn6yUGJw3Uedd3kZkeVdVUDceWWuN6Xhqjy62iB",
     "mint": "Ac3SmsGxC6876myzQZhahRjrGFAWHVAsj8sjWKdYHf11",
     "amount": 0,
     "price": null,
-    "time": 1687870957
+    "time": 1688008679
   }
 ]
 Options sold
 [
   {
-    "signature": "4XKjaJkLbzZJUNgqUAqipUYbyASuBMzaA3bsSU12Cy4GjM51nzowo5h3BwEe2TmvpA5N7dc2j27AkM1YMGmDqXdb",
+    "signature": "3Qc9VURtcwoVfuskL6dUBNvuxMQSGzs81BFKxbNVnaN4TDkSD4XQSfG5BB9J1P7FhQkU2x732yUmnsasp7Ck2Yz3",
     "mint": "CMfXpdXpJK5KtdAunN8cxcmF8vKx8LgS89hxtAddW6K7",
-    "amount": 1500,
-    "price": 0.062109,
-    "time": 1687870867
+    "amount": 1200,
+    "price": 0.078809,
+    "time": 1688008459
   },
   {
-    "signature": "33amwMkWq1zHgNmA4fygCx78tjkaVy184VXDKjg36qFhgT8x1DnHnS8Uw4CsCrqXcFsxyGnRoVAi1FKVnnfWwHgj",
+    "signature": "3LHY5RvkmQDenqE9qt4ZCpHzQt5VzCwP7Yzjx7qyQs5SP7qx9Snwpqi4AUSPLdGTSURHx1XVhokBwmT1Mh31hJ63",
     "mint": "Ac3SmsGxC6876myzQZhahRjrGFAWHVAsj8sjWKdYHf11",
     "amount": 1500,
-    "price": 0.02106,
-    "time": 1687870964
+    "price": 0.03052,
+    "time": 1688008684
   },
   {
-    "signature": "3M6YBM13Mh81N5NGCQ88bSgZbnFqEZ4jg8eorTNZeh2yPUj4ofRdKt96Pg5KRWHYbSkfvymHUEzgboK1ixzKTJoj",
+    "signature": "5fK3ddr1F7yXdrkJ8ynfdpFS7CuTRdJSKZoumxMB6QFFvRcMacLVEQ9ozq3anMpZSqeUncJQshQw76WC4fHTK83o",
     "mint": "Ac3SmsGxC6876myzQZhahRjrGFAWHVAsj8sjWKdYHf11",
     "amount": 1500,
-    "price": 0.02106,
-    "time": 1687870969
+    "price": 0.03052,
+    "time": 1688008689
   }
 ]
 
 
-Net Premium 156.3435 Premium Earned 156.3435 Premium Paid 0
+Net Premium 186.1308 Premium Earned 186.1308 Premium Paid 0
