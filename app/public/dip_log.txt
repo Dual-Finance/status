@@ -1,8 +1,16 @@
-Trading at 2023-07-04T12:14:38.922Z
+Trading at 2023-07-05T12:15:14.356Z
 Options bought
 []
 Options sold
-[]
+[
+  {
+    "signature": "3MhbDMBCYVS41tPN7ESuXufd8LutByyJeE6nb9ENvA1VaWXqdw4jqSz1j9avo3srcSUo4YpSTHxFyTb1Ayr5R4Lq",
+    "mint": "9CK7QcHhHkA4cXodkuGdbYr7HHTSeCt1pZ6597yze4J",
+    "amount": 5.23616,
+    "price": 0.363389,
+    "time": 1688516741
+  }
+]
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+Net Premium 1.90276294624 Premium Earned 1.90276294624 Premium Paid 0
