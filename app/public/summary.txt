@@ -1,18 +1,30 @@
-
+DUAL Trading at 2023-07-06T12:08:58.490Z
 Openbook trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-DUAL Trading at 2023-07-05T12:09:34.058Z
-Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-07-05T12:11:10.673Z
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+BONK Trading at 2023-07-06T12:10:25.899Z
 Openbook trades
-  Bought 9086000 for 3.5212678846577147e-7, net notional: 3.1994239999999996
+  Bought 22084000 for 3.392898931353016e-7, net notional: 7.492878
+  Sold 6006000 for 3.424945054945054e-7, net notional: 2.0570219999999995
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL -0.03364800000000137 Realized PnL 0.019246901829377903 Unrealized PnL -0.052894901829379275 Last Price 3.36e-7
+
+MNGO Trading at 2023-07-06T12:11:45.529Z
+Openbook trades
+  Bought 23130 for 0.01753545784695201, net notional: 405.59514
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
@@ -20,29 +32,17 @@ Jupiter trades
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -0.08292599999999965 Realized PnL 0 Unrealized PnL -0.08292599999999965 Last Price 3.43e-7
+  Total PnL -1.8841199999999585 Realized PnL 0 Unrealized PnL -1.8841199999999585 Last Price 0.017454
 
-MNGO Trading at 2023-07-05T12:12:43.946Z
+SOL Trading at 2023-07-06T12:12:16.130Z
 Openbook trades
-  Bought 68320 for 0.017925, net notional: 1224.636
+  Bought 0.05000000000000004 for 19.264119999999984, net notional: 0.963206
   Sold 0 for 0, net notional: 0
 
 Jupiter trades
-  Bought 0 for 0, net notional: 0
+  Bought 0.005813715 for 19.95064000316997, net notional: 0.11598733504602929
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.017925
-
-SOL Trading at 2023-07-05T12:14:52.560Z
-Openbook trades
-  Bought 3.0409999999999986 for 19.31087865833608, net notional: 58.72438199999999
-  Sold 0.803 for 19.58404732254047, net notional: 15.725989999999998
-
-Jupiter trades
-  Bought 0.004922981 for 19.366983318, net notional: 0.09534329090183095
-  Sold 0.184866221 for 19.52009528699089, net notional: 3.6086062492659163
-
-PnL
-  Total PnL -0.9027389619159341 Realized PnL 0.22010820467034084 Unrealized PnL -1.122847166586275 Last Price 18.747
+  Total PnL 0.02669961396397152 Realized PnL 0 Unrealized PnL 0.02669961396397152 Last Price 19.814
 
