@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import c from 'classnames';
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { AnchorProvider } from '@project-serum/anchor';
 import { ColumnsType } from 'antd/lib/table';
@@ -111,6 +111,9 @@ export const Treasury = (props: { network: string }) => {
         'confirmed'
       );
 
+      const optionVault = new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ');
+      const optionVaultGas = await connection.getBalance(optionVault);
+
       allAccounts.push(
         createAccountParams(
           'PREMIUM',
@@ -135,13 +138,22 @@ export const Treasury = (props: { network: string }) => {
       );
       allAccounts.push(
         createAccountParams(
-          'OptionValut',
+          'OptionVault',
           'Option Vault',
           Config.usdcMintPk(),
           tokenAccounts.array[2] !== undefined
             ? (tokenAccounts.array[2].data.parsed.info.tokenAmount.uiAmount as number)
             : 0,
           routerUsdc
+        )
+      );
+      allAccounts.push(
+        createAccountParams(
+          'OptionVaultGas',
+          'Option Vault SOL',
+          Config.wsolMintPk(),
+          optionVaultGas / LAMPORTS_PER_SOL,
+          optionVault
         )
       );
       allAccounts.push(
