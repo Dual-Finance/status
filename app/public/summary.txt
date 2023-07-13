@@ -1,4 +1,4 @@
-DUAL Trading at 2023-07-12T12:08:44.570Z
+DUAL Trading at 2023-07-13T12:08:25.560Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -10,11 +10,11 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-07-12T12:08:57.850Z
+
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
-
+BONK Trading at 2023-07-13T12:08:38.989Z
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -22,27 +22,27 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 3.51e-7
 
-MNGO Trading at 2023-07-12T12:10:16.197Z
+MNGO Trading at 2023-07-13T12:10:07.965Z
 Openbook trades
-  Bought 25910 for 0.017882, net notional: 463.32262
-  Sold 65090 for 0.018222833154094332, net notional: 1186.12421
+  Bought 217800 for 0.017925, net notional: 3904.065
+  Sold 98710 for 0.01813290659507649, net notional: 1789.8992100000003
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 5.141530000000097 Realized PnL 8.830987022584175 Unrealized PnL -3.6894570225840773 Last Price 0.018317
+  Total PnL 20.522460000000212 Realized PnL 20.522460000000212 Unrealized PnL 0 Last Price 0.017925
 
-SOL Trading at 2023-07-12T12:10:43.368Z
-Jupiter trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
+SOL Trading at 2023-07-13T12:10:40.728Z
 Openbook trades
-  Bought 0.03800000000000002 for 22.05181578947367, net notional: 0.837969
+  Bought 16.30300000000002 for 21.705998711893486, net notional: 353.8728969999999
+  Sold 16.253 for 21.701999999999998, net notional: 352.722606
+
+Jupiter trades
+  Bought 0.004778477 for 22.027815059412735, net notional: 0.10525940762165738
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0.0025530000000004677 Realized PnL 0 Unrealized PnL 0.0025530000000004677 Last Price 22.119
+  Total PnL -0.033168693366171696 Realized PnL -0.06499106440485135 Unrealized PnL 0.03182237103867965 Last Price 22.315
 
