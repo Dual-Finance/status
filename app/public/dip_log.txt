@@ -1,66 +1,8 @@
-Trading at 2023-07-15T12:10:06.063Z
+Trading at 2023-07-16T12:10:22.872Z
+[]
 Options bought
-[
-  {
-    "signature": "3Ry7WaMx1VEX9wPerJbALjRAVdTjdEefHpvyDB3gFtNBWUkcWwAyfjVJkUcsbQnJMBJBKt7w778vMozLTnGRXXTX",
-    "mint": "CZ7JXH3jvgoKbpQNCYaAkoN5D4apYYqrvsj86DJ69F23",
-    "amount": 500,
-    "price": 1.799605,
-    "time": 1689343314
-  },
-  {
-    "signature": "2K32aSed99ZFhoWruh8gzErx4JzLyqUfLUQe3UCPHnnQA9y33g34TWRx7Dp6dgxxao6oMz7YNiRwi1m7x33EAWoF",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1689343327
-  },
-  {
-    "signature": "TbZQ33CKozL6LVRL96kWKzzeaX4joHodLNqxgByfPJ6AEqEfakXnhKZbdRgvoeBbTBhFi3XoaF6S1TRzaUkBKex",
-    "mint": "CZ7JXH3jvgoKbpQNCYaAkoN5D4apYYqrvsj86DJ69F23",
-    "amount": 500,
-    "price": 1.768623,
-    "time": 1689343343
-  },
-  {
-    "signature": "3GQrvdyKyHbcL6Kk2t7abVPV2mU1tiJHbpD4vzsmsprcBeXSTPDXKRfjUXvU8br6Wu5R12tKQiVJ23sgvmok2E5s",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1689343355
-  },
-  {
-    "signature": "4kNCgW8dg8URWqxs4ADan2Qx6AkKxpvqwd7TdmccszFG73HcjuS7AcmR6ErKkViNAXARjFqusg4cjuFMzx9rLvBB",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1689344210
-  },
-  {
-    "signature": "hzgqJjg627gzq74yTzDDw4X6oS4NBbmtXLcDAQRYumMWLv9FpZVx7yTCsqFF4Qci4qRPwXLXzDCq7bw6H1NmELw",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1689344251
-  }
-]
 Options sold
-[
-  {
-    "signature": "5M3AABpX8q1pE9s8dicfFYhmjoxgb3kViQoU6EEnQNZZ9frvSzMhQwwhSqhZPMaRN2KJQ1Ye25TLz6uueZ1Mm9hw",
-    "mint": "CZ7JXH3jvgoKbpQNCYaAkoN5D4apYYqrvsj86DJ69F23",
-    "amount": 500,
-    "price": 1.80874,
-    "time": 1689343325
-  },
-  {
-    "signature": "2Fzvj4SeSo65Y35hsStKQVQAX9iZivQsPDKLRyjBLoYT83g42xNcEQMwYiYvr8FuJX4WF9WUrEggBMAzH7LUPCP2",
-    "mint": "CZ7JXH3jvgoKbpQNCYaAkoN5D4apYYqrvsj86DJ69F23",
-    "amount": 500,
-    "price": 1.777599,
-    "time": 1689343350
-  }
-]
+[]
 
 
-Net Premium 9.055499999999938 Premium Earned 1793.1695 Premium Paid 1784.114
+Net Premium 0 Premium Earned 0 Premium Paid 0

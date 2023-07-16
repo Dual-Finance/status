@@ -1,4 +1,4 @@
-DUAL Trading at 2023-07-15T12:07:25.034Z
+DUAL Trading at 2023-07-16T12:07:40.631Z
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -10,7 +10,7 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.026
 
-BONK Trading at 2023-07-15T12:07:39.403Z
+
 Openbook trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
@@ -22,27 +22,27 @@ Jupiter trades
 PnL
   Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 4.04e-7
 
-MNGO Trading at 2023-07-15T12:09:10.703Z
+BONK Trading at 2023-07-16T12:07:53.332ZMNGO Trading at 2023-07-16T12:09:28.508Z
 Openbook trades
-  Bought 9480 for 0.017803, net notional: 168.77244
-  Sold 139860 for 0.01819511561561562, net notional: 2544.7688700000003
+  Bought 90860 for 0.01792179771076381, net notional: 1628.3745399999998
+  Sold 399710 for 0.018245516149208177, net notional: 7292.91526
 
 Jupiter trades
   Bought 0 for 0, net notional: 0
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL -25.472789999999723 Realized PnL 3.7172560360360722 Unrealized PnL -29.190046036035795 Last Price 0.018419
+  Total PnL 73.73802000000072 Realized PnL 29.413057317055298 Unrealized PnL 44.32496268294542 Last Price 0.018102
 
-SOL Trading at 2023-07-15T12:09:49.539Z
+SOL Trading at 2023-07-16T12:10:00.616Z
 Openbook trades
-  Bought 0.5770000000000001 for 27.401343154246096, net notional: 15.810574999999998
-  Sold 0.311 for 27.50991318327974, net notional: 8.555582999999999
+  Bought 0.461 for 27.73903036876355, net notional: 12.787692999999997
+  Sold 0 for 0, net notional: 0
 
 Jupiter trades
-  Bought 0.010037292 for 27.276098823769008, net notional: 0.27377816851502607
+  Bought 0.003594532 for 27.41752457953366, net notional: 0.09855316946192029
   Sold 0 for 0, net notional: 0
 
 PnL
-  Total PnL 0.4169632817049757 Realized PnL 0.03376527902946307 Unrealized PnL 0.38319800267551263 Last Price 28.785
+  Total PnL 0.12425910466608338 Realized PnL 0 Unrealized PnL 0.12425910466608338 Last Price 28.004
 
