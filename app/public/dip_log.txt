@@ -1,6 +1,56 @@
-Trading at 2023-07-20T12:10:57.337Z
+Trading at 2023-07-21T12:10:30.954Z
 Options bought
-[]
+[
+  {
+    "signature": "5i9tH21g5ToPpyqGKvuWYntuEtYAdkfPSAZ45KLPGQ1ZWtT1pKSg8KskaqKjhfVvxSVnoPvJKQq3GufHZcC6sHzQ",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689905807
+  },
+  {
+    "signature": "67RD2xMuH2wpZv2RVa49fuM97yGosDRU2GRPDtyMwUkxquERB8rZTHdvWf55fzhoHdA9f9YyrYuNAEjnsnhVpDm3",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689905835
+  },
+  {
+    "signature": "4RBi8mcyZcFcGo5hsEPMv5gP23sMmub2TH5FPSgXe1nVef2bo8xkpUC8zUoiMUsRxxuLg17eAdaZcoGwigsFfgZ3",
+    "mint": "HTbufdmWB6MLut9vv2uQbVACwm4fiYxR58LaxatejP1a",
+    "amount": 0,
+    "price": null,
+    "time": 1689906499
+  },
+  {
+    "signature": "3bV37oG7cjLY3fxYcwp4DQg3GVhZmwyribA5tGdymefpSwjWDCUeUWJrLTi2Je8S7s9Bu9Y5zE8PVKDBdJrTLjCr",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689907965
+  },
+  {
+    "signature": "3NgfLRdwr6kAGhHgMfQ95kBUZnuwWU5MCCR3ZEdmdtHfDcpsNptBZCgDYTfXWC3WTzqeyDbayUVAzhzHDEvUcWZi",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689909793
+  },
+  {
+    "signature": "3RJcanRGKenDDm2XPP8s424G1EAgJfew3T5QHp5Nyvb5Rkp9H2Fh2k8FetjMZGgrjc5gRPAmsisi77eFwUR5FUzV",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689910982
+  },
+  {
+    "signature": "58QmHcy2T2tnXodsiiFA2rjvPUjwtqXKHnQPspA6tVzNacLmJTbibmjoWAryzMbQMMQA5JtkaV8ngeM8G4g4yBJz",
+    "mint": "9Z7hQqhTYJGmafMUxUyz8EDyx9r9dTXqi3JKUYfBgvRQ",
+    "amount": 0,
+    "price": null,
+    "time": 1689911362
+  }
+]
 Options sold
 []
 
