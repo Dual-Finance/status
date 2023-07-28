@@ -1,26 +1,54 @@
-Trading at 2023-07-27T12:11:07.270Z
+Trading at 2023-07-28T12:10:10.372Z
 Options bought
 [
   {
-    "signature": "25kv1PyWMp5KXYA2TBq1ySW2UPNo8ki323oHZ8N521JEo4hTGBhVQkv5UVbuYDFnB4K8cPfU3Y34JYAeSE3hFTtg",
+    "signature": "dboBcZ2TBQSNg3QP1DaXx6YZG59xGYYUqbUdjwAecA4GzKoG3cBBTsar78XpHoJWp8bC2UoYVE3p3DvF2cjQKcx",
+    "mint": "8eCBaaq5FzGXHTu8afgbYxcYu2HvCFNxneaLPVfEyjVn",
+    "amount": 0,
+    "price": null,
+    "time": 1690472260
+  },
+  {
+    "signature": "67TDrFp9aVjQScoPSo7bPa7sLhqX3KU3VfciD95xTHzV3s8FAhDNG4N5kcREHWrEnQBCrQqVJDSEyJGWRgp2emNS",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1690385745
+    "time": 1690472272
   },
   {
-    "signature": "2AC4SUUVeDzT5Bq3pFAUmS7maKEnzL6LqprzWxCFstUjQuC3pAJgRUA5isW1ycfftUtiqSEy8wjhToYcKjCEoA7A",
-    "mint": "4LceSa9eu6XmbbT87pQmUAxL8dGphMYFiEoHjDEc7Fem",
+    "signature": "5GQkgP86oTPC3TYbQy4EFXxbQEgMgyWZBS9ZLHmz4XVJ5CBz6nwQgfkTvk3aXxQrXDvYDvJBBwEJKi1n6kosfYaV",
+    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
     "amount": 0,
     "price": null,
-    "time": 1690387352
+    "time": 1690543350
   },
   {
-    "signature": "5wp3z6vSFNkuKgbnJo6vRGFM5aHDyes6kAuHNQXd5YeNvhru32WXQZzJvo8vGW3JoXrMVafPg2DetuejtLWmvkCR",
-    "mint": "",
+    "signature": "am7VX8cVYUULYKPaSBF91hnsyHANJyytqPNzu1Ho3tvQBzu4RAXrAU5eihmEB2SgcBqCHAwp18B341nH319oe8G",
+    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
     "amount": 0,
     "price": null,
-    "time": 1690387364
+    "time": 1690543376
+  },
+  {
+    "signature": "4EA7wq4ZWRc4MiwYfrzHVYqipJzjMH6v2x6kx9cGYwqV4xfqwKZ9BJEumFEsFPLVmwfM5Mr4TrTbvnHNTrQJxfeC",
+    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
+    "amount": 0,
+    "price": null,
+    "time": 1690543460
+  },
+  {
+    "signature": "6Zbbgm1V7E82Ems6QxhBZuRQmqAL52FzxCk6dEpLtypxCScQ88HVKx8awCkyaR4a9ndMb1bCTq5pviw9sm972Li",
+    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
+    "amount": 0,
+    "price": null,
+    "time": 1690543653
+  },
+  {
+    "signature": "2NPASV4mN6RgSyRjMtRg4c57ZNVf2QGD5gNbEG7QTShDuaducRsYhgMWHDs5sryiawnDBJ6ukeUk4r7Kcb5sfe6d",
+    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
+    "amount": 0,
+    "price": null,
+    "time": 1690543691
   }
 ]
 Options sold
