@@ -1,66 +1,8 @@
-Trading at 2023-07-30T12:09:31.190Z
+Trading at 2023-07-31T12:13:12.023Z
 Options bought
-[
-  {
-    "signature": "3z5hDZSQggYNLafxckS2p4byhb9C5VdPxFRB1rbArA7HVRh8Jkq9NrF3gssf4riFZV5xwYqm8Ww5msV7gh3136Ug",
-    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
-    "amount": 0,
-    "price": null,
-    "time": 1690637648
-  },
-  {
-    "signature": "511x8epTH8obPaZHQ61daUyFiVGsazGDJmToVVBn3NL2mq5o7YXhFibKva7ed8mVMGk2yTaLxpCxfCionXd36bkU",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1690637658
-  },
-  {
-    "signature": "4QkBVcyhhqj13fr7Ffz1jpsunP2DZJGfiC1VAA7wUHyiUCQA3qXxCw5C1mCJiU7KrzCwE7UYgFFcW5aP7rjyScdD",
-    "mint": "AHPvbgtYFWbHdGfvfUMu9HktjgBy5d3sXiAtuKBNkQUb",
-    "amount": 0.18,
-    "price": 1.640872,
-    "time": 1690643399
-  },
-  {
-    "signature": "5NzUqyMARtJkJpB4ZtR8RJ9d1BeLgtTuaSaSqTvKocdjeTji5FrV2LostP8yKxz7Jf2H5AgAWZAUzkA4MjPmKxaA",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1690643413
-  },
-  {
-    "signature": "54ExTRjw8qcQ6Dy2knGqPRBG8XTAahogeajBht3bHQFDCAyBzZN79GM51PTyRJGUkaTLC42qcCK6znZ83EF72138",
-    "mint": "8eCBaaq5FzGXHTu8afgbYxcYu2HvCFNxneaLPVfEyjVn",
-    "amount": 0,
-    "price": null,
-    "time": 1690654837
-  },
-  {
-    "signature": "4FMEGycT74gtvZSxLvYqx8qM2fnKW2fXfQovKMhoMexwSQ3VEZoFFX2c2KjNk8kB63zCDnurDf3TryWP8ppQQcoA",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1690654978
-  }
-]
+[]
 Options sold
-[
-  {
-    "signature": "43xh4VkFKpXd8MP9RDGmgf9MRQecsJL3BX4ezZfgR9cqJKWtzsK7rv3xhNKXwx6UzxFnRFU4poF7nfsW6RN7yK4B",
-    "mint": "9d3FNNBBbG8YVYnRnsynS7U2h1HiHHX6oCm4ThDx6v9k",
-    "amount": 6000,
-    "price": 0.034972,
-    "time": 1690637656
-  },
-  {
-    "signature": "3axLvevk2CCafyr72k6vn5TQBWVSHQt9W3Qp87BGedBDeZeFSrNXGqppMowqqQvcc9zcQ56uBEELdHvjNnYqDh7K",
-    "mint": "AHPvbgtYFWbHdGfvfUMu9HktjgBy5d3sXiAtuKBNkQUb",
-    "amount": 0.18,
-    "price": 1.649211,
-    "time": 1690643412
-  }
-]
+[]
 
 
-Net Premium 209.83350102000003 Premium Earned 210.12885798000002 Premium Paid 0.29535696
+Net Premium 0 Premium Earned 0 Premium Paid 0
