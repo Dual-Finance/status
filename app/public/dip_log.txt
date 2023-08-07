@@ -1,31 +1,23 @@
-Trading at 2023-08-06T12:09:28.729Z
+Trading at 2023-08-07T12:10:32.185Z
 Options bought
 [
   {
-    "signature": "3nK7JByy1mfJ4E6Hef77Up7hqdDGMBSqkprzvE8dZqmfGrWrmW96vMGb3sHz1pCKmZjoUr8XxK91oEbSP25NCdvs",
-    "mint": "4qF6n1XEjdzpBbJjur4s1MQadfr6d22zJjZrEH2wLx2R",
+    "signature": "sFqvhjd3G6AfBtLSAiXQooM6ZAwvFZa9BPZ9u4yr3YGbRS5WMXJ1AoFLD58wfyZrfH58ea2sXqa9dvDBB2HWfTZ",
+    "mint": "8eCBaaq5FzGXHTu8afgbYxcYu2HvCFNxneaLPVfEyjVn",
     "amount": 0,
     "price": null,
-    "time": 1691248532
+    "time": 1691352042
   },
   {
-    "signature": "5sNoXVKqNGRZ7CLp2DhQ5YvjvLwo2SYYXehiTNMdehmhBBYhqd7E5aJCq7GrTa8g9WTkg5fkzoCd2aMtHNPtwvcA",
+    "signature": "2Mm65ftgkign4e8Lj8botqFkTewKJeLhTYjY6Bh5a96yFDmpvQCF7HhPArUAnKx5A7jSkL54Eeh6aKR4VMhVA5Ut",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1691248541
+    "time": 1691352054
   }
 ]
 Options sold
-[
-  {
-    "signature": "x5UPKa2TX4ZboKk8JwfBYfeWkaoCMKEmEazSF7DZ5mpQAbMQY6WKYjAy2itmid2KSRaSnPr9BJJriF7J1Ep1jaG",
-    "mint": "4qF6n1XEjdzpBbJjur4s1MQadfr6d22zJjZrEH2wLx2R",
-    "amount": 4,
-    "price": 0.008794,
-    "time": 1691248540
-  }
-]
 
 
-Net Premium 0.035176 Premium Earned 0.035176 Premium Paid 0
+[]
+Net Premium 0 Premium Earned 0 Premium Paid 0
