@@ -107,16 +107,14 @@ export const StakingOptions = (props: { network: string }) => {
           // @ts-ignore
           authority,
           // @ts-ignore
-          baseDecimals,
-          // @ts-ignore
-          quoteDecimals,
-          // @ts-ignore
           lotSize,
         } = state;
 
         for (const strike of strikes) {
           // @ts-ignore
           const soMint = await stakingOptionsHelper.soMint(strike, soName, new PublicKey(baseMint));
+          const baseDecimals = (await getMint(connection, baseMint)).decimals;
+          const quoteDecimals = (await getMint(connection, quoteMint)).decimals;
           let outstanding = 0;
           try {
             const mint = await getMint(provider.connection, soMint);
