@@ -222,7 +222,9 @@ def deposit(values):
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
-        options.add_argument("--headless=chrome")
+        options.add_argument("--headless=new")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
