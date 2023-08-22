@@ -101,17 +101,17 @@ def select_wallet(driver, main_window):
 
     # Select Wallet
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-        (By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")))
+        (By.XPATH, "//button[contains(text(), 'Select Wallet')]")))
     select_wallet_button = driver.find_element(
-        By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")
+        By.XPATH, "//button[contains(text(), 'Select Wallet')]")
     logging.info("Selecting wallet")
     select_wallet_button.click()
 
     # Choose Phantom
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-        (By.XPATH, "//button[span[contains(text(), 'Phantom')]]")))
+        (By.XPATH, "//button[contains(text(), 'Phantom')]")))
     phantom = driver.find_element(
-        By.XPATH, "//button[span[contains(text(), 'Phantom')]]")
+        By.XPATH, "//button[contains(text(), 'Phantom')]")
     logging.info("Clicking phantom")
     time.sleep(2)
     phantom.click()
@@ -301,7 +301,9 @@ def withdraw(values):
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
-        options.add_argument("--headless=chrome")
+        options.add_argument("--headless=new")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
