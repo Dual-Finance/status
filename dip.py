@@ -2,12 +2,11 @@
 import logging
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, ElementNotInteractableException
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 SOL_TRADE_SIZE = .1
 HEADLESS = True
@@ -219,7 +218,7 @@ def deposit(values):
         logging.info("Got the success toast")
 
 
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
@@ -228,8 +227,8 @@ def deposit(values):
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(
-        executable_path=ChromeDriverManager().install(), options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     logging.info("Successfully found chrome driver")
 
     driver.get(values[0])
@@ -296,7 +295,7 @@ def withdraw(values):
             (By.XPATH, "//span[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
@@ -305,8 +304,8 @@ def withdraw(values):
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(
-        executable_path=ChromeDriverManager().install(), options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     logging.info("Successfully found chrome driver")
 
     driver.get(values[0])
