@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
 SOL_TRADE_SIZE = .1
-HEADLESS = True
+HEADLESS = False
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
@@ -139,6 +139,14 @@ def select_wallet(driver, main_window):
 def deposit(values):
     ''' Deposit into a DIP '''
     def select_dip(token="BTC"):
+        logging.info("Clicking Type Sort")
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+            (By.XPATH, "//th/div/span[contains(text(), 'Type')]")))
+        time.sleep(1)
+        sort = driver.find_elements(
+            By.XPATH, "//th/div/span[contains(text(), 'Type')]")[-1]
+        sort.click()
+        
         if token:
             logging.info("Selecting DIP for %s", token)
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -146,13 +154,14 @@ def deposit(values):
             stake = driver.find_element(
                 By.XPATH, f"//div[contains(text(), '{token}')]")
             stake.click()
+
         logging.info("Clicking Stake")
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         # Wait for the wallet to connect
         time.sleep(20)
         stake = driver.find_elements(
-            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
+            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[1]
         stake.click()
 
         logging.info("Waiting for modal load")
@@ -179,13 +188,13 @@ def deposit(values):
         disclaimer.click()
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake ')]"
         )))
+        time.sleep(1)
         stake = driver.find_element(
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake ')]"
         )
         logging.info("Clicking stake")
-        time.sleep(1)
         stake.click()
         logging.info("Done clicking stake")
 
@@ -214,7 +223,7 @@ def deposit(values):
         logging.info("Waiting for success toast")
         # Wait for the success toast
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//span[contains(text(),'Success')]")))
+            (By.XPATH, "//div[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
 
