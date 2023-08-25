@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
 SOL_TRADE_SIZE = .1
-HEADLESS = False
+HEADLESS = True
 
 def init_wallet(driver, phrase, password):
     ''' Init wallet'''
