@@ -1,6 +1,14 @@
-Trading at 2023-09-15T12:09:14.393Z
+Trading at 2023-09-16T12:08:54.052Z
+[
+  {
+    "signature": "37W7SBVfcnsE7k1nquporkUPTVRVhks5TevqabTBmLom1nf9WYLYFTjyFwnDSsL9fcV5LT2Trh4gRZEzPjMurEiA",
+    "mint": "D2W4DeKZRZmhe2266Saakgu1ooeTx1sMmsaoNsh4mJ2",
+    "amount": 0,
+    "price": null,
+    "time": 1694825837
+  }
+]
 Options bought
-[]
 Options sold
 []
 
