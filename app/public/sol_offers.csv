@@ -1,1 +1,6 @@
 instruction,price,side,qty,time
+cancel,19449,,,1695608383
+newOrder,19395,0,3576,1695635356
+newOrder,19525,1,3576,1695635356
+cancel,19395,,,1695635358
+cancel,19525,,,1695635358
