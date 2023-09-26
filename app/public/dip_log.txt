@@ -1,45 +1,31 @@
-Trading at 2023-09-25T12:09:17.531Z
+Trading at 2023-09-26T12:09:21.113Z
 Options bought
 [
   {
-    "signature": "4NWRCqaFobShkSKJ8yQdYEdr6pkGoiWzBWNhwsA6TvCv3ENnLMAYzuHBBPCuRwEFsAfZUEPAt6LsMuCFvuxhtVM",
-    "mint": "BTTPHrMhdzcPezc5MJu6QVPCwwQ5xzEv6spSmYghpg2t",
-    "amount": 1000,
-    "price": 0.578145,
-    "time": 1695635311
+    "signature": "dv3P9511DB2SHq7iCJidaxD8c5tcCUwRPecxDdTWSyWPg2k9ZPRZzprPDzcmTnVyWz9DiXLCZLWvsAC52LcTzH7",
+    "mint": "21LzDiJvgzChZF8ZutBpfK6FSyEbRD8gh7biycNV7FJq",
+    "amount": 0,
+    "price": null,
+    "time": 1695690147
   },
   {
-    "signature": "4bTWkewxUKnRtULLVuubiJxWpGLU14f3JuWhc6SEkwCWPpn6hgoVL3TqCpWYsHfyb4bzQnNftGATPMkJssM3UQo1",
+    "signature": "5GbvMQ43eme3BvtzgFWGEJQVmxF8PVnDDEVorXhYUsC7rAmkMFtcnpbYXqYJUNRnyAftS3Zc1QSWDgdVwDrqfYYJ",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1695635323
-  },
-  {
-    "signature": "22JGHLE8BmTTsEinpvGjbPC11CeiAbvgoM7w1in9QjGG5tLiUiACeYBdSRXDXiLDzeAaTc7XP9oYvz2xBcd6WirC",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1695635339
+    "time": 1695690155
   }
 ]
 Options sold
 [
   {
-    "signature": "4KMshTWmGEVHKr7eKGbafTUNhsZ3p7Zy5jk596zgGhJVhPe1CfeXzVm8Cnp785BHmaSwQ9NHJQvJ6BTSMKgT2sBM",
-    "mint": "BTTPHrMhdzcPezc5MJu6QVPCwwQ5xzEv6spSmYghpg2t",
-    "amount": 500,
-    "price": 0.58108,
-    "time": 1695635321
-  },
-  {
-    "signature": "3ECr2Ej65doqQAikzxnrPyPXa9cePZZDht6NHtGPPMZSdzpjMrVHa7VzSCg4NtGaEprJPnd4NLx6wNPBNzaw26ic",
-    "mint": "BTTPHrMhdzcPezc5MJu6QVPCwwQ5xzEv6spSmYghpg2t",
-    "amount": 500,
-    "price": 0.58105,
-    "time": 1695635338
+    "signature": "4UjjAQa5MJSNZXPM8gnNjdjXKKGPn8jYNCX4J8bRUYnrzGTJNae1xYJThmm6P6XFzZqH73nasE8DpWY5xPJyRWEf",
+    "mint": "21LzDiJvgzChZF8ZutBpfK6FSyEbRD8gh7biycNV7FJq",
+    "amount": 2499.999993,
+    "price": 0.050644,
+    "time": 1695690154
   }
 ]
 
 
-Net Premium 2.9200000000000728 Premium Earned 581.065 Premium Paid 578.145
+Net Premium 126.609999645492 Premium Earned 126.609999645492 Premium Paid 0
