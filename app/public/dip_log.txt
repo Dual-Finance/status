@@ -1,35 +1,6 @@
-Trading at 2023-10-06T12:09:10.007Z
+Trading at 2023-10-07T12:08:23.221Z
 Options bought
-[
-  {
-    "signature": "52D2DZoeq9WL4iFMe5ioB4BmpjbEfBvUHoohVr7qb4JjXCdMdghGLB2PeRWGZG9gtJN6eoEqXjnJhTqG7xiMZ5yk",
-    "mint": "H28kVZjVPddGUtrNBEjKK9HHKDhPrCBa2aoaLfVamkA9",
-    "amount": 0,
-    "price": null,
-    "time": 1696525858
-  },
-  {
-    "signature": "z1U5vtvNaB5kpJMJJE7Kekq77TiHr9B9fkMf8kCFe7oVDZfKVuQAzLWYWnmWYYtMLTvDXqDzG4RHiofnaou4dk5",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1696525868
-  },
-  {
-    "signature": "4GPzY8DdgFbHb9MPS35PbmrH62euULP6bmbMQz82fr1rwFpACGc7Cj1WTkFQGEeEipJ1cSWQb1zHVYs9PQ9CeTvh",
-    "mint": "9XsyLgtm2UTT4ZwJPzpATSVKimqXXiLmS869BqYpsQLh",
-    "amount": 0,
-    "price": null,
-    "time": 1696543704
-  },
-  {
-    "signature": "55hDgs4ctMFU2j52sxcghftRUyiwNPB4UL9vuHwm6tWNzHspKRprRrskXRw3dGNWwcCwbfXxa2Jn9wHQMTFoEJ32",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1696543712
-  }
-]
+[]
 Options sold
 []
 
