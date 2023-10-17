@@ -263,7 +263,7 @@ def deposit(values):
         with open("failure.html", "w", encoding="utf-8") as source_file:
             source_file.write(driver.page_source)
         print(repr(error))
-        # raise error
+        raise error
 
 
 def withdraw(values):
@@ -343,4 +343,4 @@ def withdraw(values):
             source_file.write(driver.page_source)
 
         print(repr(error))
-        # raise error
+        raise error
