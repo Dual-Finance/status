@@ -8,6 +8,7 @@ import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
 import { Treasury } from './treasury/treasury';
 import { Liquidity } from './liquidity/liquidity';
+import { DualStats } from './dualStats/DualStats';
 import { Tests } from './tests/tests';
 import { Services } from './services/services';
 import { Config } from '../config/config';
@@ -21,6 +22,7 @@ const tabs = [
   { label: 'GSO', value: 'GSO', disabled: false },
   { label: 'Treasury', value: 'Treasury', disabled: false },
   { label: 'Liquidity', value: 'Liquidity', disabled: false },
+  { label: 'DUAL Stats', value: 'DUAL Stats', disabled: false },
   { label: 'Tests', value: 'Tests', disabled: false },
   { label: 'Services', value: 'Services', disabled: false },
 ];
@@ -52,6 +54,7 @@ export const Home = () => {
             {selectedProduct === 'GSO' && <Gso network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
             {selectedProduct === 'Liquidity' && <Liquidity />}
+            {selectedProduct === 'DUAL Stats' && <DualStats />}
             {selectedProduct === 'Tests' && <Tests />}
             {selectedProduct === 'Services' && <Services />}
           </>
