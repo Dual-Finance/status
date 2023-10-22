@@ -1,6 +1,6 @@
-Trading at 2023-10-21T12:08:26.042Z
-Options bought
+Trading at 2023-10-22T12:08:33.660Z
 []
+Options bought
 Options sold
 []
 
