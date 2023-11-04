@@ -128,8 +128,8 @@ export const Dips = (props: { network: string }) => {
       const freshSolPrice = freshPrices.SOL;
 
       const PRICE_MAP = {
-        [Config.sobtcMintPk().toBase58()]: freshBtcPrice,
-        [Config.soethMintPk().toBase58()]: freshEthPrice,
+        [Config.btcMintPk().toBase58()]: freshBtcPrice,
+        [Config.ethMintPk().toBase58()]: freshEthPrice,
         So11111111111111111111111111111111111111112: freshSolPrice,
       };
 

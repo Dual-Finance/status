@@ -53,14 +53,14 @@ export class Config {
     }
   }
 
-  static sobtcMintPk(): PublicKey {
+  static btcMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv');
     }
-    return new PublicKey('9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E');
+    return new PublicKey('6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU');
   }
 
-  static soethMintPk(): PublicKey {
+  static ethMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('Hccuen6RkUgEvyL9oSXW8ai9QiQaAiL8ESaqjp9oymBf');
     }
@@ -73,6 +73,14 @@ export class Config {
 
   static mngoMintPk(): PublicKey {
     return new PublicKey('MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac');
+  }
+
+  static deanMintPk(): PublicKey {
+    return new PublicKey('Ds52CDgqdWbTWsua1hgT3AuSSy4FNx2Ezge1br3jQ14a');
+  }
+
+  static allMintPk(): PublicKey {
+    return new PublicKey('BaoawH9p2J8yUK9r5YXQs3hQwmUJgscACjmTkh8rMwYL');
   }
 
   static bonkMintPk(): PublicKey {
@@ -125,6 +133,8 @@ export class Config {
       '7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs': 'ETH',
       So11111111111111111111111111111111111111112: 'SOL',
       MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac: 'MNGO',
+      Ds52CDgqdWbTWsua1hgT3AuSSy4FNx2Ezge1br3jQ14a: 'DEAN',
+      BaoawH9p2J8yUK9r5YXQs3hQwmUJgscACjmTkh8rMwYL: 'ALL',
       DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: 'BONK',
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
@@ -139,8 +149,8 @@ export class Config {
 
   static volMap(pk: string): number {
     const VOL_MAP = {
-      [Config.sobtcMintPk().toBase58()]: 0.2,
-      [Config.soethMintPk().toBase58()]: 0.25,
+      [Config.btcMintPk().toBase58()]: 0.2,
+      [Config.ethMintPk().toBase58()]: 0.25,
       [Config.wsolMintPk().toBase58()]: 0.3,
       [Config.mngoMintPk().toBase58()]: 0.35,
       [Config.bonkMintPk().toBase58()]: 0.35,

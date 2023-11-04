@@ -461,6 +461,9 @@ export function decimalsBaseSPL(token: string) {
     case 'WBTC': {
       return 8;
     }
+    case 'TBTC': {
+      return 8;
+    }
     case 'ETH': {
       return 8;
     }
@@ -471,6 +474,9 @@ export function decimalsBaseSPL(token: string) {
       return 8;
     }
     case 'MNGO': {
+      return 6;
+    }
+    case 'DEAN': {
       return 6;
     }
     case 'ALL': {
