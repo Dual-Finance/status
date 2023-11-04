@@ -443,3 +443,50 @@ export async function getCoingeckoDualPrice(): Promise<number> {
   const price = values.usd;
   return price;
 }
+
+export function decimalsBaseSPL(token: string) {
+  switch (token) {
+    case 'SOL': {
+      return 9;
+    }
+    case 'mSOL': {
+      return 9;
+    }
+    case 'jitoSOL': {
+      return 9;
+    }
+    case 'BTC': {
+      return 8;
+    }
+    case 'WBTC': {
+      return 8;
+    }
+    case 'ETH': {
+      return 8;
+    }
+    case 'wstETHpo': {
+      return 8;
+    }
+    case 'stETH': {
+      return 8;
+    }
+    case 'MNGO': {
+      return 6;
+    }
+    case 'ALL': {
+      return 6;
+    }
+    case 'BONK': {
+      return 5;
+    }
+    case 'DUAL': {
+      return 6;
+    }
+    case 'USDC': {
+      return 6;
+    }
+    default: {
+      return undefined;
+    }
+  }
+}

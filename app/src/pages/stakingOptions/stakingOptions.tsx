@@ -11,7 +11,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { Address, Idl, Program } from '@project-serum/anchor';
 import { getMint } from '@solana/spl-token';
 import { Config, stakingOptionsProgramId } from '../../config/config';
-import { GetProvider, getTokenIconClass } from '../../utils/utils';
+import { GetProvider, decimalsBaseSPL, getTokenIconClass } from '../../utils/utils';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import stakingOptionsIdl from '../../config/staking_options.json';
@@ -113,8 +113,8 @@ export const StakingOptions = (props: { network: string }) => {
         for (const strike of strikes) {
           // @ts-ignore
           const soMint = await stakingOptionsHelper.soMint(strike, soName, new PublicKey(baseMint));
-          const baseDecimals = (await getMint(connection, baseMint)).decimals;
-          const quoteDecimals = (await getMint(connection, quoteMint)).decimals;
+          const baseDecimals = decimalsBaseSPL(Config.pkToAsset(baseMint.toBase58()));
+          const quoteDecimals = decimalsBaseSPL(Config.pkToAsset(quoteMint.toBase58()));
           let outstanding = 0;
           try {
             const mint = await getMint(provider.connection, soMint);
