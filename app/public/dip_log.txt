@@ -1,6 +1,21 @@
-Trading at 2023-11-09T12:08:57.335Z
+Trading at 2023-11-10T12:09:14.124Z
 Options bought
-[]
+[
+  {
+    "signature": "5a2J85UkaPW6P8WEnNYtZiniUk5qnpHcv8CTFmcCPmPwQ8BofpDxn7rKdVeoetVWUK88v5cvCsNp21Kjn7CRRzyy",
+    "mint": "AM9456n6JL3SNz7JasaU2fdAQMpwdn81M8p94PmtzHqy",
+    "amount": 0,
+    "price": null,
+    "time": 1699592148
+  },
+  {
+    "signature": "3p36tVpPvA3R3gQCWxf499cd43wjHRSEoiLMVcfHs1wZoerUvWyNxRHbLdTLXj15PusSwkq5amt4Ku7Ehgwq4P5D",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1699592158
+  }
+]
 Options sold
 []
 
