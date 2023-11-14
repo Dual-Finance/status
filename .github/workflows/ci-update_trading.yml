@@ -18,10 +18,6 @@ jobs:
             yarn install
             SYMBOL=DUAL RPC_URL=$RPC_URL yarn run main
             mv transactions.csv ../app/public/dual_transactions.csv;  mv offers.csv ../app/public/dual_offers.csv
-            SYMBOL=BONK RPC_URL=$RPC_URL yarn run main
-            mv transactions.csv ../app/public/bonk_transactions.csv;  mv offers.csv ../app/public/bonk_offers.csv
-            SYMBOL=MNGO RPC_URL=$RPC_URL yarn run main
-            mv transactions.csv ../app/public/mngo_transactions.csv;  mv offers.csv ../app/public/mngo_offers.csv
             SYMBOL=SOL RPC_URL=$RPC_URL yarn run main
             mv transactions.csv ../app/public/sol_transactions.csv;  mv offers.csv ../app/public/sol_offers.csv
             rm ../app/public/summary.txt
