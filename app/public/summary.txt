@@ -1,27 +1,3 @@
-MNGO Trading at 2023-11-14T12:08:45.762Z
-Openbook trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-Jupiter trades
-  Bought 0 for 0, net notional: 0
-  Sold 0 for 0, net notional: 0
-
-
-PnL
-  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.019921
-SOL Trading at 2023-11-14T12:09:22.299Z
-Openbook trades
-  Bought 0.03400000000000002 for 54.5067058823529, net notional: 1.8532279999999999
-  Sold 0 for 0, net notional: 0
-
-Jupiter trades
-  Bought 0.003206673 for 54.45326736838273, net notional: 0.17461382223197397
-  Sold 0 for 0, net notional: 0
-
-PnL
-  Total PnL -1.5879473273529734 Realized PnL 0 Unrealized PnL -1.5879473273529734 Last Price 11.823
-
 DUAL Trading at 2023-11-15T12:08:28.070Z
 Openbook trades
   Bought 0 for 0, net notional: 0
@@ -45,4 +21,28 @@ Jupiter trades
 
 PnL
   Total PnL -1.5564218508249368 Realized PnL 0 Unrealized PnL -1.5564218508249368 Last Price 11.823
+
+DUAL Trading at 2023-11-16T12:08:07.387Z
+Openbook trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.032144
+
+SOL Trading at 2023-11-16T12:08:49.718Z
+Openbook trades
+  Bought 0.03200000000000002 for 64.59018749999996, net notional: 2.066886
+  Sold 0 for 0, net notional: 0
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL -1.6885499999999998 Realized PnL 0 Unrealized PnL -1.6885499999999998 Last Price 11.823
 
