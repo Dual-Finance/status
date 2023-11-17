@@ -235,7 +235,7 @@ export const Dips = (props: { network: string }) => {
                 // eslint-disable-next-line no-continue
                 continue;
               }
-              console.log(isUpside, rmAmount, totalDeposits);
+
               const displayStrike = isUpside ? strike : (1 / strike) * 1000;
               allPriceAccounts.push(
                 // @ts-ignore

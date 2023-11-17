@@ -68,9 +68,16 @@ export const SPL_DEPOSIT_STEPS: string[] = [
   TRANSACTION_STEP_DEPOSITING,
 ];
 
-export function GetProvider(wallet: any, network: string): [AnchorProvider, Connection] {
+export function GetProvider(
+  wallet: any,
+  network: string,
+  opts: { skipPreflight: boolean } = { skipPreflight: true }
+): [AnchorProvider, Connection] {
   const connection = new Connection(network, 'confirmed');
-  const provider = new AnchorProvider(connection, wallet as Wallet, AnchorProvider.defaultOptions());
+  const provider = new AnchorProvider(connection, wallet as Wallet, {
+    ...AnchorProvider.defaultOptions(),
+    skipPreflight: opts.skipPreflight,
+  });
   return [provider, connection];
 }
 
@@ -490,6 +497,9 @@ export function decimalsBaseSPL(token: string) {
     }
     case 'USDC': {
       return 6;
+    }
+    case 'GUAC': {
+      return 5;
     }
     default: {
       return undefined;
