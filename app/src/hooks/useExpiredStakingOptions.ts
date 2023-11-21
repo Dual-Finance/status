@@ -37,8 +37,8 @@ async function fetchData(provider: AnchorProvider) {
 
   // For each, check the option mint and look into the ATA
   // eslint-disable-next-line no-restricted-syntax
-  for (const state of states) {
-    const { strikes, soName, baseMint, optionExpiration, quoteMint, optionsAvailable, authority, lotSize } = state;
+  for (const [address, state] of Object.entries(states)) {
+    const { strikes, soName, baseMint, optionExpiration, quoteMint, authority, lotSize } = state;
 
     // eslint-disable-next-line no-restricted-syntax
     for (const strike of strikes) {
@@ -55,20 +55,24 @@ async function fetchData(provider: AnchorProvider) {
       } else {
         roundedStrike = strikeTokensPerToken.toPrecision(3);
       }
-      const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
-      const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
-      if (optionExpiration.toNumber() >= Date.now() / 1_000 || !available || soName === 'SO') {
+      if (optionExpiration.toNumber() >= Date.now() / 1_000 || soName === 'SO' || soName.includes('LSO')) {
         continue;
       }
 
       const baseVault = await stakingOptionsHelper.baseVault(soName, baseMint);
-      const baseVaultBalance = await provider.connection.getTokenAccountBalance(baseVault);
+      const balance = await provider.connection.getTokenAccountBalance(baseVault);
+      const lockedUp = 5_000_000;
+      const exercised = lockedUp - (balance.value.uiAmount || 0);
+      const notional = exercised * Number(roundedStrike);
+      const fees = notional * 0.035;
 
       console.table({
+        address: stateAccounts[Number(address)].pubkey.toString(),
         name: state.soName,
-        available: roundedAvailable.toString(),
-        baseVaultBalance: baseVaultBalance.value.uiAmountString,
+        lockedUp: 5_000_000,
+        balance: balance.value.uiAmount,
+        exercised,
       });
 
       const account = {
@@ -81,9 +85,9 @@ async function fetchData(provider: AnchorProvider) {
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
-        exercised: 0,
-        notional: 0,
-        fees: 0,
+        exercised,
+        notional,
+        fees,
       };
       allAccounts.push(account);
     }
