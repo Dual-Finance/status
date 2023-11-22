@@ -68,16 +68,9 @@ export const SPL_DEPOSIT_STEPS: string[] = [
   TRANSACTION_STEP_DEPOSITING,
 ];
 
-export function GetProvider(
-  wallet: any,
-  network: string,
-  opts: { skipPreflight: boolean } = { skipPreflight: true }
-): [AnchorProvider, Connection] {
+export function GetProvider(wallet: any, network: string): [AnchorProvider, Connection] {
   const connection = new Connection(network, 'confirmed');
-  const provider = new AnchorProvider(connection, wallet as Wallet, {
-    ...AnchorProvider.defaultOptions(),
-    skipPreflight: opts.skipPreflight,
-  });
+  const provider = new AnchorProvider(connection, wallet as Wallet, AnchorProvider.defaultOptions());
   return [provider, connection];
 }
 

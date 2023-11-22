@@ -7,7 +7,7 @@ import { GetProvider } from '../utils/utils';
 export function useAnchorProvider(network: string): [AnchorProvider, Connection] {
   const wallet = useWallet();
   const [provider, connection] = useMemo(() => {
-    return GetProvider(wallet, network, { skipPreflight: false });
+    return GetProvider(wallet, network);
   }, [wallet, network]);
   return [provider, connection];
 }
