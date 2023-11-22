@@ -18,7 +18,6 @@ import usePrice from '../hooks/usePrice';
 const tabs = [
   { label: 'DIPs', value: 'DIPs', disabled: false },
   { label: 'SO', value: 'SO', disabled: false },
-  { label: 'Expired', value: 'Expired', disabled: false },
   { label: 'GSO', value: 'GSO', disabled: false },
   { label: 'Treasury', value: 'Treasury', disabled: false },
   { label: 'Liquidity', value: 'Liquidity', disabled: false },
