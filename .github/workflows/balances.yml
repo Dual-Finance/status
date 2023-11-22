@@ -28,4 +28,4 @@ jobs:
 
       - run: yarn post-balances
         env:
-          DISCORD_GAS_WEBHOOK: "{{ secrets.DISCORD_GAS_WEBHOOK }}"
+          DISCORD_GAS_WEBHOOK: ${{ secrets.DISCORD_GAS_WEBHOOK }}
