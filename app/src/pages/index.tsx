@@ -14,7 +14,6 @@ import { Config } from '../config/config';
 import { StakingOptions } from './stakingOptions/stakingOptions';
 import { Gso } from './gso/gso';
 import usePrice from '../hooks/usePrice';
-import { Expired } from './expired/Expired';
 
 const tabs = [
   { label: 'DIPs', value: 'DIPs', disabled: false },
@@ -51,7 +50,6 @@ export const Home = () => {
           <>
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'SO' && <StakingOptions network={network} />}
-            {selectedProduct === 'Expired' && <Expired network={network} />}
             {selectedProduct === 'GSO' && <Gso network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
             {selectedProduct === 'Liquidity' && <Liquidity />}
