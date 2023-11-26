@@ -1,23 +1,8 @@
-Trading at 2023-11-25T12:08:34.671Z
+Trading at 2023-11-26T12:08:12.656Z
 Options bought
-[
-  {
-    "signature": "66cjfKpMSEqdhQXwnuspav6qNgV4QoTAskWF3Zv4Jy7f9i8C9N1W9ZQEhVjAjed8fb79fW6bZbxFejUtMDKuj1gf",
-    "mint": "J1vxPZnU6xd6xfcir9Mk3G6JnjiEXibqkCb8FH8uPMRE",
-    "amount": 1,
-    "price": 1.701552,
-    "time": 1700830500
-  },
-  {
-    "signature": "htriHJokhVCXbcREEduh895KhGUqNx8E9b8N2hUJsbCdWfoHdMKZNPZjQdHzhKuMmS77zvKsBS6V8Tc9smKv7u4",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1700830858
-  }
-]
-Options sold
 []
+[]
+Options sold
 
 
-Net Premium -1.701552 Premium Earned 0 Premium Paid 1.701552
+Net Premium 0 Premium Earned 0 Premium Paid 0
