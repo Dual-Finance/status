@@ -7,7 +7,7 @@ export class Config {
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
-    return 'https://marcella-8z6bfd-fast-mainnet.helius-rpc.com/';
+    return 'https://mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88';
   }
 
   static explorerUrl(value: string, explorer = 'solscan', path?: string | null): string {
