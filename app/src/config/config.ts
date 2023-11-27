@@ -7,7 +7,7 @@ export class Config {
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
-    return 'https://chaotic-alien-pallet.solana-mainnet.discover.quiknode.pro/3fa2083ef7ee443de64a78b91178e4f2e2c113c0/';
+    return 'https://marcella-8z6bfd-fast-mainnet.helius-rpc.com/';
   }
 
   static explorerUrl(value: string, explorer = 'solscan', path?: string | null): string {
