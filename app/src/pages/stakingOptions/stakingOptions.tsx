@@ -168,13 +168,13 @@ const columns: ColumnsType<SoParams> = [
     },
   },
   {
-    title: 'Max Fees',
-    dataIndex: 'maxFees',
-    sorter: (a, b) => a.maxFees - b.maxFees,
-    render: (maxFees, data) => {
+    title: 'Max Settlement',
+    dataIndex: 'maxSettlement',
+    sorter: (a, b) => a.maxSettlement - b.maxSettlement,
+    render: (maxSettlement, data) => {
       return (
         <>
-          {maxFees.toLocaleString()}
+          {maxSettlement.toLocaleString()}
           <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
         </>
       );
