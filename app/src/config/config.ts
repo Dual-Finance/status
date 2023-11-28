@@ -4,6 +4,9 @@ export class Config {
   static isDev = false;
 
   static apiUrl(): string {
+    if (process.env.REACT_APP_RPC) {
+      return process.env.REACT_APP_RPC;
+    }
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
