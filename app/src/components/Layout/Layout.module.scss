@@ -18,17 +18,17 @@
   @include tablet {
     margin-bottom: 16px;
     padding: 0 16px;
-    max-width: calc(736px + 32px);
+    width: calc(736px + 32px);
   }
 
   @include laptop {
     margin-bottom: 16px;
     padding: 0 24px;
-    max-width: calc(944px + 48px);
+    width: calc(944px + 48px);
   }
 
   @include desktop {
     margin-bottom: 44px;
-    max-width: calc(1360px + 48px);
+    width: 100%;
   }
 }
