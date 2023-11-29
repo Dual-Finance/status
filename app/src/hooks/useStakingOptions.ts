@@ -66,6 +66,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
       const maxSettlement = outstanding * Number(roundedStrike);
+      const maxFees = maxSettlement * feeByPair(baseMint, quoteMint);
 
       // These should be cleaned up, but do not have anything in them, so dont display.
       if (optionExpiration.toNumber() < Date.now() / 1_000 && roundedAvailable === 0) {
@@ -85,11 +86,50 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         remaining: roundedAvailable,
         outstanding,
         maxSettlement,
+        maxFees,
       };
       allAccounts.push(soParams);
     }
   }
   return allAccounts;
+}
+const USDC = Config.usdcMintPk().toString();
+const USDT = Config.usdtMintPk().toString();
+const DAIPO = Config.daipoMintPk().toString();
+const USDH = Config.usdhMintPk().toString();
+const CHAI = Config.chaiMintPk().toString();
+const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+
+const WBTCPO = Config.wbtcpoMintPk().toString();
+const TBTC = Config.tbtcMintPk().toString();
+const WSTETHPO = Config.wstethpoMintPk().toString();
+const RETHPO = Config.rethpoMintPk().toString();
+const WETHPO = Config.wethpoMintPk().toString();
+const WSOL = Config.wsolMintPk().toString();
+const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
+
+const BP = 0.01 / 100;
+
+function feeByPair(base: PublicKey, quote: PublicKey): number {
+  const isBaseStable = stables.includes(base.toString());
+  const isQuoteStable = stables.includes(quote.toString());
+
+  if (isBaseStable && isQuoteStable) {
+    return 5 * BP;
+  }
+
+  const isBaseMajor = majors.includes(base.toString());
+  const isQuoteMajor = majors.includes(quote.toString());
+
+  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
+    return 25 * BP;
+  }
+
+  if (isBaseMajor && isQuoteMajor) {
+    return 5 * BP;
+  }
+
+  return 350 * BP;
 }
 
 export interface SoParams {
@@ -106,4 +146,5 @@ export interface SoParams {
   remaining: number;
   outstanding: number;
   maxSettlement: number;
+  maxFees: number;
 }
