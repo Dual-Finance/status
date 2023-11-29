@@ -1,8 +1,73 @@
-Trading at 2023-11-28T12:09:20.461Z
+Trading at 2023-11-29T12:09:21.261Z
 Options bought
-[]
+[
+  {
+    "signature": "5s3b7c33fEHtfC3Ky7WgHBa68Hayo9fP87U1sWPY17smRo67pnJLhUJWQEztxVJwgZZyxAHzKi6h2J4AHkLoJ56m",
+    "mint": "J1vxPZnU6xd6xfcir9Mk3G6JnjiEXibqkCb8FH8uPMRE",
+    "amount": 0.086255,
+    "price": 0.87705,
+    "time": 1701183040
+  },
+  {
+    "signature": "4rraT8SceVGejL8GiSk2RWvi2RWEHTrX7dxMhyudnRPrpNurqQE8wYG9EM8L55oybzPxMirpwCBRhehjJn46G1D5",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1701183052
+  },
+  {
+    "signature": "2rSBLcafEcrdG6KceQU7tHRZZcNNR2Sk5rshYPicNtDPFqdEH1uAsZ48DDaNPepZnjR7bhLcddnJ57ffih4GeFgf",
+    "mint": "B9qJzRoAxN2tvjv8ZB9PfJMS7GkUvDkPzY1oK5JZFQLh",
+    "amount": 0,
+    "price": null,
+    "time": 1701183639
+  },
+  {
+    "signature": "3VZTKzpM4K2tmfsQW9QextdB8MpfNNnMJzuahMdKuEptdGfwyRSdWd38UUQqVGhC1miEK5TaZVWP9k4LnKhMKhdh",
+    "mint": "B9qJzRoAxN2tvjv8ZB9PfJMS7GkUvDkPzY1oK5JZFQLh",
+    "amount": 0,
+    "price": null,
+    "time": 1701186168
+  },
+  {
+    "signature": "2NDXovVw5hF3DFn1xgip1fyUXpvJfpTxkMHJpTEoU6gCMaCoThsT5VpVUsLDDDGvCZd63Wk7r7rcKVhK6EbFGYVM",
+    "mint": "B9qJzRoAxN2tvjv8ZB9PfJMS7GkUvDkPzY1oK5JZFQLh",
+    "amount": 0,
+    "price": null,
+    "time": 1701186187
+  },
+  {
+    "signature": "4YijnJxpayzJwxixJe3cguWW65iDUWkyfCJCxMB1A5k5nCW29uRBtqCGzj96QeFTx3rkESnH2BQSns4NHVJrSddw",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1701187647
+  },
+  {
+    "signature": "2PnyCedKQpnNaHKRP3R8BMWytAUe8oQkAXshzJi8F3na1ZJVwutVkWaeYqRCBBsNUTfSjq2fEF9kQcqRcZWkqqVY",
+    "mint": "J1vxPZnU6xd6xfcir9Mk3G6JnjiEXibqkCb8FH8uPMRE",
+    "amount": 0.009999,
+    "price": 1.516251,
+    "time": 1701203442
+  },
+  {
+    "signature": "5aw2ZoT6QtaN2BJnqw9F7m4ja5isw4AaWHPA1JQ7u49K6ENwWhZRjGHPAZojdGAYqd74HVzaaCkMyVctV6JKoAem",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1701203458
+  }
+]
 Options sold
-[]
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+[
+  {
+    "signature": "3su39mumpXfFQWHNVbzQdPASFMrPmBujqXzPPmxehi2VYU7sCuCDsCRdkHw2KHHsiwrSPH2c8vYm7wpRcRqWgDTE",
+    "mint": "J1vxPZnU6xd6xfcir9Mk3G6JnjiEXibqkCb8FH8uPMRE",
+    "amount": 0.01,
+    "price": 1.5238,
+    "time": 1701203453
+  }
+]
+Net Premium -0.075572941499 Premium Earned 0.015238000000000002 Premium Paid 0.090810941499

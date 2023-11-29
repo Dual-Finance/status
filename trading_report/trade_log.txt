@@ -13715,3 +13715,27 @@ Jupiter trades
 PnL
   Total PnL -1.2458484091615851 Realized PnL 0 Unrealized PnL -1.2458484091615851 Last Price 11.098
 
+
+Openbook trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+DUAL Trading at 2023-11-29T12:08:22.344Z
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL 0 Realized PnL 0 Unrealized PnL 0 Last Price 0.032144
+
+SOL Trading at 2023-11-29T12:09:06.894Z
+Openbook trades
+  Bought 0.394 for 56.108901015228426, net notional: 22.106907
+  Sold 0.439 for 56.21600000000001, net notional: 24.678824000000002
+
+Jupiter trades
+  Bought 0 for 0, net notional: 0
+  Sold 0 for 0, net notional: 0
+
+PnL
+  Total PnL 2.077457000000003 Realized PnL 0.042197000000003385 Unrealized PnL 2.0352599999999996 Last Price 10.988
+
