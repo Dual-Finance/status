@@ -70,6 +70,26 @@ export class Config {
     return new PublicKey('2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk');
   }
 
+  static wbtcpoMintPk(): PublicKey {
+    return new PublicKey('3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh');
+  }
+
+  static tbtcMintPk(): PublicKey {
+    return new PublicKey('6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU');
+  }
+
+  static wstethpoMintPk(): PublicKey {
+    return new PublicKey('ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo');
+  }
+
+  static rethpoMintPk(): PublicKey {
+    return new PublicKey('9UV2pC1qPaVMfRv8CF7qhv7ihbzR91pr2LX9y2FDfGLy');
+  }
+
+  static wethpoMintPk(): PublicKey {
+    return new PublicKey('7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs');
+  }
+
   static wsolMintPk(): PublicKey {
     return new PublicKey('So11111111111111111111111111111111111111112');
   }
@@ -99,6 +119,22 @@ export class Config {
       return new PublicKey('HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM');
     }
     return new PublicKey('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+  }
+
+  static usdtMintPk(): PublicKey {
+    return new PublicKey('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+  }
+
+  static daipoMintPk(): PublicKey {
+    return new PublicKey('EjmyN6qEC1Tf1JxiG1ae7UTJhUxSwk1TCWNWqxWV4J6o');
+  }
+
+  static usdhMintPk(): PublicKey {
+    return new PublicKey('USDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkX');
+  }
+
+  static chaiMintPk(): PublicKey {
+    return new PublicKey('3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3');
   }
 
   static pythBtcPk(): PublicKey {

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { PublicKey } from '@solana/web3.js';
 import { getMint } from '@solana/spl-token';
 import { AnchorProvider, Idl, Program } from '@project-serum/anchor';
-import { StakingOptions } from '@dual-finance/staking-options';
+import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
 import { decimalsBaseSPL } from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
@@ -66,6 +66,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
       const maxSettlement = outstanding * Number(roundedStrike);
+      const maxFees = maxSettlement * feeByPair(baseMint, quoteMint, authority);
 
       // These should be cleaned up, but do not have anything in them, so dont display.
       if (optionExpiration.toNumber() < Date.now() / 1_000 && roundedAvailable === 0) {
@@ -85,11 +86,58 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         remaining: roundedAvailable,
         outstanding,
         maxSettlement,
+        maxFees,
       };
       allAccounts.push(soParams);
     }
   }
   return allAccounts;
+}
+const USDC = Config.usdcMintPk().toString();
+const USDT = Config.usdtMintPk().toString();
+const DAIPO = Config.daipoMintPk().toString();
+const USDH = Config.usdhMintPk().toString();
+const CHAI = Config.chaiMintPk().toString();
+const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+
+const WBTCPO = Config.wbtcpoMintPk().toString();
+const TBTC = Config.tbtcMintPk().toString();
+const WSTETHPO = Config.wstethpoMintPk().toString();
+const RETHPO = Config.rethpoMintPk().toString();
+const WETHPO = Config.wethpoMintPk().toString();
+const WSOL = Config.wsolMintPk().toString();
+const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
+
+const BP = 0.01 / 100;
+
+/**
+ * Utility function that returns fee multiplier for exercising options,
+ * based on https://github.com/Dual-Finance/staking-options/blob/b902c46e0ea78fdf7edf42967b1583c74b995743/programs/staking-options/src/common.rs#L88C18-L88C18
+ * */
+function feeByPair(base: PublicKey, quote: PublicKey, authority: PublicKey): number {
+  if (authority.toString() === DUAL_DAO_WALLET_PK.toString()) {
+    return 0;
+  }
+
+  const isBaseStable = stables.includes(base.toString());
+  const isQuoteStable = stables.includes(quote.toString());
+
+  if (isBaseStable && isQuoteStable) {
+    return 5 * BP;
+  }
+
+  const isBaseMajor = majors.includes(base.toString());
+  const isQuoteMajor = majors.includes(quote.toString());
+
+  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
+    return 25 * BP;
+  }
+
+  if (isBaseMajor && isQuoteMajor) {
+    return 5 * BP;
+  }
+
+  return 350 * BP;
 }
 
 export interface SoParams {
@@ -106,4 +154,5 @@ export interface SoParams {
   remaining: number;
   outstanding: number;
   maxSettlement: number;
+  maxFees: number;
 }

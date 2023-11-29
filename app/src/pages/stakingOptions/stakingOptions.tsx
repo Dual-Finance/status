@@ -180,4 +180,17 @@ const columns: ColumnsType<SoParams> = [
       );
     },
   },
+  {
+    title: 'Max Fees',
+    dataIndex: 'maxFees',
+    sorter: (a, b) => a.maxFees - b.maxFees,
+    render: (maxFees, data) => {
+      return (
+        <>
+          {maxFees.toLocaleString()}
+          <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
+        </>
+      );
+    },
+  },
 ];
