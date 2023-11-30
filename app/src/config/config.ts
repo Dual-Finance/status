@@ -149,6 +149,10 @@ export class Config {
     return new PublicKey('SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV');
   }
 
+  static tMintPk(): PublicKey {
+    return new PublicKey('4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -198,6 +202,8 @@ export class Config {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU': 'tBTC',
       SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV: 'SLCL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC': 'T',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

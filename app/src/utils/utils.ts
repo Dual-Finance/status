@@ -494,6 +494,9 @@ export function decimalsBaseSPL(token: string) {
     case 'GUAC': {
       return 5;
     }
+    case 'T': {
+      return 8;
+    }
     default: {
       return undefined;
     }
