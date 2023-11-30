@@ -137,6 +137,22 @@ export class Config {
     return new PublicKey('3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3');
   }
 
+  static guacMintPk(): PublicKey {
+    return new PublicKey('AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR');
+  }
+
+  static msolMintPk(): PublicKey {
+    return new PublicKey('mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So');
+  }
+
+  static slclMintPk(): PublicKey {
+    return new PublicKey('SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV');
+  }
+
+  static tMintPk(): PublicKey {
+    return new PublicKey('4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -181,6 +197,13 @@ export class Config {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3': 'CHAI',
       ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo: 'wstETHpo',
+      AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR: 'GUAC',
+      mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So: 'mSOL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU': 'tBTC',
+      SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV: 'SLCL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC': 'T',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];
