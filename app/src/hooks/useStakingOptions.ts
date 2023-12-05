@@ -73,13 +73,22 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         continue;
       }
 
+      const quote = quoteMint.toString();
+      const isUpside =
+        quote === Config.usdcMintPk().toString() ||
+        quote === Config.usdhMintPk().toString() ||
+        quote === Config.usdtMintPk().toString();
       const soParams = {
         key: `${soName}-${soMint.toString()}`,
         name: soName,
         authority: new PublicKey(authority),
         expiration: new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
         expirationInt: Number(optionExpiration),
-        strike: roundedStrike,
+        strike: calculateStrikeAtomsPerBaseToken({
+          isUpside,
+          mint: isUpside ? quoteMint : baseMint,
+          strike: strike.toNumber(),
+        }).toString(),
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
@@ -155,4 +164,9 @@ export interface SoParams {
   outstanding: number;
   maxSettlement: number;
   maxFees: number;
+}
+
+export function calculateStrikeAtomsPerBaseToken(data: { isUpside: boolean; mint: PublicKey; strike: number }) {
+  const decimals = decimalsBaseSPL(Config.pkToAsset(data.mint.toString())) ?? 1;
+  return data.isUpside ? data.strike / 10 ** decimals : Number(((1 / data.strike) * 10 ** decimals).toPrecision(6));
 }
