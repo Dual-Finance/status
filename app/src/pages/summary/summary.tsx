@@ -26,9 +26,11 @@ type SummaryValue = { key: React.Key; name: string; value: number };
 
 const columns: ColumnsType<SummaryValue[]> = [
   {
+    title: 'Metric',
     dataIndex: 'name',
   },
   {
+    title: 'Value',
     dataIndex: 'value',
   },
 ];
