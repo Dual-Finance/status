@@ -55,7 +55,7 @@ async function fetchData(connection: Connection) {
 
 export interface GsoParams {
   key: React.Key;
-  // Public key of the DIP account
+  // Public key of the GSO account
   address: PublicKey;
   // Name of the GSO
   soName: string;
