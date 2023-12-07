@@ -22,7 +22,7 @@ export const Summary = (props: { network: string }) => {
   ) : null;
 };
 
-type SummaryValue = { key: React.Key; name: string; value: number };
+type SummaryValue = { key: React.Key; name: string; value: string };
 
 const columns: ColumnsType<SummaryValue[]> = [
   {
