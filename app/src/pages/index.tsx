@@ -17,6 +17,7 @@ import usePrice from '../hooks/usePrice';
 import { Summary } from './summary/summary';
 
 const tabs = [
+  { label: 'Summary', value: 'Summary', disabled: false },
   { label: 'DIPs', value: 'DIPs', disabled: false },
   { label: 'SO', value: 'SO', disabled: false },
   { label: 'GSO', value: 'GSO', disabled: false },
@@ -24,7 +25,6 @@ const tabs = [
   { label: 'Liquidity', value: 'Liquidity', disabled: false },
   { label: 'Tests', value: 'Tests', disabled: false },
   { label: 'Services', value: 'Services', disabled: false },
-  { label: 'Summary', value: 'Summary', disabled: false },
 ];
 const networkTabs = [
   { label: 'Mainnet', value: 'mainnet', disabled: false },
