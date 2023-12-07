@@ -83,6 +83,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
+        baseVault: await stakingOptionsHelper.baseVault(soName, baseMint),
         remaining: roundedAvailable,
         outstanding,
         maxSettlement,
@@ -151,6 +152,7 @@ export interface SoParams {
   soMint: PublicKey;
   baseMint: PublicKey;
   quoteMint: PublicKey;
+  baseVault: PublicKey;
   remaining: number;
   outstanding: number;
   maxSettlement: number;

@@ -502,3 +502,7 @@ export function decimalsBaseSPL(token: string) {
     }
   }
 }
+
+export function dollarize(amount: number, locale = 'en-US'): string {
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(amount);
+}
