@@ -6,7 +6,7 @@ import { getMint } from '@solana/spl-token';
 import { AnchorProvider, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL } from '../utils/utils';
+import { decimalsBaseSPL, isUpsidePool } from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -53,7 +53,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       if (soName === 'SO') {
         continue;
       }
-      const strikeQuoteAtomsPerLot = Number(strike);
+      const strikeQuoteAtomsPerLot = strike.toNumber();
       const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize.toNumber();
       const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
       let roundedStrike = '';
@@ -79,7 +79,12 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         authority: new PublicKey(authority),
         expiration: new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
         expirationInt: Number(optionExpiration),
-        strike: roundedStrike,
+        strike: calculateStrikeQuoteAtomsPerBaseToken({
+          baseMint,
+          quoteMint,
+          lotSize: lotSize.toNumber(),
+          strikeQuoteAtomsPerLot,
+        }),
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
@@ -147,7 +152,7 @@ export interface SoParams {
   authority: PublicKey;
   expiration: string;
   expirationInt: number;
-  strike: string;
+  strike: number;
   soMint: PublicKey;
   baseMint: PublicKey;
   quoteMint: PublicKey;
@@ -155,4 +160,18 @@ export interface SoParams {
   outstanding: number;
   maxSettlement: number;
   maxFees: number;
+}
+
+function calculateStrikeQuoteAtomsPerBaseToken(data: {
+  baseMint: PublicKey;
+  quoteMint: PublicKey;
+  lotSize: number;
+  strikeQuoteAtomsPerLot: number;
+}) {
+  const isUpside = isUpsidePool(data.quoteMint);
+  const baseDecimals = decimalsBaseSPL(Config.pkToAsset(data.baseMint.toString())) ?? 1;
+  const quoteDecimals = decimalsBaseSPL(Config.pkToAsset(data.quoteMint.toString())) ?? 1;
+  return isUpside
+    ? (data.strikeQuoteAtomsPerLot / data.lotSize) * 10 ** (baseDecimals - quoteDecimals)
+    : Number(((1 / data.strikeQuoteAtomsPerLot) * 10 ** quoteDecimals).toPrecision(6));
 }

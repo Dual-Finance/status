@@ -461,7 +461,7 @@ export function decimalsBaseSPL(token: string) {
     case 'WBTC': {
       return 8;
     }
-    case 'TBTC': {
+    case 'tBTC': {
       return 8;
     }
     case 'ETH': {
@@ -494,6 +494,9 @@ export function decimalsBaseSPL(token: string) {
     case 'GUAC': {
       return 5;
     }
+    case 'SLCL': {
+      return 9;
+    }
     case 'T': {
       return 8;
     }
@@ -501,4 +504,13 @@ export function decimalsBaseSPL(token: string) {
       return undefined;
     }
   }
+}
+
+export function isUpsidePool(quoteMint: PublicKey) {
+  const quote = quoteMint.toString();
+  return (
+    quote === Config.usdcMintPk().toString() ||
+    quote === Config.usdhMintPk().toString() ||
+    quote === Config.usdtMintPk().toString()
+  );
 }
