@@ -1,7 +1,7 @@
 import { ColumnsType } from 'antd/lib/table';
 import cls from 'classnames';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
-import styles from '../Pools.module.scss';
+import styles from './Summary.module.scss';
 import { useSummary } from '../../hooks/useSummary';
 import { dollarize, getTokenIconClass } from '../../utils/utils';
 
@@ -12,7 +12,6 @@ export const Summary = (props: { network: string }) => {
   const rows = Object.entries(summary || {});
   return (
     <DualfiTable
-      className={styles.balanceTable}
       columns={columns}
       pagination={{ pageSize: 10 }}
       dataSource={rows.map((entry, key) => ({
@@ -52,20 +51,17 @@ function camelCaseToSpacedCapitalized(input: string): string {
   return words.map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-function renderValueCell(value: number | string[], row: SummaryValue) {
+function renderValueCell(value: number | string[]) {
   if (typeof value === 'number') {
-    if (row.name === 'totalValueLocked') {
-      return dollarize(value);
-    }
-    return value.toFixed(2);
+    return dollarize(value);
   }
 
   return (
-    <div className={cls(styles.premiumCell, styles.justifyEnd)}>
+    <div className={styles.tokenRow}>
       {value.map((symbol) => {
         const project = projects[symbol];
         return (
-          <a key={`icon-${symbol}`} href={project?.link} placeholder={project?.name}>
+          <a key={`icon-${symbol}`} href={project?.link} placeholder={project?.name} target="_blank" rel="noreferrer">
             <div className={cls(styles.tokenIcon, getTokenIconClass(symbol))} />
           </a>
         );

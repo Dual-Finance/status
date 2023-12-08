@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
 
     .tokenIcon {
       padding-bottom: 2px;
@@ -20,6 +21,7 @@
       @include tablet {
         width: 20px;
         height: 20px;
+        margin-right: 12px;
       }
     }
   }
@@ -27,8 +29,4 @@
 
 .display-linebreak {
   white-space: pre-line;
-}
-
-.justifyEnd {
-  justify-content: flex-end;
 }

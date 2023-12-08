@@ -37,26 +37,26 @@ export function useSummary(network: string): SummaryRecords | undefined {
       return {
         ...acc,
         maxFees: acc.maxFees + (account.maxFees || 0),
-        maxSettlement: acc.maxSettlement + (account.maxSettlement || 0),
+        exerciseValue: acc.exerciseValue + (account.maxSettlement || 0),
       };
     },
-    { tokens: new Map(), maxFees: 0, maxSettlement: 0 }
+    { tokens: new Map(), maxFees: 0, exerciseValue: 0 }
   );
 
-  const { maxFees, maxSettlement } = max;
+  const { maxFees, exerciseValue } = max;
   return {
     totalValueLocked,
-    partnerTokens: [...max.tokens.values()].sort(),
+    exerciseValue,
     maxFees,
-    maxSettlement,
+    activeTokens: [...max.tokens.values()].sort(),
   };
 }
 
 export interface SummaryRecords {
   totalValueLocked: number;
-  partnerTokens: string[];
+  exerciseValue: number;
   maxFees: number;
-  maxSettlement: number;
+  activeTokens: string[];
 }
 
 async function fetchTvl(

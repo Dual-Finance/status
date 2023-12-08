@@ -1,0 +1,22 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+@import '../../styles/_icons.scss';
+
+.tokenRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.tokenIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  @include tablet {
+    width: 24px;
+    height: 24px;
+  }
+}
