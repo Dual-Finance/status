@@ -8,22 +8,22 @@ import { DipParams, useDips } from './useDips';
 import { GsoParams, useGso } from './useGso';
 import { SoParams, useStakingOptions } from './useStakingOptions';
 
-export function useSummary(network: string) {
+export function useSummary(network: string): SummaryRecords | undefined {
   const [, connection] = useAnchorProvider(network);
   const soAccounts = useStakingOptions(network);
   const dipAccounts = useDips(network);
   const gsoAccounts = useGso(network);
-  const [tvl, setTvl] = useState<number>();
+  const [totalValueLocked, setTotalValueLocked] = useState<number>();
 
   useEffect(() => {
     if (!soAccounts || !dipAccounts || !gsoAccounts) {
       return;
     }
 
-    fetchTvl(connection, soAccounts, dipAccounts, gsoAccounts).then(setTvl).catch(console.error);
+    fetchTvl(connection, soAccounts, dipAccounts, gsoAccounts).then(setTotalValueLocked).catch(console.error);
   }, [connection, dipAccounts, soAccounts, gsoAccounts]);
 
-  if (!soAccounts || !tvl) {
+  if (!soAccounts || !dipAccounts || !gsoAccounts || !totalValueLocked) {
     return;
   }
 
@@ -31,8 +31,8 @@ export function useSummary(network: string) {
     (acc, account) => {
       const { baseMint, quoteMint } = account;
 
-      acc.tokens.set(baseMint.toString(), baseMint);
-      acc.tokens.set(quoteMint.toString(), quoteMint);
+      acc.tokens.set(baseMint.toString(), Config.pkToAsset(baseMint.toString()));
+      acc.tokens.set(quoteMint.toString(), Config.pkToAsset(quoteMint.toString()));
 
       return {
         ...acc,
@@ -44,12 +44,17 @@ export function useSummary(network: string) {
   );
 
   const { maxFees, maxSettlement } = max;
-  return { tvl, tokenCount: max.tokens.size, maxFees, maxSettlement };
+  return {
+    totalValueLocked,
+    tokenCount: [...max.tokens.values()].sort(),
+    maxFees,
+    maxSettlement,
+  };
 }
 
 export interface SummaryRecords {
-  tvl: number;
-  tokenCount: number;
+  totalValueLocked: number;
+  tokenCount: string[];
   maxFees: number;
   maxSettlement: number;
 }
@@ -60,31 +65,35 @@ async function fetchTvl(
   dipAccounts: DipParams[],
   gsoAccounts: GsoParams[]
 ) {
-  const tvl: { [mint: string]: number } = {};
-  const soTokenAccounts = await Promise.all(soAccounts.map((account) => account.baseVault));
-  const dipBaseTokenAccounts = dipAccounts.map((account) => account.vaultSpl);
-  const dipQuoteTokenAccounts = dipAccounts.map((account) => account.vaultUsdc);
-  const gsoBaseTokenAccounts = gsoAccounts.map((account) => account.baseVault);
   const accounts = await getMultipleAccounts(connection, [
-    ...soTokenAccounts,
-    ...dipBaseTokenAccounts,
-    ...dipQuoteTokenAccounts,
-    ...gsoBaseTokenAccounts,
+    ...soAccounts.map((account) => account.baseVault),
+    ...dipAccounts.map((account) => account.vaultSpl),
+    ...dipAccounts.map((account) => account.vaultUsdc),
+    ...gsoAccounts.map((account) => account.baseVault),
   ]);
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const account of accounts) {
+  const tvl = accounts.reduce<{ [mint: string]: number }>((acc, account) => {
     const { mint, amount } = account;
     const decimals = decimalsBaseSPL(Config.pkToAsset(mint.toString())) || 0;
-    tvl[mint.toString()] = (tvl[mint.toString()] || 0) + (decimals ? Number(amount.toString()) / 10 ** decimals : 0);
-  }
+    // ignore balance if decimals are not available
+    const balance = decimals ? Number(amount.toString()) / 10 ** decimals : 0;
+    return {
+      ...acc,
+      [mint.toString()]: (acc[mint.toString()] || 0) + balance,
+    };
+  }, {});
 
-  const prices: { [mint: string]: { value: number | null } } = await fetchMultiBirdeyePrice(Object.keys(tvl));
+  const prices = await fetchMultiBirdeyePrice(Object.keys(tvl));
 
   return Object.entries(tvl).reduce((acc, [mint, value]) => acc + value * (prices[mint]?.value || 0), 0);
 }
 
-async function fetchMultiBirdeyePrice(addresses: string[]) {
+interface BirdeyePrice {
+  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
+  [mint: string]: { value: number | null } | undefined;
+}
+
+async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const options = { method: 'GET', headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '' } };
   const addressList = encodeURIComponent(addresses.join(','));
@@ -94,6 +103,6 @@ async function fetchMultiBirdeyePrice(addresses: string[]) {
     const priceData = await data.json();
     return priceData.data;
   } catch (e) {
-    return 0;
+    return {};
   }
 }
