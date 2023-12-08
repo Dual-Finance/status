@@ -65,8 +65,8 @@ function renderValueCell(value: number | string[], row: SummaryValue) {
       {value.map((symbol) => {
         const project = projects[symbol];
         return (
-          <a href={project?.link}>
-            <div key={`icon-${symbol}`} className={cls(styles.tokenIcon, getTokenIconClass(symbol))} />
+          <a key={`icon-${symbol}`} href={project?.link} placeholder={project?.name}>
+            <div className={cls(styles.tokenIcon, getTokenIconClass(symbol))} />
           </a>
         );
       })}

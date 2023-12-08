@@ -46,7 +46,7 @@ export function useSummary(network: string): SummaryRecords | undefined {
   const { maxFees, maxSettlement } = max;
   return {
     totalValueLocked,
-    tokenCount: [...max.tokens.values()].sort(),
+    partnerTokens: [...max.tokens.values()].sort(),
     maxFees,
     maxSettlement,
   };
@@ -54,7 +54,7 @@ export function useSummary(network: string): SummaryRecords | undefined {
 
 export interface SummaryRecords {
   totalValueLocked: number;
-  tokenCount: string[];
+  partnerTokens: string[];
   maxFees: number;
   maxSettlement: number;
 }
