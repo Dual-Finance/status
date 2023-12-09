@@ -2,7 +2,7 @@ import { getMultipleAccounts } from '@solana/spl-token';
 import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { Config } from '../config/config';
-import { decimalsBaseSPL } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice } from '../utils/utils';
 import { useAnchorProvider } from './useAnchorProvider';
 import { DipParams, useDips } from './useDips';
 import { GsoParams, useGso } from './useGso';
@@ -86,23 +86,4 @@ async function fetchTvl(
   const prices = await fetchMultiBirdeyePrice(Object.keys(tvl));
 
   return Object.entries(tvl).reduce((acc, [mint, value]) => acc + value * (prices[mint]?.value || 0), 0);
-}
-
-interface BirdeyePrice {
-  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
-  [mint: string]: { value: number | null } | undefined;
-}
-
-async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const options = { method: 'GET', headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '' } };
-  const addressList = encodeURIComponent(addresses.join(','));
-
-  try {
-    const data = await fetch(`https://public-api.birdeye.so/public/multi_price?list_address=${addressList}`, options);
-    const priceData = await data.json();
-    return priceData.data;
-  } catch (e) {
-    return {};
-  }
 }
