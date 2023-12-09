@@ -50,7 +50,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       }
 
       // TODO: These are from testing and should be cleaned up.
-      if (soName === 'SO') {
+      if (soName === 'SO' || soName.includes('Buyback Test')) {
         continue;
       }
       const strikeQuoteAtomsPerLot = strike.toNumber();
@@ -88,6 +88,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
+        baseVault: await stakingOptionsHelper.baseVault(soName, baseMint),
         remaining: roundedAvailable,
         outstanding,
         maxSettlement,
@@ -156,6 +157,7 @@ export interface SoParams {
   soMint: PublicKey;
   baseMint: PublicKey;
   quoteMint: PublicKey;
+  baseVault: PublicKey;
   remaining: number;
   outstanding: number;
   maxSettlement: number;

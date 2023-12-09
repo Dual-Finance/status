@@ -506,6 +506,10 @@ export function decimalsBaseSPL(token: string) {
   }
 }
 
+export function dollarize(amount: number, locale = 'en-US'): string {
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(amount);
+}
+
 export function isUpsidePool(quoteMint: PublicKey) {
   const quote = quoteMint.toString();
   return (
@@ -513,4 +517,23 @@ export function isUpsidePool(quoteMint: PublicKey) {
     quote === Config.usdhMintPk().toString() ||
     quote === Config.usdtMintPk().toString()
   );
+}
+
+interface BirdeyePrice {
+  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
+  [mint: string]: { value: number | null } | undefined;
+}
+
+export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const options = { method: 'GET', headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '' } };
+  const addressList = encodeURIComponent(addresses.join(','));
+
+  try {
+    const data = await fetch(`https://public-api.birdeye.so/public/multi_price?list_address=${addressList}`, options);
+    const priceData = await data.json();
+    return priceData.data;
+  } catch (e) {
+    return {};
+  }
 }
