@@ -3,7 +3,7 @@
 import c from 'classnames';
 import { ColumnsType } from 'antd/lib/table';
 import { Config } from '../../config/config';
-import { getTokenIconClass } from '../../utils/utils';
+import { dollarize, getTokenIconClass } from '../../utils/utils';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
 import { SoParams, useStakingOptions } from '../../hooks/useStakingOptions';
@@ -174,7 +174,7 @@ const columns: ColumnsType<SoParams> = [
     render: (maxSettlement, data) => {
       return (
         <>
-          {maxSettlement.toLocaleString()}
+          {dollarize(maxSettlement)}
           <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
         </>
       );
@@ -187,7 +187,7 @@ const columns: ColumnsType<SoParams> = [
     render: (maxFees, data) => {
       return (
         <>
-          {maxFees.toLocaleString()}
+          {dollarize(maxFees)}
           <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
         </>
       );

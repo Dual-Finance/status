@@ -75,7 +75,8 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
-      const maxSettlement = outstanding * Number(roundedStrike) * (prices[quoteMint.toString()]?.value || 1);
+      const quotePrice = isUpsidePool(quoteMint) ? 1 : prices[quoteMint.toString()]?.value || 1;
+      const maxSettlement = outstanding * Number(roundedStrike) * quotePrice;
       const maxFees = maxSettlement * feeByPair(baseMint, quoteMint, authority);
 
       // These should be cleaned up, but do not have anything in them, so dont display.
