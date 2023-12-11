@@ -133,6 +133,7 @@ type FeeBasedOnSoParams = Pick<SOState, 'baseMint' | 'quoteMint' | 'authority' |
  * based on https://github.com/Dual-Finance/staking-options/blob/b902c46e0ea78fdf7edf42967b1583c74b995743/programs/staking-options/src/common.rs#L88C18-L88C18
  * */
 function getFeeBasedOnSO({ baseMint, quoteMint, authority, soName }: FeeBasedOnSoParams): number {
+  // TODO: replace this check with inspection of GSO state's ownership by DAO
   if (
     authority.toString() === DUAL_DAO_WALLET_PK.toString() ||
     (baseMint.toString() === Config.dualMintPk().toString() && soName.includes('GSO'))
