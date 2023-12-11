@@ -6,7 +6,7 @@ import { getMint } from '@solana/spl-token';
 import { AnchorProvider, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, isUpsidePool } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, isUpsidePool } from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -30,6 +30,16 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   const data = await provider.connection.getProgramAccounts(stakingOptionsProgramId, { filters: [{ dataSize: 1150 }] });
 
   const states = (await program.account.state.fetchMultiple(data.map((acc) => acc.pubkey.toString()))) as SOState[];
+  const quoteMints = [
+    ...states
+      .filter((state) => state.quoteMint.toString())
+      .reduce<Set<string>>((set, state) => {
+        set.add(state.quoteMint.toString());
+        return set;
+      }, new Set())
+      .values(),
+  ];
+  const prices = await fetchMultiBirdeyePrice(quoteMints);
 
   // For each, check the option mint and look into the ATA
   for (const state of states) {
@@ -65,7 +75,8 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
-      const maxSettlement = outstanding * Number(roundedStrike);
+      const quotePrice = isUpsidePool(quoteMint) ? 1 : prices[quoteMint.toString()]?.value || 0;
+      const maxSettlement = outstanding * Number(roundedStrike) * quotePrice;
       const maxFees = maxSettlement * feeByPair(baseMint, quoteMint, authority);
 
       // These should be cleaned up, but do not have anything in them, so dont display.
