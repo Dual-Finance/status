@@ -3,7 +3,7 @@ import { getMultipleAccounts } from '@solana/spl-token';
 import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { Config } from '../config/config';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, getSoStrike } from '../utils/utils';
 import { useAnchorProvider } from './useAnchorProvider';
 import { DipParams, useDips } from './useDips';
 import { GsoParams, useGso } from './useGso';
@@ -37,37 +37,36 @@ export function useSummary(network: string): SummaryRecords | undefined {
       const quoteSymbol = Config.pkToAsset(quoteMint.toString());
       acc.tokens.set(quoteMint.toString(), quoteSymbol);
 
-      let maxTreasuryFundraise = 0;
+      let treasuryFundraise = 0;
       if (
         authority.toString() === DUAL_DAO_WALLET_PK.toString() ||
         (baseMint.toString() === Config.dualMintPk().toString() && name.includes('GSO'))
       ) {
-        maxTreasuryFundraise =
+        treasuryFundraise =
           outstanding *
           getSoStrike(
             strike.toNumber(),
             lotSize.toNumber(),
             decimalsBaseSPL(baseSymbol) || 0,
             decimalsBaseSPL(quoteSymbol) || 0
-          ) *
-          getFeeByPair(baseMint, quoteMint);
+          );
       }
       return {
         ...acc,
         maxFees: acc.maxFees + (account.maxFees || 0),
         exerciseValue: acc.exerciseValue + (account.maxSettlement || 0),
-        maxTreasuryFundraise: acc.maxTreasuryFundraise + maxTreasuryFundraise,
+        treasuryFundraise: acc.treasuryFundraise + treasuryFundraise,
       };
     },
-    { tokens: new Map(), maxFees: 0, exerciseValue: 0, maxTreasuryFundraise: 0 }
+    { tokens: new Map(), maxFees: 0, exerciseValue: 0, treasuryFundraise: 0 }
   );
 
-  const { maxFees, exerciseValue, maxTreasuryFundraise } = max;
+  const { maxFees, exerciseValue, treasuryFundraise } = max;
   return {
     totalValueLocked,
     exerciseValue,
     maxFees,
-    maxTreasuryFundraise,
+    treasuryFundraise,
     activeTokens: [...max.tokens.values()].sort(),
   };
 }
@@ -76,7 +75,7 @@ export interface SummaryRecords {
   totalValueLocked: number;
   exerciseValue: number;
   maxFees: number;
-  maxTreasuryFundraise: number;
+  treasuryFundraise: number;
   activeTokens: string[];
 }
 
