@@ -3,7 +3,7 @@ import { getMultipleAccounts } from '@solana/spl-token';
 import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { Config } from '../config/config';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getSoStrike } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike } from '../utils/utils';
 import { useAnchorProvider } from './useAnchorProvider';
 import { DipParams, useDips } from './useDips';
 import { GsoParams, useGso } from './useGso';
@@ -49,7 +49,8 @@ export function useSummary(network: string): SummaryRecords | undefined {
             lotSize.toNumber(),
             decimalsBaseSPL(baseSymbol) || 0,
             decimalsBaseSPL(quoteSymbol) || 0
-          );
+          ) *
+          getFeeByPair(baseMint, quoteMint);
       }
       return {
         ...acc,
