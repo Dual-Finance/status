@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { AccountInfo, ParsedAccountData, PublicKey } from '@solana/web3.js';
 import { Mint } from '@solana/spl-token';
-import { PublicKey } from '@solana/web3.js';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
