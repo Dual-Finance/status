@@ -540,3 +540,53 @@ export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<Birde
     return {};
   }
 }
+
+const USDC = Config.usdcMintPk().toString();
+const USDT = Config.usdtMintPk().toString();
+const DAIPO = Config.daipoMintPk().toString();
+const USDH = Config.usdhMintPk().toString();
+const CHAI = Config.chaiMintPk().toString();
+const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+
+const WBTCPO = Config.wbtcpoMintPk().toString();
+const TBTC = Config.tbtcMintPk().toString();
+const WSTETHPO = Config.wstethpoMintPk().toString();
+const RETHPO = Config.rethpoMintPk().toString();
+const WETHPO = Config.wethpoMintPk().toString();
+const WSOL = Config.wsolMintPk().toString();
+const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
+
+const BP = 0.01 / 100;
+
+export function getFeeByPair(baseMint: PublicKey, quoteMint: PublicKey) {
+  const isBaseStable = stables.includes(baseMint.toString());
+  const isQuoteStable = stables.includes(quoteMint.toString());
+
+  if (isBaseStable && isQuoteStable) {
+    return 5 * BP;
+  }
+
+  const isBaseMajor = majors.includes(baseMint.toString());
+  const isQuoteMajor = majors.includes(quoteMint.toString());
+
+  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
+    return 25 * BP;
+  }
+
+  if (isBaseMajor && isQuoteMajor) {
+    return 5 * BP;
+  }
+
+  return 350 * BP;
+}
+
+export function getSoStrike(
+  strikeQuoteAtomsPerLot: number,
+  lotSize: number,
+  baseDecimals: number,
+  quoteDecimals: number
+) {
+  const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
+  const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (baseDecimals - quoteDecimals);
+  return strikeTokensPerToken;
+}

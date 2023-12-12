@@ -1,8 +1,9 @@
+import { DUAL_DAO_WALLET_PK } from '@dual-finance/staking-options';
 import { getMultipleAccounts } from '@solana/spl-token';
 import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { Config } from '../config/config';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, getSoStrike } from '../utils/utils';
 import { useAnchorProvider } from './useAnchorProvider';
 import { DipParams, useDips } from './useDips';
 import { GsoParams, useGso } from './useGso';
@@ -29,25 +30,43 @@ export function useSummary(network: string): SummaryRecords | undefined {
 
   const max = soAccounts.reduce(
     (acc, account) => {
-      const { baseMint, quoteMint } = account;
+      const { baseMint, quoteMint, authority, name, outstanding, strike, lotSize } = account;
 
-      acc.tokens.set(baseMint.toString(), Config.pkToAsset(baseMint.toString()));
-      acc.tokens.set(quoteMint.toString(), Config.pkToAsset(quoteMint.toString()));
+      const baseSymbol = Config.pkToAsset(baseMint.toString());
+      acc.tokens.set(baseMint.toString(), baseSymbol);
+      const quoteSymbol = Config.pkToAsset(quoteMint.toString());
+      acc.tokens.set(quoteMint.toString(), quoteSymbol);
 
+      let treasuryFundraise = 0;
+      if (
+        authority.toString() === DUAL_DAO_WALLET_PK.toString() ||
+        (baseMint.toString() === Config.dualMintPk().toString() && name.includes('GSO'))
+      ) {
+        treasuryFundraise =
+          outstanding *
+          getSoStrike(
+            strike.toNumber(),
+            lotSize.toNumber(),
+            decimalsBaseSPL(baseSymbol) || 0,
+            decimalsBaseSPL(quoteSymbol) || 0
+          );
+      }
       return {
         ...acc,
         maxFees: acc.maxFees + (account.maxFees || 0),
         exerciseValue: acc.exerciseValue + (account.maxSettlement || 0),
+        treasuryFundraise: acc.treasuryFundraise + treasuryFundraise,
       };
     },
-    { tokens: new Map(), maxFees: 0, exerciseValue: 0 }
+    { tokens: new Map(), maxFees: 0, exerciseValue: 0, treasuryFundraise: 0 }
   );
 
-  const { maxFees, exerciseValue } = max;
+  const { maxFees, exerciseValue, treasuryFundraise } = max;
   return {
     totalValueLocked,
     exerciseValue,
     maxFees,
+    treasuryFundraise,
     activeTokens: [...max.tokens.values()].sort(),
   };
 }
@@ -56,6 +75,7 @@ export interface SummaryRecords {
   totalValueLocked: number;
   exerciseValue: number;
   maxFees: number;
+  treasuryFundraise: number;
   activeTokens: string[];
 }
 

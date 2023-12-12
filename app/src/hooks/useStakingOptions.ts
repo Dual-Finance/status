@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { PublicKey } from '@solana/web3.js';
 import { getMint } from '@solana/spl-token';
-import { AnchorProvider, Idl, Program } from '@project-serum/anchor';
+import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, isUpsidePool } from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -63,20 +63,17 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
       if (soName === 'SO' || soName.includes('Buyback Test')) {
         continue;
       }
-      const strikeQuoteAtomsPerLot = strike.toNumber();
-      const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize.toNumber();
-      const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (Number(baseDecimals) - Number(quoteDecimals));
-      let roundedStrike = '';
-      if (Number(strikeTokensPerToken.toString().split('-')[1]) > 0) {
-        roundedStrike = strikeTokensPerToken.toFixed(Number(strikeTokensPerToken.toString().split('-')[1]));
-      } else {
-        roundedStrike = strikeTokensPerToken.toPrecision(3);
-      }
+      const roundedStrike = getSoStrike(
+        strike.toNumber(),
+        lotSize.toNumber(),
+        Number(baseDecimals),
+        Number(quoteDecimals)
+      );
       const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
       const quotePrice = isUpsidePool(quoteMint) ? 1 : prices[quoteMint.toString()]?.value || 0;
-      const maxSettlement = outstanding * Number(roundedStrike) * quotePrice;
+      const maxSettlement = outstanding * roundedStrike * quotePrice;
       const maxFees = maxSettlement * getFeeBasedOnSO(state);
 
       // These should be cleaned up, but do not have anything in them, so dont display.
@@ -90,12 +87,14 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         authority: new PublicKey(authority),
         expiration: new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
         expirationInt: Number(optionExpiration),
-        strike: calculateStrikeQuoteAtomsPerBaseToken({
+        strike,
+        strikeQuoteAtomsPerBaseToken: calculateStrikeQuoteAtomsPerBaseToken({
           baseMint,
           quoteMint,
           lotSize: lotSize.toNumber(),
-          strikeQuoteAtomsPerLot,
+          strikeQuoteAtomsPerLot: strike.toNumber(),
         }),
+        lotSize,
         soMint,
         baseMint: new PublicKey(baseMint),
         quoteMint: new PublicKey(quoteMint),
@@ -110,22 +109,6 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   }
   return allAccounts;
 }
-const USDC = Config.usdcMintPk().toString();
-const USDT = Config.usdtMintPk().toString();
-const DAIPO = Config.daipoMintPk().toString();
-const USDH = Config.usdhMintPk().toString();
-const CHAI = Config.chaiMintPk().toString();
-const stables = [USDC, USDT, DAIPO, USDH, CHAI];
-
-const WBTCPO = Config.wbtcpoMintPk().toString();
-const TBTC = Config.tbtcMintPk().toString();
-const WSTETHPO = Config.wstethpoMintPk().toString();
-const RETHPO = Config.rethpoMintPk().toString();
-const WETHPO = Config.wethpoMintPk().toString();
-const WSOL = Config.wsolMintPk().toString();
-const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
-
-const BP = 0.01 / 100;
 
 type FeeBasedOnSoParams = Pick<SOState, 'baseMint' | 'quoteMint' | 'authority' | 'soName'>;
 /**
@@ -141,25 +124,7 @@ function getFeeBasedOnSO({ baseMint, quoteMint, authority, soName }: FeeBasedOnS
     return 0;
   }
 
-  const isBaseStable = stables.includes(baseMint.toString());
-  const isQuoteStable = stables.includes(quoteMint.toString());
-
-  if (isBaseStable && isQuoteStable) {
-    return 5 * BP;
-  }
-
-  const isBaseMajor = majors.includes(baseMint.toString());
-  const isQuoteMajor = majors.includes(quoteMint.toString());
-
-  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
-    return 25 * BP;
-  }
-
-  if (isBaseMajor && isQuoteMajor) {
-    return 5 * BP;
-  }
-
-  return 350 * BP;
+  return getFeeByPair(baseMint, quoteMint);
 }
 
 export interface SoParams {
@@ -169,7 +134,9 @@ export interface SoParams {
   authority: PublicKey;
   expiration: string;
   expirationInt: number;
-  strike: number;
+  strike: BN;
+  strikeQuoteAtomsPerBaseToken: number;
+  lotSize: BN;
   soMint: PublicKey;
   baseMint: PublicKey;
   quoteMint: PublicKey;
