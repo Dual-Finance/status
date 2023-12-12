@@ -525,8 +525,11 @@ interface BirdeyePrice {
 }
 
 export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const options = { method: 'GET', headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '' } };
+  const options = {
+    method: 'GET',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '83101a3f401340c1a044db282ec75bca' },
+  };
   const addressList = encodeURIComponent(addresses.join(','));
 
   try {
