@@ -74,6 +74,7 @@ interface ProjectLink {
   name: string;
   link: string;
 }
+
 const projects: Record<string, ProjectLink> = {
   ALL: {
     name: 'AllDomains',
@@ -118,5 +119,13 @@ const projects: Record<string, ProjectLink> = {
   wstETHpo: {
     name: 'Lido Wrapped Staked ETH',
     link: 'https://lido.fi/',
+  },
+  mSOL: {
+    name: 'Marinade staked SOL',
+    link: 'https://marinade.finance/',
+  },
+  jitoSOL: {
+    name: 'Jito Staked SOL',
+    link: 'https://www.jito.network/',
   },
 };
