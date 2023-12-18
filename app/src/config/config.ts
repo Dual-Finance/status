@@ -4,10 +4,13 @@ export class Config {
   static isDev = false;
 
   static apiUrl(): string {
+    if (process.env.REACT_APP_RPC) {
+      return process.env.REACT_APP_RPC;
+    }
     if (Config.isDev) {
       return 'https://solana-devnet.g.alchemy.com/v2/e5EQixWHc-n0F3JTe-ueWzKZIJDMYXTi';
     }
-    return 'https://chaotic-alien-pallet.solana-mainnet.discover.quiknode.pro/3fa2083ef7ee443de64a78b91178e4f2e2c113c0/';
+    return 'https://mango.rpcpool.com/946ef7337da3f5b8d3e4a34e7f88';
   }
 
   static explorerUrl(value: string, explorer = 'solscan', path?: string | null): string {
@@ -53,18 +56,38 @@ export class Config {
     }
   }
 
-  static sobtcMintPk(): PublicKey {
+  static btcMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv');
     }
-    return new PublicKey('9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E');
+    return new PublicKey('6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU');
   }
 
-  static soethMintPk(): PublicKey {
+  static ethMintPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('Hccuen6RkUgEvyL9oSXW8ai9QiQaAiL8ESaqjp9oymBf');
     }
     return new PublicKey('2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk');
+  }
+
+  static wbtcpoMintPk(): PublicKey {
+    return new PublicKey('3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh');
+  }
+
+  static tbtcMintPk(): PublicKey {
+    return new PublicKey('6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU');
+  }
+
+  static wstethpoMintPk(): PublicKey {
+    return new PublicKey('ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo');
+  }
+
+  static rethpoMintPk(): PublicKey {
+    return new PublicKey('9UV2pC1qPaVMfRv8CF7qhv7ihbzR91pr2LX9y2FDfGLy');
+  }
+
+  static wethpoMintPk(): PublicKey {
+    return new PublicKey('7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs');
   }
 
   static wsolMintPk(): PublicKey {
@@ -73,6 +96,14 @@ export class Config {
 
   static mngoMintPk(): PublicKey {
     return new PublicKey('MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac');
+  }
+
+  static deanMintPk(): PublicKey {
+    return new PublicKey('Ds52CDgqdWbTWsua1hgT3AuSSy4FNx2Ezge1br3jQ14a');
+  }
+
+  static allMintPk(): PublicKey {
+    return new PublicKey('BaoawH9p2J8yUK9r5YXQs3hQwmUJgscACjmTkh8rMwYL');
   }
 
   static bonkMintPk(): PublicKey {
@@ -88,6 +119,38 @@ export class Config {
       return new PublicKey('HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM');
     }
     return new PublicKey('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+  }
+
+  static usdtMintPk(): PublicKey {
+    return new PublicKey('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+  }
+
+  static daipoMintPk(): PublicKey {
+    return new PublicKey('EjmyN6qEC1Tf1JxiG1ae7UTJhUxSwk1TCWNWqxWV4J6o');
+  }
+
+  static usdhMintPk(): PublicKey {
+    return new PublicKey('USDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkX');
+  }
+
+  static chaiMintPk(): PublicKey {
+    return new PublicKey('3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3');
+  }
+
+  static guacMintPk(): PublicKey {
+    return new PublicKey('AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR');
+  }
+
+  static msolMintPk(): PublicKey {
+    return new PublicKey('mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So');
+  }
+
+  static slclMintPk(): PublicKey {
+    return new PublicKey('SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV');
+  }
+
+  static tMintPk(): PublicKey {
+    return new PublicKey('4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC');
   }
 
   static pythBtcPk(): PublicKey {
@@ -116,6 +179,8 @@ export class Config {
       JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv: 'BTC',
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E': 'BTC',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh': 'wBTCpo',
       Hccuen6RkUgEvyL9oSXW8ai9QiQaAiL8ESaqjp9oymBf: 'ETH',
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk': 'ETH',
@@ -123,10 +188,22 @@ export class Config {
       '7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs': 'ETH',
       So11111111111111111111111111111111111111112: 'SOL',
       MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac: 'MNGO',
+      Ds52CDgqdWbTWsua1hgT3AuSSy4FNx2Ezge1br3jQ14a: 'DEAN',
+      BaoawH9p2J8yUK9r5YXQs3hQwmUJgscACjmTkh8rMwYL: 'ALL',
       DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: 'BONK',
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
       DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ: 'DUAL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3': 'CHAI',
+      ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo: 'wstETHpo',
+      AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR: 'GUAC',
+      mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So: 'mSOL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU': 'tBTC',
+      SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV: 'SLCL',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      '4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC': 'T',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];
@@ -134,8 +211,8 @@ export class Config {
 
   static volMap(pk: string): number {
     const VOL_MAP = {
-      [Config.sobtcMintPk().toBase58()]: 0.2,
-      [Config.soethMintPk().toBase58()]: 0.25,
+      [Config.btcMintPk().toBase58()]: 0.2,
+      [Config.ethMintPk().toBase58()]: 0.25,
       [Config.wsolMintPk().toBase58()]: 0.3,
       [Config.mngoMintPk().toBase58()]: 0.35,
       [Config.bonkMintPk().toBase58()]: 0.35,

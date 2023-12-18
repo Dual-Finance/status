@@ -2,14 +2,13 @@
 import logging
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, ElementNotInteractableException
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
-SOL_TRADE_SIZE = .1
+SOL_TRADE_SIZE = .05
 HEADLESS = True
 
 def init_wallet(driver, phrase, password):
@@ -102,17 +101,17 @@ def select_wallet(driver, main_window):
 
     # Select Wallet
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-        (By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")))
+        (By.XPATH, "//button[contains(text(), 'Select Wallet')]")))
     select_wallet_button = driver.find_element(
-        By.XPATH, "//button[span[contains(text(), 'Select Wallet')]]")
+        By.XPATH, "//button[contains(text(), 'Select Wallet')]")
     logging.info("Selecting wallet")
     select_wallet_button.click()
 
     # Choose Phantom
     WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-        (By.XPATH, "//button[span[contains(text(), 'Phantom')]]")))
+        (By.XPATH, "//button[contains(text(), 'Phantom')]")))
     phantom = driver.find_element(
-        By.XPATH, "//button[span[contains(text(), 'Phantom')]]")
+        By.XPATH, "//button[contains(text(), 'Phantom')]")
     logging.info("Clicking phantom")
     time.sleep(2)
     phantom.click()
@@ -140,6 +139,14 @@ def select_wallet(driver, main_window):
 def deposit(values):
     ''' Deposit into a DIP '''
     def select_dip(token="BTC"):
+        logging.info("Clicking Type Sort")
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+            (By.XPATH, "//th/div/span[contains(text(), 'Type')]")))
+        time.sleep(1)
+        sort = driver.find_elements(
+            By.XPATH, "//th/div/span[contains(text(), 'Type')]")[0]
+        sort.click()
+        
         if token:
             logging.info("Selecting DIP for %s", token)
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -147,13 +154,14 @@ def deposit(values):
             stake = driver.find_element(
                 By.XPATH, f"//div[contains(text(), '{token}')]")
             stake.click()
+
         logging.info("Clicking Stake")
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[div[contains(text(), 'Stake')]]")))
         # Wait for the wallet to connect
         time.sleep(20)
         stake = driver.find_elements(
-            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[-1]
+            By.XPATH, "//button[div[contains(text(), 'Stake')]]")[0]
         stake.click()
 
         logging.info("Waiting for modal load")
@@ -180,13 +188,13 @@ def deposit(values):
         disclaimer.click()
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake ')]"
         )))
+        time.sleep(1)
         stake = driver.find_element(
-            By.XPATH, "//div/button/div[contains(text(), 'Stake')]"
+            By.XPATH, "//div/button/div[contains(text(), 'Stake ')]"
         )
         logging.info("Clicking stake")
-        time.sleep(1)
         stake.click()
         logging.info("Done clicking stake")
 
@@ -215,21 +223,23 @@ def deposit(values):
         logging.info("Waiting for success toast")
         # Wait for the success toast
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//span[contains(text(),'Success')]")))
+            (By.XPATH, "//div[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
 
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
-        options.add_argument("--headless=chrome")
+        options.add_argument("--headless=new")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(
-        executable_path=ChromeDriverManager().install(), options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     logging.info("Successfully found chrome driver")
 
     driver.get(values[0])
@@ -253,7 +263,7 @@ def deposit(values):
         with open("failure.html", "w", encoding="utf-8") as source_file:
             source_file.write(driver.page_source)
         print(repr(error))
-        # raise error
+        raise error
 
 
 def withdraw(values):
@@ -296,17 +306,19 @@ def withdraw(values):
             (By.XPATH, "//span[contains(text(),'Success')]")))
         logging.info("Got the success toast")
 
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.add_extension("Phantom.crx")
     options.add_argument("--disable-gpu")
     if HEADLESS:
-        options.add_argument("--headless=chrome")
+        options.add_argument("--headless=new")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
 
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
 
-    driver = webdriver.Chrome(
-        executable_path=ChromeDriverManager().install(), options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     logging.info("Successfully found chrome driver")
 
     driver.get(values[0])
@@ -331,4 +343,4 @@ def withdraw(values):
             source_file.write(driver.page_source)
 
         print(repr(error))
-        # raise error
+        raise error

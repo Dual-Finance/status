@@ -475,3 +475,150 @@ export async function getDualTokenMeta(): Promise<any> {
   const data = await response.json();
   return data;
 }
+
+export function decimalsBaseSPL(token: string) {
+  switch (token) {
+    case 'SOL': {
+      return 9;
+    }
+    case 'mSOL': {
+      return 9;
+    }
+    case 'jitoSOL': {
+      return 9;
+    }
+    case 'BTC': {
+      return 8;
+    }
+    case 'WBTC': {
+      return 8;
+    }
+    case 'tBTC': {
+      return 8;
+    }
+    case 'ETH': {
+      return 8;
+    }
+    case 'wstETHpo': {
+      return 8;
+    }
+    case 'stETH': {
+      return 8;
+    }
+    case 'MNGO': {
+      return 6;
+    }
+    case 'DEAN': {
+      return 6;
+    }
+    case 'ALL': {
+      return 6;
+    }
+    case 'BONK': {
+      return 5;
+    }
+    case 'DUAL': {
+      return 6;
+    }
+    case 'USDC': {
+      return 6;
+    }
+    case 'GUAC': {
+      return 5;
+    }
+    case 'SLCL': {
+      return 9;
+    }
+    case 'T': {
+      return 8;
+    }
+    default: {
+      return undefined;
+    }
+  }
+}
+
+export function dollarize(amount: number, locale = 'en-US'): string {
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(amount);
+}
+
+export function isUpsidePool(quoteMint: PublicKey) {
+  const quote = quoteMint.toString();
+  return (
+    quote === Config.usdcMintPk().toString() ||
+    quote === Config.usdhMintPk().toString() ||
+    quote === Config.usdtMintPk().toString()
+  );
+}
+
+interface BirdeyePrice {
+  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
+  [mint: string]: { value: number | null } | undefined;
+}
+
+export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
+  const options = {
+    method: 'GET',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '83101a3f401340c1a044db282ec75bca' },
+  };
+  const addressList = encodeURIComponent(addresses.join(','));
+
+  try {
+    const data = await fetch(`https://public-api.birdeye.so/public/multi_price?list_address=${addressList}`, options);
+    const priceData = await data.json();
+    return priceData.data;
+  } catch (e) {
+    return {};
+  }
+}
+
+const USDC = Config.usdcMintPk().toString();
+const USDT = Config.usdtMintPk().toString();
+const DAIPO = Config.daipoMintPk().toString();
+const USDH = Config.usdhMintPk().toString();
+const CHAI = Config.chaiMintPk().toString();
+const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+
+const WBTCPO = Config.wbtcpoMintPk().toString();
+const TBTC = Config.tbtcMintPk().toString();
+const WSTETHPO = Config.wstethpoMintPk().toString();
+const RETHPO = Config.rethpoMintPk().toString();
+const WETHPO = Config.wethpoMintPk().toString();
+const WSOL = Config.wsolMintPk().toString();
+const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
+
+const BP = 0.01 / 100;
+
+export function getFeeByPair(baseMint: PublicKey, quoteMint: PublicKey) {
+  const isBaseStable = stables.includes(baseMint.toString());
+  const isQuoteStable = stables.includes(quoteMint.toString());
+
+  if (isBaseStable && isQuoteStable) {
+    return 5 * BP;
+  }
+
+  const isBaseMajor = majors.includes(baseMint.toString());
+  const isQuoteMajor = majors.includes(quoteMint.toString());
+
+  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
+    return 25 * BP;
+  }
+
+  if (isBaseMajor && isQuoteMajor) {
+    return 5 * BP;
+  }
+
+  return 350 * BP;
+}
+
+export function getSoStrike(
+  strikeQuoteAtomsPerLot: number,
+  lotSize: number,
+  baseDecimals: number,
+  quoteDecimals: number
+) {
+  const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
+  const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (baseDecimals - quoteDecimals);
+  return strikeTokensPerToken;
+}

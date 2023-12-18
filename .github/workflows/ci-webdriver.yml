@@ -16,7 +16,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           python main.py --url="https://dev.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
-          python main.py --url="https://beta.dual.finance" --seed="$SEED" --password="$PASSWORD" --token="SOL"
+          python main.py --url="https://beta.dual.finance?skipIpCheck=true" --seed="$SEED" --password="$PASSWORD" --token="SOL"
         env:
           PASSWORD: ${{ secrets.PASSWORD }}
           SEED: ${{ secrets.SEED }}

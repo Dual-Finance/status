@@ -78,8 +78,6 @@ export const Liquidity = () => {
         dataSource={getTableRows()}
         scroll={{ x: true }}
       />
-      <Chart token="BONK" title="BONK" />
-      <Chart token="MNGO" title="MNGO" />
       <Chart token="SOL" title="SOL" />
       <Typography variant="h2" align="center">
         Summary

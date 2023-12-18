@@ -15,8 +15,10 @@ import { Config } from '../config/config';
 import { StakingOptions } from './stakingOptions/stakingOptions';
 import { Gso } from './gso/gso';
 import usePrice from '../hooks/usePrice';
+import { Summary } from './summary/summary';
 
 const tabs = [
+  { label: 'Summary', value: 'Summary', disabled: false },
   { label: 'DIPs', value: 'DIPs', disabled: false },
   { label: 'SO', value: 'SO', disabled: false },
   { label: 'GSO', value: 'GSO', disabled: false },
@@ -53,6 +55,7 @@ export const Home = () => {
             {selectedProduct === 'SO' && <StakingOptions network={network} />}
             {selectedProduct === 'GSO' && <Gso network={network} />}
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
+            {selectedProduct === 'Summary' && <Summary network={network} />}
             {selectedProduct === 'Liquidity' && <Liquidity />}
             {selectedProduct === 'DUAL Stats' && <DualStats />}
             {selectedProduct === 'Tests' && <Tests />}
