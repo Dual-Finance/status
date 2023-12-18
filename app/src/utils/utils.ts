@@ -162,6 +162,28 @@ const getMultipleAccountsCore = async (
   throw new Error();
 };
 
+export async function getMultipleParsedAccountsInChunks(
+  connection: Connection,
+  publicKeys: PublicKey[],
+  chunkSize = 5
+) {
+  if (publicKeys.length > chunkSize) {
+    const batches: string[][] = chunks(
+      publicKeys.map((pk) => pk.toString()),
+      chunkSize
+    );
+    const batchesPromises = batches.map((batch: string[]) => {
+      const result = connection.getMultipleParsedAccounts(batch.map((address) => new PublicKey(address)));
+      return result;
+    });
+    const results = (await Promise.all(batchesPromises)).flatMap((result) => result.value);
+    return results;
+  }
+
+  const result = await connection.getMultipleParsedAccounts(publicKeys);
+  return result.value;
+}
+
 /* eslint-disable no-bitwise */
 /* eslint-disable no-plusplus */
 export function readBigUInt64LE(buffer: Buffer, offset = 0) {

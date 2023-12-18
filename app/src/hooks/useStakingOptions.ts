@@ -6,7 +6,14 @@ import { Mint } from '@solana/spl-token';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
+import {
+  decimalsBaseSPL,
+  fetchMultiBirdeyePrice,
+  getFeeByPair,
+  getMultipleParsedAccountsInChunks,
+  getSoStrike,
+  isUpsidePool,
+} from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -39,10 +46,10 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   const quoteMints = [
     ...states
       .filter((state) => state.quoteMint.toString())
-      .reduce<Set<string>>((set, state) => {
+      .reduce((set, state) => {
         set.add(state.quoteMint.toString());
         return set;
-      }, new Set())
+      }, new Set<string>())
       .values(),
   ];
   const prices = await fetchMultiBirdeyePrice(quoteMints);
@@ -54,7 +61,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
     )
   );
 
-  const soMintAccounts = (await provider.connection.getMultipleParsedAccounts(soMints)).value.reduce<{
+  const soMintAccounts = (await getMultipleParsedAccountsInChunks(provider.connection, soMints)).reduce<{
     [mint: string]: ParsedMintAccountData;
   }>(
     (acc, soMintAccount, i) => ({
