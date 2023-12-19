@@ -1,12 +1,19 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-continue */
 import { useEffect, useState } from 'react';
-import { PublicKey } from '@solana/web3.js';
-import { getMint } from '@solana/spl-token';
+import { AccountInfo, ParsedAccountData, PublicKey } from '@solana/web3.js';
+import { Mint } from '@solana/spl-token';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
+import {
+  decimalsBaseSPL,
+  fetchMultiBirdeyePrice,
+  getFeeByPair,
+  getMultipleParsedAccountsInChunks,
+  getSoStrike,
+  isUpsidePool,
+} from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -22,6 +29,12 @@ export function useStakingOptions(network: string) {
   return accounts;
 }
 
+type ParsedMintAccountData = Omit<ParsedAccountData, 'parsed'> & {
+  parsed: AccountInfo<Mint> & {
+    info: AccountInfo<Mint>['data'];
+  };
+};
+
 async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   const program = new Program(stakingOptionsIdl as Idl, stakingOptionsProgramId, provider);
   const stakingOptionsHelper = new StakingOptions(provider.connection.rpcEndpoint);
@@ -33,13 +46,31 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   const quoteMints = [
     ...states
       .filter((state) => state.quoteMint.toString())
-      .reduce<Set<string>>((set, state) => {
+      .reduce((set, state) => {
         set.add(state.quoteMint.toString());
         return set;
-      }, new Set())
+      }, new Set<string>())
       .values(),
   ];
   const prices = await fetchMultiBirdeyePrice(quoteMints);
+
+  const soMints = await Promise.all(
+    states.flatMap((state) =>
+      // @ts-ignore
+      state.strikes.map((strike) => stakingOptionsHelper.soMint(strike, state.soName, state.baseMint))
+    )
+  );
+
+  // TODO: cache SO mint accounts since these never change
+  const soMintAccounts = (await getMultipleParsedAccountsInChunks(provider.connection, soMints)).reduce<{
+    [mint: string]: ParsedMintAccountData;
+  }>(
+    (acc, soMintAccount, i) => ({
+      ...acc,
+      [soMints[i].toString()]: soMintAccount?.data as ParsedMintAccountData,
+    }),
+    {}
+  );
 
   // For each, check the option mint and look into the ATA
   for (const state of states) {
@@ -48,16 +79,11 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
     for (const strike of strikes) {
       // @ts-ignore
       const soMint = await stakingOptionsHelper.soMint(strike, soName, new PublicKey(baseMint));
+      const mint = soMintAccounts[soMint.toString()];
+      const outstandingLots = Number(mint.parsed.info.supply);
       const baseDecimals = decimalsBaseSPL(Config.pkToAsset(baseMint.toBase58()));
       const quoteDecimals = decimalsBaseSPL(Config.pkToAsset(quoteMint.toBase58()));
-      let outstanding = 0;
-      try {
-        const mint = await getMint(provider.connection, soMint);
-        const outstandingLots = Number(mint.supply);
-        outstanding = (outstandingLots * lotSize.toNumber()) / 10 ** Number(baseDecimals);
-      } catch (err) {
-        console.log(err);
-      }
+      const outstanding = (outstandingLots * lotSize.toNumber()) / 10 ** Number(baseDecimals);
 
       // TODO: These are from testing and should be cleaned up.
       if (soName === 'SO' || soName.includes('Buyback Test')) {
