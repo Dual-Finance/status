@@ -1,40 +1,73 @@
+import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import { Connection, ParsedAccountData, PublicKey, TokenAmount } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
-import { getDualHolders } from '../utils/utils';
+import { Config } from '../config/config';
+import { useAnchorProvider } from './useAnchorProvider';
 
 export interface Holder {
   address: string;
   amount: number;
-  decimals: number;
   owner: string;
   rank: number;
 }
 
-export interface Holders {
+export interface HolderData {
   data: Holder[];
   total: number;
 }
 
-export default function useHolders() {
-  const [holders, setHolders] = useState<Holders>({ data: [], total: 0 });
+export default function useHolders(network: string) {
+  const [holders, setHolders] = useState<HolderData>({ data: [], total: 0 });
+  const [, connection] = useAnchorProvider(network);
 
   useEffect(() => {
-    async function fetchData() {
-      const newHolders = await getDualHolders();
-      return newHolders;
-    }
-
-    fetchData()
-      .then((data) => {
-        if (data) {
-          setHolders(data as Holders);
-        }
-      })
-      .catch(console.error);
-    return () => setHolders({ data: [], total: 0 });
-  }, []);
+    fetchDualHolders(connection).then(setHolders).catch(console.error);
+  }, [connection]);
 
   return {
     holders,
-    setHolders,
   };
+}
+
+interface ParsedTokenAccountData extends ParsedAccountData {
+  parsed: {
+    info: {
+      owner: string;
+      tokenAmount: TokenAmount;
+    };
+  };
+}
+
+type ParsedProgramAccount = {
+  pubkey: PublicKey;
+  account: { data: ParsedTokenAccountData };
+};
+
+async function fetchDualHolders(connection: Connection) {
+  const data = (await connection.getParsedProgramAccounts(TOKEN_PROGRAM_ID, {
+    filters: [{ dataSize: 165 }, { memcmp: { offset: 0, bytes: Config.dualMintPk().toString() } }],
+  })) as unknown as ParsedProgramAccount[];
+
+  return [...data]
+    .sort(
+      (a, b) =>
+        (b.account.data.parsed.info.tokenAmount.uiAmount || 0) - (a.account.data.parsed.info.tokenAmount.uiAmount || 0)
+    )
+    .reduce<HolderData>(
+      (acc, programAccount, i) => {
+        return {
+          data: [
+            ...acc.data,
+            {
+              address: programAccount.pubkey.toString(),
+              amount: programAccount.account.data.parsed.info.tokenAmount.uiAmount || 0,
+              owner: programAccount.account.data.parsed.info.owner,
+              rank: i,
+            },
+          ],
+          total: acc.total + 1,
+        };
+      },
+      { data: [], total: 0 }
+    );
 }

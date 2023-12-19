@@ -57,7 +57,7 @@ export const Home = () => {
             {selectedProduct === 'Treasury' && <Treasury network={network} />}
             {selectedProduct === 'Summary' && <Summary network={network} />}
             {selectedProduct === 'Liquidity' && <Liquidity />}
-            {selectedProduct === 'DUAL Stats' && <DualStats />}
+            {selectedProduct === 'DUAL Stats' && <DualStats network={network} />}
             {selectedProduct === 'Tests' && <Tests />}
             {selectedProduct === 'Services' && <Services />}
           </>

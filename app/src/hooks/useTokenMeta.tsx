@@ -1,38 +1,31 @@
+import { getMint } from '@solana/spl-token';
+import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
-import { getDualTokenMeta } from '../utils/utils';
+import { Config } from '../config/config';
+import { useAnchorProvider } from './useAnchorProvider';
 
 export interface TokenMeta {
-  name: string;
-  symbol: string;
   decimals: number;
-  tokenAuthority: string;
-  supply: string;
-  type: string;
-  address: string;
-  icon: string;
+  supply: number;
 }
 
-export default function useTokenMeta() {
-  const [tokenMeta, setTokenMeta] = useState<TokenMeta | undefined>();
+export default function useTokenMeta(network: string) {
+  const [tokenMeta, setTokenMeta] = useState<TokenMeta>({ decimals: 6, supply: 0 });
+  const [, connection] = useAnchorProvider(network);
 
   useEffect(() => {
-    async function fetchData() {
-      const newTokenMeta = await getDualTokenMeta();
-      return newTokenMeta;
-    }
-
-    fetchData()
-      .then((data) => {
-        if (data) {
-          setTokenMeta(data as TokenMeta);
-        }
-      })
-      .catch(console.error);
-    return () => setTokenMeta(undefined);
-  }, []);
+    fetchData(connection).then(setTokenMeta).catch(console.error);
+  }, [connection]);
 
   return {
     tokenMeta,
-    setTokenMeta,
+  };
+}
+
+async function fetchData(connection: Connection) {
+  const data = await getMint(connection, Config.dualMintPk());
+  return {
+    decimals: data.decimals,
+    supply: Number(data.supply) / 10 ** data.decimals,
   };
 }
