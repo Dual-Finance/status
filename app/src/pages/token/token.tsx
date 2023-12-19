@@ -42,7 +42,7 @@ const columns: ColumnsType<StatsParams> = [
   },
 ];
 
-export const DualStats = (props: { network: string }) => {
+export const Token = (props: { network: string }) => {
   const { price } = usePrice();
   const { holders } = useHolders(props.network);
   const { tokenMeta } = useTokenMeta(props.network);
