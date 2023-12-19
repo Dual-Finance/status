@@ -145,6 +145,10 @@ export class Config {
     return new PublicKey('mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So');
   }
 
+  static jitosolMintPk(): PublicKey {
+    return new PublicKey('J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn');
+  }
+
   static slclMintPk(): PublicKey {
     return new PublicKey('SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV');
   }
@@ -204,6 +208,7 @@ export class Config {
       SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV: 'SLCL',
       // eslint-disable-next-line @typescript-eslint/naming-convention
       '4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC': 'T',
+      J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn: 'jitoSOL',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

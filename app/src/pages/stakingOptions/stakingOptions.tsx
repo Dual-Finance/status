@@ -112,10 +112,7 @@ const columns: ColumnsType<SoParams> = [
   },
   {
     title: 'Strike',
-    dataIndex: 'strike',
-    render: (strike) => {
-      return strike;
-    },
+    dataIndex: 'strikeQuoteAtomsPerBaseToken',
   },
   {
     title: 'Base',
