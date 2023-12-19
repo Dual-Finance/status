@@ -61,6 +61,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
     )
   );
 
+  // TODO: cache SO mint accounts since these never change
   const soMintAccounts = (await getMultipleParsedAccountsInChunks(provider.connection, soMints)).reduce<{
     [mint: string]: ParsedMintAccountData;
   }>(
