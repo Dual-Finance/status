@@ -5,6 +5,9 @@ __pycache__/
 /node_modules
 /dip_trades/node_modules
 /trading_report/node_modules
+node_modules
+dist
+*.env
 /.pnp
 .pnp.js
 
