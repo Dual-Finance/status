@@ -230,6 +230,7 @@ export const dualMarketProgramID = new PublicKey('DiPbvUUJkDhV9jFtQsDFnMEMRJyjW5
 export const stakingOptionsProgramId = new PublicKey('4yx1NJ4Vqf2zT1oVLk4SySBhhDJXmXFt88ncm4gPxtL7');
 export const gsoId = new PublicKey('DuALd6fooWzVDkaTsQzDAxPGYCnLrnWamdNNTNxicdX8');
 export const mmWalletPk = new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ');
+export const DAO_TREASURY_ADDRESS = new PublicKey('BRSda3A6o3czoPhsAEHjA5dZVrYL4uJ3JWXxwFSY9pJM');
 
 export const LIMIT_FOR_TOKEN = {
   BTC: 0.1,
@@ -244,6 +245,3 @@ export const VAULT_USDC_SEED = 'usdc-vault-account';
 export const PREMIUM_USDC_SEED = 'usdc-premium-account';
 export const DIP_STATE_SEED = 'dip-state';
 export const rfRate = 0.03; // Risk Free Rate of Return ~ T-Bill Rate
-
-// eslint-disable-next-line
-export const SOLSCAN_API_KEY = '';

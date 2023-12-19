@@ -5,8 +5,8 @@ import { prettyFormatPrice, prettyFormatNumber } from '../../utils/utils';
 import usePrice from '../../hooks/usePrice';
 import useHolders from '../../hooks/useHolders';
 import useTokenMeta from '../../hooks/useTokenMeta';
-import { DAO_TREASURY_ADDRESS } from '../../constants/addresses';
 import { useDualStakingOptions } from '../../hooks/useDualStakingOptions';
+import { DAO_TREASURY_ADDRESS } from '../../config/config';
 
 interface StatsParams {
   // Just needed for react
@@ -49,7 +49,7 @@ export const Token = (props: { network: string }) => {
   const stakingOptions = useDualStakingOptions(props.network);
 
   const amountInStakingOptions = stakingOptions ? stakingOptions.reduce((acc, curr) => acc + curr.remaining, 0) : 0;
-  const daoTreasuryHolder = holders.data.find((i) => i.address === DAO_TREASURY_ADDRESS);
+  const daoTreasuryHolder = holders.data.find((i) => i.address === DAO_TREASURY_ADDRESS.toString());
   const daoTreasury = daoTreasuryHolder ? daoTreasuryHolder.amount : 0;
   const nonCirculating = amountInStakingOptions + daoTreasury;
   const totalSupply = tokenMeta.supply;

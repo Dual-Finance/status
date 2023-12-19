@@ -12,13 +12,7 @@ import {
 import { AnchorProvider, Wallet, web3, utils } from '@project-serum/anchor';
 import { ASSOCIATED_TOKEN_PROGRAM_ID, getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { TokenInstructions } from '@project-serum/serum';
-import {
-  dualMarketProgramID,
-  OPTION_MINT_ADDRESS_SEED,
-  Config,
-  VAULT_MINT_ADDRESS_SEED,
-  SOLSCAN_API_KEY,
-} from '../config/config';
+import { dualMarketProgramID, OPTION_MINT_ADDRESS_SEED, Config, VAULT_MINT_ADDRESS_SEED } from '../config/config';
 
 export const prettyFormatNumberWithDecimals = (number: number, decimals: number): string => {
   const rounded: number = Math.floor(number * 10 ** decimals) / 10 ** decimals;
@@ -470,32 +464,6 @@ export async function getCoingeckoDualPrice(): Promise<number> {
   // @ts-ignore
   const price = values.usd;
   return price;
-}
-
-export async function getDualHolders(limit = 50, offset = 0): Promise<any> {
-  const url = `https://public-api.solscan.io/token/holders?tokenAddress=DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ&limit=${limit}&offset=${offset}`;
-  const response = await fetch(url, {
-    headers: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'Content-Type': 'application/json',
-      token: SOLSCAN_API_KEY,
-    },
-  });
-  const data = await response.json();
-  return data;
-}
-
-export async function getDualTokenMeta(): Promise<any> {
-  const url = `https://public-api.solscan.io/token/meta?tokenAddress=DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ`;
-  const response = await fetch(url, {
-    headers: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'Content-Type': 'application/json',
-      token: SOLSCAN_API_KEY,
-    },
-  });
-  const data = await response.json();
-  return data;
 }
 
 export function decimalsBaseSPL(token: string) {
