@@ -1,7 +1,8 @@
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { Connection, ParsedAccountData, PublicKey, TokenAmount } from '@solana/web3.js';
+import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import { Config } from '../config/config';
+import { ParsedTokenProgramAccount } from '../config/types';
 import { useAnchorProvider } from './useAnchorProvider';
 
 export interface Holder {
@@ -29,24 +30,10 @@ export default function useHolders(network: string) {
   };
 }
 
-interface ParsedTokenAccountData extends ParsedAccountData {
-  parsed: {
-    info: {
-      owner: string;
-      tokenAmount: TokenAmount;
-    };
-  };
-}
-
-type ParsedProgramAccount = {
-  pubkey: PublicKey;
-  account: { data: ParsedTokenAccountData };
-};
-
 async function fetchDualHolders(connection: Connection) {
   const data = (await connection.getParsedProgramAccounts(TOKEN_PROGRAM_ID, {
     filters: [{ dataSize: 165 }, { memcmp: { offset: 0, bytes: Config.dualMintPk().toString() } }],
-  })) as unknown as ParsedProgramAccount[];
+  })) as unknown as ParsedTokenProgramAccount[];
 
   return [...data]
     .sort(

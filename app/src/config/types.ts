@@ -1,5 +1,5 @@
 import { BN } from '@project-serum/anchor';
-import { PublicKey } from '@solana/web3.js';
+import { AccountInfo, ParsedAccountData, PublicKey, TokenAmount } from '@solana/web3.js';
 
 export interface SOState {
   soName: string;
@@ -16,4 +16,21 @@ export interface SOState {
   stateBump: number;
   vaultBump: number;
   strikes: BN[];
+}
+
+export interface ParsedTokenAccountData extends ParsedAccountData {
+  parsed: {
+    info: {
+      isNative: boolean;
+      owner: string;
+      mint: string;
+      state: string;
+      tokenAmount: TokenAmount;
+    };
+  };
+}
+
+export interface ParsedTokenProgramAccount {
+  pubkey: PublicKey;
+  account: AccountInfo<ParsedTokenAccountData>;
 }

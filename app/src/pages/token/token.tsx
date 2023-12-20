@@ -7,6 +7,7 @@ import useHolders from '../../hooks/useHolders';
 import useTokenMeta from '../../hooks/useTokenMeta';
 import { useDualStakingOptions } from '../../hooks/useDualStakingOptions';
 import { DAO_TREASURY_ADDRESS } from '../../config/config';
+import { useTreasuryInfo } from '../../hooks/useTreasuryInfo';
 
 interface StatsParams {
   // Just needed for react
@@ -46,9 +47,10 @@ export const Token = (props: { network: string }) => {
   const { price } = usePrice();
   const { holders } = useHolders(props.network);
   const { tokenMeta } = useTokenMeta(props.network);
+  const treasuryInfo = useTreasuryInfo(props.network);
   const stakingOptions = useDualStakingOptions(props.network);
 
-  const amountInStakingOptions = stakingOptions ? stakingOptions.reduce((acc, curr) => acc + curr.remaining, 0) : 0;
+  const amountInStakingOptions = stakingOptions ? stakingOptions.reduce((acc, curr) => acc + curr.balance, 0) : 0;
   const daoTreasuryHolder = holders.data.find((i) => i.address === DAO_TREASURY_ADDRESS.toString());
   const daoTreasury = daoTreasuryHolder ? daoTreasuryHolder.amount : 0;
   const nonCirculating = amountInStakingOptions + daoTreasury;
@@ -63,7 +65,7 @@ export const Token = (props: { network: string }) => {
   const daoVotingMembers = 40; // TODO Need to get from https://app.realms.today/dao/dual%20dao/members
   const realPrice = price || 0;
   const marketCap = realPrice * totalCirculating;
-  const daoValue = 658265; // Unclear where to get this data from
+  const daoValue = treasuryInfo?.daoValue || 0;
   const breakEven = daoValue / totalCirculating;
 
   const data: StatsParams[] = [
