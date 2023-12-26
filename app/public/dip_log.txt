@@ -1,6 +1,84 @@
-Trading at 2023-12-25T12:14:57.326Z
-[]
+Trading at 2023-12-26T12:13:13.623Z
 Options bought
+[
+  {
+    "signature": "5ajVHrMjuxvfQEqLBPUpe87gVMFy4Yfs1LBWWn5iZH4B8FKzr3Ki3wfARyyZB5GxZSm7DK4xn9oui7SZCzK1LrYk",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703528064
+  },
+  {
+    "signature": "64jUEN9zpogLhtPiHVubTDLbwRChvSwFxNGvHYWbX9U5FvnjAoUdXBjkaLJgnHbM6GSbXQfHYMCFyo6UFj6Jaz66",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1703528091
+  },
+  {
+    "signature": "3brMmhGJwsfBrg2Edn8m65GUdiTuyFnBTT93a5UZH7aAJEtkhMHhAjsyeG5KUvmtc8SWyVUSQBcDUUS4d5WJEX81",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703528734
+  },
+  {
+    "signature": "2RyMvybmbVwubcV34b5qVhABcgB3PBn5hcV1Tf5KzVWPayYZeNjcQdVjUMS4qmqsLyFCUZuN24ww6HVChfht4Yiw",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1703528956
+  },
+  {
+    "signature": "2LVeoHtx676cTSBhijkCQ71KCc31RzvowuhJx1bmsoeokQiwGwBXtHprBZCwyLBVVBhLHws1PWHvJDxtAn6aR1i7",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703529073
+  },
+  {
+    "signature": "5BHNJ33sA651tsDd2BvYBs3mQHDFuEWrsAKydVW1bcqi2hrrs4q4xRkXj1KevXv82qFtyFFzyNCuEPjj4BZXKtrH",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703529228
+  },
+  {
+    "signature": "uAh5mTEkLG4X8435FQ79RWodKcV3QKU8rZwLkoYrURQp1oiFgPeHG9R69W86EkNZvNAmgVd3CVtrWKk28XEK8sT",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703529231
+  },
+  {
+    "signature": "4G3krrxMaPB3DjSimjGuG3JrFVP6KKVaYLrQPU2SC5A84sU7rcTH1Tp3GDTcLPiQwJnH7N5Ej5RLDB87yNvhccWq",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703529254
+  },
+  {
+    "signature": "2FQcjarWwUmVMM8VjE6EFNdeiiYgPWn4uMYA8WkBiZDMpEZ5fo9QNVVkPSzei6hH5TuXyfPLneAmrkPex9C9pBeE",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1703529327
+  },
+  {
+    "signature": "23UnxnBBgrHb8xgz9pt7CrKoEu56wN9dKXmEutfBMbwovWLgA5Bpf7oeEJ6MdLYd1CjqUHNg2M9ZPL8cZFUVJzKc",
+    "mint": "683t1Doekv2UK2PFrhXzWwcfekJ5JQPPG4nGBmZefeYh",
+    "amount": 0,
+    "price": null,
+    "time": 1703542521
+  },
+  {
+    "signature": "4oYfHU4eW6dLxo1Tps8znTZA1Fj3dQr3eqsK9DKPv89UD7tgujC2VCZMafXKALZcB9ZQkuVVST2DX3vKCkKHPPPB",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1703542543
+  }
+]
 Options sold
 []
 
