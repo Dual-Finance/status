@@ -173,7 +173,7 @@ interface GetMultipleParsedAccountsOpts {
 export async function getMultipleParsedAccountsInChunks<T extends AccountInfo<any> = AccountInfo<ParsedAccountData>>(
   connection: Connection,
   publicKeys: PublicKey[],
-  opts: GetMultipleParsedAccountsOpts = { chunkSize: 5, delay: 300 }
+  opts: GetMultipleParsedAccountsOpts = { chunkSize: 5, delay: 0 }
 ) {
   if (publicKeys.length > opts.chunkSize) {
     const batches = chunks(
@@ -186,7 +186,9 @@ export async function getMultipleParsedAccountsInChunks<T extends AccountInfo<an
     for (const batch of batches) {
       const result = await connection.getMultipleParsedAccounts(batch.map((address) => new PublicKey(address)));
       results.push(result.value as T[]);
-      await delay(opts.delay);
+      if (opts.delay > 0) {
+        await delay(opts.delay);
+      }
     }
 
     const data = results.flat();
