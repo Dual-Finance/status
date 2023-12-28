@@ -1,8 +1,10 @@
 import commaNumber from 'comma-number';
 import React from 'react';
 import {
+  AccountInfo,
   Commitment,
   Connection,
+  ParsedAccountData,
   PublicKey,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
@@ -162,26 +164,42 @@ const getMultipleAccountsCore = async (
   throw new Error();
 };
 
-export async function getMultipleParsedAccountsInChunks(
+interface GetMultipleParsedAccountsOpts {
+  chunkSize: number;
+  // delay between requests
+  delay: number;
+}
+
+export async function getMultipleParsedAccountsInChunks<T extends AccountInfo<any> = AccountInfo<ParsedAccountData>>(
   connection: Connection,
   publicKeys: PublicKey[],
-  chunkSize = 5
+  opts: GetMultipleParsedAccountsOpts = { chunkSize: 5, delay: 300 }
 ) {
-  if (publicKeys.length > chunkSize) {
-    const batches: string[][] = chunks(
+  if (publicKeys.length > opts.chunkSize) {
+    const batches = chunks(
       publicKeys.map((pk) => pk.toString()),
-      chunkSize
+      opts.chunkSize
     );
-    const batchesPromises = batches.map((batch: string[]) => {
-      const result = connection.getMultipleParsedAccounts(batch.map((address) => new PublicKey(address)));
-      return result;
-    });
-    const results = (await Promise.all(batchesPromises)).flatMap((result) => result.value);
-    return results;
+
+    const results: T[][] = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const batch of batches) {
+      const result = await connection.getMultipleParsedAccounts(batch.map((address) => new PublicKey(address)));
+      results.push(result.value as T[]);
+      await delay(opts.delay);
+    }
+
+    const data = results.flat();
+    return data;
   }
 
   const result = await connection.getMultipleParsedAccounts(publicKeys);
-  return result.value;
+  return result.value as T[];
+}
+
+function delay(ms: number) {
+  // eslint-disable-next-line no-promise-executor-return
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /* eslint-disable no-bitwise */
