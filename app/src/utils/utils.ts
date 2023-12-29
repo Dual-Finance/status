@@ -542,6 +542,9 @@ export function decimalsBaseSPL(token: string) {
     case 'T': {
       return 8;
     }
+    case 'NOS': {
+      return 6;
+    }
     default: {
       return undefined;
     }

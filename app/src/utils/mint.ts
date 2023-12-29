@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { AccountInfo, Connection, ParsedAccountData, PublicKey } from '@solana/web3.js';
 import { getMint, Mint } from '@solana/spl-token';
 import { MintFields, MintJSON } from './types';
