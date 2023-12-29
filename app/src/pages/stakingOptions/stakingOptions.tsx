@@ -5,8 +5,8 @@ import { ColumnsType } from 'antd/lib/table';
 import { Config } from '../../config/config';
 import { dollarize, getTokenIconClass } from '../../utils/utils';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
-import styles from '../Pools.module.scss';
 import { SoParams, useStakingOptions } from '../../hooks/useStakingOptions';
+import styles from './StakingOptions.module.scss';
 
 export const StakingOptions = (props: { network: string }) => {
   const { network } = props;
@@ -71,8 +71,14 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Base',
       dataIndex: 'baseMint',
       render: (baseMint) => {
-        if (Config.pkToAsset(baseMint.toBase58()) !== undefined) {
-          return Config.pkToAsset(baseMint.toBase58());
+        const tokenSymbol = Config.pkToAsset(baseMint.toBase58());
+        if (tokenSymbol !== undefined) {
+          return (
+            <div className={styles.cell}>
+              <div className={c(styles.tokenIcon, getTokenIconClass(tokenSymbol))} />
+              {tokenSymbol}
+            </div>
+          );
         }
         return `${baseMint.toBase58().substring(0, 4)}...`;
       },
@@ -83,8 +89,14 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Quote',
       dataIndex: 'quoteMint',
       render: (quoteMint) => {
-        if (Config.pkToAsset(quoteMint.toBase58()) !== undefined) {
-          return Config.pkToAsset(quoteMint.toBase58());
+        const tokenSymbol = Config.pkToAsset(quoteMint.toBase58());
+        if (tokenSymbol !== undefined) {
+          return (
+            <div className={styles.cell}>
+              <div className={c(styles.tokenIcon, getTokenIconClass(tokenSymbol))} />
+              {tokenSymbol}
+            </div>
+          );
         }
         return `${quoteMint.toBase58().substring(0, 4)}...`;
       },
@@ -95,65 +107,37 @@ export const StakingOptions = (props: { network: string }) => {
       title: 'Remaining',
       dataIndex: 'remaining',
       sorter: (a, b) => a.remaining - b.remaining,
-      render: (remaining, data) => {
-        return (
-          <>
-            {remaining.toLocaleString()}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
-          </>
-        );
+      render: (remaining) => {
+        return remaining.toLocaleString();
       },
     },
     {
       title: 'Outstanding',
       dataIndex: 'outstanding',
       sorter: (a, b) => a.outstanding - b.outstanding,
-      render: (outstanding, data) => {
-        return (
-          <>
-            {outstanding.toLocaleString()}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.baseMint.toBase58())))} />
-          </>
-        );
+      render: (outstanding) => {
+        return outstanding.toLocaleString();
       },
     },
     {
       title: 'Max Settlement',
       dataIndex: 'maxSettlement',
       sorter: (a, b) => a.maxSettlement - b.maxSettlement,
-      render: (maxSettlement, data) => {
-        return (
-          <>
-            {dollarize(maxSettlement)}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
-          </>
-        );
+      render: (maxSettlement) => {
+        return dollarize(maxSettlement);
       },
     },
     {
       title: 'Max Fees',
       dataIndex: 'maxFees',
       sorter: (a, b) => a.maxFees - b.maxFees,
-      render: (maxFees, data) => {
-        return (
-          <>
-            {dollarize(maxFees)}
-            <div className={c(styles.tokenIcon, getTokenIconClass(Config.pkToAsset(data.quoteMint.toBase58())))} />
-          </>
-        );
+      render: (maxFees) => {
+        return dollarize(maxFees);
       },
     },
   ];
 
-  return (
-    <DualfiTable
-      className={styles.balanceTable}
-      columns={columns}
-      pagination={{ pageSize: 10 }}
-      dataSource={accounts}
-      scroll={{ x: true }}
-    />
-  );
+  return <DualfiTable columns={columns} pagination={{ pageSize: 10 }} dataSource={accounts} scroll={{ x: true }} />;
 };
 
 const soFilters = [
