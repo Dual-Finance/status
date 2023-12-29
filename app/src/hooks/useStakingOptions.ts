@@ -1,22 +1,15 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-continue */
 import { useEffect, useState } from 'react';
-import { AccountInfo, ParsedAccountData, PublicKey } from '@solana/web3.js';
-import { Mint } from '@solana/spl-token';
+import { PublicKey } from '@solana/web3.js';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import {
-  decimalsBaseSPL,
-  fetchMultiBirdeyePrice,
-  getFeeByPair,
-  getMultipleParsedAccountsInChunks,
-  getSoStrike,
-  isUpsidePool,
-} from '../utils/utils';
+import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
+import { MintAccount, batchFetchMintWithCache } from '../utils/mint';
 
 export function useStakingOptions(network: string) {
   const [provider] = useAnchorProvider(network);
@@ -28,12 +21,6 @@ export function useStakingOptions(network: string) {
 
   return accounts;
 }
-
-type ParsedMintAccountData = Omit<ParsedAccountData, 'parsed'> & {
-  parsed: AccountInfo<Mint> & {
-    info: AccountInfo<Mint>['data'];
-  };
-};
 
 async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
   const program = new Program(stakingOptionsIdl as Idl, stakingOptionsProgramId, provider);
@@ -56,18 +43,16 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
 
   const soMints = await Promise.all(
     states.flatMap((state) =>
-      // @ts-ignore
-      state.strikes.map((strike) => stakingOptionsHelper.soMint(strike, state.soName, state.baseMint))
+      state.strikes.map((strike) => stakingOptionsHelper.soMint(strike.toNumber(), state.soName, state.baseMint))
     )
   );
 
-  // TODO: cache SO mint accounts since these never change
-  const soMintAccounts = (await getMultipleParsedAccountsInChunks(provider.connection, soMints)).reduce<{
-    [mint: string]: ParsedMintAccountData;
+  const soMintAccounts = (await batchFetchMintWithCache(provider.connection, soMints)).reduce<{
+    [mint: string]: MintAccount;
   }>(
     (acc, soMintAccount, i) => ({
       ...acc,
-      [soMints[i].toString()]: soMintAccount?.data as ParsedMintAccountData,
+      [soMints[i].toString()]: soMintAccount,
     }),
     {}
   );
@@ -77,10 +62,9 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
     const { strikes, soName, baseMint, optionExpiration, quoteMint, optionsAvailable, authority, lotSize } = state;
 
     for (const strike of strikes) {
-      // @ts-ignore
-      const soMint = await stakingOptionsHelper.soMint(strike, soName, new PublicKey(baseMint));
+      const soMint = await stakingOptionsHelper.soMint(strike.toNumber(), soName, new PublicKey(baseMint));
       const mint = soMintAccounts[soMint.toString()];
-      const outstandingLots = Number(mint.parsed.info.supply);
+      const outstandingLots = Number(mint.supply);
       const baseDecimals = decimalsBaseSPL(Config.pkToAsset(baseMint.toBase58()));
       const quoteDecimals = decimalsBaseSPL(Config.pkToAsset(quoteMint.toBase58()));
       const outstanding = (outstandingLots * lotSize.toNumber()) / 10 ** Number(baseDecimals);
