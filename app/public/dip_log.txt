@@ -1,8 +1,1 @@
-Trading at 2023-12-29T12:08:01.864Z
-Options bought
-[]
-Options sold
-[]
-
-
-Net Premium 0 Premium Earned 0 Premium Paid 0
+Trading at 2023-12-30T12:08:47.228Z
