@@ -1,1 +1,16 @@
-Trading at 2023-12-30T12:08:47.228Z
+Trading at 2023-12-31T12:08:00.059Z
+Options bought
+[
+  {
+    "signature": "2wURWVN3DpPRyDBrpujhs3vJd3VApen6yAVzoszTkhsH8dgME3rtciRwFHnUQWCs8z9g33ZcsZfKV1LpXtXxgaL7",
+    "mint": "4bP96LVQhtvSNkY9hT1AXhJyJm3ZaUKjBbwkfzGvNUqV",
+    "amount": 0,
+    "price": null,
+    "time": 1703938652
+  }
+]
+Options sold
+
+
+Net Premium 0 Premium Earned 0 Premium Paid 0
+[]
