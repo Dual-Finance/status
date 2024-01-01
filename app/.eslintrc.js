@@ -15,7 +15,7 @@ const namingConventionConfig = [
   },
   {
     selector: 'objectLiteralProperty',
-    format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+    format: null,
   },
   {
     selector: 'variable',

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { PublicKey } from '@solana/web3.js';
 
 export class Config {
