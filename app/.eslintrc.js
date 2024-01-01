@@ -17,6 +17,16 @@ const namingConventionConfig = [
     selector: 'objectLiteralProperty',
     format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
   },
+  // custom rule for properties starting with a number
+  {
+    selector: 'objectLiteralProperty',
+    format: null, // Disable format checking
+    filter: {
+      // Regular expression to match property names starting with a number
+      regex: '^[0-9].*',
+      match: true,
+    },
+  },
   {
     selector: 'variable',
     format: ['PascalCase', 'camelCase', 'UPPER_CASE'],

@@ -161,6 +161,10 @@ export class Config {
     return new PublicKey('nosXBVoaCTtYdLvKY6Csb4AC8JCdQKKAaWYtx2ZMoo7');
   }
 
+  static butterMintPk(): PublicKey {
+    return new PublicKey('5cQe5Fo5LnRM5wpaHV7rDyvBHg1cRSyCwDdLRnuQWniu');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -185,14 +189,10 @@ export class Config {
   static pkToAsset(pk: string): string {
     const PK_TO_ASSET = {
       JDXktC6gbDXq4zuW3BT6ToSE7timShHQBL449ULDdoMv: 'BTC',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E': 'BTC',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh': 'wBTCpo',
       Hccuen6RkUgEvyL9oSXW8ai9QiQaAiL8ESaqjp9oymBf: 'ETH',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk': 'ETH',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs': 'ETH',
       So11111111111111111111111111111111111111112: 'SOL',
       MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac: 'MNGO',
@@ -202,18 +202,16 @@ export class Config {
       HJiQv33nKujRmZQ3sJBSosXgCEmiHs3mG1yd9VcLawPM: 'USDC',
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
       DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ: 'DUAL',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3': 'CHAI',
       ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo: 'wstETHpo',
       AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR: 'GUAC',
       mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So: 'mSOL',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '6DNSN2BJsaPFdFFc1zP37kkeNe4Usc1Sqkzr9C9vPWcU': 'tBTC',
       SLCLww7nc1PD2gQPQdGayHviVVcpMthnqUz2iWKhNQV: 'SLCL',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       '4Njvi3928U3figEF5tf8xvjLC5GqUN33oe4XTJNe7xXC': 'T',
       J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn: 'jitoSOL',
       nosXBVoaCTtYdLvKY6Csb4AC8JCdQKKAaWYtx2ZMoo7: 'NOS',
+      '5cQe5Fo5LnRM5wpaHV7rDyvBHg1cRSyCwDdLRnuQWniu': 'BUTTER',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

@@ -545,6 +545,9 @@ export function decimalsBaseSPL(token: string) {
     case 'NOS': {
       return 6;
     }
+    case 'BUTTER': {
+      return 9;
+    }
     default: {
       return undefined;
     }
