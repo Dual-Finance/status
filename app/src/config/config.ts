@@ -165,6 +165,10 @@ export class Config {
     return new PublicKey('5cQe5Fo5LnRM5wpaHV7rDyvBHg1cRSyCwDdLRnuQWniu');
   }
 
+  static geckoMintPk(): PublicKey {
+    return new PublicKey('6CNHDCzD5RkvBWxxyokQQNQPjFWgoHF94D7BmC73X6ZK');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -212,6 +216,7 @@ export class Config {
       J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn: 'jitoSOL',
       nosXBVoaCTtYdLvKY6Csb4AC8JCdQKKAaWYtx2ZMoo7: 'NOS',
       '5cQe5Fo5LnRM5wpaHV7rDyvBHg1cRSyCwDdLRnuQWniu': 'BUTTER',
+      '6CNHDCzD5RkvBWxxyokQQNQPjFWgoHF94D7BmC73X6ZK': 'GECKO',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

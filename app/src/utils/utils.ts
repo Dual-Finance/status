@@ -548,6 +548,9 @@ export function decimalsBaseSPL(token: string) {
     case 'BUTTER': {
       return 9;
     }
+    case 'GECKO': {
+      return 6;
+    }
     default: {
       return undefined;
     }
