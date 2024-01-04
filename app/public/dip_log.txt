@@ -1,1 +1,23 @@
-Trading at 2024-01-03T12:09:29.608Z
+Trading at 2024-01-04T12:08:59.991Z
+Options bought
+[
+  {
+    "signature": "4pEyegR68nK3EUdQQFDqMjuzjDVaGLBGNjVnRohC4Xj5RDWuT3yW4Q3ZTiZQvUWW36FxuBojeJdwou27ZumZtV88",
+    "mint": "4bP96LVQhtvSNkY9hT1AXhJyJm3ZaUKjBbwkfzGvNUqV",
+    "amount": 0,
+    "price": null,
+    "time": 1704294321
+  },
+  {
+    "signature": "4jtgpR4BJpRWCDPFxZ5VHvgPFAU4nKDjXkxAkLmVuuXYDjXFXhSRJVxDZTULV981ygSXN9jABrPJRR9Cce2KirFD",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1704294371
+  }
+]
+Options sold
+[]
+
+
+Net Premium 0 Premium Earned 0 Premium Paid 0
