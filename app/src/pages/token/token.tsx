@@ -61,8 +61,6 @@ export const Token = (props: { network: string }) => {
     return acc;
   }, new Set<string>());
   const allHolders = holders.total;
-  const daoVotingDeposits = 0; // Unclear where to get this data from
-  const daoVotingMembers = 40; // TODO Need to get from https://app.realms.today/dao/dual%20dao/members
   const realPrice = price || 0;
   const marketCap = realPrice * totalCirculating;
   const daoValue = treasuryInfo?.daoValue || 0;
@@ -76,8 +74,7 @@ export const Token = (props: { network: string }) => {
     { key: 'total_circulating', name: 'Total Circulating', amount: totalCirculating },
     { key: 'unique_holders', name: 'Unique Holders', amount: uniqueHolders.size },
     { key: 'all_holders', name: 'All Holders', amount: allHolders },
-    { key: 'dao_voting_deposits', name: 'DAO Voting Deposits', amount: daoVotingDeposits },
-    { key: 'dao_voting_members', name: 'DAO Voting Members', amount: daoVotingMembers },
+    // TODO: add dao voting deposits and members
     { key: 'price', name: 'Price', amount: realPrice, asset: 'usd', rounding: 6 },
     { key: 'market_cap', name: 'Market Cap', amount: marketCap, asset: 'usd' },
     { key: 'dao_value', name: 'DAO Value', amount: daoValue, asset: 'usd' },
