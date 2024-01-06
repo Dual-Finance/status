@@ -1,1 +1,18 @@
-Trading at 2024-01-05T12:09:23.890Z
+Trading at 2024-01-06T12:08:11.596Z
+Options bought
+[
+  {
+    "signature": "5SMkML4bQuuahupvAYRoA5dFYijVVdzdgH2KAgMCb4E6R6zUETgXRByvzFzzQwujzFrDvDzanSqyKHpdZTKatbLi",
+    "mint": "766fSREEbRcx6yJwPt38AoP3kdM4YFfjscc1YPqVfyon",
+    "amount": 0,
+    "price": null,
+    "time": 1704460783
+  },
+  {
+    "signature": "2oC8tSUNrWMVLDV6vq6Wq1nmGHqVgKbySP6kx7ECzQ7YezG1WaRxN6jbQbuKsq2dnNEJckZWK12rpJxr9z2LstE6",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1704460834
+  }
+]
