@@ -1,16 +1,8 @@
-Trading at 2024-01-10T12:09:21.707Z
+Trading at 2024-01-11T12:09:58.413Z
 Options bought
-[
-  {
-    "signature": "GxwB8HbxAn3DpCMdPHmzJrf4vmXC82XRuTiEu5gbQKXX2mkwHYS2jUxtRwaUJQWLgi4eaKN1oH7TFfU8ZxyxRxs",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1704858941
-  }
-]
 []
 Options sold
+[]
 
 
 Net Premium 0 Premium Earned 0 Premium Paid 0
