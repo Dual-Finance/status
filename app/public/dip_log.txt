@@ -1,6 +1,35 @@
-Trading at 2024-01-11T12:09:58.413Z
+Trading at 2024-01-12T12:09:45.558Z
 Options bought
-[]
+[
+  {
+    "signature": "5mXkNXSzWE5f9nb2JVuMcLLzZpj1UxKZwbBoLRMb76cjnj2ndueRyQxmZudA4spk7V9eU8aPLxPW2Vef63uoHfyS",
+    "mint": "766fSREEbRcx6yJwPt38AoP3kdM4YFfjscc1YPqVfyon",
+    "amount": 0,
+    "price": null,
+    "time": 1704991752
+  },
+  {
+    "signature": "629BoZQeWfna3chZqTrKzUpAi7baguj3ATizAkrkakZGibqg6KmYWkcLAzdVvRRWNJ9MUueAkjkRkCuKE4kyKWC4",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1704991774
+  },
+  {
+    "signature": "3gkAGywR1ZHSAToQoALDoRhKSomtpV8n8ZtwYTFX25p4wPCGUkgKPh74LTNqCqpBjkucvQqnxAu6mzS4FZa6G42Z",
+    "mint": "766fSREEbRcx6yJwPt38AoP3kdM4YFfjscc1YPqVfyon",
+    "amount": 0,
+    "price": null,
+    "time": 1704999157
+  },
+  {
+    "signature": "kKXM3QZxAQ9UVPmEBhRLJexwtnVPrByW58D9MuvMMGS7S5JY2XHcGusqmSsu2xLqbkXRRKWqUcPPzpwLNtmv1Qp",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1704999180
+  }
+]
 Options sold
 []
 
