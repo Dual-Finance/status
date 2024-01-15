@@ -1,7 +1,7 @@
 import { ColumnsType } from 'antd/lib/table';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from '../Pools.module.scss';
-import { prettyFormatPrice, prettyFormatNumber } from '../../utils/utils';
+import { prettyFormatNumberWithDecimals, dollarize } from '../../utils/utils';
 import usePrice from '../../hooks/usePrice';
 import useHolders from '../../hooks/useHolders';
 import useTokenMeta from '../../hooks/useTokenMeta';
@@ -36,7 +36,7 @@ const columns: ColumnsType<StatsParams> = [
     render: (_, data) => {
       return (
         <div className={styles.premiumCell}>
-          {data.asset ? prettyFormatPrice(data.amount, data.rounding) : prettyFormatNumber(data.amount)}
+          {data.asset ? dollarize(data.amount) : prettyFormatNumberWithDecimals(data.amount, data.rounding || 0)}
         </div>
       );
     },
@@ -63,22 +63,32 @@ export const Token = (props: { network: string }) => {
   const allHolders = holders.total;
   const realPrice = price || 0;
   const marketCap = realPrice * totalCirculating;
-  const daoValue = treasuryInfo?.daoValue || 0;
-  const breakEven = daoValue / totalCirculating;
+  const treasuryValue = treasuryInfo?.daoValue || 0;
+  const breakEven = treasuryValue / totalCirculating;
+  const fullyDilutedValue = realPrice * totalSupply;
+  const treasuryValueExDual = treasuryValue - daoTreasury * realPrice;
 
   const data: StatsParams[] = [
-    { key: 'staking_options', name: 'Staking Options', amount: amountInStakingOptions },
-    { key: 'dao_treasury', name: 'DAO Treasury', amount: daoTreasury },
-    { key: 'non_circulating', name: 'Non-Circulating', amount: nonCirculating },
-    { key: 'total_supply', name: 'Total Supply', amount: totalSupply },
-    { key: 'total_circulating', name: 'Total Circulating', amount: totalCirculating },
+    { key: 'staking_options', name: 'Staking Options', amount: amountInStakingOptions, rounding: 0 },
+    { key: 'dao_treasury', name: 'DAO Treasury', amount: daoTreasury, rounding: 0 },
+    { key: 'non_circulating', name: 'Non-Circulating', amount: nonCirculating, rounding: 0 },
+    { key: 'total_supply', name: 'Total Supply', amount: totalSupply, rounding: 0 },
+    { key: 'total_circulating', name: 'Total Circulating', amount: totalCirculating, rounding: 0 },
     { key: 'unique_holders', name: 'Unique Holders', amount: uniqueHolders.size },
     { key: 'all_holders', name: 'All Holders', amount: allHolders },
     // TODO: add dao voting deposits and members
     { key: 'price', name: 'Price', amount: realPrice, asset: 'usd', rounding: 6 },
     { key: 'market_cap', name: 'Market Cap', amount: marketCap, asset: 'usd' },
-    { key: 'dao_value', name: 'DAO Value', amount: daoValue, asset: 'usd' },
-    { key: 'break_even', name: 'Break Even', amount: breakEven, asset: 'usd', rounding: 6 },
+    { key: 'dao_value', name: 'Treasury Value', amount: treasuryValue, asset: 'usd' },
+    { key: 'break_even', name: 'Break Even', amount: breakEven, asset: 'usd' },
+    { key: 'fully_diluted', name: 'Fully Diluted Value', amount: fullyDilutedValue, asset: 'usd', rounding: 2 },
+    {
+      key: 'treasury_value_ex_dual',
+      name: 'Treasury Value Ex-Dual',
+      amount: treasuryValueExDual,
+      asset: 'usd',
+      rounding: 6,
+    },
   ];
 
   return <DualfiTable columns={columns} pagination={{ pageSize: 50 }} dataSource={data} scroll={{ x: true }} />;

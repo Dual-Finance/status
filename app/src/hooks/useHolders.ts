@@ -42,17 +42,21 @@ async function fetchDualHolders(connection: Connection) {
     )
     .reduce<HolderData>(
       (acc, programAccount, i) => {
+        const balance = programAccount.account.data.parsed.info.tokenAmount.uiAmount;
+        const hasBalance = balance !== null && balance > 0;
         return {
-          data: [
-            ...acc.data,
-            {
-              address: programAccount.pubkey.toString(),
-              amount: programAccount.account.data.parsed.info.tokenAmount.uiAmount || 0,
-              owner: programAccount.account.data.parsed.info.owner,
-              rank: i,
-            },
-          ],
-          total: acc.total + 1,
+          data: hasBalance
+            ? [
+                ...acc.data,
+                {
+                  address: programAccount.pubkey.toString(),
+                  amount: balance,
+                  owner: programAccount.account.data.parsed.info.owner,
+                  rank: i,
+                },
+              ]
+            : acc.data,
+          total: hasBalance ? acc.total + 1 : acc.total,
         };
       },
       { data: [], total: 0 }
