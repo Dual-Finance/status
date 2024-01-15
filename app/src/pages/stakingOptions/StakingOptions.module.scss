@@ -1,0 +1,19 @@
+@import '../../styles/_mixins.scss';
+
+.cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tokenIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+
+  @include tablet {
+    width: 20px;
+    height: 20px;
+  }
+}

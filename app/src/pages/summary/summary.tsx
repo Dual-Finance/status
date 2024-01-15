@@ -100,6 +100,10 @@ const projects: Record<string, ProjectLink> = {
     name: 'Mango Markets',
     link: 'https://mango.markets/',
   },
+  NOS: {
+    name: 'Nosana',
+    link: 'https://nosana.io/',
+  },
   SLCL: {
     name: 'Solcial',
     link: 'https://solcial.io/',
