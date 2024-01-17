@@ -6,7 +6,7 @@ import usePrice from '../../hooks/usePrice';
 import useHolders from '../../hooks/useHolders';
 import useTokenMeta from '../../hooks/useTokenMeta';
 import { useDualStakingOptions } from '../../hooks/useDualStakingOptions';
-import { DAO_TREASURY_ADDRESS } from '../../config/config';
+import { Config } from '../../config/config';
 import { useTreasuryInfo } from '../../hooks/useTreasuryInfo';
 
 interface StatsParams {
@@ -51,8 +51,7 @@ export const Token = (props: { network: string }) => {
   const stakingOptions = useDualStakingOptions(props.network);
 
   const amountInStakingOptions = stakingOptions ? stakingOptions.reduce((acc, curr) => acc + curr.balance, 0) : 0;
-  const daoTreasuryHolder = holders.data.find((i) => i.address === DAO_TREASURY_ADDRESS.toString());
-  const daoTreasury = daoTreasuryHolder ? daoTreasuryHolder.amount : 0;
+  const daoTreasury = treasuryInfo ? treasuryInfo.balances[Config.dualMintPk().toString()] : 0;
   const nonCirculating = amountInStakingOptions + daoTreasury;
   const totalSupply = tokenMeta.supply;
   const totalCirculating = totalSupply - nonCirculating;
