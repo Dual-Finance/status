@@ -558,7 +558,9 @@ export function decimalsBaseSPL(token: string) {
 }
 
 export function dollarize(amount: number, locale = 'en-US'): string {
-  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(amount);
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', maximumSignificantDigits: 4 }).format(
+    amount
+  );
 }
 
 export function isUpsidePool(quoteMint: PublicKey) {

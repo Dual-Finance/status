@@ -79,9 +79,9 @@ export const Token = (props: { network: string }) => {
     // TODO: add dao voting deposits and members
     { key: 'price', name: 'Price', amount: realPrice, asset: 'usd', rounding: 6 },
     { key: 'market_cap', name: 'Market Cap', amount: marketCap, asset: 'usd' },
+    { key: 'fully_diluted', name: 'Fully Diluted Value', amount: fullyDilutedValue, asset: 'usd', rounding: 2 },
     { key: 'dao_value', name: 'Treasury Value', amount: treasuryValue, asset: 'usd' },
     { key: 'break_even', name: 'Break Even', amount: breakEven, asset: 'usd' },
-    { key: 'fully_diluted', name: 'Fully Diluted Value', amount: fullyDilutedValue, asset: 'usd', rounding: 2 },
     {
       key: 'treasury_value_ex_dual',
       name: 'Treasury Value Ex-Dual',
