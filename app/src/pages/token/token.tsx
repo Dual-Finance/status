@@ -1,6 +1,6 @@
 import { ColumnsType } from 'antd/lib/table';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
-import styles from '../Pools.module.scss';
+import styles from './Token.module.scss';
 import { prettyFormatNumberWithDecimals, dollarize } from '../../utils/utils';
 import usePrice from '../../hooks/usePrice';
 import useHolders from '../../hooks/useHolders';
@@ -8,6 +8,7 @@ import useTokenMeta from '../../hooks/useTokenMeta';
 import { useDualStakingOptions } from '../../hooks/useDualStakingOptions';
 import { Config } from '../../config/config';
 import { useTreasuryInfo } from '../../hooks/useTreasuryInfo';
+import { TokenIcon } from '../../components/TokenIcon/TokenIcon';
 
 interface StatsParams {
   // Just needed for react
@@ -27,7 +28,7 @@ const columns: ColumnsType<StatsParams> = [
     title: 'Name',
     dataIndex: 'name',
     render: (_, data) => {
-      return <div className={styles.premiumCell}>{data.name.toLocaleString()}</div>;
+      return <div className={styles.cell}>{data.name.toLocaleString()}</div>;
     },
   },
   {
@@ -35,8 +36,11 @@ const columns: ColumnsType<StatsParams> = [
     dataIndex: 'amount',
     render: (_, data) => {
       return (
-        <div className={styles.premiumCell}>
-          {data.asset ? dollarize(data.amount) : prettyFormatNumberWithDecimals(data.amount, data.rounding || 0)}
+        <div className={styles.cell}>
+          {data.asset === 'dual' && <TokenIcon symbol="DUAL" />}
+          {data.asset === 'usd'
+            ? dollarize(data.amount)
+            : prettyFormatNumberWithDecimals(data.amount, data.rounding || 0)}
         </div>
       );
     },
@@ -68,11 +72,11 @@ export const Token = (props: { network: string }) => {
   const treasuryValueExDual = treasuryValue - daoTreasury * realPrice;
 
   const data: StatsParams[] = [
-    { key: 'staking_options', name: 'Staking Options', amount: amountInStakingOptions, rounding: 0 },
-    { key: 'dao_treasury', name: 'DAO Treasury', amount: daoTreasury, rounding: 0 },
-    { key: 'non_circulating', name: 'Non-Circulating', amount: nonCirculating, rounding: 0 },
-    { key: 'total_supply', name: 'Total Supply', amount: totalSupply, rounding: 0 },
-    { key: 'total_circulating', name: 'Total Circulating', amount: totalCirculating, rounding: 0 },
+    { key: 'staking_options', name: 'Staking Options', asset: 'dual', amount: amountInStakingOptions, rounding: 0 },
+    { key: 'dao_treasury', name: 'DAO Treasury', asset: 'dual', amount: daoTreasury, rounding: 0 },
+    { key: 'non_circulating', name: 'Non-Circulating', asset: 'dual', amount: nonCirculating, rounding: 0 },
+    { key: 'total_supply', name: 'Total Supply', asset: 'dual', amount: totalSupply, rounding: 0 },
+    { key: 'total_circulating', name: 'Total Circulating', asset: 'dual', amount: totalCirculating, rounding: 0 },
     { key: 'unique_holders', name: 'Unique Holders', amount: uniqueHolders.size },
     { key: 'all_holders', name: 'All Holders', amount: allHolders },
     // TODO: add dao voting deposits and members

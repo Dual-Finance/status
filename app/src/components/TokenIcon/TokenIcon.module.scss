@@ -1,0 +1,13 @@
+@import '../../styles/mixins';
+
+.tokenIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+
+  @include tablet {
+    width: 20px;
+    height: 20px;
+  }
+}
