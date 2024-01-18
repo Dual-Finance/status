@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getCoingeckoDualPrice } from '../utils/utils';
+import { Config } from '../config/config';
+import { fetchSingleBirdeyePrice, getCoingeckoDualPrice } from '../utils/utils';
 
-export default function usePrice2() {
+export default function usePrice() {
   const [price, setPrice] = useState<number>();
 
   useEffect(() => {
@@ -21,6 +22,39 @@ export default function usePrice2() {
         .then((data) => {
           if (data) {
             setPrice(data);
+          }
+        })
+        .catch(console.error);
+    }, 30 * 1_000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return {
+    setPrice,
+    price,
+  };
+}
+
+export function useBirdeyePrice() {
+  const [price, setPrice] = useState<number | null>();
+
+  useEffect(() => {
+    async function fetchData() {
+      const birdeyePrice = await fetchSingleBirdeyePrice(Config.dualMintPk().toString());
+      return birdeyePrice;
+    }
+    fetchData()
+      .then((data) => {
+        if (data) {
+          setPrice(data.value);
+        }
+      })
+      .catch(console.error);
+    const interval = setInterval(() => {
+      fetchData()
+        .then((data) => {
+          if (data) {
+            setPrice(data.value);
           }
         })
         .catch(console.error);

@@ -2,7 +2,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { DualfiTable } from '../../components/UI/DualfiTable/DualfiTable';
 import styles from './Token.module.scss';
 import { prettyFormatNumberWithDecimals, dollarize } from '../../utils/utils';
-import usePrice from '../../hooks/usePrice';
+import { useBirdeyePrice as usePrice } from '../../hooks/usePrice';
 import useHolders from '../../hooks/useHolders';
 import useTokenMeta from '../../hooks/useTokenMeta';
 import { useDualStakingOptions } from '../../hooks/useDualStakingOptions';
