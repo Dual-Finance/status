@@ -8,6 +8,7 @@ import { PageCutoff } from './PageCutoff/PageCutoff';
 import { Dips } from './dips/dips';
 import { Treasury } from './treasury/treasury';
 import { Liquidity } from './liquidity/liquidity';
+import { Token } from './token/token';
 import { Tests } from './tests/tests';
 import { Services } from './services/services';
 import { Config } from '../config/config';
@@ -18,6 +19,7 @@ import { Summary } from './summary/summary';
 
 const tabs = [
   { label: 'Summary', value: 'Summary', disabled: false },
+  { label: 'Token', value: 'Token', disabled: false },
   { label: 'DIPs', value: 'DIPs', disabled: false },
   { label: 'SO', value: 'SO', disabled: false },
   { label: 'GSO', value: 'GSO', disabled: false },
@@ -49,6 +51,7 @@ export const Home = () => {
           rightSide={<SectionHeader value={selectedNetwork} options={networkTabs} onChange={setSelectedNetwork} />}
         >
           <>
+            {selectedProduct === 'Token' && <Token network={network} />}
             {selectedProduct === 'DIPs' && <Dips network={network} />}
             {selectedProduct === 'SO' && <StakingOptions network={network} />}
             {selectedProduct === 'GSO' && <Gso network={network} />}

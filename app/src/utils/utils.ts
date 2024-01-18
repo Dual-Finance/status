@@ -25,8 +25,8 @@ export const prettyFormatNumber = (number: number): string => {
   return commaNumber(number);
 };
 
-export const prettyFormatPrice = (price: number): string => {
-  return `$${price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+export const prettyFormatPrice = (price: number, decimals = 2): string => {
+  return `$${price.toFixed(decimals).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
 };
 
 export const formatDate = (date: number | Date): string => {
@@ -558,7 +558,9 @@ export function decimalsBaseSPL(token: string) {
 }
 
 export function dollarize(amount: number, locale = 'en-US'): string {
-  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(amount);
+  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', maximumSignificantDigits: 4 }).format(
+    amount
+  );
 }
 
 export function isUpsidePool(quoteMint: PublicKey) {

@@ -238,6 +238,8 @@ export const dualMarketProgramID = new PublicKey('DiPbvUUJkDhV9jFtQsDFnMEMRJyjW5
 export const stakingOptionsProgramId = new PublicKey('4yx1NJ4Vqf2zT1oVLk4SySBhhDJXmXFt88ncm4gPxtL7');
 export const gsoId = new PublicKey('DuALd6fooWzVDkaTsQzDAxPGYCnLrnWamdNNTNxicdX8');
 export const mmWalletPk = new PublicKey('9SgZKdeTMaNuEZnhccK2crHxi1grXRmZKQCvNSKgVrCQ');
+export const DAO_TREASURY_ADDRESS = new PublicKey('BRSda3A6o3czoPhsAEHjA5dZVrYL4uJ3JWXxwFSY9pJM');
+export const REALMS_ADDRESS = new PublicKey('7Z36Efbt7a4nLiV7s5bY7J2e4TJ6V9JEKGccsy2od2bE');
 
 export const LIMIT_FOR_TOKEN = {
   BTC: 0.1,
