@@ -14,7 +14,7 @@ import { Services } from './services/services';
 import { Config } from '../config/config';
 import { StakingOptions } from './stakingOptions/stakingOptions';
 import { Gso } from './gso/gso';
-import usePrice from '../hooks/usePrice';
+import { useBirdeyePrice as usePrice } from '../hooks/usePrice';
 import { Summary } from './summary/summary';
 
 const tabs = [
