@@ -573,11 +573,31 @@ export function isUpsidePool(quoteMint: PublicKey) {
 }
 
 interface BirdeyePrice {
-  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
-  [mint: string]: { value: number | null } | undefined;
+  value: number | null;
 }
 
-export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<BirdeyePrice> {
+export async function fetchSingleBirdeyePrice(address: string): Promise<BirdeyePrice> {
+  const options = {
+    method: 'GET',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '83101a3f401340c1a044db282ec75bca' },
+  };
+
+  try {
+    const data = await fetch(`https://public-api.birdeye.so/public/price?address=${address}`, options);
+    const priceData = await data.json();
+    return priceData.data;
+  } catch (e) {
+    return { value: null };
+  }
+}
+
+interface MultiBirdeyePrice {
+  // Birdeye can return a value for recognized address, null if not enough liquidity or undefined if not recognized
+  [mint: string]: BirdeyePrice | undefined;
+}
+
+export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<MultiBirdeyePrice> {
   const options = {
     method: 'GET',
     // eslint-disable-next-line @typescript-eslint/naming-convention
