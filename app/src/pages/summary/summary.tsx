@@ -132,4 +132,12 @@ const projects: Record<string, ProjectLink> = {
     name: 'Jito Staked SOL',
     link: 'https://www.jito.network/',
   },
+  MOUTAI: {
+    name: 'Moutai Coin',
+    link: 'https://www.moutaicoin.co/',
+  },
+  GOFX: {
+    name: 'GooseFX',
+    link: 'https://www.goosefx.io/',
+  },
 };
