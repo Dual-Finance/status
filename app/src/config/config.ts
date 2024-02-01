@@ -169,6 +169,14 @@ export class Config {
     return new PublicKey('6CNHDCzD5RkvBWxxyokQQNQPjFWgoHF94D7BmC73X6ZK');
   }
 
+  static moutaiMintPk(): PublicKey {
+    return new PublicKey('45EgCwcPXYagBC7KqBin4nCFgEZWN7f3Y6nACwxqMCWX');
+  }
+
+  static gofxMintPk(): PublicKey {
+    return new PublicKey('GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -217,6 +225,8 @@ export class Config {
       nosXBVoaCTtYdLvKY6Csb4AC8JCdQKKAaWYtx2ZMoo7: 'NOS',
       '5cQe5Fo5LnRM5wpaHV7rDyvBHg1cRSyCwDdLRnuQWniu': 'BUTTER',
       '6CNHDCzD5RkvBWxxyokQQNQPjFWgoHF94D7BmC73X6ZK': 'GECKO',
+      '45EgCwcPXYagBC7KqBin4nCFgEZWN7f3Y6nACwxqMCWX': 'MOUTAI',
+      GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD: 'GOFX',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];
