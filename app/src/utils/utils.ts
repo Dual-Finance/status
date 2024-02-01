@@ -551,6 +551,12 @@ export function decimalsBaseSPL(token: string) {
     case 'GECKO': {
       return 6;
     }
+    case 'MOUTAI': {
+      return 6;
+    }
+    case 'GOFX': {
+      return 9;
+    }
     default: {
       return undefined;
     }
