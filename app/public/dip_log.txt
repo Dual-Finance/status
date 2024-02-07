@@ -1,8 +1,23 @@
-Trading at 2024-02-06T12:09:15.063Z
+Trading at 2024-02-07T12:08:35.789Z
 Options bought
-[]
+[
+  {
+    "signature": "2XkfMPLNFph8UoqsdNkix7B96cdR6LR4BbzoffHyjz6AFvuuUuqotCgAtTRKaZ4DQDj2W5NUD6xEkDFS5L4D9URf",
+    "mint": "57XVYCfZ6Vk3Vp9QytcFCJAycY1RvSGHhcFwJpFyGu9F",
+    "amount": 0.999999,
+    "price": 1.735999,
+    "time": 1707262484
+  },
+  {
+    "signature": "2kGEfReGqdJ9muMCua5yYnnCLzFVutmAaawSq2NZU2oryrArcr1G5NsBr6bYVM8DuRduXbNarEZn9oj4qDDnt9tS",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1707262522
+  }
+]
 Options sold
 []
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+Net Premium -1.735997264001 Premium Earned 0 Premium Paid 1.735997264001
