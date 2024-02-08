@@ -79,6 +79,10 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         Number(baseDecimals),
         Number(quoteDecimals)
       );
+
+      if (roundedStrike === 0) {
+        continue;
+      }
       const available = Number(optionsAvailable) / 10 ** Number(baseDecimals);
       const roundedAvailable = Math.round(available * 10 ** Number(baseDecimals)) / 10 ** Number(baseDecimals);
 
