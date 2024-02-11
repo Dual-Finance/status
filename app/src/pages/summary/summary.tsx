@@ -140,4 +140,20 @@ const projects: Record<string, ProjectLink> = {
     name: 'GooseFX',
     link: 'https://www.goosefx.io/',
   },
+  PYTH: {
+    name: 'Pyth',
+    link: 'https://pyth.network/',
+  },
+  ELON: {
+    name: 'Dogelon Mars',
+    link: 'https://dogelonmars.com/',
+  },
+  RAY: {
+    name: 'Ray',
+    link: 'https://raydium.io/',
+  },
+  CHAI: {
+    name: 'Chai',
+    link: 'https://chai.money/',
+  },
 };

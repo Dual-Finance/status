@@ -177,6 +177,18 @@ export class Config {
     return new PublicKey('GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD');
   }
 
+  static pythMintPk(): PublicKey {
+    return new PublicKey('HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3');
+  }
+
+  static elonMintPk(): PublicKey {
+    return new PublicKey('7ZCm8WBN9aLa3o47SoYctU6iLdj7wkGG5SV2hE5CgtD5');
+  }
+
+  static rayMintPk(): PublicKey {
+    return new PublicKey('4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -227,6 +239,9 @@ export class Config {
       '6CNHDCzD5RkvBWxxyokQQNQPjFWgoHF94D7BmC73X6ZK': 'GECKO',
       '45EgCwcPXYagBC7KqBin4nCFgEZWN7f3Y6nACwxqMCWX': 'MOUTAI',
       GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD: 'GOFX',
+      HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3: 'PYTH',
+      '7ZCm8WBN9aLa3o47SoYctU6iLdj7wkGG5SV2hE5CgtD5': 'ELON',
+      '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R': 'RAY',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

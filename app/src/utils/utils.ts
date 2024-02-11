@@ -557,6 +557,18 @@ export function decimalsBaseSPL(token: string) {
     case 'GOFX': {
       return 9;
     }
+    case 'PYTH': {
+      return 6;
+    }
+    case 'ELON': {
+      return 4;
+    }
+    case 'RAY': {
+      return 6;
+    }
+    case 'CHAI': {
+      return 8;
+    }
     default: {
       return undefined;
     }
