@@ -1,8 +1,51 @@
-Trading at 2024-02-10T12:07:59.400Z
+Trading at 2024-02-11T12:08:03.470Z
 Options bought
-[]
+[
+  {
+    "signature": "ujqcHBa29GsGctffrj5KFNou6thAmDMG3iMAkq2tSKFNcDZVTRjSMYcyxGLPQYxPDgj2bg6qH6PkxHJaAiBZfat",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 2,
+    "price": 0.946853,
+    "time": 1707586553
+  },
+  {
+    "signature": "3yFvW1b95jMmdELKYRnLB7AmaJ9W1rNmUSmxKJk9LotVQiK9MqewHTAsdMT8nJgR8xJaEu5DSpdbYMFxcYrRVUsb",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1707586573
+  },
+  {
+    "signature": "2aQfqzBr63hazkWqyP8qsPPvsU9asBQoYf9XwUzZe5FAmBifyFowCZHtXgeAGvvRHTYjX3pYhK6r6mLJPRCx36HK",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 1,
+    "price": 1.148658,
+    "time": 1707635927
+  },
+  {
+    "signature": "5Hq1MG8Mwn9xmvqDpYmFTHRKSLAMoZXH6miykWaG3XuNdMbvgdXVf9459Z295vwu89tjhYLWXPVUt8hsnXpHxTQn",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1707635940
+  },
+  {
+    "signature": "uFuHeTNUVDVJVgs7PXr3ZXNcZZzTi8P5PqUmBENzPjSTRNhkaXtXRyB84HG6ju1ZSnPU8JFkLCRF2fMHPcSSVhw",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 1.099999,
+    "price": 1.21516,
+    "time": 1707645330
+  },
+  {
+    "signature": "5bKyJpsELXD2yQd1mkrx8ospSiTPJmKtumSnHjrAmBgexUMCa5pgp6zQDDkdhxdXG9TjAYunEB6CossWWFDiFFHs",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1707645342
+  }
+]
 Options sold
-
-
 []
-Net Premium 0 Premium Earned 0 Premium Paid 0
+
+
+Net Premium -4.3790387848400005 Premium Earned 0 Premium Paid 4.3790387848400005
