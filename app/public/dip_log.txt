@@ -1,8 +1,37 @@
-Trading at 2024-02-12T12:09:04.434Z
+Trading at 2024-02-13T12:09:11.528Z
 Options bought
-[]
+[
+  {
+    "signature": "5ijzSpomBo849iF6d24Kyn4mg8bj6GMSMekuZmCQK8zLFeMCXzbb7qDmrHzsq8TY4QNSJgdNYCXF7iwHoeDyGE82",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 0,
+    "price": null,
+    "time": 1707792747
+  },
+  {
+    "signature": "4NT6hEbcN3UXWNMZdBLdQoN5R84dxXdCTjucwSFSzUNYQ2wTfVrMNxH1MS57xuL1SvAozN8PtVPiv5wa12ViUa4f",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 0,
+    "price": null,
+    "time": 1707792800
+  },
+  {
+    "signature": "24WcXLD2egwksqa4wai75BMpFxwXe7UdjXVmkfF5u6eDoGhdHqEQYu555j2keBKnWLd2ZJV7FcWwQL1xC1SwZ7xw",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 1,
+    "price": 1.903417,
+    "time": 1707794633
+  },
+  {
+    "signature": "2hprbRFRcwy9GNR5t7K3vPzxk6kUDQTWowYVg6j2xH25LCgQDijeymVsW8F1NKo1CzLe8ybohYj1PwbxLao47TST",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1707794646
+  }
+]
 Options sold
 []
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
+Net Premium -1.903417 Premium Earned 0 Premium Paid 1.903417
