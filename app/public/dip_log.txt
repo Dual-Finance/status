@@ -1,108 +1,66 @@
-Trading at 2024-02-14T12:09:20.765Z
+Trading at 2024-02-15T12:08:43.058Z
 Options bought
 [
   {
-    "signature": "3kgyW3EWK7t6hQo2XZhjYPFebXKBSEQp2Ppu1Me11Yo6gz8KyW48fhxHa4MgmMQr9EsFbv5teYq2GmVrzpx78t4J",
+    "signature": "2z69ZQDNu5sqr7nGKjsqs36gGTvAxvt2CPZCuNrrsTSNS2N7mCfkpocoqmdUo2AyAFyGXAqoVBGVM2RF4cU9XPjN",
     "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.01,
-    "price": 1.1831,
-    "time": 1707850769
+    "amount": 0.372999,
+    "price": 0.013348,
+    "time": 1707926368
   },
   {
-    "signature": "4cbZCgQU8Fdcm47Kw1HZq3DBorp1HcU7Nxy9zxMuPPLVYqcjrNmqoMbcrFochfn19qSXVgud7YT9e1YPrpNYyf3m",
+    "signature": "62BunDesF1Zs2iU4oWcgnAdKWY7DarXNgjQaPA2eZMjtcc6w3rZMVU17Kxi831HPGksD58EXV85u4Z12AAoAbPCR",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 1,
+    "price": 2.34046,
+    "time": 1707946713
+  },
+  {
+    "signature": "4okrTh4SBQczq9sJTfnzcGigGhY21VBEyRbXEJhyqf1QrRxKidQyDCHb6SF4EQ3Zojvo9kDPb35EM1vfLdJntwC8",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1707850790
+    "time": 1707946729
   },
   {
-    "signature": "3No54TJBHasiyDdHXX6MXjj1cPt6g8DSAEHjNenUZnw8M391ggRXPoW9MZwnmy1pSfxfsj7rReAL6BbLJ9Epps5q",
+    "signature": "e1aD8hZZKbh2pvnzwVzgTkWTBt63415P1GfpZ4ShaEWLTm4y9ckG492eYopMdL1WVHnJ4d1ymkPUj7j1NXJ2rgP",
     "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.009999,
-    "price": 1.613661,
-    "time": 1707851171
+    "amount": 1,
+    "price": 2.512615,
+    "time": 1707966383
   },
   {
-    "signature": "qrgETDhWDUM7HQTevnxCsf7itjoPkUQFgk7TZsSmbiyU11gxktquuWZzZfCcuNpXUYjYcokF3281e2nZbvAKszH",
+    "signature": "51WmLrSveJaEEaFiuXYMGwD8qhxjv2m9du5xpZPUHgh8ZnqHGuSs23DhaqR3WAtodU1ZutwGMDBQtp25M9iDstay",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1707851185
-  },
-  {
-    "signature": "44cFsHEtUCCnSm8RoroUghZLDsBioJUxFgSBF2gqfekRDYJm6GEF1M1ekvCF5eV3GKjJLXCqwo8KSLx8cDpzTXnc",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.009999,
-    "price": 1.613761,
-    "time": 1707851304
-  },
-  {
-    "signature": "25EafrSPJdBivymC4nVXPeBRviVYSzRCLt2j7UPmWBSLjL9eG1E6q7y6oP3W9nd5kt84UKuWkz8CWcaBxkE7Vtjt",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1707851319
-  },
-  {
-    "signature": "GLnC4WgWURj7dscpcy8FJ59XiB4UamX1ecMAeevxnVCy1ifZTNqMQ8miprPTrBpFuQCyth1SbatBL1PFSN4gRqW",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.009999,
-    "price": 1.613661,
-    "time": 1707851810
-  },
-  {
-    "signature": "2zF71MsBH8atLfxpJZaCPBF8Kj4wSg9Ys2fVNFN8JAkw5gw6SPZSvA3avhe9nB1dJZNJefwjUgeCryPon6aQEhjG",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1707851823
-  },
-  {
-    "signature": "3FmMW1j7N3iRGY6BsdQbbw499nzZY1wxixhQj21rJgUNAR4vwnTHGuDBh9o12Fqh7g9S9MsUMpjut8Cq1ndqRVMD",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0,
-    "price": null,
-    "time": 1707852067
-  },
-  {
-    "signature": "3qqF6d5wuQLxL4PsW8uBbyqEXQwK9Yo97fre65hwJtuJD6ZgZawemHMA3e3YekYPKzyXK6dJK7DZYMUE42sqKVri",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.01,
-    "price": 1.663599,
-    "time": 1707852136
-  },
-  {
-    "signature": "2y8eBCoF5esrSLMQdBGDXTMWVtcmUnj5ZktSGMrJoG9mYRB9BPFZ6MCR2s5KpjrskobmfsyTsZhfDTwyFBfbKVT8",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1707852159
+    "time": 1707966418
   }
 ]
 Options sold
 [
   {
-    "signature": "4KVnC9iyNdC2QYeX54THtx8ENuYpH88AJCQS7uTrK6JUvSig1N61adg16NoJ6vSvrs4i4MV7iKMNXPo3R2SgX1vD",
+    "signature": "53WtqBgXVJZhtGun7e6aYDvmqRQBys1NbX67KKyJeyo5vf8ZcUCbza6Zo2TbkVyntBNA6B3UFoUsGWJ3zC4nuuRy",
     "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.01,
-    "price": 1.1892,
-    "time": 1707850783
+    "amount": 0.373,
+    "price": 2.69775,
+    "time": 1707926408
   },
   {
-    "signature": "2g2kJr7rVCvaFqStNT9kWUKbFPav15XmzhzkxFyjE7KAdz9HRdoX6srqoyrr6psjE4wm8VQngNsr2G9mDUPeiwn7",
+    "signature": "XehgArmKdHpJ8ofHYQP5yZgYB5uLL84NvHupm4hE1HSMmd81jF7HkGqJiWitjGvyN9iGWRj7A7do4bJ2XRQLf27",
     "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.01,
-    "price": 1.0813,
-    "time": 1707851181
+    "amount": 1,
+    "price": 2.352341,
+    "time": 1707946727
   },
   {
-    "signature": "2sDSEAqkNAncZDbHhnLDNmzN37BAKopDZPJ7Emisw7CKTsLBp1Wyn11jdgcK77oxM8VHqfEeJSDXnChNRR7YHfsg",
+    "signature": "5Tf9YYD1ZoB168YuuwPXzziZPx21dQyQRGr7atmDqHZnoFn7CN3rEcWKvkT2AEXkgPwu1QBbcj3CVrM826AoVPUx",
     "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.01,
-    "price": 1.1902,
-    "time": 1707851315
+    "amount": 1,
+    "price": 2.52537,
+    "time": 1707966406
   }
 ]
 
 
-Net Premium -0.042265978917 Premium Earned 0.034607 Premium Paid 0.076872978917
+Net Premium 1.0259179593480008 Premium Earned 5.883971750000001 Premium Paid 4.858053790652
