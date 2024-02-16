@@ -1,66 +1,8 @@
-Trading at 2024-02-15T12:08:43.058Z
+Trading at 2024-02-16T12:08:44.614Z
 Options bought
-[
-  {
-    "signature": "2z69ZQDNu5sqr7nGKjsqs36gGTvAxvt2CPZCuNrrsTSNS2N7mCfkpocoqmdUo2AyAFyGXAqoVBGVM2RF4cU9XPjN",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.372999,
-    "price": 0.013348,
-    "time": 1707926368
-  },
-  {
-    "signature": "62BunDesF1Zs2iU4oWcgnAdKWY7DarXNgjQaPA2eZMjtcc6w3rZMVU17Kxi831HPGksD58EXV85u4Z12AAoAbPCR",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 1,
-    "price": 2.34046,
-    "time": 1707946713
-  },
-  {
-    "signature": "4okrTh4SBQczq9sJTfnzcGigGhY21VBEyRbXEJhyqf1QrRxKidQyDCHb6SF4EQ3Zojvo9kDPb35EM1vfLdJntwC8",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1707946729
-  },
-  {
-    "signature": "e1aD8hZZKbh2pvnzwVzgTkWTBt63415P1GfpZ4ShaEWLTm4y9ckG492eYopMdL1WVHnJ4d1ymkPUj7j1NXJ2rgP",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 1,
-    "price": 2.512615,
-    "time": 1707966383
-  },
-  {
-    "signature": "51WmLrSveJaEEaFiuXYMGwD8qhxjv2m9du5xpZPUHgh8ZnqHGuSs23DhaqR3WAtodU1ZutwGMDBQtp25M9iDstay",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1707966418
-  }
-]
+[]
 Options sold
-[
-  {
-    "signature": "53WtqBgXVJZhtGun7e6aYDvmqRQBys1NbX67KKyJeyo5vf8ZcUCbza6Zo2TbkVyntBNA6B3UFoUsGWJ3zC4nuuRy",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 0.373,
-    "price": 2.69775,
-    "time": 1707926408
-  },
-  {
-    "signature": "XehgArmKdHpJ8ofHYQP5yZgYB5uLL84NvHupm4hE1HSMmd81jF7HkGqJiWitjGvyN9iGWRj7A7do4bJ2XRQLf27",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 1,
-    "price": 2.352341,
-    "time": 1707946727
-  },
-  {
-    "signature": "5Tf9YYD1ZoB168YuuwPXzziZPx21dQyQRGr7atmDqHZnoFn7CN3rEcWKvkT2AEXkgPwu1QBbcj3CVrM826AoVPUx",
-    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
-    "amount": 1,
-    "price": 2.52537,
-    "time": 1707966406
-  }
-]
+[]
 
 
-Net Premium 1.0259179593480008 Premium Earned 5.883971750000001 Premium Paid 4.858053790652
+Net Premium 0 Premium Earned 0 Premium Paid 0
