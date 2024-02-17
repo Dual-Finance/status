@@ -1,6 +1,6 @@
-Trading at 2024-02-16T12:08:44.614Z
-Options bought
+Trading at 2024-02-17T12:07:49.563Z
 []
+Options bought
 Options sold
 []
 
