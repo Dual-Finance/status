@@ -1,1 +1,31 @@
-Trading at 2024-02-18T12:07:56.832Z
+Trading at 2024-02-19T12:09:08.001Z
+[
+  {
+    "signature": "4DDBNcYBu4GWB3yrqyidgQ7RPUP88huQGihLpWsnu6wJK3AWY1p6vEcgYspXH6YvKgKAYEouptCwE8B7QbbDSS7z",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 3,
+    "price": 0.491016,
+    "time": 1708268565
+  },
+  {
+    "signature": "XQa1Sdra2YfuicQwKTnu6eda7HSzncGA5hLQSPyhqhB3z9CZ4PZihLUd9jk7AVHohFW96q5GpnzfywhsJfXP7Db",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1708268582
+  }
+]
+Options bought
+Options sold
+[
+  {
+    "signature": "2Y8AabDyVJ5krRb8opi6CuwsCKpRCWgiFcymF1VtdLkuDsfoG4TBgKq93QWYKoHCvqQ6vd5fstMXw9GPis8SVWtH",
+    "mint": "CmVTs2BBvx8c1YAk7CpChG95oVQ13PyAjmgSVLLEaYdP",
+    "amount": 3,
+    "price": 0.49351,
+    "time": 1708268578
+  }
+]
+
+
+Net Premium 0.007481999999999989 Premium Earned 1.48053 Premium Paid 1.473048
