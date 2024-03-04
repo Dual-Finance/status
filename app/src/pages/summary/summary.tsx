@@ -156,4 +156,8 @@ const projects: Record<string, ProjectLink> = {
     name: 'Chai',
     link: 'https://chai.money/',
   },
+  DRAKO: {
+    name: 'Drako',
+    link: 'https://drakosolana.com',
+  },
 };
