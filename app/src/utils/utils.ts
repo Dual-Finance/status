@@ -569,6 +569,9 @@ export function decimalsBaseSPL(token: string) {
     case 'CHAI': {
       return 8;
     }
+    case 'DRAKO': {
+      return 5;
+    }
     default: {
       return undefined;
     }
