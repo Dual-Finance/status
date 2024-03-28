@@ -1,8 +1,8 @@
-Trading at 2024-03-27T12:08:30.237Z
-[]
+Trading at 2024-03-28T12:09:57.283Z
 Options bought
-Options sold
 []
+Options sold
 
 
+[]
 Net Premium 0 Premium Earned 0 Premium Paid 0
