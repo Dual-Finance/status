@@ -1,13 +1,5 @@
-Trading at 2024-03-31T12:08:08.318Z
-[
-  {
-    "signature": "3WGbVyqTYPyGjVswWKE3ng7DtRbQaZm2MmP8U98tRLeqqbs3jHihDu9thMpH9ED87DfPLsxLLYGxo6yY6DQb2Dvg",
-    "mint": "",
-    "amount": 0,
-    "price": null,
-    "time": 1711846047
-  }
-]
+Trading at 2024-04-01T12:09:59.790Z
+[]
 Options bought
 Options sold
 []
