@@ -193,6 +193,10 @@ export class Config {
     return new PublicKey('drakduQWnTS89CdTUdgHmZzEkN6reBLYqrk8rzVhU53');
   }
 
+  static scoinMintPk(): PublicKey {
+    return new PublicKey('5qKDWkBejLtRh1UGFV7e58QEkdn2fRyH5ehVXqUYujNW');
+  }
+
   static pythBtcPk(): PublicKey {
     if (Config.isDev) {
       return new PublicKey('HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J');
@@ -247,6 +251,7 @@ export class Config {
       '7ZCm8WBN9aLa3o47SoYctU6iLdj7wkGG5SV2hE5CgtD5': 'ELON',
       '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R': 'RAY',
       drakduQWnTS89CdTUdgHmZzEkN6reBLYqrk8rzVhU53: 'DRAKO',
+      '5qKDWkBejLtRh1UGFV7e58QEkdn2fRyH5ehVXqUYujNW': 'SCOIN',
     };
     // @ts-ignore
     return PK_TO_ASSET[pk];

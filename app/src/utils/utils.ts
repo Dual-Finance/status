@@ -572,6 +572,9 @@ export function decimalsBaseSPL(token: string) {
     case 'DRAKO': {
       return 5;
     }
+    case 'SCOIN': {
+      return 9;
+    }
     default: {
       return undefined;
     }
