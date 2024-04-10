@@ -135,10 +135,9 @@
       align-items: center;
     }
 
-    .ant-table-column-sorter-inner .anticon-caret-down,
-    .ant-table-column-sorter-inner .anticon-caret-up {
-      font-size: 8px;
-      color: $table-thead-color;
+    .ant-table-column-sorter-up.active,
+    .ant-table-column-sorter-down.active {
+      color: $dual-green;
     }
 
     // pagination and footer
