@@ -578,10 +578,12 @@ export function decimalsBaseSPL(token: string) {
   }
 }
 
-export function dollarize(amount: number, locale = 'en-US'): string {
-  return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD', maximumSignificantDigits: 4 }).format(
-    amount
-  );
+export function dollarize(amount: number, locale = 'en-US', sigFigs = 4): string {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: 'USD',
+    maximumSignificantDigits: sigFigs,
+  }).format(amount);
 }
 
 export function isUpsidePool(quoteMint: PublicKey) {
@@ -683,4 +685,11 @@ export function getSoStrike(
   const strikeQuoteAtomsPerAtom = strikeQuoteAtomsPerLot / lotSize;
   const strikeTokensPerToken = strikeQuoteAtomsPerAtom * 10 ** (baseDecimals - quoteDecimals);
   return strikeTokensPerToken;
+}
+
+export function isUSDCQuotePair(baseMint: PublicKey, quoteMint: PublicKey): boolean {
+  const isUSDCPair =
+    Config.usdcMintPk().toString() === baseMint.toString() || Config.usdcMintPk().toString() === quoteMint.toString();
+
+  return isUSDCPair;
 }

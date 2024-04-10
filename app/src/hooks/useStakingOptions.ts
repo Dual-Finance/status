@@ -5,7 +5,15 @@ import { PublicKey } from '@solana/web3.js';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
+import {
+  decimalsBaseSPL,
+  dollarize,
+  fetchMultiBirdeyePrice,
+  getFeeByPair,
+  getSoStrike,
+  isUSDCQuotePair,
+  isUpsidePool,
+} from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -95,6 +103,18 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         continue;
       }
 
+      let strikeQuote = calculateStrikeQuoteAtomsPerBaseToken({
+        baseMint,
+        quoteMint,
+        lotSize: lotSize.toNumber(),
+        strikeQuoteAtomsPerLot: strike.toNumber(),
+      });
+
+      if (!isUSDCQuotePair(baseMint, quoteMint)) {
+        strikeQuote = 1 / strikeQuote;
+      }
+      const dollarizedStrikeQuote = dollarize(strikeQuote, undefined, 3);
+
       const soParams = {
         key: `${soName}-${soMint.toString()}`,
         name: soName,
@@ -102,12 +122,7 @@ async function fetchData(provider: AnchorProvider): Promise<SoParams[]> {
         expiration: new Date(Number(optionExpiration) * 1_000).toDateString().split(' ').slice(1).join(' '),
         expirationInt: Number(optionExpiration),
         strike,
-        strikeQuoteAtomsPerBaseToken: calculateStrikeQuoteAtomsPerBaseToken({
-          baseMint,
-          quoteMint,
-          lotSize: lotSize.toNumber(),
-          strikeQuoteAtomsPerLot: strike.toNumber(),
-        }),
+        strikeQuoteAtomsPerBaseToken: dollarizedStrikeQuote,
         lotSize,
         soMint,
         baseMint: new PublicKey(baseMint),
@@ -149,7 +164,7 @@ export interface SoParams {
   expiration: string;
   expirationInt: number;
   strike: BN;
-  strikeQuoteAtomsPerBaseToken: number;
+  strikeQuoteAtomsPerBaseToken: string;
   lotSize: BN;
   soMint: PublicKey;
   baseMint: PublicKey;
