@@ -160,4 +160,8 @@ const projects: Record<string, ProjectLink> = {
     name: 'Drako',
     link: 'https://drakosolana.com',
   },
+  SCOIN: {
+    name: 'Sdrive',
+    link: 'https://sdrive.app',
+  },
 };
