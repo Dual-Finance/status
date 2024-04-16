@@ -676,6 +676,7 @@ export function getFeeByPairAndName(baseMint: PublicKey, quoteMint: PublicKey, s
   if (isPartnerToken) {
     return Math.min(25 * BP, typeFee);
   }
+}
 
 export function getSoStrike(
   strikeQuoteAtomsPerLot: number,
