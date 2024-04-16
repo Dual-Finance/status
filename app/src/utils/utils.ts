@@ -608,7 +608,7 @@ export async function fetchSingleBirdeyePrice(address: string): Promise<BirdeyeP
   };
 
   try {
-    const data = await fetch(`https://public-api.birdeye.so/public/price?address=${address}`, options);
+    const data = await fetch(`https://public-api.birdeye.so/defi/price?address=${address}`, options);
     const priceData = await data.json();
     return priceData.data;
   } catch (e) {
@@ -630,7 +630,7 @@ export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<Multi
   const addressList = encodeURIComponent(addresses.join(','));
 
   try {
-    const data = await fetch(`https://public-api.birdeye.so/public/multi_price?list_address=${addressList}`, options);
+    const data = await fetch(`https://public-api.birdeye.so/defi/multi_price?list_address=${addressList}`, options);
     const priceData = await data.json();
     return priceData.data;
   } catch (e) {
