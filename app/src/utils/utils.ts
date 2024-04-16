@@ -644,6 +644,7 @@ const DAIPO = Config.daipoMintPk().toString();
 const USDH = Config.usdhMintPk().toString();
 const CHAI = Config.chaiMintPk().toString();
 const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+const partners = [Config.mngoMintPk().toString(), Config.rayMintPk().toString(), Config.nosMintPk().toString()];
 
 const WBTCPO = Config.wbtcpoMintPk().toString();
 const TBTC = Config.tbtcMintPk().toString();
@@ -655,26 +656,39 @@ const majors = [WBTCPO, TBTC, WSTETHPO, RETHPO, WETHPO, WSOL];
 
 const BP = 0.01 / 100;
 
-export function getFeeByPair(baseMint: PublicKey, quoteMint: PublicKey) {
+export function getFeeByPairAndName(baseMint: PublicKey, quoteMint: PublicKey, soName: string) {
   const isBaseStable = stables.includes(baseMint.toString());
   const isQuoteStable = stables.includes(quoteMint.toString());
+  const isPartnerToken = partners.includes(baseMint.toString()) || partners.includes(quoteMint.toString());
+  let typeFee = 350 * BP;
+  const isOTC = soName.includes('OTC');
+  const isMM = soName.includes('MM') || soName.includes('Loan');
+  if (isOTC) {
+    typeFee = 10 * BP;
+  }
+  if (isMM) {
+    typeFee = 25 * BP;
+  }
 
   if (isBaseStable && isQuoteStable) {
     return 5 * BP;
+  }
+  if (isPartnerToken) {
+    return Math.min(25 * BP, typeFee);
   }
 
   const isBaseMajor = majors.includes(baseMint.toString());
   const isQuoteMajor = majors.includes(quoteMint.toString());
 
   if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
-    return 25 * BP;
+    return Math.min(10 * BP, typeFee);
   }
 
   if (isBaseMajor && isQuoteMajor) {
     return 5 * BP;
   }
 
-  return 350 * BP;
+  return Math.min(350 * BP, typeFee);
 }
 
 export function getSoStrike(

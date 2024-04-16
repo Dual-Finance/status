@@ -5,7 +5,13 @@ import { PublicKey } from '@solana/web3.js';
 import { AnchorProvider, BN, Idl, Program } from '@project-serum/anchor';
 import { DUAL_DAO_WALLET_PK, StakingOptions } from '@dual-finance/staking-options';
 import { useAnchorProvider } from './useAnchorProvider';
-import { decimalsBaseSPL, fetchMultiBirdeyePrice, getFeeByPair, getSoStrike, isUpsidePool } from '../utils/utils';
+import {
+  decimalsBaseSPL,
+  fetchMultiBirdeyePrice,
+  getFeeByPairAndName,
+  getSoStrike,
+  isUpsidePool,
+} from '../utils/utils';
 import stakingOptionsIdl from '../config/staking_options.json';
 import { Config, stakingOptionsProgramId } from '../config/config';
 import { SOState } from '../config/types';
@@ -138,7 +144,7 @@ function getFeeBasedOnSO({ baseMint, quoteMint, authority, soName }: FeeBasedOnS
     return 0;
   }
 
-  return getFeeByPair(baseMint, quoteMint);
+  return getFeeByPairAndName(baseMint, quoteMint, soName);
 }
 
 export interface SoParams {
