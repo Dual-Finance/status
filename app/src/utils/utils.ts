@@ -676,6 +676,19 @@ export function getFeeByPairAndName(baseMint: PublicKey, quoteMint: PublicKey, s
   if (isPartnerToken) {
     return Math.min(25 * BP, typeFee);
   }
+
+  const isBaseMajor = majors.includes(baseMint.toString());
+  const isQuoteMajor = majors.includes(quoteMint.toString());
+
+  if ((isBaseMajor && isQuoteStable) || (isBaseStable && isQuoteMajor)) {
+    return Math.min(10 * BP, typeFee);
+  }
+
+  if (isBaseMajor && isQuoteMajor) {
+    return 5 * BP;
+  }
+
+  return Math.min(350 * BP, typeFee);
 }
 
 export function getSoStrike(
