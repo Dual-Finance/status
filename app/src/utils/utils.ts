@@ -622,20 +622,21 @@ interface MultiBirdeyePrice {
 }
 
 export async function fetchMultiBirdeyePrice(addresses: string[]): Promise<MultiBirdeyePrice> {
-  const options = {
-    method: 'GET',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    headers: { 'X-API-KEY': process.env.REACT_APP_BIRDEYE_API_KEY || '83101a3f401340c1a044db282ec75bca' },
-  };
-  const addressList = encodeURIComponent(addresses.join(','));
+  const prices = await Promise.all(
+    addresses.map((address) => {
+      return fetchSingleBirdeyePrice(address);
+    })
+  );
 
-  try {
-    const data = await fetch(`https://public-api.birdeye.so/defi/multi_price?list_address=${addressList}`, options);
-    const priceData = await data.json();
-    return priceData.data;
-  } catch (e) {
-    return {};
-  }
+  const result = prices.reduce(
+    (acc, price, i) => ({
+      ...acc,
+      [addresses[i]]: price,
+    }),
+    {}
+  );
+
+  return result;
 }
 
 const USDC = Config.usdcMintPk().toString();
