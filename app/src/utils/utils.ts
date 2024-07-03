@@ -569,6 +569,9 @@ export function decimalsBaseSPL(token: string) {
     case 'CHAI': {
       return 8;
     }
+    case 'USDY': {
+      return 6;
+    }
     case 'DRAKO': {
       return 5;
     }
@@ -644,7 +647,8 @@ const USDT = Config.usdtMintPk().toString();
 const DAIPO = Config.daipoMintPk().toString();
 const USDH = Config.usdhMintPk().toString();
 const CHAI = Config.chaiMintPk().toString();
-const stables = [USDC, USDT, DAIPO, USDH, CHAI];
+const USDY = Config.chaiMintPk().toString();
+const stables = [USDC, USDT, DAIPO, USDH, USDY];
 const partners = [Config.mngoMintPk().toString(), Config.rayMintPk().toString(), Config.nosMintPk().toString()];
 
 const WBTCPO = Config.wbtcpoMintPk().toString();

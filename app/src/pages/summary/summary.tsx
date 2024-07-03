@@ -156,6 +156,10 @@ const projects: Record<string, ProjectLink> = {
     name: 'Chai',
     link: 'https://chai.money/',
   },
+  USDY: {
+    name: 'Usdy',
+    link: 'https://ondo.finance/usdy',
+  },
   DRAKO: {
     name: 'Drako',
     link: 'https://drakosolana.com',

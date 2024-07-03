@@ -235,6 +235,7 @@ export class Config {
       EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: 'USDC',
       DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ: 'DUAL',
       '3jsFX1tx2Z8ewmamiwSU851GzyzM2DJMq7KWW5DM8Py3': 'CHAI',
+      A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6: 'USDY',
       ZScHuTtqZukUrtZS43teTKGs2VqkKL8k4QCouR2n6Uo: 'wstETHpo',
       AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR: 'GUAC',
       mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So: 'mSOL',
