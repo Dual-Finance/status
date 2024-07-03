@@ -1,19 +1,19 @@
-Trading at 2024-07-02T12:10:05.727Z
+Trading at 2024-07-03T12:09:55.047Z
 Options bought
 [
   {
-    "signature": "z5uhC9jv1JQ6YFnXsWM3iALespc6A41KVPKfhdfeXFepbf1JBecDrJw3voUs3tcPiyNd5ZyThRwGT7Fb4FKVd5F",
+    "signature": "3mavDPYrZVTpd11SSDBrHnkYg7kDW3sQzmj7wc3FZuySdkjyceRsCiJf85sw8Rqo2MRKwdKFc7fREvJNGSrAuSww",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1719839366
+    "time": 1719955563
   },
   {
-    "signature": "2jUp8vHs282RjjwAVGmm7g3KMMWPhag29uTqjZt6cZB3vXSpYcXb8XKR2kAXW1U5BuewHeSxzQ35FP83fagHx4sK",
+    "signature": "2sToM39WmKDZWN9b3wZiw9hPJNgWUjRKWHTpm6vNeAHgPmgcwaqi1rTP7DKa54Aevf5MPehLvenRsoJRatNTc4r3",
     "mint": "",
     "amount": 0,
     "price": null,
-    "time": 1719888996
+    "time": 1719997980
   }
 ]
 Options sold
