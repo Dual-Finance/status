@@ -1,8 +1,8 @@
-Trading at 2024-09-12T12:10:35.531Z
+Trading at 2024-09-13T12:10:07.286Z
 Options bought
 []
 Options sold
+
+
 []
-
-
 Net Premium 0 Premium Earned 0 Premium Paid 0
