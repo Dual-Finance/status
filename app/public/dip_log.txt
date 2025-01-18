@@ -1,6 +1,6 @@
-Trading at 2025-01-17T12:10:33.211Z
-Options bought
+Trading at 2025-01-18T12:09:20.519Z
 []
+Options bought
 Options sold
 []
 
