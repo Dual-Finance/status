@@ -1,8 +1,8 @@
-Trading at 2025-01-19T12:09:49.214Z
+Trading at 2025-01-20T12:11:16.449Z
 Options bought
 []
 Options sold
-
-
 []
+
+
 Net Premium 0 Premium Earned 0 Premium Paid 0
