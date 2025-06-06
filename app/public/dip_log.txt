@@ -1,8 +1,16 @@
-Trading at 2025-06-05T12:15:19.676Z
+Trading at 2025-06-06T12:16:38.504Z
 Options bought
-[]
+[
+  {
+    "signature": "2Dw7ppnMxATDUb4hn8rprHkiM66hs5CRyjBXjwx7SewsL8MAMLTkGMfQdg8To1JK6UvdtCBiLka5w4H6zZeNrUMQ",
+    "mint": "",
+    "amount": 0,
+    "price": null,
+    "time": 1749138662
+  }
+]
 Options sold
+Net Premium 0 Premium Earned 0 Premium Paid 0
 []
 
 
-Net Premium 0 Premium Earned 0 Premium Paid 0
