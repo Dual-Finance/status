@@ -1,8 +1,8 @@
-Trading at 2025-07-12T12:14:21.842Z
+Trading at 2025-07-13T12:14:50.211Z
 Options bought
 []
+Options sold
 []
 
 
 Net Premium 0 Premium Earned 0 Premium Paid 0
-Options sold
